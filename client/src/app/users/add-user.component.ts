@@ -3,7 +3,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {User} from './user';
 
 @Component({
-    selector: 'add-user.component',
+    selector: 'app-add-user.component',
     templateUrl: 'add-user.component.html',
 })
 export class AddUserComponent {

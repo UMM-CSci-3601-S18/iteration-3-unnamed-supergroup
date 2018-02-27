@@ -181,8 +181,8 @@ describe('Adding a user', () => {
         // stub UserService for test purposes
         userListServiceStub = {
             getUsers: () => Observable.of([]),
-            addNewUser: (newUser: User) => {
-                calledUser = newUser;
+            addNewUser: (userToAdd: User) => {
+                calledUser = userToAdd;
                 return Observable.of({
                     '$oid': newId
                 });

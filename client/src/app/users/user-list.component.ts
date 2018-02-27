@@ -6,7 +6,7 @@ import {MatDialog} from '@angular/material';
 import {AddUserComponent} from './add-user.component';
 
 @Component({
-    selector: 'user-list-component',
+    selector: 'app-user-list-component',
     templateUrl: 'user-list.component.html',
     styleUrls: ['./user-list.component.css'],
 })
@@ -43,8 +43,8 @@ export class UserListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.userListService.addNewUser(result).subscribe(
-                result => {
-                    this.highlightedID = result;
+                addUserResult => {
+                    this.highlightedID = addUserResult;
                     this.refreshUsers();
                 },
                 err => {
@@ -89,8 +89,8 @@ export class UserListComponent implements OnInit {
         // Subscribe waits until the data is fully downloaded, then
         // performs an action on it (the first lambda)
 
-        const users: Observable<User[]> = this.userListService.getUsers();
-        users.subscribe(
+        const userListObservable: Observable<User[]> = this.userListService.getUsers();
+        userListObservable.subscribe(
             users => {
                 this.users = users;
                 this.filterUsers(this.userName, this.userAge);
@@ -98,7 +98,7 @@ export class UserListComponent implements OnInit {
             err => {
                 console.log(err);
             });
-        return users;
+        return userListObservable;
     }
 
 
