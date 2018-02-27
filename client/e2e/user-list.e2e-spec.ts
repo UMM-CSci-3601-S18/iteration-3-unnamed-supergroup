@@ -2,7 +2,7 @@ import {UserPage} from './user-list.po';
 import {browser, protractor, element, by} from 'protractor';
 import {Key} from 'selenium-webdriver';
 
-const origFn = browser.driver.controlFlow().execute;
+// const origFn = browser.driver.controlFlow().execute;
 
 // https://hassantariqblog.wordpress.com/2015/11/09/reduce-speed-of-angular-e2e-protractor-tests/
 // browser.driver.controlFlow().execute = function () {
@@ -26,24 +26,24 @@ describe('User list', () => {
     });
 
     it('should get and highlight Users title attribute ', () => {
-        page.navigateTo();
+        UserPage.navigateTo();
         expect(page.getUserTitle()).toEqual('Users');
     });
 
     it('should type something in filter name box and check that it returned correct element', () => {
-        page.navigateTo();
-        page.typeAName('t');
+        UserPage.navigateTo();
+        UserPage.typeAName('t');
         expect(page.getUniqueUser('kittypage@surelogic.com')).toEqual('Kitty Page');
-        page.backspace();
-        page.typeAName('lynn');
+        UserPage.backspace();
+        UserPage.typeAName('lynn');
         expect(page.getUniqueUser('lynnferguson@niquent.com')).toEqual('Lynn Ferguson');
     });
 
     it('should click on the age 27 times and return 3 elements then ', () => {
-        page.navigateTo();
-        page.getUserByAge();
+        UserPage.navigateTo();
+        UserPage.getUserByAge();
         for (let i = 0; i < 27; i++) {
-            page.selectUpKey();
+            UserPage.selectUpKey();
         }
 
         expect(page.getUniqueUser('stokesclayton@momentia.com')).toEqual('Stokes Clayton');
@@ -52,8 +52,8 @@ describe('User list', () => {
     });
 
     it('Should open the expansion panel and get the company', () => {
-        page.navigateTo();
-        page.getCompany('DATA');
+        UserPage.navigateTo();
+        UserPage.getCompany('DATA');
         browser.actions().sendKeys(Key.ENTER).perform();
 
         expect(page.getUniqueUser('valerieerickson@datagene.com')).toEqual('Valerie Erickson');
@@ -64,9 +64,9 @@ describe('User list', () => {
     });
 
     it('Should allow us to filter users based on company', () => {
-        page.navigateTo();
-        page.getCompany('o');
-        page.getUsers().then(function(users) {
+        UserPage.navigateTo();
+        UserPage.getCompany('o');
+        UserPage.getUsers().then(function(users) {
             expect(users.length).toBe(4);
         });
         expect(page.getUniqueUser('conniestewart@ohmnet.com')).toEqual('Connie Stewart');
@@ -76,30 +76,30 @@ describe('User list', () => {
     });
 
     it('Should allow us to clear a search for company and then still successfully search again', () => {
-        page.navigateTo();
-        page.getCompany('m');
-        page.getUsers().then(function(users) {
+        UserPage.navigateTo();
+        UserPage.getCompany('m');
+        UserPage.getUsers().then(function(users) {
             expect(users.length).toBe(2);
         });
-        page.clickClearCompanySearch();
-        page.getUsers().then(function(users) {
+        UserPage.clickClearCompanySearch();
+        UserPage.getUsers().then(function(users) {
             expect(users.length).toBe(10);
         });
-        page.getCompany('ne');
-        page.getUsers().then(function(users) {
+        UserPage.getCompany('ne');
+        UserPage.getUsers().then(function(users) {
             expect(users.length).toBe(3);
         });
     });
 
     it('Should allow us to search for company, update that search string, and then still successfully search', () => {
-        page.navigateTo();
-        page.getCompany('o');
-        page.getUsers().then(function(users) {
+        UserPage.navigateTo();
+        UserPage.getCompany('o');
+        UserPage.getUsers().then(function(users) {
             expect(users.length).toBe(4);
         });
         element(by.id('userCompany')).sendKeys('h');
         element(by.id('submit')).click();
-        page.getUsers().then(function(users) {
+        UserPage.getUsers().then(function(users) {
             expect(users.length).toBe(1);
         });
     });
@@ -109,19 +109,19 @@ describe('User list', () => {
 // https://github.com/blizzerand/angular-protractor-demo/tree/final
 
     it('Should have an add user button', () => {
-        page.navigateTo();
+        UserPage.navigateTo();
         expect(page.buttonExists()).toBeTruthy();
     });
 
     it('Should open a dialog box when add user button is clicked', () => {
-        page.navigateTo();
+        UserPage.navigateTo();
         expect(element(by.css('add-user')).isPresent()).toBeFalsy('There should not be a modal window yet');
         element(by.id('addNewUser')).click();
         expect(element(by.css('add-user')).isPresent()).toBeTruthy('There should be a modal window now');
     });
 
     it('Should actually add the user with the information we put in the fields', () => {
-        page.navigateTo();
+        UserPage.navigateTo();
         page.clickAddUserButton();
         element(by.id('nameField')).sendKeys('Tracy Kim');
         // Need to use backspace because the default value is -1. If that changes, this will change too.
@@ -142,7 +142,7 @@ describe('User list', () => {
     });
 
     it('Should allow us to put information into the fields of the add user dialog', () => {
-        page.navigateTo();
+        UserPage.navigateTo();
         page.clickAddUserButton();
         expect(element(by.id('nameField')).isPresent()).toBeTruthy('There should be a name field');
         element(by.id('nameField')).sendKeys('Dana Jones');

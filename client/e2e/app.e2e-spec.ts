@@ -8,6 +8,6 @@ describe('angular-spark-lab', () => {
     });
 
     it('should load', () => {
-        page.navigateTo();
+        AppPage.navigateTo();
     });
 });

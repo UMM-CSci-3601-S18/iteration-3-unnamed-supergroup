@@ -1,9 +1,46 @@
-import {browser, element, by, promise, ElementFinder} from 'protractor';
+import {browser, element, by, promise} from 'protractor';
 import {Key} from 'selenium-webdriver';
 
 export class UserPage {
-    navigateTo(): promise.Promise<any> {
+    static navigateTo(): promise.Promise<any> {
         return browser.get('/users');
+    }
+
+    static typeAName(name: string) {
+        const input = element(by.id('userName'));
+        input.click();
+        input.sendKeys(name);
+    }
+
+    static selectUpKey() {
+        browser.actions().sendKeys(Key.ARROW_UP).perform();
+    }
+
+    static backspace() {
+        browser.actions().sendKeys(Key.BACK_SPACE).perform();
+    }
+
+    static getCompany(company: string) {
+        const input = element(by.id('userCompany'));
+        input.click();
+        input.sendKeys(company);
+        const selectButton = element(by.id('submit'));
+        selectButton.click();
+    }
+
+    static getUserByAge() {
+        const input = element(by.id('userName'));
+        input.click();
+        input.sendKeys(Key.TAB);
+    }
+
+    static getUsers() {
+        return element.all(by.className('users'));
+    }
+
+    static clickClearCompanySearch() {
+        const input = element(by.id('companyClearSearch'));
+        input.click();
     }
 
     // http://www.assertselenium.com/protractor/highlight-elements-during-your-protractor-test-run/
@@ -27,48 +64,12 @@ export class UserPage {
         return title;
     }
 
-    typeAName(name: string) {
-        const input = element(by.id('userName'));
-        input.click();
-        input.sendKeys(name);
-    }
-
-    selectUpKey() {
-        browser.actions().sendKeys(Key.ARROW_UP).perform();
-    }
-
-    backspace() {
-        browser.actions().sendKeys(Key.BACK_SPACE).perform();
-    }
-
-    getCompany(company: string) {
-        const input = element(by.id('userCompany'));
-        input.click();
-        input.sendKeys(company);
-        const selectButton = element(by.id('submit'));
-        selectButton.click();
-    }
-
-    getUserByAge() {
-        const input = element(by.id('userName'));
-        input.click();
-        input.sendKeys(Key.TAB);
-    }
 
     getUniqueUser(email: string) {
         const user = element(by.id(email)).getText();
         this.highlightElement(by.id(email));
 
         return user;
-    }
-
-    getUsers() {
-        return element.all(by.className('users'));
-    }
-
-    clickClearCompanySearch() {
-        const input = element(by.id('companyClearSearch'));
-        input.click();
     }
 
     buttonExists(): promise.Promise<boolean> {

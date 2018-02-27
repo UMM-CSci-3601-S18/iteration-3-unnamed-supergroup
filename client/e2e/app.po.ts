@@ -1,7 +1,7 @@
-import {browser, by, element} from 'protractor';
+import {browser} from 'protractor';
 
 export class AppPage {
-    navigateTo() {
+    static navigateTo() {
         return browser.get('/');
     }
 
