@@ -6,6 +6,7 @@
 ## Table of Contents
 - [Setup](#setup)
 - [Running your project](#running-your-project)
+- [Deploying Project for Production](#deploying-project-for-production)
 - [Testing and Continuous Integration](#testing-and-continuous-integration)
 - [Resources](#resources)
 	- [Angular 4](#angular-4)
@@ -52,6 +53,10 @@ To access this click on File -> Settings -> Plugins, type Mongo and make sure th
 Now head to View -> Tool Windows -> Mongo Explorer. Then use the tool icon to add configuration.
 Once prompted type for Path to Mongo Shell: _"/usr/bin/mongo"_
 and hit the <span style="color:green">green :heavy_plus_sign:</span>, to add your label and, huzzah!, Mongo Explorer is on your side bar.
+
+## Deploying Project for Production 
+Instructions on setting up the project for production can be found here: 
+[UMM CSCI 3601 Droplet Setup Instructions](https://gist.github.com/pluck011/d968c2280cc9dc190a294eaf149b1c6e)
 
 ## Testing and Continuous Integration
 
