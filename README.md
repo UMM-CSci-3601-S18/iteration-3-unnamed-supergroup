@@ -43,7 +43,7 @@ tools.
 - The **build.sh** is a script that calls upon gradle build to build the entire project which creates an executable to be able to launch the
 project in production mode. To run **build.sh**, go to your project directory in a terminal and enter:``./build ``
 
-When **build.sh** is run the script **.sage_run.sh** is copied to ~/**sage.sh** that when launched i.e. ``./sage.sh``
+When **build.sh** is run the script **.3601_run.sh** is copied to ~/**3601.sh** that when launched i.e. ``./3601.sh``
 will run your project in production mode. The API_URL within the _environment.prod.ts_ should reflect the url to get to your server e.g. 
 ``http://localhost:4567`` or ``http://acooldomainname.com``
 
