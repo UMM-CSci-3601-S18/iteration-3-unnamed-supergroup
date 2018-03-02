@@ -2,6 +2,7 @@ package umm3601.emoji;
 
 import com.google.gson.Gson;
 import com.mongodb.MongoException;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
@@ -12,7 +13,10 @@ import sun.util.locale.provider.DateFormatProviderImpl;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class EmojiController {
     private final Gson gson;
@@ -31,11 +35,32 @@ public class EmojiController {
     }
 
     public String getEmoji(String id) {
-        return "";
+
+        FindIterable<Document>  jsonEmojis
+            = emojiCollection
+            .find(eq("_id", new ObjectId(id)));
+
+        Iterator<Document> iterator = jsonEmojis.iterator();
+        if (iterator.hasNext()) {
+            Document emoji = iterator.next();
+            return emoji.toJson();
+        } else {
+            // We didn't find the desired emoji
+            return null;
+        }
     }
 
+
+    //This doesn't do anything right now.
     public String getEmojis(Map<String, String[]> queryParams) {
-        return "";
+        Document filterDoc = new Document();
+
+        FindIterable<Document> matchingEmojis = emojiCollection.find(filterDoc);
+
+
+
+
+        return JSON.serialize(matchingEmojis);
     }
 
 
