@@ -8,11 +8,6 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-import sun.util.locale.provider.DateFormatProviderImpl;
-
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
