@@ -10,7 +10,7 @@
              mat-slider is a component in angular we used.
              -->
 
-            <mat-slider min="1" max="5" step="1" #matslider (input)="pitch($event)"></mat-slider>
+            <mat-slider min="1" max="5" step="1" value="3" #matslider (input)="pitch($event)"></mat-slider>
 
             <!-- matslider.value gives us the value of what the user is going to choose -->
 
@@ -22,7 +22,7 @@
              trying to do it locally-->
 
             <mat-card-content>
-                <img  src="Emojis/{{matslider.value}}.png">
+                <img  src="assets/Emojis/{{matslider.value}}.png">
             </mat-card-content>
 
         </mat-card>
