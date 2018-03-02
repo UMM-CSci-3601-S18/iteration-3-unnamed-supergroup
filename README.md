@@ -42,10 +42,9 @@ tools.
 - The **build** task will still _build_ the entire project (but not run it)
 - The **runClient** task will build and run the client side of your project (available at ``localhost:9000``)
 - The **build.sh** is a script that calls upon gradle build to build the entire project which creates an executable to be able to launch the
-project in production mode. To run **build.sh**, go to your project directory in a terminal and enter:``./build ``
+project in production mode. To run **build.sh**, go to your project directory in a terminal and enter:``./build.sh``
 
-When **build.sh** is run the script **.3601_run.sh** is copied to ~/**3601.sh** that when launched i.e. ``./3601.sh``
-will run your project in production mode. The API_URL within the _environment.prod.ts_ should reflect the url to get to your server e.g. 
+When **build.sh** is run, the script **.3601_run.sh** is copied to ~/**3601.sh**. When this is launched, for example, ``./3601.sh``, will run your project in production mode. The API_URL within the _environment.prod.ts_ should reflect the url to get to your server e.g. 
 ``http://localhost:4567`` or ``http://acooldomainname.com``
 
 :exclamation: Pro-tip: IntelliJ comes with a nice view to see the mongo databases setup.
