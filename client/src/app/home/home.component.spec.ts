@@ -1,4 +1,5 @@
-/*
+
+
 import {TestBed, ComponentFixture} from '@angular/core/testing';
 import {HomeComponent} from './home.component';
 import {DebugElement} from '@angular/core';
@@ -24,14 +25,11 @@ describe('Home', () => {
 
         component = fixture.componentInstance; // BannerComponent test instance
 
-        // query for the title <h1> by CSS element selector
-        de = fixture.debugElement.query(By.css('#hello-world'));
-        el = de.nativeElement;
     });
+/*
+    it('displays specific emoji according to value', () => {
 
-    it('displays a greeting', () => {
-        fixture.detectChanges();
-        expect(el.textContent).toContain(component.text);
     });
+    */
 });
-*/
+

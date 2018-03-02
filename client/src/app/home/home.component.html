@@ -1,13 +1,29 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="home.component.css">
-</head>
-
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
         <mat-card>
             <h1 style="text-align: center;"><strong>How are you feeling right now, buddy?</strong></h1>
             <p style="text-align: center;">Hey friend! Mind telling me your name?&nbsp;&nbsp;<input name="fname" type="text" /></p>
             <p style="text-align: center;">Pick a feeling!&nbsp;</p>
+
+            <!-- This is the slider that the user will choose to determine their mood value/ emoji
+             1 = Very Sad, 2= sad, 3= Normal, 4= Happy, 5= Very Happy
+             mat-slider is a component in angular we used.
+             -->
+
+            <mat-slider min="1" max="5" step="1" #matslider (input)="pitch($event)"></mat-slider>
+
+            <!-- matslider.value gives us the value of what the user is going to choose -->
+
+            <div>
+                {{ matslider.value }}
+            </div>
+
+            <!-- Here we are going to try to show the emoji using the matslider value. We are
+             trying to do it locally-->
+
+            <mat-card-content>
+                <img  src="Emojis/{{matslider.value}}.png">
+            </mat-card-content>
 
         </mat-card>
     </div>

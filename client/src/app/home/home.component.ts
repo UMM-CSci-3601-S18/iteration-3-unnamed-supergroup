@@ -1,7 +1,11 @@
-import {Component} from '@angular/core';
+import {Component} from '@angular/core'
+
+// Selector will change when we know more
 
 @Component({
-    templateUrl: 'home.component.html'
+    selector: 'app-home-component',
+    templateUrl: 'home.component.html',
+    styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
     public text: string;
@@ -9,4 +13,12 @@ export class HomeComponent {
     constructor() {
         this.text = 'Mongo lab';
     }
+
+
+    pitch(event: any) {
+        console.log(event.value);
+    }
 }
+
+
+
