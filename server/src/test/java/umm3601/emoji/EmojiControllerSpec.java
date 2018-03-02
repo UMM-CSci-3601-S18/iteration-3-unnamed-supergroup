@@ -102,8 +102,10 @@ public class EmojiControllerSpec {
     @Test
     public void getEmojiById() {
         String jsonResult = emojiController.getEmoji(mattsId.toHexString());
+        System.out.println(jsonResult);
         Document matt = Document.parse(jsonResult);
-        assertEquals("Name should match", "Matt", matt.get("Matt"));
+
+        assertEquals("Name should match", "Matt", matt.getString("owner"));
         String noJsonResult = emojiController.getEmoji(new ObjectId().toString());
         assertNull("No name should match",noJsonResult);
 
