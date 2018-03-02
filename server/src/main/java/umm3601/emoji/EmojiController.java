@@ -12,6 +12,7 @@ import sun.util.locale.provider.DateFormatProviderImpl;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 public class EmojiController {
     private final Gson gson;
@@ -29,20 +30,29 @@ public class EmojiController {
         emojiCollection = database.getCollection("emojis");
     }
 
-    public String addNewEmoji(String ownerId, int rating, String date) {
+    public String getEmoji(String id) {
+        return "";
+    }
+
+    public String getEmojis(Map<String, String[]> queryParams) {
+        return "";
+    }
+
+
+    public String addNewEmoji(String ownerId, int mood, String date) {
 
         Document newEmoji = new Document();
         newEmoji.append("owner", ownerId);
-        newEmoji.append("rating", rating);
+        newEmoji.append("mood", mood);
         newEmoji.append("date", date);
 
         try {
             emojiCollection.insertOne(newEmoji);
 
             ObjectId id = newEmoji.getObjectId("_id");
-            System.err.println("Successfully added new emoji [_id=" + id + ", owner=" + ownerId + ", rating="
-                + rating + " date=" + date + ']');
-            // return JSON.serialize(newUser);
+            System.err.println("Successfully added new emoji [_id=" + id + ", owner=" + ownerId + ", mood="
+                + mood + " date=" + date + ']');
+
             return JSON.serialize(id);
         } catch(MongoException me) {
             me.printStackTrace();
