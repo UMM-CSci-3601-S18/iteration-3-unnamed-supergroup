@@ -20,9 +20,9 @@ public class EmojiController {
     private final MongoCollection<Document> emojiCollection;
 
     /**
-     * Construct a controller for users.
+     * Construct a controller for emojis.
      *
-     * @param database the database containing user data
+     * @param database the database containing emoji data
      */
     public EmojiController(MongoDatabase database) {
         gson = new Gson();

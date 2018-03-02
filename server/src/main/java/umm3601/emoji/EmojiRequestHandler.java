@@ -10,12 +10,12 @@ public class EmojiRequestHandler {
     public EmojiRequestHandler(EmojiController emojiController){
         this.emojiController = emojiController;
     }
-    /**Method called from Server when the 'api/users/:id' endpoint is received.
-     * Get a JSON response with a list of all the users in the database.
+    /**Method called from Server when the 'api/emojis/:id' endpoint is received.
+     * Get a JSON response with a list of all the emojis in the database.
      *
      * @param req the HTTP request
      * @param res the HTTP response
-     * @return one user in JSON formatted string and if it fails it will return text with a different HTTP status code
+     * @return one emoji in JSON formatted string and if it fails it will return text with a different HTTP status code
      */
     public String getEmojiJSON(Request req, Response res){
         res.type("application/json");
@@ -36,19 +36,19 @@ public class EmojiRequestHandler {
             return emoji;
         } else {
             res.status(404);
-            res.body("The requested user with id " + id + " was not found");
+            res.body("The requested emoji with id " + id + " was not found");
             return "";
         }
     }
 
 
 
-    /**Method called from Server when the 'api/users' endpoint is received.
+    /**Method called from Server when the 'api/emojis' endpoint is received.
      * This handles the request received and the response
      * that will be sent back.
      *@param req the HTTP request
      * @param res the HTTP response
-     * @return an array of users in JSON formatted String
+     * @return an array of emojis in JSON formatted String
      */
     public String getEmojis(Request req, Response res)
     {
@@ -57,13 +57,13 @@ public class EmojiRequestHandler {
     }
 
 
-    /**Method called from Server when the 'api/users/new'endpoint is recieved.
-     * Gets specified user info from request and calls addNewUser helper method
+    /**Method called from Server when the 'api/emojis/new'endpoint is recieved.
+     * Gets specified emoji info from request and calls addNewEmoji helper method
      * to append that info to a document
      *
      * @param req the HTTP request
      * @param res the HTTP response
-     * @return a boolean as whether the user was added successfully or not
+     * @return a boolean as whether the emoji was added successfully or not
      */
     public String addNewEmoji(Request req, Response res)
     {
@@ -82,12 +82,12 @@ public class EmojiRequestHandler {
                     int mood = dbO.getInt("mood");
                     String date = dbO.getString("date");
 
-                    System.err.println("Adding new user [owner=" + owner + ", mood=" + mood + " company=" + date  + ']');
+                    System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " company=" + date  + ']');
                     return emojiController.addNewEmoji(owner, mood, date).toString();
                 }
                 catch(NullPointerException e)
                 {
-                    System.err.println("A value was malformed or omitted, new user request failed.");
+                    System.err.println("A value was malformed or omitted, new emoji request failed.");
                     return null;
                 }
 
