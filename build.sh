@@ -12,3 +12,4 @@ tar xvf ~/server.tar -C ~
 #Get rid of the tar, and move 3601_run.sh executable into home
 rm ~/server.tar
 cp .3601_run.sh ~/3601.sh
+chmod +x ~/3601.sh
