@@ -82,7 +82,7 @@ public class EmojiRequestHandler {
                     int mood = dbO.getInt("mood");
                     String date = dbO.getString("date");
 
-                    System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " company=" + date  + ']');
+                    System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " date=" + date  + ']');
                     return emojiController.addNewEmoji(owner, mood, date).toString();
                 }
                 catch(NullPointerException e)
