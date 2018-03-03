@@ -1,42 +1,32 @@
-body {
-    background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif")
+/* Cat gif background
+
+background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif");
+
+ */
+div {
+    background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif");
+
 }
 
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
+mat-card {
+    text-align: center;
+    width: 100%;
 }
 
-/* The slider itself */
-.slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 400%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
+mat-card-content img {
+    width: 35%;
+    padding-bottom: 3%;
 }
 
-/* Mouse-over effects */
-.slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
+mat-slider {
+    width: 40%;
+    opacity: .75;
+
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+mat-slider:hover {
+    opacity: 1;
 }
 
-.slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
+
+
