@@ -3,14 +3,13 @@
 background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif");
 
  */
-div {
+/*div {
     background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif");
 
-}
+}*/
 
 mat-card {
     text-align: center;
-    width: 100%;
 }
 
 mat-card-content img {
