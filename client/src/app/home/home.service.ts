@@ -23,5 +23,19 @@ export class HomeService {
         // Send post request to add a new user with the user data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.emojiUrl + '/new', newEmoji, httpOptions);
     }
+    getEmoji(emojiOwner?: string): Observable<Emoji[]> {
+
+        return this.http.get<Emoji[]>(this.emojiUrl);
+    }
+
+    getEmojiById(id: string): Observable<Emoji> {
+        return this.http.get<Emoji>(this.emojiUrl + '/' + id);
+    }
+    getEmojs(emojiOwner?: string): Observable<Emoji[]> {
+        return this.http.get<Emoji[]>(this.emojiUrl);
+    }
+
+
+
 
 }
