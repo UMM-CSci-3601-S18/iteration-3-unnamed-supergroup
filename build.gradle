@@ -8,19 +8,14 @@ task clearMongoDB(type: Exec) {
     args = ["dev", "--eval", "printjson(db.dropDatabase())"]
 }
 
-task seedToDoData(type: Exec) {
+task seedEmojiData(type: Exec) {
     executable = "mongoimport"
-    args = ["-d", "dev", "-c", "todos", "--file", "todos.seed.json", "--jsonArray"]
+    args = ["-d", "dev", "-c", "emojis", "--file", "emojis.seed.json", "--jsonArray"]
 }
 
-task seedUserData(type: Exec) {
-    executable = "mongoimport"
-    args = ["-d", "dev", "-c", "users", "--file", "users.seed.json", "--jsonArray"]
-}
 
 task seedMongoDB {
     group = "application"
 }
 seedMongoDB.dependsOn(clearMongoDB)
-seedMongoDB.dependsOn(seedToDoData)
-seedMongoDB.dependsOn(seedUserData)
+seedMongoDB.dependsOn(seedEmojiData)
