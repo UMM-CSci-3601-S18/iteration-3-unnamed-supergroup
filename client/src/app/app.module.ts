@@ -12,8 +12,7 @@ import {UserListComponent} from './users/user-list.component';
 import {UserListService} from './users/user-list.service';
 import {Routing} from './app.routes';
 import {APP_BASE_HREF} from '@angular/common';
-//add resources components here for routing//
-
+//import {ResourcesComponent} from "./resources/resources.component";//
 import {CustomModule} from './custom.module';
 import {AddUserComponent} from './users/add-user.component';
 
@@ -29,7 +28,8 @@ import {AddUserComponent} from './users/add-user.component';
         AppComponent,
         HomeComponent,
         UserListComponent,
-        AddUserComponent
+        AddUserComponent,
+        //ResourcesComponent,//
     ],
     providers: [
         UserListService,
@@ -39,6 +39,7 @@ import {AddUserComponent} from './users/add-user.component';
     ],
     entryComponents: [
       AddUserComponent,
+        //add resource component would go here//
     ],
     bootstrap: [AppComponent]
 })
