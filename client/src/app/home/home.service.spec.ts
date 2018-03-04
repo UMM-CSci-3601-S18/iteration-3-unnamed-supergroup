@@ -74,7 +74,7 @@ describe('Home service: ', () => {
         // checked until the mocked HTTP request "returns" a response.
         // This happens when we call req.flush(testUsers) a few lines
         // down.
-        emojiListService.getEmojs().subscribe(
+        emojiListService.getEmojis().subscribe(
             emojis => expect(emojis).toBe(testEmojis)
         );
 
