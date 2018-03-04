@@ -24,28 +24,36 @@ group using GitHub classroom, you can clone your repository using IntelliJ:
 - Select **import project from existing model** and select **Gradle.**
   - Make sure **Use default Gradle wrapper** is selected.
 - Click **Finish.**
-- If IDEA asks you if you want to compile JavaScript to TypeScript :fire: DO NOT :fire:
-it will break your project.
+- If IDEA asks you if you want to compile JavaScript to TypeScript :fire: DO NOT :fire: – if you do it will break your project.
 
 :warning: IDEA will sometimes decide to "help" you by offering
 "Compile TypeScript to JavaScript?" :bangbang: *Never* say "OK" to this
 offer -- if you do it will make a complete mess of your project. We're
-using other tools (`gradle`, `ng`, and a thing called `webpack` which you
-never explicitly see) to do that compilation. If you let IDEA do it, you'll
+using other tools (`gradle`, `yarn`, and `ng`) to do that compilation. 
+If you let IDEA do it, you'll
 have a ton of JavaScript files cluttering up your project and confusing other
 tools.
 
 ## Running your project
 
+- The **build** task will _build_ the entire project (but not run it)
 - The familiar **run** Gradle task will still run your SparkJava server.
 (which is available at ``localhost:4567``)
-- The **build** task will still _build_ the entire project (but not run it)
 - The **runClient** task will build and run the client side of your project (available at ``localhost:9000``)
-- The **build.sh** is a script that calls upon gradle build to build the entire project which creates an executable to be able to launch the
+- The **runAllTests** task will run both the Java (server) tests and the `karma` (client-side, Angular) tests
+- The **runServerTests** task will run the Java (server) tests
+- The **runClientTests** task will run the `karma` (client-side, Angular) tests. 
+   * The **runClientTestWithCoverage** task will run the `karma` tests and generate test coverage data which will be placed in `client/coverage`; open the `index.html` in that directory in a browser and you'll get a web interface to that coverage data.
+   * The **runClientTestsAndWatch** task will run the `karma` tests, but leave the testing browser open and the tests in "watch" mode. This means that any changes you make will cause the code to recompile and the tests to be re-run in the background. This can give you continuous feedback on the health of your tests.
+- The **runE2ETest** task runs the E2E (end-to-end, Protractor) tests. For this to work you _must_ make sure you have your server running, and you may need to re-seed the database to make sure it's in a predictable state.
+- The **seedMongoDB** task will load the "demo" data into the Mongo database. If you want/need to change what gets loaded, the `seedMongoDB` command is defined in the top level `build.gradle` and current loads two files, `todos.seed.json` and `users.seed.json`, both of which are also in the top level of the project. (They probably should be in a `data` directory to reduce clutter, so you might want to move them.) To load new/different data you should create the necessary JSON data files, and then update `build.gradle` to load those files.
+
+**build.sh** is a script that calls upon gradle build to build the entire project which creates an executable to be able to launch the
 project in production mode. To run **build.sh**, go to your project directory in a terminal and enter:``./build.sh``
 
-When **build.sh** is run, the script **.3601_run.sh** is copied to ~/**3601.sh**. When this is launched, for example, ``./3601.sh``, will run your project in production mode. The API_URL within the _environment.prod.ts_ should reflect the url to get to your server e.g. 
-``http://localhost:4567`` or ``http://acooldomainname.com``
+When **build.sh** is run, the script **.3601_run.sh** is copied to ~/**3601.sh**. When this is launched, for example, ``./3601.sh``, will run your project in production mode. The API_URL in _environment.prod.ts_ needs to be
+the actual URL of your server. If your server is deployed on a droplet or virtual machine, for example, then you want something like 
+`http://192.168.0.1:4567` where you replace that IP with the IP of your droplet. If you've set up a domain name for your system, you can use that instead, like `http://acooldomainname.com`.
 
 :exclamation: Pro-tip: IntelliJ comes with a nice view to see the mongo databases setup.
 To access this click on File -> Settings -> Plugins, type Mongo and make sure the Mongo Plugin is installed.
