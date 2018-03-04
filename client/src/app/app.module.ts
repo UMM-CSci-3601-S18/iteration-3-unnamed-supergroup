@@ -12,6 +12,7 @@ import {UserListComponent} from './users/user-list.component';
 import {UserListService} from './users/user-list.service';
 import {Routing} from './app.routes';
 import {APP_BASE_HREF} from '@angular/common';
+//add resources components here for routing//
 
 import {CustomModule} from './custom.module';
 import {AddUserComponent} from './users/add-user.component';
