@@ -20,6 +20,25 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+distributions {
+    main {
+        contents {
+            // Put the client artifacts (HTML, CSS, and JS generated
+            // by Angular) in the `lib/client/public` directory. This
+            // plus putting `lib/client` in the classpath (below in this
+            // file) and setting `public` as the place where static files
+            // will be served from by Spark (in `Server.java`) allows
+            // the generated static files to be successfully served from
+            // Spark when run from the gradle generated startup script
+            // in the gradle generated tarball.
+            into('lib/client/public') {
+                from { project(':client').build.outputs.files }
+                fileMode = 0755
+            }
+        }
+    }
+}
+
 //Only server tests
 task runServerTests {
     group = "application"
@@ -32,11 +51,14 @@ task runAllTests {
     description = "Runs the server as a JVM application after testing both it and the client"
 }
 
-task buildExecutable {
-    group = "application"
-}
-buildExecutable.dependsOn(build)
-
 runAllTests.dependsOn check
 
 check.dependsOn(":client:runClientTests")
+
+// Adds the `lib/client` directory to the classpath that is built
+// in the startup script that gradle builds for us. It appears that
+// whatever we put here has `lib/` prepended before it, which is kinda
+// annoying for the static web artifacts, but this does work.
+startScripts {
+    classpath += files('client')
+}
