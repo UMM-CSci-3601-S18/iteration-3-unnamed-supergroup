@@ -1,0 +1,31 @@
+/* Cat gif background
+
+background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif");
+
+ */
+/*div {
+    background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/bbb045e1-eb74-4f51-9926-a751dfec291d.gif");
+
+}*/
+
+mat-card {
+    text-align: center;
+}
+
+mat-card-content img {
+    width: 35%;
+    padding-bottom: 3%;
+}
+
+mat-slider {
+    width: 40%;
+    opacity: .75;
+
+}
+
+mat-slider:hover {
+    opacity: 1;
+}
+
+
+
