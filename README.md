@@ -1,8 +1,6 @@
 # CSCI 3601 Production Template -- Spring 2018
 [![Build Status](https://travis-ci.org/UMM-CSci-3601-S18/iteration-1-flaming-hockey-pucks.svg?branch=master)](https://travis-ci.org/UMM-CSci-3601-S18/iteration-1-flaming-hockey-pucks)
 
-hi
-
 <!-- TOC depthFrom:1 depthTo:5 withLinks:1 updateOnSave:1 orderedList:0 -->
 ## Table of Contents
 - [Setup](#setup)
