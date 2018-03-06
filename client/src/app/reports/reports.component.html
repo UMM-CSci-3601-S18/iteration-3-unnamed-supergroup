@@ -11,13 +11,13 @@
                 <mat-accordion *ngIf="emojis; else emojiError" >
                     <mat-expansion-panel #elem class="emoji" [id]="emoji._id['$oid']"  *ngFor="let emoji of this.filterEmojis(emojiOwner)">
                         <mat-expansion-panel-header>
-                            <mat-panel-title matTooltip="ID: {{emoji._id['$oid']}}" >{{emoji.owner}} Mood: {{emoji.mood}}</mat-panel-title>
-
+                            <!-- This gets an emoji image based on the mood that the user input when creating the emoji object -->
+                            <mat-panel-title matTooltip="ID: {{emoji._id['$oid']}}" >{{emoji.owner}} &nbsp; <img src="assets/reportEmojis/{{emoji.mood}}.png"></mat-panel-title>
                         </mat-expansion-panel-header>
                         <mat-panel-description >Date: {{emoji.date}}</mat-panel-description>
                     </mat-expansion-panel>
                 </mat-accordion>
-                <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+
                 <ng-template #emojiError>
                     <mat-error>
                         There was a problem loading the data. Possibly the server is down or perhaps there are network
