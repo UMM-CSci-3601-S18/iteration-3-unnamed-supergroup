@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 
-import {Emoji} from './emoji';
+import {Emoji} from '../emoji';
 import {environment} from '../../environments/environment';
 
 @Injectable()

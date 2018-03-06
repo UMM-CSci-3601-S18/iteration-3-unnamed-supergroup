@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Emoji} from './emoji';
+import {Emoji} from '../emoji';
 import {HomeService} from "./home.service";
 import {MatDialog} from '@angular/material';
 import {ResponseComponent} from "./response.component";

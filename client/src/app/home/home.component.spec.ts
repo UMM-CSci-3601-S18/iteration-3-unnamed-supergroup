@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 import {MatDialog} from '@angular/material';
 import {CustomModule} from '../custom.module';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
-import {Emoji} from "./emoji";
+import {Emoji} from "../emoji";
 import {Observable} from "rxjs/Observable";
 import {FormsModule} from "@angular/forms";
 import {HomeService} from "./home.service";
