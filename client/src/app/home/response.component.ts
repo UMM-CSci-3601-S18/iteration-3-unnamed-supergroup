@@ -7,7 +7,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class ResponseComponent {
     constructor(
         public dialogRef: MatDialogRef<ResponseComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: {response: number}) {
+        @Inject(MAT_DIALOG_DATA) public data: {response: number, addEmojiError: boolean}) {
     }
 
     onNoClick(): void {

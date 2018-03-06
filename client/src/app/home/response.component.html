@@ -6,6 +6,8 @@
             <mat-card-content id="response3" *ngIf="data.response == 3">Response 3</mat-card-content>
             <mat-card-content id="response4" *ngIf="data.response == 4">Response 4</mat-card-content>
             <mat-card-content id="response5" *ngIf="data.response == 5">Response 5</mat-card-content>
+            <mat-card-content id="emojiError" *ngIf="data.addEmojiError">There was an error communicating with the server. Your entry was not saved.</mat-card-content>
+
         </mat-card>
     </div>
 </div>
