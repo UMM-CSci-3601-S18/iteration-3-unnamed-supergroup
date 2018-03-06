@@ -2,6 +2,7 @@ import {TestBed, ComponentFixture, async} from '@angular/core/testing';
 import {HomeComponent} from './home.component';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {MatDialog} from '@angular/material';
 import {CustomModule} from '../custom.module';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 import {Emoji} from "./emoji";
@@ -26,6 +27,11 @@ describe('Adding an emoji', () => {
     let homeServiceStub: {
         addEmoji: (newEmoji: Emoji) => Observable<{'$oid': string}>
     };
+    let mockMatDialog: {
+        open: (ResponseComponent, any) => {
+            afterClosed: () => void
+        };
+    };
     beforeEach(() => {
         calledEmoji = null;
         // stub UserService for test purposes
@@ -37,11 +43,19 @@ describe('Adding an emoji', () => {
                 });
             }
         };
+
+        mockMatDialog = {
+            open: () => {
+                return {afterClosed: () => {return}  };
+            }
+        };
+
         TestBed.configureTestingModule({
             imports: [FormsModule, CustomModule],
             declarations: [HomeComponent], // declare the test component
             providers: [
                 {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true},
+                {provide: MatDialog, useValue: mockMatDialog},
                 {provide: HomeService, useValue: homeServiceStub}]
         });
 
