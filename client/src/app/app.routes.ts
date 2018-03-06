@@ -9,7 +9,7 @@ import {ResourcesComponent} from "./resources/resources.component";
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'users', component: UserListComponent},
-    /*//{path: 'resources', component: ResourcesComponent },//*/
+    {path: 'resources', component: ResourcesComponent },
 
 ];
 
