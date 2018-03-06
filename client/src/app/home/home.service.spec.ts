@@ -1,7 +1,6 @@
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
 import {HttpClient} from '@angular/common/http';
-
 import {Emoji} from './emoji';
 import {HomeService} from './home.service'
 
@@ -12,7 +11,7 @@ describe('Home service: ', () => {
            _id: "a98ab3747faebe4490d5154",
             mood: 5,
             date: "8/20/2015 20:00",
-            owner: "Anhaf"
+            owner: "Ahnaf"
 
 
 
