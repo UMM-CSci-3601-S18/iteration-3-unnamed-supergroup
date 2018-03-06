@@ -28,7 +28,9 @@ describe('Adding an emoji', () => {
         addEmoji: (newEmoji: Emoji) => Observable<{'$oid': string}>
     };
     let mockMatDialog: {
-        open: (ResponseComponent, any) => void;
+        open: (ResponseComponent, any) => {
+            afterClosed: () => void
+        };
     };
     beforeEach(() => {
         calledEmoji = null;
@@ -44,7 +46,7 @@ describe('Adding an emoji', () => {
 
         mockMatDialog = {
             open: () => {
-                return
+                return {afterClosed: () => {return}  };
             }
         };
 
