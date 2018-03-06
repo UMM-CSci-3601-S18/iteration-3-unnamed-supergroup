@@ -31,6 +31,7 @@ import {ResponseComponent} from "./home/response.component";
         UserListComponent,
         AddUserComponent,
         ResourcesComponent,
+        ResponseComponent,
     ],
     providers: [
         UserListService,
@@ -40,6 +41,7 @@ import {ResponseComponent} from "./home/response.component";
     ],
     entryComponents: [
       AddUserComponent,
+        ResponseComponent,
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]
