@@ -18,6 +18,7 @@ import {AddUserComponent} from './users/add-user.component';
 import {ResponseComponent} from "./home/response.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {ReportsService} from "./reports/reports.service";
+import {JournalingComponent} from "./journaling/journaling.component";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {ReportsService} from "./reports/reports.service";
         ResourcesComponent,
         ResponseComponent,
         ReportsComponent,
+        JournalingComponent,
     ],
     providers: [
         UserListService,
