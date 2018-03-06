@@ -7,7 +7,7 @@ import {Emoji} from '../emoji';
 import {environment} from '../../environments/environment';
 
 @Injectable()
-export class HomeService {
+export class ReportsService {
     readonly baseUrl: string = environment.API_URL + 'emojis';
     private emojiUrl: string = this.baseUrl;
 

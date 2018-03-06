@@ -16,6 +16,9 @@ import {ResourcesComponent} from "./resources/resources.component";
 import {CustomModule} from './custom.module';
 import {AddUserComponent} from './users/add-user.component';
 import {ResponseComponent} from "./home/response.component";
+import {ReportsComponent} from "./reports/reports.component";
+import {ReportsService} from "./reports/reports.service";
+import {JournalingComponent} from "./journaling/journaling.component";
 
 
 @NgModule({
@@ -32,10 +35,13 @@ import {ResponseComponent} from "./home/response.component";
         AddUserComponent,
         ResourcesComponent,
         ResponseComponent,
+        ReportsComponent,
+        JournalingComponent,
     ],
     providers: [
         UserListService,
         HomeService,
+        ReportsService,
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
     ],
