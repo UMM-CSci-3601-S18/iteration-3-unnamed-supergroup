@@ -29,7 +29,7 @@ describe('Resources Page', () => {
     it('should click on the Suicide Prevention Lifeline element, and the correct phone number is on the page', () => {
         ResourcesPage.navigateTo();
         ResourcesPage.clickElement('suicide-prevention-lifeline');
-        expect(element(by.binding('1-800-273-8255'))).toBeTruthy();
+        expect(element(by.binding('1-800-273-8255'))).toBeDefined();
     });
 
     it('should click on the Crisis Hotline element', () => {

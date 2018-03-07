@@ -36,7 +36,7 @@ export class HomePage {
     // This is where the homepage E2E test funcitons are created
 
     static typeAName(name: string) {
-        const input = element(by.id('test'));
+        const input = element(by.id('inputName'));
         input.click();
         input.sendKeys(name);
     }

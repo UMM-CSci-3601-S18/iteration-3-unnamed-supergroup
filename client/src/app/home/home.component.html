@@ -4,13 +4,13 @@
 
             <mat-card-content id="headerInfo">
                 <h1><strong>How are you feeling right now, buddy?</strong></h1>
-                <p>Hey friend! Mind telling me your name? <input id="test" #input name="fname" [(ngModel)]="emoji.owner"></p>
+                <p>Hey friend! Mind telling me your name? <input id="inputName" #input name="fname" [(ngModel)]="emoji.owner"></p>
                 <p>Pick a feeling!</p>
 
 
                 <!-- Show correct emoji image depending on the value of the mat-slider -->
 
-                <img src="assets/Emojis/{{matslider.value}}.png">
+                <img id="{{matslider.value}}emoji" src="assets/Emojis/{{matslider.value}}.png">
                 <br/>
 
 

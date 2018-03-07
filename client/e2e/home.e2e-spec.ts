@@ -11,9 +11,9 @@ browser.driver.controlFlow().execute = function () {
     // queue 100ms wait between test
     // This delay is only put here so that you can watch the browser do its thing.
     // If you're tired of it taking long you can remove this call
-    origFn.call(browser.driver.controlFlow(), function () {
-        return protractor.promise.delayed(100);
-    });
+    // origFn.call(browser.driver.controlFlow(), function () {
+    //     return protractor.promise.delayed(100);
+    // });
 
     return origFn.apply(browser.driver.controlFlow(), args);
 };
@@ -30,7 +30,8 @@ describe('', () => {
     it('should type something in filter name box and add an entry', () => {
         HomePage.navigateTo();
         HomePage.typeAName('Jubair');
-        page.clickSubmitButton()
+        expect(element(by.id('3emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        page.clickSubmitButton();
 
     });
 
@@ -40,11 +41,12 @@ describe('', () => {
          HomePage.selectTheSlider();
          HomePage.SlideTheSliderUp();
          HomePage.SlideTheSliderUp();
-        page.clickSubmitButton()
+        expect(element(by.id('5emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        page.clickSubmitButton();
         HomePage.navigateToReports();
         HomePage.filterOwner('Roch');
 
-        expect( page.getUniqueOwner()).toEqual('Roch  ');
+        expect( page.getUniqueOwner()).toContain('Roch');
 
 
 
@@ -56,14 +58,17 @@ describe('', () => {
         HomePage.selectTheSlider();
         HomePage.SlideTheSliderUp();
         HomePage.SlideTheSliderUp();
-        HomePage.SlideTheSliderDown()
-        HomePage.SlideTheSliderDown()
-        HomePage.SlideTheSliderDown()
-        HomePage.SlideTheSliderDown()
-        HomePage.SlideTheSliderDown()
-        page.clickSubmitButton()
+        HomePage.SlideTheSliderDown();
+        HomePage.SlideTheSliderDown();
+        HomePage.SlideTheSliderDown();
+        HomePage.SlideTheSliderDown();
+        HomePage.SlideTheSliderDown();
+        expect(element(by.id('1emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        page.clickSubmitButton();
         HomePage.navigateToReports();
         HomePage.filterOwner('Andy');
+
+        expect( page.getUniqueOwner()).toContain('Andy');
     });
 
 
