@@ -7,7 +7,7 @@ import {Emoji} from '../emoji';
 import {environment} from '../../environments/environment';
 
 @Injectable()
-export class HomeService {
+export class ReportsService {
     readonly baseUrl: string = environment.API_URL + 'emojis';
     private emojiUrl: string = this.baseUrl;
 
@@ -24,9 +24,7 @@ export class HomeService {
         return this.http.post<{'$oid': string}>(this.emojiUrl + '/new', newEmoji, httpOptions);
     }
 
-    getEmojiById(id: string): Observable<Emoji> {
-        return this.http.get<Emoji>(this.emojiUrl + '/' + id);
-    }
+
     getEmojis(emojiOwner?: string): Observable<Emoji[]> {
         return this.http.get<Emoji[]>(this.emojiUrl);
     }

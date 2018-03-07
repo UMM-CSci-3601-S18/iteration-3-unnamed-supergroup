@@ -129,6 +129,24 @@ public class EmojiControllerSpec {
         assertEquals("Should return the onwer of the new emoji", "Matt2", name.get(4));
     }
 
+    @Test
+    public void getEmojisByOwner(){
+        Map<String, String[]> argMap = new HashMap<>();
+        //Mongo in UserController is doing a regex search so can just take a Java Reg. Expression
+        //This will search the company starting with an I or an F
+        argMap.put("owner", new String[] { "Kyle" });
+        String jsonResult = emojiController.getEmojis(argMap);
+        BsonArray docs = parseJsonArray(jsonResult);
+        assertEquals("Should be one emoji entry", 1, docs.size());
+        List<String> name = docs
+            .stream()
+            .map(EmojiControllerSpec::getOwner)
+            .sorted()
+            .collect(Collectors.toList());
+        List<String> expectedName = Arrays.asList("Kyle");
+        assertEquals("Names should match", expectedName, name);
+
+    }
 
 
 
