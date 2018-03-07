@@ -1,4 +1,4 @@
-export interface resources {
+export interface Goal {
     goalName: string;
     goalOwner: string;
     goalBody: string;

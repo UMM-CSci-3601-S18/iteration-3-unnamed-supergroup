@@ -21,6 +21,7 @@ import {ReportsService} from "./reports/reports.service";
 import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
+import {AddGoalComponent} from "./goals/add-goals.component";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {GoalsService} from "./goals/goals.service";
         ReportsComponent,
         JournalingComponent,
         GoalsComponent,
+        AddGoalComponent
     ],
     providers: [
         UserListService,
@@ -52,6 +54,7 @@ import {GoalsService} from "./goals/goals.service";
     entryComponents: [
       AddUserComponent,
         ResponseComponent,
+        AddGoalComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]
