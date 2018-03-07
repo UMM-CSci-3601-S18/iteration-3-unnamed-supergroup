@@ -1,6 +1,9 @@
 export interface resources {
     goalName: string;
+    goalOwner: string;
+    goalBody: string;
     goalCategory: string;
-    goalDate: string;
+    goalStartDate: string;
+    goalEndDate: string;
     goalFrequency: string;
 }
