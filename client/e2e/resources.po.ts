@@ -11,10 +11,6 @@ export class ResourcesPage {
         input.click();
     }
 
-    static getPhoneNumber(phoneNumber: string): promise.Promise<string> {
-        const input = element(by.binding(phoneNumber));
-        return input.getText();
-    }
 
 
     // http://www.assertselenium.com/protractor/highlight-elements-during-your-protractor-test-run/
@@ -29,12 +25,6 @@ export class ResourcesPage {
         }
 
         return browser.executeScript(setStyle, element(byObject).getWebElement(), 'color: red; background-color: yellow;');
-    }
-
-
-    buttonExists(): promise.Promise<boolean> {
-        this.highlightElement(by.id('submitEmoji'));
-        return element(by.id('submitEmjoji')).isPresent();
     }
 
 
