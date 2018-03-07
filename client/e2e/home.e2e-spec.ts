@@ -18,7 +18,7 @@ browser.driver.controlFlow().execute = function () {
     return origFn.apply(browser.driver.controlFlow(), args);
 };
 
-describe('User list', () => {
+describe('', () => {
     let page: HomePage;
 
     beforeEach(() => {
@@ -34,7 +34,7 @@ describe('User list', () => {
 
     });
 
-    it("should type a name and then move the slider positively and click submit",() => {
+    it("should type a name and then move the slider positively and click submit. It then navigates to to the report page, clicks the owner box, and filters by roch and check if the first element is equal to roch",() => {
         HomePage.navigateTo();
         HomePage.typeAName('Roch');
          HomePage.selectTheSlider();
@@ -42,9 +42,15 @@ describe('User list', () => {
          HomePage.SlideTheSliderUp();
         page.clickSubmitButton()
         HomePage.navigateToReports();
+        HomePage.filterOwner('Roch');
+
+        expect( page.getUniqueOwner()).toEqual('Roch  ');
+
+
+
     });
 
-    it("should type a name and then move the slider positively and click submit",() => {
+    it("should type a name and then move the slider positively and negatiely and click submit",() => {
         HomePage.navigateTo();
         HomePage.typeAName('Andy');
         HomePage.selectTheSlider();
@@ -56,129 +62,12 @@ describe('User list', () => {
         HomePage.SlideTheSliderDown()
         HomePage.SlideTheSliderDown()
         page.clickSubmitButton()
+        HomePage.navigateToReports();
+        HomePage.filterOwner('Andy');
     });
 
 
 
 
-//     it('should click on the age 27 times and return 3 elements then ', () => {
-//         UserPage.navigateTo();
-//         UserPage.getUserByAge();
-//         for (let i = 0; i < 27; i++) {
-//             UserPage.selectUpKey();
-//         }
-//
-//         expect(page.getUniqueUser('stokesclayton@momentia.com')).toEqual('Stokes Clayton');
-//
-//         expect(page.getUniqueUser('merrillparker@escenta.com')).toEqual('Merrill Parker');
-//     });
-//
-//     it('Should open the expansion panel and get the company', () => {
-//         UserPage.navigateTo();
-//         UserPage.getCompany('DATA');
-//         browser.actions().sendKeys(Key.ENTER).perform();
-//
-//         expect(page.getUniqueUser('valerieerickson@datagene.com')).toEqual('Valerie Erickson');
-//
-//         // This is just to show that the panels can be opened
-//         browser.actions().sendKeys(Key.TAB).perform();
-//         browser.actions().sendKeys(Key.ENTER).perform();
-//     });
-//
-//     it('Should allow us to filter users based on company', () => {
-//         UserPage.navigateTo();
-//         UserPage.getCompany('o');
-//         UserPage.getUsers().then(function(users) {
-//             expect(users.length).toBe(4);
-//         });
-//         expect(page.getUniqueUser('conniestewart@ohmnet.com')).toEqual('Connie Stewart');
-//         expect(page.getUniqueUser('stokesclayton@momentia.com')).toEqual('Stokes Clayton');
-//         expect(page.getUniqueUser('kittypage@surelogic.com')).toEqual('Kitty Page');
-//         expect(page.getUniqueUser('margueritenorton@recognia.com')).toEqual('Marguerite Norton');
-//     });
-//
-//     it('Should allow us to clear a search for company and then still successfully search again', () => {
-//         UserPage.navigateTo();
-//         UserPage.getCompany('m');
-//         UserPage.getUsers().then(function(users) {
-//             expect(users.length).toBe(2);
-//         });
-//         UserPage.clickClearCompanySearch();
-//         UserPage.getUsers().then(function(users) {
-//             expect(users.length).toBe(10);
-//         });
-//         UserPage.getCompany('ne');
-//         UserPage.getUsers().then(function(users) {
-//             expect(users.length).toBe(3);
-//         });
-//     });
-//
-//     it('Should allow us to search for company, update that search string, and then still successfully search', () => {
-//         UserPage.navigateTo();
-//         UserPage.getCompany('o');
-//         UserPage.getUsers().then(function(users) {
-//             expect(users.length).toBe(4);
-//         });
-//         element(by.id('userCompany')).sendKeys('h');
-//         element(by.id('submit')).click();
-//         UserPage.getUsers().then(function(users) {
-//             expect(users.length).toBe(1);
-//         });
-//     });
-//
-// // For examples testing modal dialog related things, see:
-// // https://code.tutsplus.com/tutorials/getting-started-with-end-to-end-testing-in-angular-using-protractor--cms-29318
-// // https://github.com/blizzerand/angular-protractor-demo/tree/final
-//
-//     it('Should have an add user button', () => {
-//         UserPage.navigateTo();
-//         expect(page.buttonExists()).toBeTruthy();
-//     });
-//
-//     it('Should open a dialog box when add user button is clicked', () => {
-//         UserPage.navigateTo();
-//         expect(element(by.css('add-user')).isPresent()).toBeFalsy('There should not be a modal window yet');
-//         element(by.id('addNewUser')).click();
-//         expect(element(by.css('add-user')).isPresent()).toBeTruthy('There should be a modal window now');
-//     });
-//
-//     it('Should actually add the user with the information we put in the fields', () => {
-//         UserPage.navigateTo();
-//         page.clickAddUserButton();
-//         element(by.id('nameField')).sendKeys('Tracy Kim');
-//         // Need to use backspace because the default value is -1. If that changes, this will change too.
-//         element(by.id('ageField')).sendKeys(protractor.Key.BACK_SPACE).then(function() {
-//             element(by.id('ageField')).sendKeys(protractor.Key.BACK_SPACE).then(function() {
-//                 element(by.id('ageField')).sendKeys('26');
-//             });
-//         });
-//         element(by.id('companyField')).sendKeys('Awesome Startup, LLC');
-//         element(by.id('emailField')).sendKeys('tracy@awesome.com');
-//         element(by.id('confirmAddUserButton')).click();
-//         // This annoying delay is necessary, otherwise it's possible that we execute the `expect`
-//         // line before the add user has been fully processed and the new user is available
-//         // in the list.
-//         setTimeout(() => {
-//             expect(page.getUniqueUser('tracy@awesome.com')).toMatch('Tracy Kim.*'); // toEqual('Tracy Kim');
-//         }, 10000);
-//     });
-//
-//     it('Should allow us to put information into the fields of the add user dialog', () => {
-//         UserPage.navigateTo();
-//         page.clickAddUserButton();
-//         expect(element(by.id('nameField')).isPresent()).toBeTruthy('There should be a name field');
-//         element(by.id('nameField')).sendKeys('Dana Jones');
-//         expect(element(by.id('ageField')).isPresent()).toBeTruthy('There should be an age field');
-//         // Need to use backspace because the default value is -1. If that changes, this will change too.
-//         element(by.id('ageField')).sendKeys(protractor.Key.BACK_SPACE).then(function() {
-//             element(by.id('ageField')).sendKeys(protractor.Key.BACK_SPACE).then(function() {
-//                 element(by.id('ageField')).sendKeys('24');
-//             });
-//         });
-//         expect(element(by.id('companyField')).isPresent()).toBeTruthy('There should be a company field');
-//         element(by.id('companyField')).sendKeys('Awesome Startup, LLC');
-//         expect(element(by.id('emailField')).isPresent()).toBeTruthy('There should be an email field');
-//         element(by.id('emailField')).sendKeys('dana@awesome.com');
-//         element(by.id('exitWithoutAddingButton')).click();
-//     });
+
 });

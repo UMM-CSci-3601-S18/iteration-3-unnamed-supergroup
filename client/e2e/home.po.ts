@@ -24,7 +24,7 @@ export class HomePage {
         browser.actions().sendKeys(Key.ARROW_UP).perform();
     }
     static SlideTheSliderDown(){
-        browser.actions().sendKeys(Key.ARROW_UP).perform();
+        browser.actions().sendKeys(Key.ARROW_DOWN).perform();
     }
 
     static selectUpKey() {
@@ -37,7 +37,7 @@ export class HomePage {
 
     clickSubmitButton(): promise.Promise<void> {
         this.highlightElement(by.id('submitEmoji'));
-        console.log("dsfdsfdsfds");
+
         return element(by.buttonText('Submit')).click();
     }
 
@@ -80,5 +80,16 @@ export class HomePage {
         return element(by.id('slider')).click();
     }
 
+    static filterOwner(name: string) {
+        const input = element(by.id('emojiOwner'));
+        input.click();
+        input.sendKeys(name);
+    }
+        getUniqueOwner() {
+        const owner = element(by.id('test')).getText();
+        this.highlightElement(by.id('test'));
+
+        return owner;
+    }
 
 }
