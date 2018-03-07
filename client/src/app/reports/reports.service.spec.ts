@@ -41,7 +41,7 @@ describe('Report service: ', () => {
     // We will need some url information from the userListService to meaningfully test company filtering;
     // https://stackoverflow.com/questions/35987055/how-to-write-unit-testing-for-angular-2-typescript-for-private-methods-with-ja
     let reportsListService: ReportsService;
-    let currentlyImpossibleToGenerateSearchTodoUrl: string;
+    let currentlyImpossibleToGenerateSearchEmojiUrl: string;
 
     // These are used to mock the HTTP requests so that we (a) don't have to
     // have the server running and (b) we can check exactly which HTTP
@@ -56,7 +56,7 @@ describe('Report service: ', () => {
         });
         httpClient = TestBed.get(HttpClient);
         httpTestingController = TestBed.get(HttpTestingController);
-        // Construct an instance of the service with the mock
+        // Construct an instance of the service emojiOwner?: stringwith the mock
         // HTTP client.
         reportsListService = new ReportsService(httpClient);
     });
@@ -88,7 +88,6 @@ describe('Report service: ', () => {
         // actually being performed.
         req.flush(testEmojis);
     });
-
 
 
 

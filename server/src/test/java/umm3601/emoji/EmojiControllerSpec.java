@@ -132,8 +132,7 @@ public class EmojiControllerSpec {
     @Test
     public void getEmojisByOwner(){
         Map<String, String[]> argMap = new HashMap<>();
-        //Mongo in UserController is doing a regex search so can just take a Java Reg. Expression
-        //This will search the company starting with an I or an F
+        //This will search for emojis owned by Kyle
         argMap.put("owner", new String[] { "Kyle" });
         String jsonResult = emojiController.getEmojis(argMap);
         BsonArray docs = parseJsonArray(jsonResult);
