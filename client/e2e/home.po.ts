@@ -5,6 +5,9 @@ export class HomePage {
     static navigateTo(): promise.Promise<any> {
         return browser.get('');
     }
+    static navigateToReports(): promise.Promise<any> {
+        return browser.get('/reports');
+    }
 
     //We have added ids specifically for each of the items on the menu bar for E2E tests to r
     //recognize where to highlight and select:
@@ -46,6 +49,9 @@ export class HomePage {
     }
 
     static SlideTheSliderUp(){
+        browser.actions().sendKeys(Key.ARROW_UP).perform();
+    }
+    static SlideTheSliderDown(){
         browser.actions().sendKeys(Key.ARROW_UP).perform();
     }
 

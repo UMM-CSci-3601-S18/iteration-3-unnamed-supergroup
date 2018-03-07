@@ -41,7 +41,23 @@ describe('User list', () => {
          HomePage.SlideTheSliderUp();
          HomePage.SlideTheSliderUp();
         page.clickSubmitButton()
+        HomePage.navigateToReports();
     });
+
+    it("should type a name and then move the slider positively and click submit",() => {
+        HomePage.navigateTo();
+        HomePage.typeAName('Andy');
+        HomePage.selectTheSlider();
+        HomePage.SlideTheSliderUp();
+        HomePage.SlideTheSliderUp();
+        HomePage.SlideTheSliderDown()
+        HomePage.SlideTheSliderDown()
+        HomePage.SlideTheSliderDown()
+        HomePage.SlideTheSliderDown()
+        HomePage.SlideTheSliderDown()
+        page.clickSubmitButton()
+    });
+
 
 
 
