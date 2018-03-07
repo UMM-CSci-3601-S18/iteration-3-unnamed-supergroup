@@ -5,6 +5,9 @@ export class HomePage {
     static navigateTo(): promise.Promise<any> {
         return browser.get('');
     }
+    static navigateToReports(): promise.Promise<any> {
+        return browser.get('/reports');
+    }
 
     static typeAName(name: string) {
         const input = element(by.id('test'));
@@ -18,6 +21,9 @@ export class HomePage {
     }
 
     static SlideTheSliderUp(){
+        browser.actions().sendKeys(Key.ARROW_UP).perform();
+    }
+    static SlideTheSliderDown(){
         browser.actions().sendKeys(Key.ARROW_UP).perform();
     }
 
