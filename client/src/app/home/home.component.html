@@ -4,7 +4,7 @@
 
             <mat-card-content id="headerInfo">
                 <h1><strong>How are you feeling right now, buddy?</strong></h1>
-                <p>Hey friend! Mind telling me your name? <input #input name="fname" [(ngModel)]="emoji.owner"></p>
+                <p>Hey friend! Mind telling me your name? <input id="test" #input name="fname" [(ngModel)]="emoji.owner"></p>
                 <p>Pick a feeling!</p>
 
 
@@ -19,7 +19,7 @@
              mat-slider is a component in angular we used.
              -->
 
-                <mat-slider thumbLabel tick-interval="1" min="1" max="5" step="1" value="3" #matslider [(ngModel)]="emoji.mood"></mat-slider>
+                <mat-slider class="slider" thumbLabel tick-interval="1" min="1" max="5" step="1" value="3" #matslider [(ngModel)]="emoji.mood"></mat-slider>
                 <br/>
                 <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
             </mat-card-content>
