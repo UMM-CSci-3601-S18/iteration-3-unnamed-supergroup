@@ -24,9 +24,7 @@ export class ReportsService {
         return this.http.post<{'$oid': string}>(this.emojiUrl + '/new', newEmoji, httpOptions);
     }
 
-    getEmojiById(id: string): Observable<Emoji> {
-        return this.http.get<Emoji>(this.emojiUrl + '/' + id);
-    }
+
     getEmojis(emojiOwner?: string): Observable<Emoji[]> {
         return this.http.get<Emoji[]>(this.emojiUrl);
     }
