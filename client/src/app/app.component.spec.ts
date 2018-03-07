@@ -33,7 +33,7 @@ describe('AppComponent', () => {
     });
 
     it(`should have as title 'app'`, () => {
-        expect(appInstance.title).toEqual('Mongo-Angular-Spark lab');
+        expect(appInstance.title).toEqual('Sunshine Journal');
     });
 
     it('should render title in the navbar', () => {

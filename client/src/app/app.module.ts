@@ -15,6 +15,10 @@ import {APP_BASE_HREF} from '@angular/common';
 import {ResourcesComponent} from "./resources/resources.component";
 import {CustomModule} from './custom.module';
 import {AddUserComponent} from './users/add-user.component';
+import {ResponseComponent} from "./home/response.component";
+import {ReportsComponent} from "./reports/reports.component";
+import {ReportsService} from "./reports/reports.service";
+import {JournalingComponent} from "./journaling/journaling.component";
 
 
 @NgModule({
@@ -30,15 +34,20 @@ import {AddUserComponent} from './users/add-user.component';
         UserListComponent,
         AddUserComponent,
         ResourcesComponent,
+        ResponseComponent,
+        ReportsComponent,
+        JournalingComponent,
     ],
     providers: [
         UserListService,
         HomeService,
+        ReportsService,
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
     ],
     entryComponents: [
       AddUserComponent,
+        ResponseComponent,
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]

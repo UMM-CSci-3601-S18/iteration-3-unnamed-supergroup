@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Mongo-Angular-Spark lab';
+    title = 'Sunshine Journal';
 }

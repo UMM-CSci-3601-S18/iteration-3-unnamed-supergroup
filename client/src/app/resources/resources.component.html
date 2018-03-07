@@ -1,6 +1,6 @@
 <div>
     <ol>
-        <button id = "addNewResources" mat-raised-button (click)="openDialog()">Add your own Resource</button>
+        <button id = "addNewResources" mat-raised-button>Add your own Resource</button>
     </ol>
 </div>
 
@@ -11,7 +11,7 @@
         <mat-card-subtitle id="contact-numbers-subtitle">In times of need you can refer to these phone numbers
             to have support. It's always okay to have someone to talk to</mat-card-subtitle>
 
-        <mat-expansion-panel #elem class="contact-numbers-to-call">
+        <mat-expansion-panel id="suicide-prevention-lifeline" #elem class="contact-numbers-to-call">
             <mat-expansion-panel-header>
                 <mat-panel-title class="hotline-company-name">Suicide Prevention Lifeline</mat-panel-title>
             </mat-expansion-panel-header>
@@ -23,7 +23,7 @@
             <mat-panel-description class="actual-phone-number"><mat-icon class="little-phone-icon">phone</mat-icon> 1-800-273-8255</mat-panel-description>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #elem class="contact-numbers-to-call">
+        <mat-expansion-panel id="crisis-hotline" #elem class="contact-numbers-to-call">
             <mat-expansion-panel-header>
                 <mat-panel-title class="hotline-company-name">Crisis Hotline</mat-panel-title>
             </mat-expansion-panel-header>
@@ -36,7 +36,7 @@
             <mat-panel-description class="actual-phone-number"><mat-icon class="little-phone-icon">phone</mat-icon> 775-784-8090</mat-panel-description>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #elem class="phone-numbers-to-call">
+        <mat-expansion-panel id="crisis-text-line" #elem class="phone-numbers-to-call">
             <mat-expansion-panel-header>
                 <mat-panel-title class="hotline-company-name">Crisis Text Line</mat-panel-title>
             </mat-expansion-panel-header>
@@ -46,7 +46,7 @@
                 and collaborative problem solving. All of our Crisis Counselors are volunteers,
                 donating their time to helping people in crisis.</mat-panel-description>
             <br>
-            <mat-expansion-panel #elem class="phone-numbers-to-call">
+            <mat-expansion-panel id="woodland-home" #elem class="phone-numbers-to-call">
                 <mat-expansion-panel-header>
                     <mat-panel-title class="hotline-company-name">Woodland Home</mat-panel-title>
                 </mat-expansion-panel-header>

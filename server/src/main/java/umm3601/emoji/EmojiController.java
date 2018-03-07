@@ -50,6 +50,11 @@ public class EmojiController {
     public String getEmojis(Map<String, String[]> queryParams) {
         Document filterDoc = new Document();
 
+        if (queryParams.containsKey("owner")) {
+            String targetOwner = (queryParams.get("owner")[0]);
+            filterDoc = filterDoc.append("owner", targetOwner);
+        }
+
         FindIterable<Document> matchingEmojis = emojiCollection.find(filterDoc);
 
 

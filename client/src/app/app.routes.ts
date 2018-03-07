@@ -4,12 +4,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {UserListComponent} from './users/user-list.component';
 import {ResourcesComponent} from "./resources/resources.component";
+import {ReportsComponent} from "./reports/reports.component";
+import {JournalingComponent} from "./journaling/journaling.component";
 
 // Route Configuration
 export const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'users', component: UserListComponent},
+    {path: 'journaling', component: JournalingComponent},
     {path: 'resources', component: ResourcesComponent },
+    {path: 'reports', component: ReportsComponent },
 
 ];
 
