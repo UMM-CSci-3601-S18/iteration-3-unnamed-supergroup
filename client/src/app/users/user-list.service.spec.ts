@@ -145,6 +145,7 @@ describe('User list service: ', () => {
 
         const expectedUrl: string = userListService.baseUrl + '/new';
         const req = httpTestingController.expectOne(expectedUrl);
+        console.log(req);
         expect(req.request.method).toEqual('POST');
         req.flush(jesse_id);
     });

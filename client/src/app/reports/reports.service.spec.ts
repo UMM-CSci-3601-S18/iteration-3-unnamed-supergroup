@@ -74,6 +74,7 @@ describe('Report service: ', () => {
         // checked until the mocked HTTP request "returns" a response.
         // This happens when we call req.flush(testUsers) a few lines
         // down.
+
         reportsListService.getEmojis().subscribe(
             emojis => expect(emojis).toBe(testEmojis)
         );
@@ -90,19 +91,6 @@ describe('Report service: ', () => {
 
 
 
-
-    it('getEmojis calls api/emojis', () => {
-        const targetEmoji: Emoji = testEmojis[1];
-        const targetId: string = targetEmoji._id;
-        reportsListService.getEmojis().subscribe(
-            emoji => expect(emoji[1]).toBe(targetEmoji)
-        );
-
-        const expectedUrl: string = reportsListService.baseUrl + '/' + targetId;
-        const req = httpTestingController.expectOne(expectedUrl);
-        expect(req.request.method).toEqual('GET');
-        req.flush(targetEmoji);
-    });
 
 
 });
