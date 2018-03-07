@@ -9,11 +9,39 @@ export class HomePage {
         return browser.get('/reports');
     }
 
+    //We have added ids specifically for each of the items on the menu bar for E2E tests to r
+    //recognize where to highlight and select:
+    // Journaling's id is journal Resources's id is rsrc Reports's id is rep //
+
+    // This is where the nav bar E2E tests funcitons are created.
+
+    static GoToNavMenu(){
+        const input = element (by.id('navBar'));
+        input.click();
+    }
+
+    static GoToReports(){
+        const input = element (by.id('rep'));
+        input.click();
+    }
+    static GoToJournaling(){
+        const input = element (by.id ('journal'));
+        input.click();
+    }
+    static GoToResources(){
+        const input = element (by.id('rsrc'));
+        input.click();
+    }
+
+    // This is where the homepage E2E test funcitons are created
+
     static typeAName(name: string) {
         const input = element(by.id('test'));
         input.click();
         input.sendKeys(name);
     }
+
+    // This is where the Insert Emoji (Your mood) E2E test funcitons are created
 
     static selectTheSlider(){
         const input = element(by.css('mat-slider.slider'));
