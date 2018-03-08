@@ -1,0 +1,41 @@
+<div class="add-user" layout-gt-sm="row">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+        <mat-card>
+            <mat-card-title>New Goal</mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput #input id="ownerField" placeholder="Owner" [(ngModel)]="data.goal.owner">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #input id="nameField" placeholder="Goal Name" [(ngModel)]="data.goal.name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #input id="category" placeholder="Category" [(ngModel)]="data.goal.category">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput id="startDate" [matDatepicker]="startPicker" placeholder="Start Date" [(ngModel)]="data.goal.startDate">
+                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startPicker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput id="endDate" [matDatepicker]="endPicker" placeholder="End Date" [(ngModel)]="data.goal.endDate">
+                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endPicker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #input id="frequency" placeholder="Frequency" [(ngModel)]="data.goal.frequency">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput #input id="description" placeholder="Goal Description" [(ngModel)]="data.goal.body">
+                </mat-form-field>
+
+
+                <!-- [mat-dialog-close]="data.user" causes the data.user object to be returned when the dialog is closed. -->
+                <button mat-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
+            </mat-card-content>
+        </mat-card>
+        <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
+    </div>
+</div>

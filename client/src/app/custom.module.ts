@@ -6,7 +6,8 @@ import { CovalentLayoutModule, CovalentStepsModule, CovalentCommonModule /*, any
 import {
     MatListModule, MatButtonModule, MatCardModule, MatIconModule,
     MatInputModule, MatMenuModule, MatSidenavModule, MatToolbarModule,
-    MatExpansionModule, MatTooltipModule, MatDialogModule, MatSliderModule, MatSnackBarModule,
+    MatExpansionModule, MatTooltipModule, MatDialogModule, MatSliderModule, MatDatepickerModule,
+    MatSnackBarModule, MatNativeDateModule,
     // MatTooltipMoudule
 } from '@angular/material';
 
@@ -39,7 +40,10 @@ const MATERIAL_MODULES: any[] = [
     MatDialogModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 ];
 
 const COVALENT_MODULES: any[] = [
