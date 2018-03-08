@@ -13,8 +13,10 @@ mat-card {
 }
 
 mat-card-content img {
-    width: 35%;
-    padding-bottom: 3%;
+    width: 45%;
+    max-width: 500px;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
 
 mat-slider {

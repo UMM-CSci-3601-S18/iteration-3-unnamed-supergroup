@@ -10,7 +10,7 @@
 
                 <!-- Show correct emoji image depending on the value of the mat-slider -->
 
-                <img id="{{matslider.value}}emoji" src="assets/Emojis/{{matslider.value}}.png">
+                <img  id="{{matslider.value}}emoji" src="assets/Emojis/{{matslider.value}}.png">
                 <br/>
 
 
@@ -19,7 +19,7 @@
              mat-slider is a component in angular we used.
              -->
 
-                <mat-slider class="slider" thumbLabel tick-interval="1" min="1" max="5" step="1" value="3" #matslider [(ngModel)]="emoji.mood"></mat-slider>
+                <mat-slider [matTooltipPosition]="'above'" matTooltip="Use the slider to select how you feel." class="slider" thumbLabel tick-interval="1" min="1" max="5" step="1" value="3" #matslider [(ngModel)]="emoji.mood"></mat-slider>
                 <br/>
                 <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
             </mat-card-content>
