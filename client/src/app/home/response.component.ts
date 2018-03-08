@@ -3,13 +3,14 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 @Component({
     selector: 'app-response.component',
     templateUrl: 'response.component.html',
+    styleUrls: ['./response.component.css'],
 })
 export class ResponseComponent {
 
     // links is an array of different responses we are using when you select an emoji in our home page
 
     public links: string[] = ['https://www.youtube.com/watch?v=Jyy0ra2WcQQ&feature=youtu.be',
-        'https://www.youtube.com/watch?v=xoYnqvadurg&feature=youtu.be',
+        //'https://www.youtube.com/watch?v=xoYnqvadurg&feature=youtu.be',
         'https://www.youtube.com/watch?v=6kVlonPVAjI&feature=youtu.be',
         'https://www.youtube.com/watch?v=z39iodZOf00&feature=youtu.be',
         'https://www.youtube.com/watch?v=Yt1JtbhSIMc',

@@ -1,13 +1,11 @@
-<div class="wholeBody">
-
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
         <mat-card>
 
             <mat-card-content id="headerInfo">
-                <h1><strong>How are you feeling right now, buddy?</strong></h1>
-                <p>Hey friend! Mind telling me your name? <input id="inputName" #input name="fname" [(ngModel)]="emoji.owner"></p>
-                <p>Pick a feeling!</p>
+                <h1><strong>How are you feeling right now?</strong></h1>
+                <p>Hey, friend! Mind telling me your name? <input id="inputName" #input name="fname" [(ngModel)]="emoji.owner"></p>
+                <h2>Pick a feeling!</h2>
 
 
                 <!-- Show correct emoji image depending on the value of the mat-slider -->
@@ -28,5 +26,4 @@
 
         </mat-card>
     </div>
-</div>
 </div>
