@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 
-import {Emoji} from '../emoji';
 import {environment} from '../../environments/environment';
+import {Goal} from "./goals";
 
 @Injectable()
 export class GoalsService {
@@ -14,21 +14,24 @@ export class GoalsService {
     constructor(private http: HttpClient) {
     }
 
-    addEmoji(newEmoji: Emoji): Observable<{'$oid': string}> {
+    addGoal(newGoal: Goal): Observable<{'$oid': string}> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             }),
         };
         // Send post request to add a new user with the user data as the body with specified headers.
-        return this.http.post<{'$oid': string}>(this.goalsUrl + '/new', newEmoji, httpOptions);
+        return this.http.post<{'$oid': string}>(this.goalsUrl + '/new', newGoal, httpOptions);
     }
 
-    getEmojiById(id: string): Observable<Emoji> {
-        return this.http.get<Emoji>(this.goalsUrl + '/' + id);
+    getGoalById(id: string): Observable<Goal> {
+        return this.http.get<Goal>(this.goalsUrl + '/' + id);
     }
-    getEmojis(emojiOwner?: string): Observable<Emoji[]> {
-        return this.http.get<Emoji[]>(this.goalsUrl);
+    getGoals(goalOwner?: string): Observable<Goal[]> {
+        if(goalOwner) {
+            return this.http.get<Goal[]>(this.goalsUrl + '?owner=' + goalOwner);
+        }
+        return this.http.get<Goal[]>(this.goalsUrl);
     }
 
 

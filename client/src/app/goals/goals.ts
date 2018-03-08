@@ -1,9 +1,11 @@
 export interface Goal {
-    goalName: string;
-    goalOwner: string;
-    goalBody: string;
-    goalCategory: string;
-    goalStartDate: string;
-    goalEndDate: string;
-    goalFrequency: string;
+    _id: string;
+    name: string;
+    owner: string;
+    body: string;
+    category: string;
+    startDate: string;
+    endDate: string;
+    frequency: string;
+    status: boolean;
 }
