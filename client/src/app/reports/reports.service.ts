@@ -14,16 +14,6 @@ export class ReportsService {
     constructor(private http: HttpClient) {
     }
 
-    addEmoji(newEmoji: Emoji): Observable<{'$oid': string}> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            }),
-        };
-        // Send post request to add a new user with the user data as the body with specified headers.
-        return this.http.post<{'$oid': string}>(this.emojiUrl + '/new', newEmoji, httpOptions);
-    }
-
 
     getEmojis(emojiOwner?: string): Observable<Emoji[]> {
         return this.http.get<Emoji[]>(this.emojiUrl);
