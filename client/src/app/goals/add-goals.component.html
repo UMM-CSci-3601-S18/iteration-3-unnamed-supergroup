@@ -14,13 +14,14 @@
                     <input matInput #input id="category" placeholder="Category" [(ngModel)]="data.goal.category">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput #input id="startDate" placeholder="Start Date" [(ngModel)]="data.goal.startDate">
+                    <input matInput id="startDate" [matDatepicker]="startPicker" placeholder="Start Date" [(ngModel)]="data.goal.startDate">
+                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startPicker></mat-datepicker>
                 </mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
                 <mat-form-field>
-                    <input matInput #input id="endDate" placeholder="End Date" [(ngModel)]="data.goal.endDate">
+                    <input matInput id="endDate" [matDatepicker]="endPicker" placeholder="End Date" [(ngModel)]="data.goal.endDate">
+                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endPicker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput #input id="frequency" placeholder="Frequency" [(ngModel)]="data.goal.frequency">
