@@ -1,7 +1,7 @@
 <!--This is the appropriate response component html file
  We are using the ngIf function to only show the response in a mat-card when it matches
  the data.response value. The response value is basically the emoji.mood value
- we referred to in the home component.ts file -- Ahnaf -->
+ we referred to in the home component.ts file  -->
 
 <div class="response" layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
@@ -11,6 +11,11 @@
             <mat-card-content id="response3" *ngIf="data.response == 3">Ok, sounds good</mat-card-content>
             <mat-card-content id="response4" *ngIf="data.response == 4">I'm glad that you're happy!</mat-card-content>
             <mat-card-content id="response5" *ngIf="data.response == 5">Wow! That's great!</mat-card-content>
+
+            <!-- get link is a variable that makes sure every link we present for a specific
+            emoji or mood response gives out is not repeating.
+            -->
+            <mat-card-content><a href="{{getLink()}}">Click me!</a></mat-card-content>
         </mat-card>
     </div>
 </div>
