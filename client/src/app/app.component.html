@@ -14,9 +14,13 @@
         </mat-nav-list>
     </td-navigation-drawer>
     <td-layout-nav  toolbarTitle="Iteration 1" navigationRoute="/">
+
         <button mat-icon-button td-menu-button tdLayoutToggle>
             <mat-icon>menu</mat-icon>
         </button>
+
+        <div id="signInButton" class="g-signin2" data-onsuccess="onSignIn"></div>
+
         <router-outlet></router-outlet>
     </td-layout-nav>
 </td-layout>
