@@ -7,4 +7,10 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
     title = 'Sunshine Journal';
+
+    onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        //get name with profile.getName()
+        //get id with profile.getId()
+    }
 }
