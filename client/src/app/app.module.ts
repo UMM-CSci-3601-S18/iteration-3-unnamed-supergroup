@@ -18,7 +18,9 @@ import {AddUserComponent} from './users/add-user.component';
 import {ResponseComponent} from "./home/response.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {ReportsService} from "./reports/reports.service";
+
 import {JournalingComponent} from "./journaling/journaling.component";
+
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";

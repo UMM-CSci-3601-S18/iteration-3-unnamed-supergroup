@@ -5,7 +5,9 @@ import {HomeComponent} from './home/home.component';
 import {UserListComponent} from './users/user-list.component';
 import {ResourcesComponent} from "./resources/resources.component";
 import {ReportsComponent} from "./reports/reports.component";
+
 import {JournalingComponent} from "./journaling/journaling.component";
+
 import {GoalsComponent} from "./goals/goals.component";
 
 // Route Configuration
