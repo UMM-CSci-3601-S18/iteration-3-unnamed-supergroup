@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
 
 @Injectable()
 export class JournalListService {
-    readonly baseUrl: string = environment.API_URL + 'journals';
+    readonly baseUrl: string = environment.API_URL + 'journaling';
     private journalUrl: string = this.baseUrl;
 
     constructor(private http: HttpClient) {
