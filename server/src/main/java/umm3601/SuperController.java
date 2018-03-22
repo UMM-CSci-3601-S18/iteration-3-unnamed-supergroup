@@ -1,6 +1,7 @@
 package umm3601;
 
 import com.google.gson.Gson;
+import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -14,13 +15,14 @@ import java.util.Map;
 import static com.mongodb.client.model.Filters.eq;
 
 public abstract class SuperController {
-    private final Gson gson;
-    private MongoDatabase database;
-    private final MongoCollection<Document> collection;
+    protected Gson gson;
+    protected MongoDatabase database;
+    protected MongoCollection<Document> collection;
 
-    public SuperController() {
-        gson = new Gson();
-        collection = database.getCollection("");
+    public SuperController(){
+        gson = null;
+        database = null;
+        collection = null;
     }
 
     /*public SuperController(MongoDatabase database) {
@@ -51,6 +53,11 @@ public abstract class SuperController {
         if (queryParams.containsKey("email")) {
             String targetEmail = (queryParams.get("email")[0]);
             filterDoc = filterDoc.append("email", targetEmail);
+        }
+
+        if (queryParams.containsKey("owner")) {
+            String targetOwner = (queryParams.get("owner")[0]);
+            filterDoc = filterDoc.append("owner", targetOwner);
         }
 
         FindIterable<Document> matchingItems = collection.find(filterDoc);
