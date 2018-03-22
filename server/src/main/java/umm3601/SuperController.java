@@ -55,6 +55,11 @@ public abstract class SuperController {
             filterDoc = filterDoc.append("owner", targetOwner);
         }
 
+        if (queryParams.containsKey("user_id")) {
+            String targetUserId = (queryParams.get("user_id")[0]);
+            filterDoc = filterDoc.append("user_id", targetUserId);
+        }
+
         FindIterable<Document> matchingItems = collection.find(filterDoc);
 
 
