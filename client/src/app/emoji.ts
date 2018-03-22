@@ -3,4 +3,5 @@ export interface Emoji {
     owner: string;
     mood: number;
     date: string;
+    email: string;
 }
