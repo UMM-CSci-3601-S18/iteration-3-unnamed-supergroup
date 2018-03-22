@@ -9,20 +9,20 @@ export class ResponseComponent {
 
     // links is an array of different responses we are using when you select an emoji in our home page
 
-    public links: string[] = ['https://www.youtube.com/watch?v=Jyy0ra2WcQQ&feature=youtu.be',
-        //'https://www.youtube.com/watch?v=xoYnqvadurg&feature=youtu.be',
-        'https://www.youtube.com/watch?v=6kVlonPVAjI&feature=youtu.be',
-        'https://www.youtube.com/watch?v=z39iodZOf00&feature=youtu.be',
+    public links: string[] = [
+        'https://www.youtube.com/watch?v=Jyy0ra2WcQQ',
+        'https://www.youtube.com/watch?v=6kVlonPVAjI',
+        'https://www.youtube.com/watch?v=z39iodZOf00',
         'https://www.youtube.com/watch?v=Yt1JtbhSIMc',
         'https://www.youtube.com/watch?v=csjhIkKnz4Q',
         'https://www.youtube.com/watch?v=Orrr7PyaZs4',
         'https://www.youtube.com/watch?v=uLu6iq0NaqU',
         'https://www.youtube.com/watch?v=eMHg8sSmKWs',
         'https://www.youtube.com/watch?v=hJbRpHZr_d0',
-        'https://www.youtube.com/watch?v=Nw2oBIrQGLo&feature=youtu.be',
-        'https://www.youtube.com/watch?v=XyNlqQId-nk&feature=youtu.be',
+        'https://www.youtube.com/watch?v=Nw2oBIrQGLo',
+        'https://www.youtube.com/watch?v=XyNlqQId-nk',
         'https://www.youtube.com/watch?v=EtH9Yllzjcc',
-        'https://www.youtube.com/watch?v=BfFi4wba30g&feature=youtu.be',
+        'https://www.youtube.com/watch?v=BfFi4wba30g',
         'https://www.youtube.com/watch?v=WxUulGkLu4I',
         'https://www.youtube.com/watch?v=1JArN6rag8s'
     ];
@@ -37,9 +37,9 @@ export class ResponseComponent {
     // that we added to the responses.component file to make sure the links are not
     // repetitive and random everytime
 
-    getLink() : string {
-        const index = Math.floor(Math.random() * this.links.length);
-        return this.links[index];
+    getLink() : void {
+        var index = Math.floor(Math.random() * this.links.length);
+        window.open(this.links[index]);
     }
 
     onNoClick(): void {
