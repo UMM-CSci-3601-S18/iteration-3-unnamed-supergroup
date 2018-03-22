@@ -2,10 +2,10 @@ package umm3601.journal;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.util.JSON;
-import org.bson.types.ObjectId;
+//import org.bson.types.ObjectId;
 import spark.Request;
 import spark.Response;
-import java.util.Date;
+//import java.util.Date;
 
 public class JournalRequestHandler {
 
@@ -89,7 +89,7 @@ public class JournalRequestHandler {
             return null;
         }
     }
-
+/*
     public String editJournal(Request req, Response res)
     {
         System.out.println("Right here");
@@ -129,4 +129,5 @@ public class JournalRequestHandler {
             return null;
         }
     }
+    */
 }
