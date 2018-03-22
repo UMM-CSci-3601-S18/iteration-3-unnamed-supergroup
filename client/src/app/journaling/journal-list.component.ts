@@ -77,7 +77,8 @@ export class JournalListComponent implements OnInit {
                 });
         });
     }
-*/
+    */
+
     public filterJournals(searchSubject: string, searchBody: string): Journal[] {
 
         this.filteredJournals = this.journals;
@@ -102,6 +103,7 @@ export class JournalListComponent implements OnInit {
 
         return this.filteredJournals;
     }
+
 
     /**
      * Starts an asynchronous operation to update the journals list

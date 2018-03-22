@@ -60,7 +60,8 @@ import {AddGoalComponent} from "./goals/add-goals.component";
     entryComponents: [
       AddUserComponent,
         ResponseComponent,
-        AddGoalComponent
+        AddGoalComponent,
+        AddJournalComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]
