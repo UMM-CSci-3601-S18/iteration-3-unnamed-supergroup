@@ -11,14 +11,13 @@ import {ResponseComponent} from "./response.component";
     templateUrl: 'home.component.html',
     styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent{
 
-    public text: string;
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3};
-
+    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3, email: ''};
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
-        this.text = 'Mongo lab';
+        //This is not working. To get it working you have to navigate to a different page, and come back.
+        this.emoji.owner = window['profile'].getName();
     }
 
     openSnackBar(message: string, action: string) {
@@ -39,6 +38,8 @@ export class HomeComponent {
 
         const date = new Date();
         this.emoji.date = date.toString();
+        this.emoji.email = window['profile'].getEmail();
+        this.emoji.owner = window['profile'].getName();
 
         this.homeService.addEmoji(this.emoji).subscribe(
             addEmojiResult => {
@@ -53,9 +54,7 @@ export class HomeComponent {
             });
 
             this.openDialog();
-
     }
-
 }
 
 
