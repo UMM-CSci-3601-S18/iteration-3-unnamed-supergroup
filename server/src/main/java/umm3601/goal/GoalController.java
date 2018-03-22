@@ -16,9 +16,6 @@ import java.util.Map;
 import static com.mongodb.client.model.Filters.eq;
 
 public class GoalController extends SuperController{
-    private final Gson gson;
-    private MongoDatabase database;
-    private final MongoCollection<Document> goalsCollection;
 
     /**
      * Construct a controller for goals.
@@ -28,7 +25,7 @@ public class GoalController extends SuperController{
     public GoalController(MongoDatabase database) {
         gson = new Gson();
         this.database = database;
-        goalsCollection = database.getCollection("goals");
+        collection = database.getCollection("goals");
     }
 
     // these are no longer used because this inherits methods from the supercontroller
@@ -81,7 +78,7 @@ public class GoalController extends SuperController{
 
 
         try {
-            goalsCollection.insertOne(newGoal);
+            collection.insertOne(newGoal);
 
             ObjectId id = newGoal.getObjectId("_id");
             System.err.println("Successfully added new goal [_id=" + id + ", owner=" + ownerId + ", name="

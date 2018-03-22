@@ -25,11 +25,6 @@ public abstract class SuperController {
         collection = null;
     }
 
-    /*public SuperController(MongoDatabase database) {
-        gson = new Gson();
-        this.database = database;
-        collection = database.getCollection("");
-    }*/
 
     public String getItem(String id) {
 
