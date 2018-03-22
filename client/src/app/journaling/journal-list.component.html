@@ -12,13 +12,13 @@
             <mat-card-title id="journal-list-title">Journals</mat-card-title>
             <mat-divider></mat-divider>
             <mat-card-content>
-<!--                <mat-form-field>
+               <mat-form-field>
                     <input matInput id="journalSubject" #input type="text" placeholder="Filter by subject" (input)="journalSubject = $event.target.value">
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput id="journalBody" #input type="text" placeholder="Filter by body" (input)="journalBody = $event.target.value">
                 </mat-form-field>
--->
+
                 <mat-accordion *ngIf="journals; else journalsError" >
                     <mat-expansion-panel #elem class="journals" [id]="journal._id['$oid']" [expanded]="this.isHighlighted(journal)" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
                         <mat-expansion-panel-header>
