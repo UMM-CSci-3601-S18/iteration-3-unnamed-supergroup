@@ -22,6 +22,7 @@ import {ReportsService} from "./reports/reports.service";
 import {JournalListComponent} from "./journaling/journal-list.component";
 import {JournalListService} from "./journaling/journal-list.service";
 import {AddJournalComponent} from './journaling/add-journal.component';
+import {EditJournalComponent} from "./journaling/edit-journal.component";
 
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
@@ -46,7 +47,8 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         JournalListComponent,
         AddJournalComponent,
         GoalsComponent,
-        AddGoalComponent
+        AddGoalComponent,
+        EditJournalComponent
     ],
     providers: [
         UserListService,
@@ -61,7 +63,8 @@ import {AddGoalComponent} from "./goals/add-goals.component";
       AddUserComponent,
         ResponseComponent,
         AddGoalComponent,
-        AddJournalComponent
+        AddJournalComponent,
+        EditJournalComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]

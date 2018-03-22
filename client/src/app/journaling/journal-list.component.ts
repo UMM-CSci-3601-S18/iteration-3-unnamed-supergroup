@@ -4,7 +4,7 @@ import {Journal} from './journal';
 import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 import {AddJournalComponent} from './add-journal.component';
-//import {EditJournalComponent} from "./edit-journal.component";
+import {EditJournalComponent} from "./edit-journal.component";
 
 @Component({
     selector: 'app-journal-list-component',
@@ -55,7 +55,7 @@ export class JournalListComponent implements OnInit {
                 });
         });
     }
-/*
+
     openDialogReview(_id: string, subject: string, body: string, date: string): void {
         console.log(_id + ' ' + subject);
         const newJournal: Journal = {_id: _id, subject: subject, body: body, date: date};
@@ -77,7 +77,6 @@ export class JournalListComponent implements OnInit {
                 });
         });
     }
-    */
 
     public filterJournals(searchSubject: string, searchBody: string): Journal[] {
 
