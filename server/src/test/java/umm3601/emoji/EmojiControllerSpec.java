@@ -85,7 +85,7 @@ public class EmojiControllerSpec {
     @Test
     public void getAllEmojis() {
         Map<String, String[]> emptyMap = new HashMap<>();
-        String jsonResult = emojiController.getEmojis(emptyMap);
+        String jsonResult = emojiController.getItems(emptyMap);
         BsonArray docs = parseJsonArray(jsonResult);
 
         assertEquals("Should be 4 emojis", 4, docs.size());
@@ -101,12 +101,12 @@ public class EmojiControllerSpec {
 
     @Test
     public void getEmojiById() {
-        String jsonResult = emojiController.getEmoji(mattsId.toHexString());
+        String jsonResult = emojiController.getItem(mattsId.toHexString());
         System.out.println(jsonResult);
         Document matt = Document.parse(jsonResult);
 
         assertEquals("Name should match", "Matt", matt.getString("owner"));
-        String noJsonResult = emojiController.getEmoji(new ObjectId().toString());
+        String noJsonResult = emojiController.getItem(new ObjectId().toString());
         assertNull("No name should match",noJsonResult);
 
     }
@@ -118,7 +118,7 @@ public class EmojiControllerSpec {
         assertNotNull("Add new emoji should return true when an emoji is added,", newId);
         Map<String, String[]> argMap = new HashMap<>();
         argMap.put("Matt2", new String[] { "Matt2" });
-        String jsonResult = emojiController.getEmojis(argMap);
+        String jsonResult = emojiController.getItems(argMap);
         BsonArray docs = parseJsonArray(jsonResult);
 
         List<String> name = docs
@@ -134,7 +134,7 @@ public class EmojiControllerSpec {
         Map<String, String[]> argMap = new HashMap<>();
         //This will search for emojis owned by Kyle
         argMap.put("owner", new String[] { "Kyle" });
-        String jsonResult = emojiController.getEmojis(argMap);
+        String jsonResult = emojiController.getItems(argMap);
         BsonArray docs = parseJsonArray(jsonResult);
         assertEquals("Should be one emoji entry", 1, docs.size());
         List<String> name = docs
