@@ -9,14 +9,12 @@ import {gapi} from 'gapi-client';
 export class AppComponent {
     title = 'Sunshine Journal';
 
-    onSignIn(googleUser) {
+    //This has been moved to index.html!
+    /*onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
-        //get name with
         let name = profile.getName()
-        //get id with
         let id = profile.getId()
-
         console.log(name + ' ' + id);
-    }
+    }*/
 
 }
