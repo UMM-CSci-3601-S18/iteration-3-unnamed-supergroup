@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
-
+import {GoogleSignInComponent} from 'angular-google-signin';
 
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
@@ -41,7 +41,8 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         ReportsComponent,
         JournalingComponent,
         GoalsComponent,
-        AddGoalComponent
+        AddGoalComponent,
+        GoogleSignInComponent,
     ],
     providers: [
         UserListService,

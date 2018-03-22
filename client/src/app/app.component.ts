@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {gapi} from 'gapi-client';
 
 @Component({
     selector: 'app-root',
@@ -10,7 +11,12 @@ export class AppComponent {
 
     onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
-        //get name with profile.getName()
-        //get id with profile.getId()
+        //get name with
+        let name = profile.getName()
+        //get id with
+        let id = profile.getId()
+
+        console.log(name + ' ' + id);
     }
+
 }
