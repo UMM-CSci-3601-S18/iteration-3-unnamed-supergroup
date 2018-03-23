@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {gapi} from 'gapi-client';
 
 @Component({
@@ -7,5 +7,5 @@ import {gapi} from 'gapi-client';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Sunshine Journal';
+    title = "Sunshine Journal";
 }
