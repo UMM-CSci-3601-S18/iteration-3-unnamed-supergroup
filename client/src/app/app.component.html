@@ -13,7 +13,7 @@
             <a mat-list-item id="goals" [routerLink]="['/goals']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</a>
         </mat-nav-list>
     </td-navigation-drawer>
-    <td-layout-nav  toolbarTitle="Iteration 1" navigationRoute="/">
+    <td-layout-nav  toolbarTitle="{{title}}" navigationRoute="/">
 
         <button mat-icon-button td-menu-button tdLayoutToggle>
             <mat-icon>menu</mat-icon>
