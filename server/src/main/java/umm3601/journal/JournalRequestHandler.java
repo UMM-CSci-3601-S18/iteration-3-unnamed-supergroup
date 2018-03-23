@@ -25,7 +25,7 @@ public class JournalRequestHandler {
         String id = req.params("id");
         String journal;
         try {
-            journal = journalController.getJournal(id);
+            journal = journalController.getItem(id);
         } catch (IllegalArgumentException e) {
             // This is thrown if the ID doesn't have the appropriate
             // form for a Mongo Object ID.
@@ -47,7 +47,7 @@ public class JournalRequestHandler {
     public String getJournals(Request req, Response res)
     {
         res.type("application/json");
-        return journalController.getJournals(req.queryMap().toMap());
+        return journalController.getItems(req.queryMap().toMap());
     }
 
     public String addNewJournal(Request req, Response res)
