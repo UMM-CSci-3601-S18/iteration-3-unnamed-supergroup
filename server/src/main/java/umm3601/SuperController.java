@@ -60,6 +60,21 @@ public abstract class SuperController {
             filterDoc = filterDoc.append("user_id", targetUserId);
         }
 
+        if (queryParams.containsKey("subject")) {
+            String targetContent = (queryParams.get("subject")[0]);
+            Document contentRegQuery = new Document();
+            contentRegQuery.append("$regex", targetContent);
+            contentRegQuery.append("$options", "i");
+            filterDoc = filterDoc.append("subject", contentRegQuery);        }
+
+        if (queryParams.containsKey("body")) {
+            String targetContent = (queryParams.get("body")[0]);
+            Document contentRegQuery = new Document();
+            contentRegQuery.append("$regex", targetContent);
+            contentRegQuery.append("$options", "i");
+            filterDoc = filterDoc.append("body", contentRegQuery);
+        }
+
         FindIterable<Document> matchingItems = collection.find(filterDoc);
 
 
