@@ -8,6 +8,8 @@ import umm3601.emoji.EmojiController;
 import umm3601.emoji.EmojiRequestHandler;
 import umm3601.goal.GoalRequestHandler;
 import umm3601.goal.GoalController;
+import umm3601.user.UserController;
+import umm3601.user.UserRequestHandler;
 
 import java.io.IOException;
 
@@ -29,6 +31,8 @@ public class Server {
         GoalController goalController = new GoalController(emojiDatabase);
         GoalRequestHandler goalRequestHandler = new GoalRequestHandler(goalController);
 
+        UserController userController = new UserController(emojiDatabase);
+        UserRequestHandler userRequestHandler = new UserRequestHandler(userController);
         //Configure Spark
         port(serverPort);
         enableDebugScreen();
@@ -67,12 +71,14 @@ public class Server {
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
 
-        //List users, filtered using query parameters
+        get("api/users", userRequestHandler::getUsers);
 
         get("api/emojis", emojiRequestHandler::getEmojis);
         get("api/emojis/:id", emojiRequestHandler::getEmojiJSON);
-       get("api/goals", goalRequestHandler::getGoals);
+
+        get("api/goals", goalRequestHandler::getGoals);
         get("api/goals/:id", goalRequestHandler::getGoalJSON);
+
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
         post("api/goals/new", goalRequestHandler::addNewGoal);
         // An example of throwing an unhandled exception so you can see how the
