@@ -11,13 +11,17 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.json.JsonReader;
 import org.bson.types.ObjectId;
 import org.junit.Before;
+import org.junit.Test;
+import umm3601.ControllerSuperSpec;
+import umm3601.user.UserControllerSpec;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class GoalControllerSpec {
+import static org.junit.Assert.assertEquals;
+
+public class GoalControllerSpec extends ControllerSuperSpec{
     private GoalController goalController;
     private ObjectId mattsId;
 
@@ -25,7 +29,7 @@ public class GoalControllerSpec {
     public void clearAndPopulateDB() throws IOException {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
-        MongoCollection<Document> emojiDocuments = db.getCollection("emojis");
+        MongoCollection<Document> emojiDocuments = db.getCollection("goals");
         emojiDocuments.drop();
         List<Document> testGoals = new ArrayList<>();
         testGoals.add(Document.parse("{\n" +
@@ -61,22 +65,25 @@ public class GoalControllerSpec {
         goalController = new GoalController(db);
     }
 
-    // http://stackoverflow.com/questions/34436952/json-parse-equivalent-in-mongo-driver-3-x-for-java
-    private BsonArray parseJsonArray(String json) {
-        final CodecRegistry codecRegistry
-            = CodecRegistries.fromProviders(Arrays.asList(
-            new ValueCodecProvider(),
-            new BsonValueCodecProvider(),
-            new DocumentCodecProvider()));
-
-        JsonReader reader = new JsonReader(json);
-        BsonArrayCodec arrayReader = new BsonArrayCodec(codecRegistry);
-
-        return arrayReader.decode(reader, DecoderContext.builder().build());
-    }
 
     private static String getOwner(BsonValue val) {
         BsonDocument doc = val.asDocument();
         return ((BsonString) doc.get("owner")).getValue();
+    }
+
+    @Test
+    public void getAllUsers() {
+        Map<String, String[]> emptyMap = new HashMap<>();
+        String jsonResult = goalController.getItems(emptyMap);
+        BsonArray docs = parseJsonArray(jsonResult);
+
+        assertEquals("Should be 4 users", 4, docs.size());
+        List<String> names = docs
+            .stream()
+            .map(GoalControllerSpec::getOwner)
+            .sorted()
+            .collect(Collectors.toList());
+        List<String> expectedNames = Arrays.asList("Ahnaf", "Aurora", "Ethan", "Matt");
+        assertEquals("Names should match", expectedNames, names);
     }
 }
