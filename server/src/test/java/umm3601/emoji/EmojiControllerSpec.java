@@ -24,7 +24,7 @@ public class EmojiControllerSpec {
     private EmojiController emojiController;
     private ObjectId mattsId;
     @Before
-    public void clearAndPopulateDB() throws IOException {
+    public void clearAndPopulateDB() {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
         MongoCollection<Document> emojiDocuments = db.getCollection("emojis");
@@ -126,7 +126,7 @@ public class EmojiControllerSpec {
             .map(EmojiControllerSpec::getOwner)
             .sorted()
             .collect(Collectors.toList());
-        assertEquals("Should return the onwer of the new emoji", "Matt2", name.get(4));
+        assertEquals("Should return the owner of the new emoji", "Matt2", name.get(4));
     }
 
     @Test

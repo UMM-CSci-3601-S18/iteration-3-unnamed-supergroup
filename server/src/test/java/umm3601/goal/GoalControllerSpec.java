@@ -5,28 +5,25 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.*;
-import org.bson.codecs.*;
-import org.bson.codecs.configuration.CodecRegistries;
-import org.bson.codecs.configuration.CodecRegistry;
-import org.bson.json.JsonReader;
 import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;
 import umm3601.ControllerSuperSpec;
-import umm3601.user.UserControllerSpec;
+import umm3601.emoji.EmojiControllerSpec;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class GoalControllerSpec extends ControllerSuperSpec{
     private GoalController goalController;
     private ObjectId mattsId;
 
     @Before
-    public void clearAndPopulateDB() throws IOException {
+    public void clearAndPopulateDB() {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
         MongoCollection<Document> emojiDocuments = db.getCollection("goals");
@@ -85,5 +82,30 @@ public class GoalControllerSpec extends ControllerSuperSpec{
             .collect(Collectors.toList());
         List<String> expectedNames = Arrays.asList("Ahnaf", "Aurora", "Ethan", "Matt");
         assertEquals("Names should match", expectedNames, names);
+    }
+
+    @Test
+    public void addGoalTest() {
+        String newId = goalController.addNewGoal("Matt2",
+            "Matt2",
+            "Make good code",
+            "Programming",
+            "8/19/2015 14:00",
+            "8/20/2015 14:00",
+            "Weekly",
+            false);
+
+        assertNotNull("Add new goal should return true when a goal is added,", newId);
+        Map<String, String[]> argMap = new HashMap<>();
+        argMap.put("Matt2", new String[] { "Matt2" });
+        String jsonResult = goalController.getItems(argMap);
+        BsonArray docs = parseJsonArray(jsonResult);
+
+        List<String> name = docs
+            .stream()
+            .map(GoalControllerSpec::getOwner)
+            .sorted()
+            .collect(Collectors.toList());
+        assertEquals("Should return the owner of the new goal", "Matt2", name.get(4));
     }
 }

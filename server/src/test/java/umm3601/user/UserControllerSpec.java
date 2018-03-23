@@ -23,7 +23,7 @@ public class UserControllerSpec extends ControllerSuperSpec{
     private ObjectId kylesId;
 
     @Before
-    public void clearAndPopulateDB() throws IOException {
+    public void clearAndPopulateDB() {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
         MongoCollection<Document> userDocuments = db.getCollection("users");
@@ -89,7 +89,7 @@ public class UserControllerSpec extends ControllerSuperSpec{
     }
 
     @Test
-    public void getEmojiById() {
+    public void getUserById() {
         String jsonResult = userController.getItem(kylesId.toHexString());
         System.out.println(jsonResult);
         Document kyle = Document.parse(jsonResult);
@@ -101,7 +101,7 @@ public class UserControllerSpec extends ControllerSuperSpec{
     }
 
     @Test
-    public void addEmojiTest(){
+    public void addUserTest(){
         String newId = userController.addNewUser("Matt2","matt2@cloning.com","8/20/2015 14:00");
 
         assertNotNull("Add new user should return true when an emoji is added,", newId);
