@@ -8,15 +8,14 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import umm3601.SuperController;
+
 import java.util.Iterator;
 import java.util.Map;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class EmojiController {
-    private final Gson gson;
-    private MongoDatabase database;
-    private final MongoCollection<Document> emojiCollection;
+public class EmojiController extends SuperController {
 
     /**
      * Construct a controller for emojis.
@@ -24,12 +23,12 @@ public class EmojiController {
      * @param database the database containing emoji data
      */
     public EmojiController(MongoDatabase database) {
-        gson = new Gson();
+        this.gson = new Gson();
         this.database = database;
-        emojiCollection = database.getCollection("emojis");
+        this.collection = database.getCollection("emojis");
     }
 
-    public String getEmoji(String id) {
+    /*public String getEmoji(String id) {
 
         FindIterable<Document>  jsonEmojis
             = emojiCollection
@@ -61,7 +60,7 @@ public class EmojiController {
 
 
         return JSON.serialize(matchingEmojis);
-    }
+    }*/
 
 
     public String addNewEmoji(String ownerId, int mood, String date) {
@@ -72,7 +71,7 @@ public class EmojiController {
         newEmoji.append("date", date);
 
         try {
-            emojiCollection.insertOne(newEmoji);
+            collection.insertOne(newEmoji);
 
             ObjectId id = newEmoji.getObjectId("_id");
             System.err.println("Successfully added new emoji [_id=" + id + ", owner=" + ownerId + ", mood="

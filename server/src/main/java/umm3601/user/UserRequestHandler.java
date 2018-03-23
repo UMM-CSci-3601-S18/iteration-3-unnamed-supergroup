@@ -27,7 +27,7 @@ public class UserRequestHandler {
         String id = req.params("id");
         String user;
         try {
-            user = userController.getUser(id);
+            user = userController.getItem(id);
         } catch (IllegalArgumentException e) {
             // This is thrown if the ID doesn't have the appropriate
             // form for a Mongo Object ID.
@@ -58,7 +58,7 @@ public class UserRequestHandler {
     public String getUsers(Request req, Response res)
     {
         res.type("application/json");
-        return userController.getUsers(req.queryMap().toMap());
+        return userController.getItems(req.queryMap().toMap());
     }
 
 
@@ -82,14 +82,12 @@ public class UserRequestHandler {
                     BasicDBObject dbO = (BasicDBObject) o;
 
                     String name = dbO.getString("name");
-                    //For some reason age is a string right now, caused by angular.
-                    //This is a problem and should not be this way but here ya go
-                    int age = dbO.getInt("age");
-                    String company = dbO.getString("company");
                     String email = dbO.getString("email");
+                    String date = dbO.getString("creation_date");
 
-                    System.err.println("Adding new user [name=" + name + ", age=" + age + " company=" + company + " email=" + email + ']');
-                    return userController.addNewUser(name, age, company, email).toString();
+
+                    System.err.println("Adding new user [name=" + name + " email=" + email + " creation_date=" + date + ']');
+                    return userController.addNewUser(name, email, date).toString();
                 }
                 catch(NullPointerException e)
                 {

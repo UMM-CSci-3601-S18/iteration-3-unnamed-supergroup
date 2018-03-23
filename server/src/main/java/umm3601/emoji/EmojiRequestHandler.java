@@ -22,7 +22,7 @@ public class EmojiRequestHandler {
         String id = req.params("id");
         String emoji;
         try {
-            emoji = emojiController.getEmoji(id);
+            emoji = emojiController.getItem(id);
         } catch (IllegalArgumentException e) {
             // This is thrown if the ID doesn't have the appropriate
             // form for a Mongo Object ID.
@@ -53,7 +53,7 @@ public class EmojiRequestHandler {
     public String getEmojis(Request req, Response res)
     {
         res.type("application/json");
-        return emojiController.getEmojis(req.queryMap().toMap());
+        return emojiController.getItems(req.queryMap().toMap());
     }
 
 
