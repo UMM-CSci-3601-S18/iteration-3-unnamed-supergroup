@@ -8,4 +8,14 @@ import {gapi} from 'gapi-client';
 })
 export class AppComponent {
     title = "Sunshine Journal";
+
+    //New function to return the name of the active user
+    //window.* is not defined, or 'gettable' straight from HTML *ngIf
+    //So this function will return that
+    getLoginName(){
+        var name = window['name'];
+        console.log("Name is: " + name + ".");
+        return name;
+    }
+
 }
