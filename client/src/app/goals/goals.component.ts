@@ -46,16 +46,16 @@ export class GoalsComponent implements OnInit{
     }
 
 
-    public filterGoals(searchOwner): Goal[] {
+    public filterGoals(searchName): Goal[] {
 
         this.filteredGoals = this.goals;
 
         // Filter by name
-        if (searchOwner != null) {
-            searchOwner = searchOwner.toLocaleLowerCase();
+        if (searchName != null) {
+            searchName = searchName.toLocaleLowerCase();
 
             this.filteredGoals = this.filteredGoals.filter(goal => {
-                return !searchOwner || goal.owner.toLowerCase().indexOf(searchOwner) !== -1;
+                return !searchName || goal.name.toLowerCase().indexOf(searchName) !== -1;
             });
         }
 
