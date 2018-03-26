@@ -99,6 +99,7 @@ describe('Goal  service: ', () => {
         req.flush(testGoals);
     });
 
+/*
     it('getGoals(goalOwner) adds appropriate param string to called URL', () => {
         goalService.getGoals('m').subscribe(
             goals => expect(goals).toEqual(mGoals)
@@ -108,9 +109,7 @@ describe('Goal  service: ', () => {
         expect(req.request.method).toEqual('GET');
         req.flush(mGoals);
     });
-
-
-
+*/
 
     it('getGoalById() calls api/goals/id', () => {
         const targetGoal: Goal = testGoals[1];
