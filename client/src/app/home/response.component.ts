@@ -40,6 +40,9 @@ export class ResponseComponent {
     getLink() : void {
         var index = Math.floor(Math.random() * this.links.length);
         window.open(this.links[index]);
+
+        //Make sure dialog box closes after opening link
+        this.onNoClick()
     }
 
     onNoClick(): void {
