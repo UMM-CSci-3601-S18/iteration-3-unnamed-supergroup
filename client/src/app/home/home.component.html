@@ -1,9 +1,8 @@
+<!--Don't allow user to do anything without logging in! -->
+<div *ngIf="this.emoji.owner != ''; else promptLogin">
+
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
-
-        <!--Don't allow user to do anything without logging in! -->
-        <div *ngIf="this.emoji.owner != ''; else promptLogin">
-
             <!-- Main Page -->
             <mat-card>
                 <mat-card-content id="headerInfo">
@@ -30,10 +29,10 @@
                 </mat-card-content>
             </mat-card>
         </div>
-
-        <!-- What to display if the user isn't logged in -->
-        <ng-template #promptLogin>
-            <p>You need to log in..</p>
-        </ng-template>
     </div>
 </div>
+
+<!-- What to display if the user isn't logged in -->
+<ng-template #promptLogin>
+    <p>You need to log in..</p>
+</ng-template>
