@@ -214,6 +214,8 @@ describe('Adding a goal', () => {
         });
     }));
 /*
+// Can't figure out why this test is not passing
+
     it('calls GoalsService.addGoal', () => {
         expect(calledGoal).toBeNull();
         goals.openDialog();
