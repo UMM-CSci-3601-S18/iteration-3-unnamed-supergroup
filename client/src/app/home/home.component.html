@@ -1,29 +1,39 @@
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
-        <mat-card>
 
-            <mat-card-content id="headerInfo">
-                <h1><strong>Hi {{emoji.owner}}, How are you feeling right now?</strong></h1>
-                <p>Hey! Mind telling me your name? <input id="inputName" #input name="fname" [(ngModel)]="emoji.owner"></p>
-                <h2>Please pick a feeling!</h2>
+        <!--Don't allow user to do anything without logging in! -->
+        <div *ngIf="this.emoji.owner != ''; else promptLogin">
 
-
-                <!-- Show correct emoji image depending on the value of the mat-slider -->
-
-                <img  id="{{matslider.value}}emoji" src="assets/Emojis/{{matslider.value}}.png">
-                <br/>
+            <!-- Main Page -->
+            <mat-card>
+                <mat-card-content id="headerInfo">
+                    <h1><strong>Hi {{emoji.owner}}, How are you feeling right now?</strong></h1>
+                    <p>Hey! Mind telling me your name? <input id="inputName" #input name="fname" [(ngModel)]="emoji.owner"></p>
+                    <h2>Please pick a feeling!</h2>
 
 
-                <!-- This is the slider that the user will choose to determine their mood value/ emoji
-             1 = Very Sad, 2= sad, 3= Normal, 4= Happy, 5= Very Happy
-             mat-slider is a component in angular we used.
-             -->
 
-                <mat-slider [matTooltipPosition]="'above'" matTooltip="Use the slider to select how you feel." class="slider" thumbLabel tick-interval="1" min="1" max="5" step="1" value="3" #matslider [(ngModel)]="emoji.mood"></mat-slider>
-                <br/>
-                <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
-            </mat-card-content>
+                    <!-- Show correct emoji image depending on the value of the mat-slider -->
 
-        </mat-card>
+                    <img  id="{{matslider.value}}emoji" src="assets/Emojis/{{matslider.value}}.png">
+                    <br/>
+
+
+                    <!-- This is the slider that the user will choose to determine their mood value/ emoji
+                 1 = Very Sad, 2= sad, 3= Normal, 4= Happy, 5= Very Happy
+                 mat-slider is a component in angular we used.
+                 -->
+
+                    <mat-slider [matTooltipPosition]="'above'" matTooltip="Use the slider to select how you feel." class="slider" thumbLabel tick-interval="1" min="1" max="5" step="1" value="3" #matslider [(ngModel)]="emoji.mood"></mat-slider>
+                    <br/>
+                    <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- What to display if the user isn't logged in -->
+        <ng-template #promptLogin>
+            <p>You need to log in..</p>
+        </ng-template>
     </div>
 </div>
