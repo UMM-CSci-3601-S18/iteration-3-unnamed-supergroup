@@ -3,8 +3,9 @@
 #Debug line
 echo "Installing gapi-client"
 
-#The actual command we want to run on the terminal
+#The actual commands we want to run on the terminal
 npm i gapi-client
+npm i google-sign-in
 
 #Another debug line letting us know the api installed correctly
 echo "gapi-client installed"
