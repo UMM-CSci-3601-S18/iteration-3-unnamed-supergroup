@@ -55,6 +55,29 @@ export class HomeComponent implements OnInit {
             this.openDialog();
     }
 
+    //This function is used to turn the number of the matslider into a word to be
+    //displayed in the html.
+    parseEmotion(num: number){
+        switch(num)
+        {
+            case 1:
+                return "anxious";
+            case 2:
+                return "sad";
+            case 3:
+                return "down";
+            case 4:
+                return "meh";
+            case 5:
+                return "happy";
+            case 6:
+                return "radiant";
+        }
+
+        //If for some reason it gets here..
+        return null;
+    }
+
     ngOnInit(){
         this.emoji.owner = window['name'];
     }
