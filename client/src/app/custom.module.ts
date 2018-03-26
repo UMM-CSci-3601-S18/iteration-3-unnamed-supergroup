@@ -70,6 +70,7 @@ const COVALENT_MODULES: any[] = [
         MATERIAL_MODULES,
         COVALENT_MODULES,
         FLEX_LAYOUT_MODULES,
+        GoogleSignInComponent,
     ]
 })
 
