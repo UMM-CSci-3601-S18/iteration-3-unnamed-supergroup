@@ -41,7 +41,9 @@
                         </div>
                     </mat-step>
                 </mat-horizontal-stepper>
--->
+-->             <mat-form-field>
+                <input matInput #input id="name" placeholder="Name" [(ngModel)]="data.goal.name">
+                </mat-form-field>
                 <mat-form-field>
                     <input matInput id="startDate" [matDatepicker]="startPicker" placeholder="Start Date" [(ngModel)]="data.goal.startDate">
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
