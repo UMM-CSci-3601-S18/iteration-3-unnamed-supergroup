@@ -18,7 +18,12 @@ import {AddUserComponent} from './users/add-user.component';
 import {ResponseComponent} from "./home/response.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {ReportsService} from "./reports/reports.service";
-import {JournalingComponent} from "./journaling/journaling.component";
+
+import {JournalListComponent} from "./journaling/journal-list.component";
+import {JournalListService} from "./journaling/journal-list.service";
+import {AddJournalComponent} from './journaling/add-journal.component';
+import {EditJournalComponent} from "./journaling/edit-journal.component";
+
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
@@ -39,9 +44,11 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         ResourcesComponent,
         ResponseComponent,
         ReportsComponent,
-        JournalingComponent,
+        JournalListComponent,
+        AddJournalComponent,
         GoalsComponent,
         AddGoalComponent,
+        EditJournalComponent,
         GoogleSignInComponent,
     ],
     providers: [
@@ -49,13 +56,16 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         HomeService,
         ReportsService,
         GoalsService,
+        JournalListService,
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
     ],
     entryComponents: [
       AddUserComponent,
         ResponseComponent,
-        AddGoalComponent
+        AddGoalComponent,
+        AddJournalComponent,
+        EditJournalComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]

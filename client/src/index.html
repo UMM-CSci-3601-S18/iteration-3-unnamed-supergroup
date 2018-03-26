@@ -19,10 +19,21 @@
 These following functions make sure that auth2 is loaded into the page
 which allows for functions like signOut to work properly.
 -->
-<script>
+
+<script type=application/javascript>
+
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
+
+            //Clear Global Vars
+            window.name = "";
+            window.email = "";
+
+            //Reload Page
+            location.reload();
+
+            //Debug
             console.log('User signed out.');
         });
     }
@@ -34,10 +45,24 @@ which allows for functions like signOut to work properly.
     }
 
     function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log(profile.getName() + ' ' + profile.getId() + ' signed in.');
+
+        //This line prevents an infinite loop of loading in
+        if(window.name == "")
+        {
+            location.reload();
+        }
+
+        //Set global variables to be used across the webpage
+        window.name = googleUser.getBasicProfile().getName();
+        window.email = googleUser.getBasicProfile().getEmail();
+
+        //Debug
+        console.log(window.profile.getName() + ' signed in.');
     }
+
+
 </script>
+
 
 <app-root>Loading...?</app-root>
 </body>

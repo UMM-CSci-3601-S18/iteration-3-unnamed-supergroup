@@ -15,7 +15,10 @@
             <!-- get link is a variable that makes sure every link we present for a specific
             emoji or mood response gives out is not repeating.
             -->
-            <mat-card-content><a href="{{getLink()}}">Click me!</a></mat-card-content>
+
+            <mat-card-content>
+                <input type="button" value ="Click me!" (click)="getLink()">
+            </mat-card-content>
         </mat-card>
     </div>
 </div>
