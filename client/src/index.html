@@ -47,7 +47,7 @@ which allows for functions like signOut to work properly.
     function onSignIn(googleUser) {
 
         //This line prevents an infinite loop of loading in
-        if(window.name == "")
+        if(window.name === "")
         {
             location.reload();
         }
@@ -57,7 +57,7 @@ which allows for functions like signOut to work properly.
         window.email = googleUser.getBasicProfile().getEmail();
 
         //Debug
-        console.log(window.profile.getName() + ' signed in.');
+        console.log(window.name + ' signed in.');
     }
 
 
