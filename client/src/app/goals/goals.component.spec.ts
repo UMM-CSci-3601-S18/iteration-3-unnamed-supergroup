@@ -216,10 +216,10 @@ describe('Adding a goal', () => {
 /*
 // Can't figure out why this test is not passing
 
-    it('calls GoalsService.addGoal', () => {
+    it('calls GoalsService.addGoal in GoalComponent.openDialog()', () => {
         expect(calledGoal).toBeNull();
         goals.openDialog();
         expect(calledGoal).toEqual(newGoal);
     });
-    */
+*/
 });
