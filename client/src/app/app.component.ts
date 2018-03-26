@@ -14,7 +14,6 @@ export class AppComponent {
     //So this function will return that
     getLoginName(){
         var name = window['name'];
-        console.log("Name is: " + name + ".");
         return name;
     }
 
