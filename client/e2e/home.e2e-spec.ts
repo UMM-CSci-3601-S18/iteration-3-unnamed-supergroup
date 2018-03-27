@@ -25,36 +25,28 @@ describe('', () => {
         page = new HomePage();
     });
 
-
-
-    it('should type something in filter name box and add an entry', () => {
+    it('should add an entry', () => {
         HomePage.navigateTo();
-        HomePage.typeAName('Jubair');
         expect(element(by.id('3emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
         page.clickSubmitButton();
-
     });
 
-    it("should type a name and then move the slider positively and click submit. It then navigates to to the report page, clicks the owner box, and filters by roch and check if the first element is equal to roch",() => {
+    it("should move the slider positively and click submit. It then navigates to to the report page",() => {
         HomePage.navigateTo();
-        HomePage.typeAName('Roch');
          HomePage.selectTheSlider();
          HomePage.SlideTheSliderUp();
          HomePage.SlideTheSliderUp();
         expect(element(by.id('5emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
         page.clickSubmitButton();
         HomePage.navigateToReports();
-        HomePage.filterOwner('Roch');
 
-        expect( page.getUniqueOwner()).toContain('Roch');
-
-
-
+        // Need to find out default name
+        // HomePage.filterOwner('NG_DEFER_BOOTSTRAP');
+        // expect( page.getUniqueOwner()).toContain('NG_DEFER_BOOTSTRAP');
     });
 
-    it("should type a name and then move the slider positively and negatiely and click submit",() => {
+    it("should move the slider positively and negatively and click submit",() => {
         HomePage.navigateTo();
-        HomePage.typeAName('Andy');
         HomePage.selectTheSlider();
         HomePage.SlideTheSliderUp();
         HomePage.SlideTheSliderUp();
@@ -62,17 +54,12 @@ describe('', () => {
         HomePage.SlideTheSliderDown();
         HomePage.SlideTheSliderDown();
         HomePage.SlideTheSliderDown();
-        HomePage.SlideTheSliderDown();
         expect(element(by.id('1emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
         page.clickSubmitButton();
         HomePage.navigateToReports();
-        HomePage.filterOwner('Andy');
 
-        expect( page.getUniqueOwner()).toContain('Andy');
+        // Need to find out default name
+        // HomePage.filterOwner('Roch');
+        // expect( page.getUniqueOwner()).toContain('Roch');
     });
-
-
-
-
-
 });

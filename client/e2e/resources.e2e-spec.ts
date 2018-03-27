@@ -38,12 +38,4 @@ describe('Resources Page', () => {
         expect(element(by.binding('775-784-8090'))).toBeDefined();
 
     });
-
-    it('should click on the Crisis Text Line element, then click on the woodland home element inside it, and the correct phone number is on the page', () => {
-        ResourcesPage.navigateTo();
-        ResourcesPage.clickElement('crisis-text-line');
-        ResourcesPage.clickElement('woodland-home');
-        expect(element(by.binding('320-589-4259'))).toBeDefined();
-
-    });
 });
