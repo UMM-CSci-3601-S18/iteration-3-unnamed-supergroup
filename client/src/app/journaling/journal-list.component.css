@@ -10,3 +10,35 @@
     text-align: center;
     font-size: 24px;
 }
+
+.matCardJournals {
+    float: left;
+    display: block;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.matCardMain{
+    height: 100%;
+}
+
+.addNewJournalButton{
+    padding-left: 10px;
+    float: left;
+}
+
+.matFormFieldSubject{
+    padding: 10px;
+}
+
+.matFormFieldBody{
+    padding: 10px;
+}
+
+.viewButton{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
