@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 import {AddJournalComponent} from './add-journal.component';
 import {EditJournalComponent} from "./edit-journal.component";
+import {ViewJournalComponent} from "./view-journal.component";
 
 @Component({
     selector: 'app-journal-list-component',
