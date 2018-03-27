@@ -54,12 +54,16 @@ which allows for functions like signOut to work properly.
         {
             location.reload();
         }
+        if(window.email === "") {
+            location.reload();
+        }
 
         //Set global variables to be used across the webpage
         window.name = googleUser.getBasicProfile().getName();
         window.email = googleUser.getBasicProfile().getEmail();
 
         //Debug
+        console.log(window.email);
         console.log(window.name + ' signed in.');
     }
 

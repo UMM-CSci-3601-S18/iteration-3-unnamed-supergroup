@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
 
     public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3};
 
+    public userEmail: string = window['email'];
+
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
 
     }

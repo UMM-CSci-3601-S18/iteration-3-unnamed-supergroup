@@ -154,4 +154,5 @@ export class JournalListComponent implements OnInit {
         return name;
     }
 
+
 }
