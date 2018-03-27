@@ -13,7 +13,7 @@ import {ResponseComponent} from "./response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3};
+    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 5};
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
 
