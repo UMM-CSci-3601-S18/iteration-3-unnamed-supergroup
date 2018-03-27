@@ -63,6 +63,7 @@ const COVALENT_MODULES: any[] = [
         FLEX_LAYOUT_MODULES,
     ],
     declarations: [
+        GoogleSignInComponent
 
     ],
     exports: [
