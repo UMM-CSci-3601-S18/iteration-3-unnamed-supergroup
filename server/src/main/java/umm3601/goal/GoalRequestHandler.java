@@ -23,7 +23,7 @@ public class GoalRequestHandler {
         String id = req.params("id");
         String goal;
         try {
-            goal = goalController.getGoal(id);
+            goal = goalController.getItem(id);
         } catch (IllegalArgumentException e) {
             // This is thrown if the ID doesn't have the appropriate
             // form for a Mongo Object ID.
@@ -54,7 +54,7 @@ public class GoalRequestHandler {
     public String getGoals(Request req, Response res)
     {
         res.type("application/json");
-        return goalController.getGoals(req.queryMap().toMap());
+        return goalController.getItems(req.queryMap().toMap());
     }
 
 

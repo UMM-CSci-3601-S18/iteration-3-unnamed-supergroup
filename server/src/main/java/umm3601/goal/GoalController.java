@@ -8,16 +8,14 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import umm3601.SuperController;
 
 import java.util.Iterator;
 import java.util.Map;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class GoalController {
-    private final Gson gson;
-    private MongoDatabase database;
-    private final MongoCollection<Document> goalsCollection;
+public class GoalController extends SuperController{
 
     /**
      * Construct a controller for goals.
@@ -27,41 +25,42 @@ public class GoalController {
     public GoalController(MongoDatabase database) {
         gson = new Gson();
         this.database = database;
-        goalsCollection = database.getCollection("goals");
+        collection = database.getCollection("goals");
     }
 
-    public String getGoal(String id) {
-
-        FindIterable<Document> jsonGoals
-            = goalsCollection
-            .find(eq("_id", new ObjectId(id)));
-
-        Iterator<Document> iterator = jsonGoals.iterator();
-        if (iterator.hasNext()) {
-            Document goal = iterator.next();
-            return goal.toJson();
-        } else {
-            // We didn't find the desired Goal
-            return null;
-        }
-    }
-
-
-    public String getGoals(Map<String, String[]> queryParams) {
-        Document filterDoc = new Document();
-
-        if (queryParams.containsKey("owner")) {
-            String targetOwner = (queryParams.get("owner")[0]);
-            filterDoc = filterDoc.append("owner", targetOwner);
-        }
-
-        FindIterable<Document> matchingGoals = goalsCollection.find(filterDoc);
-
-
-
-
-        return JSON.serialize(matchingGoals);
-    }
+    // these are no longer used because this inherits methods from the supercontroller
+//    public String getGoal(String id) {
+//
+//        FindIterable<Document> jsonGoals
+//            = goalsCollection
+//            .find(eq("_id", new ObjectId(id)));
+//
+//        Iterator<Document> iterator = jsonGoals.iterator();
+//        if (iterator.hasNext()) {
+//            Document goal = iterator.next();
+//            return goal.toJson();
+//        } else {
+//            // We didn't find the desired Goal
+//            return null;
+//        }
+//    }
+//
+//
+//    public String getGoals(Map<String, String[]> queryParams) {
+//        Document filterDoc = new Document();
+//
+//        if (queryParams.containsKey("owner")) {
+//            String targetOwner = (queryParams.get("owner")[0]);
+//            filterDoc = filterDoc.append("owner", targetOwner);
+//        }
+//
+//        FindIterable<Document> matchingGoals = goalsCollection.find(filterDoc);
+//
+//
+//
+//
+//        return JSON.serialize(matchingGoals);
+//    }
 
 
     public String addNewGoal(String ownerId, String name, String body, String category, String startDate, String endDate, String frequency, Boolean status) {
@@ -79,7 +78,7 @@ public class GoalController {
 
 
         try {
-            goalsCollection.insertOne(newGoal);
+            collection.insertOne(newGoal);
 
             ObjectId id = newGoal.getObjectId("_id");
             System.err.println("Successfully added new goal [_id=" + id + ", owner=" + ownerId + ", name="

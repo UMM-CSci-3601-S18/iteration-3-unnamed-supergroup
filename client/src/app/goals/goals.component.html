@@ -1,13 +1,14 @@
-<div>
-    <ol>
-        <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal!</button>
-    </ol>
-</div>
+<div *ngIf="getLoginName() != ''; else promptLogin">
+    <div>
+        <ol>
+            <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal!</button>
+        </ol>
+    </div>
 
-<mat-card>
-    <mat-card-content>
-        <mat-card-title>Goals</mat-card-title>
-        <mat-divider></mat-divider>
+    <mat-card>
+        <mat-card-content>
+            <mat-card-title>Goals</mat-card-title>
+            <mat-divider></mat-divider>
 
         <mat-accordion *ngIf="goals; else goalError" >
             <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner)">
@@ -23,14 +24,22 @@
             </mat-expansion-panel>
         </mat-accordion>
 
-        <ng-template #goalError>
-            <mat-error>
-                There was a problem loading the data. Possibly the server is down or perhaps there are network
-                issues.
-            </mat-error>
-            <mat-error>
-                Please wait a bit and try again or start the server.
-            </mat-error>
-        </ng-template>
-    </mat-card-content>
-</mat-card>
+            <ng-template #goalError>
+                <mat-error>
+                    There was a problem loading the data. Possibly the server is down or perhaps there are network
+                    issues.
+                </mat-error>
+                <mat-error>
+                    Please wait a bit and try again or start the server.
+                </mat-error>
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!-- What to display if the user isn't logged in -->
+<ng-template #promptLogin>
+    <img class="loginEmoji" src="https://image.flaticon.com/icons/svg/260/260205.svg" alt="Sunshine Journal">
+    <p class="loginEmojiText">Please sign in with your google account to access Sunshine Journal</p>
+</ng-template>
+

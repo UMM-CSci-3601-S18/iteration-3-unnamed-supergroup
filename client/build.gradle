@@ -44,6 +44,14 @@ task runClientTests(dependsOn: yarn_run_test) {
     group = 'application'
 }
 
+task installGoogleSignIn(type: Exec){
+    group = 'application'
+    workingDir = '../client'
+    description = 'Installs gapi-client into the client folder'
+
+    commandLine 'sh', 'install-gapi.sh'
+}
+
 task build(type:NodeTask) {
     group = 'application'
     description = 'Builds the client side of the application using ng build'
@@ -57,4 +65,5 @@ task build(type:NodeTask) {
 
 //Client build files won't build after changes, so delete them after build
 build.dependsOn(clean)
+//build.dependsOn(installGoogleSignIn)
 build.dependsOn(yarn_install)

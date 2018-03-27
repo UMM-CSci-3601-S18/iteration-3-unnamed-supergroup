@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 
-
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -48,7 +47,7 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         AddJournalComponent,
         GoalsComponent,
         AddGoalComponent,
-        EditJournalComponent
+        EditJournalComponent,
     ],
     providers: [
         UserListService,

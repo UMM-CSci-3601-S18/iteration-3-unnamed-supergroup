@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Emoji} from '../emoji';
 import {HomeService} from "./home.service";
-import {MatDialog, MatSnackBar, MatTooltip} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {ResponseComponent} from "./response.component";
 
 // Selector will change when we know more
@@ -11,14 +11,12 @@ import {ResponseComponent} from "./response.component";
     templateUrl: 'home.component.html',
     styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-    public text: string;
     public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3};
 
-
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
-        this.text = 'Mongo lab';
+
     }
 
     openSnackBar(message: string, action: string) {
@@ -39,6 +37,7 @@ export class HomeComponent {
 
         const date = new Date();
         this.emoji.date = date.toString();
+        this.emoji.owner = window['name'];
 
         this.homeService.addEmoji(this.emoji).subscribe(
             addEmojiResult => {
@@ -53,9 +52,34 @@ export class HomeComponent {
             });
 
             this.openDialog();
-
     }
 
+    //This function is used to turn the number of the matslider into a word to be
+    //displayed in the html.
+    parseEmotion(num: number){
+        switch(num)
+        {
+            case 1:
+                return "anxious";
+            case 2:
+                return "sad";
+            case 3:
+                return "down";
+            case 4:
+                return "meh";
+            case 5:
+                return "happy";
+            case 6:
+                return "radiant";
+        }
+
+        //If for some reason it gets here..
+        return null;
+    }
+
+    ngOnInit(){
+        this.emoji.owner = window['name'];
+    }
 }
 
 
