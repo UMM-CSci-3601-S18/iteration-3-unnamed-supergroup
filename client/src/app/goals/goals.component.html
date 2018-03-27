@@ -1,39 +1,48 @@
-<div>
-    <ol>
-        <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal!</button>
-    </ol>
+<div *ngIf="getLoginName() != ''; else promptLogin">
+    <div>
+        <ol>
+            <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal!</button>
+        </ol>
+    </div>
+
+    <mat-card>
+        <mat-card-content>
+            <mat-card-title>Goals</mat-card-title>
+            <mat-divider></mat-divider>
+
+            <mat-accordion *ngIf="goals; else goalError" >
+                <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner)">
+                    <mat-expansion-panel-header>
+                        <!-- This gets an goal image based on the mood that the user input when creating the goal object -->
+                        <mat-panel-title id="test" matTooltip="ID: {{goal._id['$oid']}}" >{{goal.name}}</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description >Owner: {{goal.owner}}</mat-panel-description>
+                    <mat-panel-description >Name: {{goal.name}}</mat-panel-description>
+                    <mat-panel-description >Category: {{goal.category}}</mat-panel-description>
+                    <mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>
+                    <mat-panel-description >Description: {{goal.body}}</mat-panel-description>
+                    <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
+                    <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
+                    <mat-panel-description >Status: {{goal.status}}</mat-panel-description>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <ng-template #goalError>
+                <mat-error>
+                    There was a problem loading the data. Possibly the server is down or perhaps there are network
+                    issues.
+                </mat-error>
+                <mat-error>
+                    Please wait a bit and try again or start the server.
+                </mat-error>
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
 </div>
 
-<mat-card>
-    <mat-card-content>
-        <mat-card-title>Goals</mat-card-title>
-        <mat-divider></mat-divider>
+<!-- What to display if the user isn't logged in -->
+<ng-template #promptLogin>
+    <img class="loginEmoji" src="https://image.flaticon.com/icons/svg/260/260205.svg" alt="Sunshine Journal">
+    <p class="loginEmojiText">Please sign in with your google account to access Sunshine Journal</p>
+</ng-template>
 
-        <mat-accordion *ngIf="goals; else goalError" >
-            <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner)">
-                <mat-expansion-panel-header>
-                    <!-- This gets an goal image based on the mood that the user input when creating the goal object -->
-                    <mat-panel-title id="test" matTooltip="ID: {{goal._id['$oid']}}" >{{goal.name}}</mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-panel-description >Owner: {{goal.owner}}</mat-panel-description>
-                <mat-panel-description >Name: {{goal.name}}</mat-panel-description>
-                <mat-panel-description >Category: {{goal.category}}</mat-panel-description>
-                <mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>
-                <mat-panel-description >Description: {{goal.body}}</mat-panel-description>
-                <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
-                <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
-                <mat-panel-description >Status: {{goal.status}}</mat-panel-description>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-        <ng-template #goalError>
-            <mat-error>
-                There was a problem loading the data. Possibly the server is down or perhaps there are network
-                issues.
-            </mat-error>
-            <mat-error>
-                Please wait a bit and try again or start the server.
-            </mat-error>
-        </ng-template>
-    </mat-card-content>
-</mat-card>

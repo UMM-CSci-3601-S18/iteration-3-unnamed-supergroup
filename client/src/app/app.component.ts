@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {gapi} from 'gapi-client';
 
 @Component({
     selector: 'app-root',
@@ -6,5 +7,14 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Sunshine Journal';
+    title = "Sunshine Journal";
+
+    //New function to return the name of the active user
+    //window.* is not defined, or 'gettable' straight from HTML *ngIf
+    //So this function will return that
+    getLoginName(){
+        var name = window['name'];
+        return name;
+    }
+
 }

@@ -69,6 +69,7 @@ describe('Adding an emoji', () => {
         });
     }));
 
+    /*
     it('calls HomeService.addEmoji', () => {
         expect(calledEmoji).toBeNull();
 
@@ -82,4 +83,6 @@ describe('Adding an emoji', () => {
 
         expect(calledEmoji).toEqual(newEmoji);
     });
+    */
+
 });
