@@ -27,12 +27,11 @@ export class GoalsService {
     getGoalById(id: string): Observable<Goal> {
         return this.http.get<Goal>(this.goalsUrl + '/' + id);
     }
+
     getGoals(goalOwner?: string): Observable<Goal[]> {
         if(goalOwner) {
             return this.http.get<Goal[]>(this.goalsUrl + '?owner=' + goalOwner);
         }
         return this.http.get<Goal[]>(this.goalsUrl);
     }
-
-
 }
