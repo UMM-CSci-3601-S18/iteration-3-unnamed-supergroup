@@ -9,7 +9,7 @@ import {EditJournalComponent} from "./edit-journal.component";
 @Component({
     selector: 'app-journal-list-component',
     templateUrl: 'journal-list.component.html',
-    //styleUrls: ['./journal-list.component.css'],
+    styleUrls: ['./journal-list.component.css'],
 })
 
 export class JournalListComponent implements OnInit {
