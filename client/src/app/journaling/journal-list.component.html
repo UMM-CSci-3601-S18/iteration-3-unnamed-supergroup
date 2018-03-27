@@ -25,7 +25,7 @@
                                     <!--Some login needs to do into this to determine if the journal has more, rather
                                      that just splicing anyways and assuming that-->
                                     {{journal.body.slice(0, 90)}}...
-                                    <button mat-raised-button class="viewButton">View</button>
+                                    <button mat-raised-button class="viewButton" (click)="showJournalBody()">View</button>
                                 </mat-card>
                             </div>
                         </div>

@@ -141,6 +141,13 @@ export class JournalListComponent implements OnInit {
     }
      **/
 
+    showJournalBody(): void {
+        //Working here
+        const dialogRef = this.dialog.open(ViewJournalComponent, {
+            width: '500px',
+        });
+    }
+
     ngOnInit(): void {
         this.refreshJournals();
         //this.loadService();
