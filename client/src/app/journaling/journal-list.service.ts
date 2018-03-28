@@ -112,6 +112,12 @@ export class JournalListService {
             }),
         };
 
+        if(this.parameterPresent('email')){
+            this.removeParameter('email')
+            let locationOfQuestionMark = this.journalUrl.indexOf('?')
+            this.journalUrl = this.journalUrl.substring(0, locationOfQuestionMark) + this.journalUrl.substring(locationOfQuestionMark + 1, this.journalUrl.length)
+        }
+
         // Send post request to add a new journal with the journal data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.journalUrl + '/new', newJournal, httpOptions);
     }
