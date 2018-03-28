@@ -38,7 +38,7 @@ export class GoalsComponent implements OnInit{
             endDate: '',
             frequency: '',
             status: false,
-            email: '',
+            email: localStorage.getItem('email'),
             };
         const dialogRef = this.dialog.open(AddGoalComponent, {
             width: '500px',
@@ -117,5 +117,10 @@ export class GoalsComponent implements OnInit{
     getLoginName(){
         var name = window['name'];
         return name;
+    }
+
+    parseStatus(thing: Boolean){
+        if(thing == true) return "Complete"
+        else return "Incomplete"
     }
 }
