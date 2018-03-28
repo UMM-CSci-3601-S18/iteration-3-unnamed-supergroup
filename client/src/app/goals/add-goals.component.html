@@ -58,13 +58,6 @@
                 <mat-form-field>
                     <input matInput #input id="frequency" placeholder="Frequency" [(ngModel)]="data.goal.frequency">
                 </mat-form-field>
-
-                <mat-form-field>
-                    <input matInput #input id="description" placeholder="Goal Description" [(ngModel)]="data.goal.body">
-                    <input type="hidden" value={{userEmail}} [(ngModel)]="data.goal.email">
-                </mat-form-field>
-
-
                 <!-- [mat-dialog-close]="data.user" causes the data.user object to be returned when the dialog is closed. -->
                 <button mat-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
             </mat-card-content>

@@ -165,4 +165,5 @@ export class JournalListComponent implements OnInit {
         var email = localStorage.getItem('email');
         return email;
     }
+
 }

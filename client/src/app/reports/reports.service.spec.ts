@@ -12,23 +12,27 @@ describe('Report service: ', () => {
             _id: "a98ab3747faebe4490d5154",
             mood: 5,
             date: "8/20/2015 20:00",
-            owner: "Ahnaf",
-            email: "ahnaf@ahnaf.com"
+            owner: "Ahnaf"
+
+
+
         },
         {
 
             _id: "a98ab3747faebe4490d5153",
             mood: 3,
             date: "8/20/2018 20:00",
-            owner: "Chuck",
-            email: "chuck@chuck.com"
+            owner: "Chuck"
+
+
         },
         {
             _id: "a98ab3747faebe4490d5151",
             mood: 3,
             date: "8/23/2018 20:00",
-            owner: "Matt",
-            email: "matt@matt.com"
+            owner: "Matt"
+
+
         },
     ];
 

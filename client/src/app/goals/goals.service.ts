@@ -21,17 +21,23 @@ export class GoalsService {
                 'Content-Type': 'application/json'
             }),
         };
+
+        if(this.parameterPresent('email')){
+            this.removeParameter('email')
+            let locationOfQuestionMark = this.goalsUrl.indexOf('?')
+            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
+        }
+
         // Send post request to add a new user with the user data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.goalsUrl + '/new', newGoal, httpOptions);
     }
 
-    getGoalById(id: string): Observable<Goal> {
-        return this.http.get<Goal>(this.goalsUrl + '/' + id);
-    }
     getGoals(): Observable<Goal[]> {
         this.filterByEmail(this.userEmail);
         return this.http.get<Goal[]>(this.goalsUrl);
     }
+
+    //////Starting Here
 
     filterByEmail(userEmail?: string): void {
         if(!(userEmail == null || userEmail === '')) {
@@ -73,5 +79,4 @@ export class GoalsService {
         }
         this.goalsUrl = this.goalsUrl.substring(0, start) + this.goalsUrl.substring(end);
     }
-
 }

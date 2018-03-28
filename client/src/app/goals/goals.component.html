@@ -1,8 +1,6 @@
-<div *ngIf="getLoginEmail() != ''; else promptLogin">
-    <div>
-        <ol>
-            <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal!</button>
-        </ol>
+<div *ngIf="getLoginName() != ''; else promptLogin">
+    <div class="addNewGoalDiv">
+        <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal</button>
     </div>
 
     <mat-card>
@@ -20,7 +18,7 @@
                 <mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>
                 <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
                 <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
-                <mat-panel-description >Status: {{goal.status}}</mat-panel-description>
+                <mat-panel-description >Status: {{parseStatus(goal.status)}}</mat-panel-description>
             </mat-expansion-panel>
         </mat-accordion>
 

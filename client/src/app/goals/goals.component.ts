@@ -18,6 +18,7 @@ export class GoalsComponent implements OnInit{
     // These are the target values used in searching.
     // We should rename them to make that clearer.
     public goalOwner: string;
+    //public email: string =
 
 
     // Inject the GoalListService into this component.
@@ -26,8 +27,19 @@ export class GoalsComponent implements OnInit{
     }
 
     openDialog(): void {
-        const newGoal: Goal = {_id: '', name: '', owner: '', body: '', category: '', startDate: '',
-            endDate: '', frequency: '', status: false, email: ''};
+        const newGoal: Goal =
+            {
+            _id: '',
+            name: '',
+            owner: '',
+            body: '',
+            category: '',
+            startDate: '',
+            endDate: '',
+            frequency: '',
+            status: false,
+            email: localStorage.getItem('email'),
+            };
         const dialogRef = this.dialog.open(AddGoalComponent, {
             width: '500px',
             data: { goal: newGoal }
@@ -102,8 +114,13 @@ export class GoalsComponent implements OnInit{
     //New function to return the name of the active user
     //window.* is not defined, or 'gettable' straight from HTML *ngIf
     //So this function will return that
-    getLoginEmail(){
-        var email = window['email'];
-        return email;
+    getLoginName(){
+        var name = window['name'];
+        return name;
+    }
+
+    parseStatus(thing: Boolean){
+        if(thing == true) return "Complete"
+        else return "Incomplete"
     }
 }

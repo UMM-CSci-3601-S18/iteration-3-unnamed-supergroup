@@ -86,9 +86,9 @@ public class GoalRequestHandler {
                     Boolean status = dbO.getBoolean("status");
                     String email = dbO.getString("email");
 
-
-                    //System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " date=" + date  + ']');
-                    return goalController.addNewGoal(owner, name, body, category, startDate, endDate, frequency, status, email).toString();
+//
+//                    System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " date=" + date  + ']');
+                    return goalController.addNewGoal(owner, name, body, category, startDate, endDate, frequency, status, email);
                 }
                 catch(NullPointerException e)
                 {

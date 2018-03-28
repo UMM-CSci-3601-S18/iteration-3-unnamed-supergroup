@@ -77,9 +77,6 @@ public abstract class SuperController {
 
         FindIterable<Document> matchingItems = collection.find(filterDoc);
 
-
-
-
         return JSON.serialize(matchingItems);
     }
 }

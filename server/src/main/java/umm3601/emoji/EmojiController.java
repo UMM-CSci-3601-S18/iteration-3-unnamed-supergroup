@@ -76,7 +76,7 @@ public class EmojiController extends SuperController {
 
             ObjectId id = newEmoji.getObjectId("_id");
             System.err.println("Successfully added new emoji [_id=" + id + ", owner=" + ownerId + ", mood="
-                + mood + " date=" + date + " email=" + email + ']');
+                + mood + " date=" + date + ", email=" + email + ']');
 
             return JSON.serialize(id);
         } catch(MongoException me) {

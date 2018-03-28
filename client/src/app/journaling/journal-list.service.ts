@@ -14,12 +14,10 @@ export class JournalListService {
     public userEmail: string = localStorage.getItem('email');
 
     constructor(private http: HttpClient) {
-
     }
 
     getJournals(journalSubject?: string): Observable<Journal[]> {
         this.filterBySubject(journalSubject);
-        this.filterByEmail(this.userEmail);
         return this.http.get<Journal[]>(this.journalUrl);
     }
 
@@ -36,32 +34,6 @@ export class JournalListService {
         return this.http.request(this.userUrl).map(res => res.json());
     }
     */
-    filterByEmail(userEmail?: string): void {
-        if(!(userEmail == null || userEmail === '')) {
-            if (this.parameterPresent('email=') ) {
-                // there was a previous search by company that we need to clear
-                this.removeParameter('email=');
-            }
-            if (this.journalUrl.indexOf('?') !== -1) {
-                // there was already some information passed in this url
-                this.journalUrl += 'email=' + userEmail + '&';
-            } else {
-                // this was the first bit of information to pass in the url
-                this.journalUrl += '?email=' + userEmail + '&';
-            }
-        }
-        else {
-            if (this.parameterPresent('email=')) {
-                let start = this.journalUrl.indexOf('email=');
-                const end = this.journalUrl.indexOf('&', start);
-                if (this.journalUrl.substring(start - 1, start) === '?') {
-                    start = start - 1;
-                }
-                this.journalUrl = this.journalUrl.substring(0, start) + this.journalUrl.substring(end + 1);
-            }
-        }
-    }
-
 
     filterBySubject(journalSubject?: string): void {
         if (!(journalSubject == null || journalSubject === '')) {
@@ -112,12 +84,6 @@ export class JournalListService {
             }),
         };
 
-        if(this.parameterPresent('email')){
-            this.removeParameter('email')
-            let locationOfQuestionMark = this.journalUrl.indexOf('?')
-            this.journalUrl = this.journalUrl.substring(0, locationOfQuestionMark) + this.journalUrl.substring(locationOfQuestionMark + 1, this.journalUrl.length)
-        }
-
         // Send post request to add a new journal with the journal data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.journalUrl + '/new', newJournal, httpOptions);
     }
@@ -133,5 +99,4 @@ export class JournalListService {
         // Send post request to add a new journal with the journal data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.journalUrl + '/edit', id, httpOptions);
     }
-
 }
