@@ -3,6 +3,7 @@ import {Emoji} from '../emoji';
 import {HomeService} from "./home.service";
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ResponseComponent} from "./response.component";
+import {AppComponent} from "../app.component";
 
 // Selector will change when we know more
 
@@ -13,12 +14,11 @@ import {ResponseComponent} from "./response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3};
-
-    public userEmail: string = window['email'];
+    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3, email: ''};
+    public email: string = localStorage.getItem('email');
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
-
+        console.log('This is using localStorage: ' + this.email);
     }
 
     openSnackBar(message: string, action: string) {
@@ -81,6 +81,9 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(){
         this.emoji.owner = window['name'];
+        this.emoji.email = window['email'];
+        console.log('Emoji owner: ' + this.emoji.owner);
+        console.log('This is using localStorage: ' + this.email);
     }
 }
 
