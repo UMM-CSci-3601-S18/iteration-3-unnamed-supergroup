@@ -62,8 +62,8 @@ public class GoalController extends SuperController{
 //        return JSON.serialize(matchingGoals);
 //    }
 
-
-    public String addNewGoal(String ownerId, String name, String body, String category, String startDate, String endDate, String frequency, Boolean status) {
+    public String addNewGoal(String ownerId, String name, String body, String category, String startDate,
+                             String endDate, String frequency, Boolean status, String email) {
 
         Document newGoal = new Document();
         newGoal.append("owner", ownerId);
@@ -74,8 +74,7 @@ public class GoalController extends SuperController{
         newGoal.append("endDate", endDate);
         newGoal.append("frequency", frequency);
         newGoal.append("status", status);
-
-
+        newGoal.append("email", email);
 
         try {
             collection.insertOne(newGoal);

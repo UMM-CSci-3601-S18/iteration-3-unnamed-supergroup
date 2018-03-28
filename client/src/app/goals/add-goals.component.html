@@ -29,6 +29,7 @@
 
                 <mat-form-field>
                     <input matInput #input id="description" placeholder="Goal Description" [(ngModel)]="data.goal.body">
+                    <input type="hidden" value={{userEmail}} [(ngModel)]="data.goal.email">
                 </mat-form-field>
 
 

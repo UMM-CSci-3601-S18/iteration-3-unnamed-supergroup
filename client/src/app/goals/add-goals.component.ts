@@ -12,6 +12,8 @@ export class AddGoalComponent {
         @Inject(MAT_DIALOG_DATA) public data: {goal: Goal}) {
     }
 
+    private userEmail: string = localStorage.getItem('email');
+
     onNoClick(): void {
         this.dialogRef.close();
     }

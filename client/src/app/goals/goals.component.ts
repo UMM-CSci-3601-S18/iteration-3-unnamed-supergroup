@@ -26,7 +26,8 @@ export class GoalsComponent implements OnInit{
     }
 
     openDialog(): void {
-        const newGoal: Goal = {_id: '', name: '', owner: '', body: '', category: '', startDate: '', endDate: '', frequency: '', status: false};
+        const newGoal: Goal = {_id: '', name: '', owner: '', body: '', category: '', startDate: '',
+            endDate: '', frequency: '', status: false, email: ''};
         const dialogRef = this.dialog.open(AddGoalComponent, {
             width: '500px',
             data: { goal: newGoal }
