@@ -55,12 +55,15 @@ which allows for functions like signOut to work properly.
             location.reload();
         }
 
+        localStorage.setItem('email', googleUser.getBasicProfile().getEmail());
+
         //Set global variables to be used across the webpage
         window.name = googleUser.getBasicProfile().getName();
         window.email = googleUser.getBasicProfile().getEmail();
 
         //Debug
         console.log(window.name + ' signed in.');
+        console.log('email with local storage: ' + localStorage.getItem('email'));
     }
 
 

@@ -11,6 +11,7 @@ import {environment} from '../../environments/environment';
 export class JournalListService {
     readonly baseUrl: string = environment.API_URL + 'journaling';
     private journalUrl: string = this.baseUrl;
+    public userEmail: string = localStorage.getItem('email');
 
     constructor(private http: HttpClient) {
     }
