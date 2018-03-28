@@ -146,7 +146,7 @@ export class JournalListComponent implements OnInit {
      **/
 
     showJournalBody(header: string, text: string): void {
-        const newJournal: Journal = {_id: '', subject: header, body: text, date: ''};
+        const newJournal: Journal = {_id: '', subject: header, body: text, date: '', email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(ViewJournalComponent, {
             width: '80%',
             data: { journal: newJournal },
@@ -162,7 +162,7 @@ export class JournalListComponent implements OnInit {
     //window.* is not defined, or 'gettable' straight from HTML *ngIf
     //So this function will return that
     getLoginEmail(){
-        var email = window['email'];
+        var email = localStorage.getItem('email');
         return email;
     }
 }
