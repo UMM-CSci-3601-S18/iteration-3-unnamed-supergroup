@@ -65,7 +65,8 @@ import {ViewJournalComponent} from "./journaling/view-journal.component";
         ResponseComponent,
         AddGoalComponent,
         AddJournalComponent,
-        EditJournalComponent
+        EditJournalComponent,
+        ViewJournalComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]
