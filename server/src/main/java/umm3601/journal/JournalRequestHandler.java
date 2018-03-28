@@ -5,6 +5,8 @@ import com.mongodb.util.JSON;
 import org.bson.types.ObjectId;
 import spark.Request;
 import spark.Response;
+
+import java.util.Date;
 //import java.util.Date;
 
 public class JournalRequestHandler {
@@ -63,12 +65,14 @@ public class JournalRequestHandler {
 
                     String subject = dbO.getString("subject");
                     String body = dbO.getString("body");
+                    String email = dbO.getString("email");
 
 
-                    //Date date = dbO.getDate("date");
+                    // Date date = dbO.getDate("date");
 
-                    System.err.println("Adding new journal [subject=" + subject + ", body=" + body + ']');
-                    return journalController.addNewJournal(subject, body).toString();
+                    System.err.println("Adding new journal [subject=" + subject + ", body=" +
+                        body + ", email=" + email + ']');
+                    return journalController.addNewJournal(subject, body, email);
                 }
                 catch(NullPointerException e)
                 {
@@ -108,7 +112,7 @@ public class JournalRequestHandler {
 
 
                     System.err.println("Editing journal [ id=" + id + ", subject=" + subject + ", body=" + body + ']');
-                    return journalController.editJournal(id, subject, body).toString();
+                    return journalController.editJournal(id, subject, body);
                 }
                 catch(NullPointerException e)
                 {
