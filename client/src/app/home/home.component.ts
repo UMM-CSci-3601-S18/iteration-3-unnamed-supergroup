@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     public email: string = localStorage.getItem('email');
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
-        console.log('This is using localStorage: ' + this.email);
+
     }
 
     openSnackBar(message: string, action: string) {
@@ -81,9 +81,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(){
         this.emoji.owner = window['name'];
-        this.emoji.email = window['email'];
-        console.log('Emoji owner: ' + this.emoji.owner);
-        console.log('This is using localStorage: ' + this.email);
     }
 }
 
