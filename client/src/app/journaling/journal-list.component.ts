@@ -143,7 +143,7 @@ export class JournalListComponent implements OnInit {
      **/
 
     showJournalBody(header: string, text: string): void {
-        const newJournal: Journal = {_id: '', subject: header, body: text, date: ''};
+        const newJournal: Journal = {_id: '', subject: header, body: text, date: '', email: ''};
         const dialogRef = this.dialog.open(ViewJournalComponent, {
             width: '80%',
             data: { journal: newJournal },
