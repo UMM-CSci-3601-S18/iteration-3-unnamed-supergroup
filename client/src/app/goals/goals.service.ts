@@ -32,6 +32,10 @@ export class GoalsService {
         return this.http.post<{'$oid': string}>(this.goalsUrl + '/new', newGoal, httpOptions);
     }
 
+    getGoalById(id: string): Observable<Goal> {
+        return this.http.get<Goal>(this.goalsUrl + '/' + id);
+    }
+
     getGoals(): Observable<Goal[]> {
         this.filterByEmail(this.userEmail);
         return this.http.get<Goal[]>(this.goalsUrl);
