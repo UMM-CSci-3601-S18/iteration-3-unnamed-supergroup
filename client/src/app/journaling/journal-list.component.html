@@ -22,10 +22,13 @@
                             <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
                                 <mat-card class="matCardJournals">
                                     Title: {{journal.subject}}
+                                    <br>
+                                    <br>
+
                                     <!--Some login needs to do into this to determine if the journal has more, rather
                                      that just splicing anyways and assuming that-->
-                                    {{journal.body.slice(0, 90)}}...
-                                    <button mat-raised-button class="viewButton" (click)="showJournalBody()">View</button>
+                                    {{journal.body.slice(0, 70)}}...
+                                    <button mat-raised-button class="viewButton" (click)="showJournalBody(journal.subject, journal.body)">View</button>
                                 </mat-card>
                             </div>
                         </div>
