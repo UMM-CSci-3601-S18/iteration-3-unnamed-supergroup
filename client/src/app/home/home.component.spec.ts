@@ -13,13 +13,16 @@ import {HomeService} from "./home.service";
 describe('Adding an emoji', () => {
 
     let component: HomeComponent;
+
     let fixture: ComponentFixture<HomeComponent>;
+
     const newEmoji: Emoji = {
         _id: '',
-        owner: 'Nick',
+        owner: '',
         mood: 3,
         date: '' //date will be created during the test so that it matches what is made in component.addEmoji
     };
+
     const newId = 'nick_id';
 
     let calledEmoji: Emoji;
@@ -27,11 +30,13 @@ describe('Adding an emoji', () => {
     let homeServiceStub: {
         addEmoji: (newEmoji: Emoji) => Observable<{'$oid': string}>
     };
+
     let mockMatDialog: {
         open: (ResponseComponent, any) => {
             afterClosed: () => void
         };
     };
+
     beforeEach(() => {
         calledEmoji = null;
         // stub UserService for test purposes
@@ -69,13 +74,12 @@ describe('Adding an emoji', () => {
         });
     }));
 
-    /*
     it('calls HomeService.addEmoji', () => {
         expect(calledEmoji).toBeNull();
 
+        component.emoji._id = newEmoji._id;
         component.emoji.mood = newEmoji.mood;
         component.emoji.owner = newEmoji.owner;
-
         const date = new Date();
         newEmoji.date = date.toString(); //set date for new emoji right before calling the method
 
@@ -83,6 +87,4 @@ describe('Adding an emoji', () => {
 
         expect(calledEmoji).toEqual(newEmoji);
     });
-    */
-
 });

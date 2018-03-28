@@ -214,7 +214,7 @@ describe('Adding a goal', () => {
         });
     }));
 /*
-// Can't figure out why this test is not passing
+    // Says function .addGoal does not exist?
 
     it('calls GoalsService.addGoal in GoalComponent.openDialog()', () => {
         expect(calledGoal).toBeNull();
