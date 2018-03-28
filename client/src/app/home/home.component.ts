@@ -3,7 +3,6 @@ import {Emoji} from '../emoji';
 import {HomeService} from "./home.service";
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ResponseComponent} from "./response.component";
-import {AppComponent} from "../app.component";
 
 // Selector will change when we know more
 

@@ -80,9 +80,9 @@ export class ReportsComponent implements OnInit {
     //New function to return the name of the active user
     //window.* is not defined, or 'gettable' straight from HTML *ngIf
     //So this function will return that
-    getLoginName(){
-        var name = window['name'];
-        return name;
+    getLoginEmail(){
+        var email = window['email'];
+        return email;
     }
 
 }

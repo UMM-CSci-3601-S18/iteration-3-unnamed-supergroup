@@ -1,5 +1,5 @@
 <!-- Don't allow the user to see anything if they aren't logged in. -->
-<div *ngIf="getLoginName() != ''; else promptLogin">
+<div *ngIf="getLoginEmail() != ''; else promptLogin">
     <body>
         <div>
             <button id = "addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
