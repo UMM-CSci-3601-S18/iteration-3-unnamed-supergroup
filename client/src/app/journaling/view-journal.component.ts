@@ -16,4 +16,5 @@ export class ViewJournalComponent {
     onNoClick(): void {
         this.dialogRef.close();
     }
+
 }
