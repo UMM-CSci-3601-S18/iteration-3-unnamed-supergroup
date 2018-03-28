@@ -3,4 +3,5 @@ export interface Journal {
     subject: string;
     body: string;
     date: any;
+    email: string;
 }

@@ -11,7 +11,8 @@ describe('Home service: ', () => {
            _id: "a98ab3747faebe4490d5154",
             mood: 5,
             date: "8/20/2015 20:00",
-            owner: "Ahnaf"
+            owner: "Ahnaf",
+            email: "ahnaf@ahnaf.com"
 
 
 
@@ -21,7 +22,8 @@ describe('Home service: ', () => {
             _id: "a98ab3747faebe4490d5153",
             mood: 3,
             date: "8/20/2018 20:00",
-            owner: "Chuck"
+            owner: "Chuck",
+            email: "chuck@chuck.com"
 
 
         },
@@ -29,7 +31,8 @@ describe('Home service: ', () => {
             _id: "a98ab3747faebe4490d5151",
             mood: 3,
             date: "8/23/2018 20:00",
-            owner: "Matt"
+            owner: "Matt",
+            email: "matt@matt.com"
 
 
         },
@@ -109,7 +112,8 @@ describe('Home service: ', () => {
             _id: '',
             mood: 4,
             date: "6/20/2012 20:00",
-            owner: "Chuck"
+            owner: "Chuck",
+            email: "chuck@chuck.com"
         };
 
         emojiListService.addEmoji(newEmoji).subscribe(

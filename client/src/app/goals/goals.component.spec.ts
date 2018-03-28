@@ -35,7 +35,8 @@ describe('Goal list', () => {
                     startDate: "Wed Dec 24 2014 05:08:39 GMT-0600 (CST)",
                     endDate: "Thu Dec 03 1992 09:18:58 GMT-0600 (CST)",
                     frequency: "Everyday",
-                    status: true
+                    status: true,
+                    email: "brittany@brittany.com"
                 },
                 {
                     _id: "5aa0b36e50d6094af8e91aba",
@@ -46,7 +47,8 @@ describe('Goal list', () => {
                     startDate: "Fri Nov 28 1975 16:13:36 GMT-0600 (CST)",
                     endDate: "Tue May 14 1974 08:51:10 GMT-0500 (CDT)",
                     frequency: "Everyday",
-                    status: false
+                    status: false,
+                    email: "cathleen@cathleen.com"
                 },
                 {
                     _id: "5aa0b36e3f417437ce3c502a",
@@ -57,7 +59,8 @@ describe('Goal list', () => {
                     startDate: "Thu Jan 30 1986 09:39:30 GMT-0600 (CST)",
                     endDate: "Tue Jul 30 2013 18:14:50 GMT-0500 (CDT)",
                     frequency: "Everyday",
-                    status: true
+                    status: true,
+                    email: "martinez@martinez.com"
                 }
             ])
         };
@@ -158,7 +161,8 @@ describe('Adding a goal', () => {
         startDate: "Sun Feb 14 1999 14:50:05 GMT-0600 (CST)",
         endDate: "Tue Jun 01 2010 05:50:57 GMT-0500 (CDT)",
         frequency: "Once a year",
-        status: false
+        status: false,
+        email: "enid@enid.com"
     };
     const newId = 'enid_id';
 

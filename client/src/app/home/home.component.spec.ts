@@ -20,7 +20,8 @@ describe('Adding an emoji', () => {
         _id: '',
         owner: '',
         mood: 3,
-        date: '' //date will be created during the test so that it matches what is made in component.addEmoji
+        date: '', //date will be created during the test so that it matches what is made in component.addEmoji
+        email: ''
     };
 
     const newId = 'nick_id';

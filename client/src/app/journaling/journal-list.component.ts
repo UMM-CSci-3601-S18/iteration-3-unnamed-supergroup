@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 import {AddJournalComponent} from './add-journal.component';
 import {EditJournalComponent} from "./edit-journal.component";
+import {environment} from "../../environments/environment";
 
 @Component({
     selector: 'app-journal-list-component',
@@ -28,7 +29,9 @@ export class JournalListComponent implements OnInit {
 
     // Inject the JournalListService into this component.
     constructor(public journalListService: JournalListService, public dialog: MatDialog) {
-        console.log('This is what journal list thinks email is: ' + localStorage.getItem('email'));
+        if(environment.production === false) {
+            console.log('This is what journal list thinks email is: ' + localStorage.getItem('email'));
+        }
     }
 
     isHighlighted(journal: Journal): boolean {
@@ -36,7 +39,7 @@ export class JournalListComponent implements OnInit {
     }
 
     openDialog(): void {
-        const newJournal: Journal = {_id: '', subject: '', body: '', date: ''};
+        const newJournal: Journal = {_id: '', subject: '', body: '', date: '', email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(AddJournalComponent, {
             width: '500px',
             data: { journal: newJournal }
@@ -45,6 +48,7 @@ export class JournalListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             this.journalListService.addNewJournal(result).subscribe(
                 addJournalResult => {
+                    console.log('This is the email of the result: ' + result.email);
                     this.highlightedID = addJournalResult;
                     this.refreshJournals();
                 },
@@ -58,7 +62,7 @@ export class JournalListComponent implements OnInit {
 
     openDialogReview(_id: string, subject: string, body: string, date: string): void {
         console.log(_id + ' ' + subject);
-        const newJournal: Journal = {_id: _id, subject: subject, body: body, date: date};
+        const newJournal: Journal = {_id: _id, subject: subject, body: body, date: date, email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(EditJournalComponent, {
             width: '500px',
             data: { journal: newJournal }
