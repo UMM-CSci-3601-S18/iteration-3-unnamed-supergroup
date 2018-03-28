@@ -1,8 +1,6 @@
 <div *ngIf="getLoginName() != ''; else promptLogin">
-    <div>
-        <ol>
-            <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal!</button>
-        </ol>
+    <div class="addNewGoalDiv">
+        <button id = "addNewGoal" mat-raised-button (click)="openDialog()">Add a Goal</button>
     </div>
 
     <mat-card>
