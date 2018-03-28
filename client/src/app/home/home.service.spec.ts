@@ -12,10 +12,7 @@ describe('Home service: ', () => {
             mood: 5,
             date: "8/20/2015 20:00",
             owner: "Ahnaf",
-            email: "ahnaf@ahnaf.com"
-
-
-
+            email: "ahnaf@gmail.com",
         },
         {
 
@@ -23,18 +20,14 @@ describe('Home service: ', () => {
             mood: 3,
             date: "8/20/2018 20:00",
             owner: "Chuck",
-            email: "chuck@chuck.com"
-
-
+            email: "chuck@gmail.com",
         },
         {
             _id: "a98ab3747faebe4490d5151",
             mood: 3,
             date: "8/23/2018 20:00",
             owner: "Matt",
-            email: "matt@matt.com"
-
-
+            email: "matt@gmail.com",
         },
     ];
 
@@ -113,7 +106,7 @@ describe('Home service: ', () => {
             mood: 4,
             date: "6/20/2012 20:00",
             owner: "Chuck",
-            email: "chuck@chuck.com"
+            email: "chuck@gmail.com",
         };
 
         emojiListService.addEmoji(newEmoji).subscribe(

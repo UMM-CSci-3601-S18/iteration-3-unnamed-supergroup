@@ -22,7 +22,7 @@ describe('Goal  service: ', () => {
             endDate: "Thu Dec 03 1992 09:18:58 GMT-0600 (CST)",
             frequency: "Everyday",
             status: true,
-            email: "brittany@brittany.com"
+            email: "brittany@gmail.com",
         },
         {
             _id: "5aa0b36e50d6094af8e91aba",
@@ -34,7 +34,7 @@ describe('Goal  service: ', () => {
             endDate: "Tue May 14 1974 08:51:10 GMT-0500 (CDT)",
             frequency: "Everyday",
             status: false,
-            email: "cathleen@cathleen.com"
+            email: "cathleen@gmail.com",
         },
         {
             _id: "5aa0b36e3f417437ce3c502a",
@@ -46,7 +46,7 @@ describe('Goal  service: ', () => {
             endDate: "Tue Jul 30 2013 18:14:50 GMT-0500 (CDT)",
             frequency: "Everyday",
             status: true,
-            email: "martinez@martinez.com"
+            email: "martinez@gmail.com",
         },
     ];
     const mGoals: Goal[] = testGoals.filter(goal =>
@@ -139,7 +139,7 @@ describe('Goal  service: ', () => {
                 endDate: "Tue Jun 01 2010 05:50:57 GMT-0500 (CDT)",
                 frequency: "Once a year",
                 status: false,
-                email: "enid@enid.com"
+                email: "enid@gmail.com",
             };
 
         goalService.addGoal(newGoal).subscribe(

@@ -28,21 +28,21 @@ describe('Reports list', () => {
                     owner: 'Nick',
                     mood: 3,
                     date: 'd', //date will be created during the test so that it matches what is made in component.addEmoji
-                    email: 'nick@nick.com'
+                    email: "nick@gmail.com",
                 },
                 {
                     _id: 'd',
                     owner: 'Roch',
                     mood: 4,
                     date: '', //date will be created during the test so that it matches what is made in component.addEmoji
-                    email: 'roch@roch.com'
+                    email: "roch@gmail.com",
                 },
                 {
                     _id: 'd',
                     owner: 'Leo',
                     mood: 5,
                     date: 'e', //date will be created during the test so that it matches what is made in component.addEmoji
-                    email: 'leo@leo.com'
+                    email: "leo@gmail.com",
                 }
             ])
         };
