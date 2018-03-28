@@ -8,4 +8,5 @@ export interface Goal {
     endDate: string;
     frequency: string;
     status: boolean;
+    email: string;
 }

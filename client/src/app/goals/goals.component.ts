@@ -18,6 +18,7 @@ export class GoalsComponent implements OnInit{
     // These are the target values used in searching.
     // We should rename them to make that clearer.
     public goalOwner: string;
+    //public email: string =
 
 
     // Inject the GoalListService into this component.
@@ -26,7 +27,19 @@ export class GoalsComponent implements OnInit{
     }
 
     openDialog(): void {
-        const newGoal: Goal = {_id: '', name: '', owner: '', body: '', category: '', startDate: '', endDate: '', frequency: '', status: false};
+        const newGoal: Goal =
+            {
+            _id: '',
+            name: '',
+            owner: '',
+            body: '',
+            category: '',
+            startDate: '',
+            endDate: '',
+            frequency: '',
+            status: false,
+            email: '',
+            };
         const dialogRef = this.dialog.open(AddGoalComponent, {
             width: '500px',
             data: { goal: newGoal }
