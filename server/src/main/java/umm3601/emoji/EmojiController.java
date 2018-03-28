@@ -63,19 +63,20 @@ public class EmojiController extends SuperController {
     }*/
 
 
-    public String addNewEmoji(String ownerId, int mood, String date) {
+    public String addNewEmoji(String ownerId, int mood, String date, String email) {
 
         Document newEmoji = new Document();
         newEmoji.append("owner", ownerId);
         newEmoji.append("mood", mood);
         newEmoji.append("date", date);
+        newEmoji.append("email", email);
 
         try {
             collection.insertOne(newEmoji);
 
             ObjectId id = newEmoji.getObjectId("_id");
             System.err.println("Successfully added new emoji [_id=" + id + ", owner=" + ownerId + ", mood="
-                + mood + " date=" + date + ']');
+                + mood + " date=" + date + " email=" + email + ']');
 
             return JSON.serialize(id);
         } catch(MongoException me) {

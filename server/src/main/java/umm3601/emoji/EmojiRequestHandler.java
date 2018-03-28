@@ -81,9 +81,11 @@ public class EmojiRequestHandler {
                     //This is a problem and should not be this way but here ya go
                     int mood = dbO.getInt("mood");
                     String date = dbO.getString("date");
+                    String email = dbO.getString("email");
 
-                    System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " date=" + date  + ']');
-                    return emojiController.addNewEmoji(owner, mood, date).toString();
+                    System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood + " date=" + date  +
+                        " email=" + email + ']');
+                    return emojiController.addNewEmoji(owner, mood, date, email);
                 }
                 catch(NullPointerException e)
                 {
