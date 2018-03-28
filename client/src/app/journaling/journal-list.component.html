@@ -1,34 +1,38 @@
 <!-- Don't allow the user to see anything if they aren't logged in. -->
 <div *ngIf="getLoginName() != ''; else promptLogin">
-    <body>
-        <div>
-            <button id = "addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
-        </div>
 
         <div layout-gt-sm="row">
             <div flex-gt-sm="80" flex-offset-gt-sm="10">
-                <mat-card>
+                <mat-card class="matCardMain">
                     <mat-card-title id="journal-list-title">Journals</mat-card-title>
+
                     <mat-divider></mat-divider>
                     <mat-card-content>
-                       <mat-form-field>
+
+                        <mat-form-field class="matFormFieldSubject">
                             <input matInput id="journalSubject" #input type="text" placeholder="Filter by subject" (input)="journalSubject = $event.target.value">
                         </mat-form-field>
-                        <mat-form-field>
+                        <mat-form-field class="matFormFieldBody">
                             <input matInput id="journalBody" #input type="text" placeholder="Filter by body" (input)="journalBody = $event.target.value">
                         </mat-form-field>
 
-                        <mat-accordion *ngIf="journals; else journalsError" >
-                            <mat-expansion-panel #elem class="journals" [id]="journal._id['$oid']" [expanded]="this.isHighlighted(journal)" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title >{{journal.subject}}</mat-panel-title>
+                        <button id="addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
 
-                                </mat-expansion-panel-header>
-                                <mat-panel-description>Body: {{journal.body}}</mat-panel-description>
-                                <mat-panel-description>Date: {{journal.date}}</mat-panel-description>
-                                <mat-panel-description><button mat-raised-button (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit Journal</button> </mat-panel-description>
-                            </mat-expansion-panel>
-                        </mat-accordion>
+                        <div *ngIf="journals; else journalsError">
+                            <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
+                                <mat-card class="matCardJournals">
+                                    Title: {{journal.subject}}
+                                    <br>
+                                    <br>
+
+                                    <!--Some login needs to do into this to determine if the journal has more, rather
+                                     that just splicing anyways and assuming that-->
+                                    {{journal.body.slice(0, 70)}}...
+                                    <button mat-raised-button class="viewButton" (click)="showJournalBody(journal.subject, journal.body)">View</button>
+                                </mat-card>
+                            </div>
+                        </div>
+
                         <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
                         <ng-template #journalsError>
                             <mat-error>
@@ -43,7 +47,6 @@
                 </mat-card>
             </div>
         </div>
-    </body>
 </div>
 
 <!-- What to display if the user isn't logged in -->

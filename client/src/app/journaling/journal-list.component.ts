@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 import {AddJournalComponent} from './add-journal.component';
 import {EditJournalComponent} from "./edit-journal.component";
+import {ViewJournalComponent} from "./view-journal.component";
 
 @Component({
     selector: 'app-journal-list-component',
@@ -140,6 +141,14 @@ export class JournalListComponent implements OnInit {
         );
     }
      **/
+
+    showJournalBody(header: string, text: string): void {
+        const newJournal: Journal = {_id: '', subject: header, body: text, date: ''};
+        const dialogRef = this.dialog.open(ViewJournalComponent, {
+            width: '80%',
+            data: { journal: newJournal },
+        });
+    }
 
     ngOnInit(): void {
         this.refreshJournals();

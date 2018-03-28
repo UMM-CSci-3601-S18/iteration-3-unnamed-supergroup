@@ -26,6 +26,7 @@ import {EditJournalComponent} from "./journaling/edit-journal.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
+import {ViewJournalComponent} from "./journaling/view-journal.component";
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         GoalsComponent,
         AddGoalComponent,
         EditJournalComponent,
+        ViewJournalComponent,
     ],
     providers: [
         UserListService,
@@ -63,7 +65,8 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         ResponseComponent,
         AddGoalComponent,
         AddJournalComponent,
-        EditJournalComponent
+        EditJournalComponent,
+        ViewJournalComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]
