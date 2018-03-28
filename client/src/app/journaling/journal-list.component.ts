@@ -28,7 +28,7 @@ export class JournalListComponent implements OnInit {
 
     // Inject the JournalListService into this component.
     constructor(public journalListService: JournalListService, public dialog: MatDialog) {
-
+        console.log('This is what journal list thinks email is: ' + localStorage.getItem('email'));
     }
 
     isHighlighted(journal: Journal): boolean {
