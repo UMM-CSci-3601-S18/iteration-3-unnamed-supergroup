@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "angular-google-signin": "^0.1.5"
+  }
+}
