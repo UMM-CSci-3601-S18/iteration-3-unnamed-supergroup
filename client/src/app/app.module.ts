@@ -32,6 +32,7 @@ import {ViewJournalComponent} from "./journaling/view-journal.component";
 
 import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
+import {AboutComponent} from "./about/about.component";
 
 let config = new AuthServiceConfig([
     {
@@ -67,6 +68,7 @@ export function provideConfig() {
         JournalListComponent,
         AddJournalComponent,
         GoalsComponent,
+        AboutComponent,
         AddGoalComponent,
         EditJournalComponent,
         ViewJournalComponent,
