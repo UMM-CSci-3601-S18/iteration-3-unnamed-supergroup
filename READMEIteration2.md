@@ -24,3 +24,5 @@ What to do next:
 - Fix e2e test for edit a journal entry
 - Add e2e test for reports
 - More java coverage
+- Add a secondary check on the server side for the email being defined
+    - If it's not make sure not to return anything to the client
