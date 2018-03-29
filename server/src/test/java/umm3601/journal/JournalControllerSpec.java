@@ -110,12 +110,12 @@ public class JournalControllerSpec extends ControllerSuperSpec {
 
     @Test
     public void editJournalTest() {
-        String jsonId = journalController.editJournal(nicId.toHexString(), "I'm giving them all C++'s", "nic@college.com");
+        String jsonId = journalController.editJournal(nicId.toHexString(), "Java is the best language", "nic@college.com");
         System.out.println(jsonId);
         ObjectId id = parseObjectId(jsonId);
         String jsonResult = journalController.getItem(id.toHexString());
         Document nic1 = Document.parse(jsonResult);
-        assertEquals("Subject should match", "I'm giving them all C++'s", nic1.getString("subject"));
+        assertEquals("Subject should match", "Java is the best language", nic1.getString("subject"));
 
     }
 }
