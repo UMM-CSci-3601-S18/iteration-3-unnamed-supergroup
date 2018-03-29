@@ -126,7 +126,7 @@
 //         element(by.id('nameField')).sendKeys('Tracy Kim');
 //         // Need to use backspace because the default value is -1. If that changes, this will change too.
 //         element(by.id('ageField')).sendKeys(protractor.Key.BACK_SPACE).then(function() {
-//             element(by.id('ageField')).sendKeys(protractor.Key.BACK_SPACE).then(function() {
+//             element(by.id('ageField')).sendKeys(protrac() => {tor.Key.BACK_SPACE).then(function() {
 //                 element(by.id('ageField')).sendKeys('26');
 //             });
 //         });

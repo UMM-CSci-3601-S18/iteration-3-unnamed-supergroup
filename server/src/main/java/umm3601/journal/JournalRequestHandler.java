@@ -109,7 +109,7 @@ public class JournalRequestHandler {
 
 
                     System.err.println("Editing journal [ id=" + id + ", subject=" + subject + ", body=" + body + ']');
-                    return journalController.editJournal(id, subject, body).toString();
+                    return journalController.editJournal(id, subject, body);
                 }
                 catch(NullPointerException e)
                 {
