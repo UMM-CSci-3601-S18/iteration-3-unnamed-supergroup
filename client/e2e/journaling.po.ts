@@ -22,7 +22,7 @@ export class JournalingPage {
     }
 
     editJournal(subject: string, body: string) {
-        const input = element(by.id('editJournal'));
+        const input = element(by.id('editButton'));
         input.click();
         const subjectInput = element(by.id('subjectField'));
         subjectInput.click();
@@ -30,7 +30,7 @@ export class JournalingPage {
         const bodyInput = element(by.id('bodyField'));
         bodyInput.click();
         bodyInput.sendKeys(body);
-        const button = element(by.css('#confirmEditJournalButton'));
+        const button = element(by.css('#confirmAddJournalButton'));
         const buttonWasThere = button.isDisplayed();
         button.click();
         return buttonWasThere;

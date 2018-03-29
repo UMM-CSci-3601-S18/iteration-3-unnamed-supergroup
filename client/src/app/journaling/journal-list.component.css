@@ -18,7 +18,7 @@
     height: 200px;
     padding: 20px;
     font-size: 20px;
-    background-color: lightgrey;
+    background-color: lightcyan;
 }
 
 .matCardMain{
@@ -51,5 +51,5 @@
 }
 
 #addNewJournal{
-    background-color: lightgreen;
+    background-color: lightcyan;
 }

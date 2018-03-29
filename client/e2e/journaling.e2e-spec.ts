@@ -30,8 +30,6 @@ describe('Journaling Page', () => {
         expect(page.getJournalText()).toContain('Title: I am slowly becoming sentient');
     });
 
-    // Does not work
-
     it('Should be able to edit a journal entry', ()=> {
         JournalingPage.navigateTo();
         var buttonExisted = page.editJournal('Wow', 'Big wow');
