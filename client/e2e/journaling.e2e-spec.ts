@@ -11,9 +11,9 @@ describe('Journaling Page', () => {
         page = new JournalingPage();
     });
 
-    it('Should be called the Sunshine Journal', () => {
+    it('Should be titled Journals', () => {
         JournalingPage.navigateTo();
-        expect(JournalingPage.getPageTitle()).toBe('Sunshine Journal');
+        expect(JournalingPage.getPageTitle()).toBe('Journals');
     });
 
     it('Should be able to add a journal entry', ()=> {

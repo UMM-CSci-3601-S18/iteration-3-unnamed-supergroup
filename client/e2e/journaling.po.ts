@@ -23,7 +23,7 @@ export class JournalingPage {
     }
 
     static getPageTitle(): promise.Promise<string> {
-        const title = element(by.css('title'));
+        const title = element(by.css('#journal-list-title'));
         return title.getText();
     }
 
