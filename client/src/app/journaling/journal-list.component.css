@@ -42,7 +42,12 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
+}
 
+.editButton{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
 }
 
 #addNewJournal{
