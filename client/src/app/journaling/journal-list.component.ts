@@ -31,7 +31,7 @@ export class JournalListComponent implements OnInit {
     // Inject the JournalListService into this component.
     constructor(public journalListService: JournalListService, public dialog: MatDialog) {
         if(environment.production === false) {
-            console.log('This is what journal list thinks email is: ' + localStorage.getItem('email'));
+
         }
     }
 
@@ -161,8 +161,6 @@ export class JournalListComponent implements OnInit {
     //This function returns true when the user is signed in and false otherwise
     isUserLoggedIN(): boolean {
         var email = localStorage.getItem('email');
-        console.log(email);
-        console.log(email != '');
         return ((email != '') && (typeof email != 'undefined'));
     }
 }

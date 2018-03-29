@@ -80,8 +80,6 @@ export class ReportsComponent implements OnInit {
 
     isUserLoggedIN(): boolean {
         var email = localStorage.getItem('email');
-        console.log(email);
-        console.log(email != '');
         return ((email != '') && (typeof email != 'undefined'));
     }
 }
