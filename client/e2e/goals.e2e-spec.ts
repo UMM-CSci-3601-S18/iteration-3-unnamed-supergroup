@@ -25,11 +25,15 @@ describe('', () => {
         page = new GoalPage();
     });
 
-    // Does not work
-
-    it('Should add a goal and then be able to view that goal.', () => {
+    it('Should add a goal.', () => {
         GoalPage.navigateTo();
         expect(page.testAddNewGoal("Go to bed early", "Every day")).toBeTruthy();
+    });
+
+    // Doesn't work
+
+    it('Should view a goal.', () => {
+        GoalPage.navigateTo();
         expect(page.clickElementByCss(".mat-expansion-panel")).toBeTruthy();
         expect(page.getFirstGoalTitle()).toBe('Go to bed early');
     });
