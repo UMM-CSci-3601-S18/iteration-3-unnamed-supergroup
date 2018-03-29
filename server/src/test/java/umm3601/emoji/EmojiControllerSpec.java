@@ -113,7 +113,7 @@ public class EmojiControllerSpec {
 
     @Test
     public void addEmojiTest(){
-        String newId = emojiController.addNewEmoji("Matt2",5,"8/20/2015 14:00");
+        String newId = emojiController.addNewEmoji("Matt2",5,"8/20/2015 14:00", "");
 
         assertNotNull("Add new emoji should return true when an emoji is added,", newId);
         Map<String, String[]> argMap = new HashMap<>();

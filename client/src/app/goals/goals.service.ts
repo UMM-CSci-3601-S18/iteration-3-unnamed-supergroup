@@ -10,6 +10,7 @@ import {Goal} from "./goals";
 export class GoalsService {
     readonly baseUrl: string = environment.API_URL + 'goals';
     private goalsUrl: string = this.baseUrl;
+    private userEmail: string = localStorage.getItem('email');
 
     constructor(private http: HttpClient) {
     }
@@ -20,6 +21,13 @@ export class GoalsService {
                 'Content-Type': 'application/json'
             }),
         };
+
+        if(this.parameterPresent('email')){
+            this.removeParameter('email')
+            let locationOfQuestionMark = this.goalsUrl.indexOf('?')
+            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
+        }
+
         // Send post request to add a new user with the user data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.goalsUrl + '/new', newGoal, httpOptions);
     }
@@ -28,10 +36,51 @@ export class GoalsService {
         return this.http.get<Goal>(this.goalsUrl + '/' + id);
     }
 
-    getGoals(goalOwner?: string): Observable<Goal[]> {
-        if(goalOwner) {
-            return this.http.get<Goal[]>(this.goalsUrl + '?owner=' + goalOwner);
-        }
+    getGoals(): Observable<Goal[]> {
+        this.filterByEmail(this.userEmail);
         return this.http.get<Goal[]>(this.goalsUrl);
+    }
+
+    //////Starting Here
+
+    filterByEmail(userEmail?: string): void {
+        if(!(userEmail == null || userEmail === '')) {
+            if (this.parameterPresent('email=') ) {
+                // there was a previous search by company that we need to clear
+                this.removeParameter('email=');
+            }
+            if (this.goalsUrl.indexOf('?') !== -1) {
+                // there was already some information passed in this url
+                this.goalsUrl += 'email=' + userEmail + '&';
+            } else {
+                // this was the first bit of information to pass in the url
+                this.goalsUrl += '?email=' + userEmail + '&';
+            }
+        }
+        else {
+            if (this.parameterPresent('email=')) {
+                let start = this.goalsUrl.indexOf('email=');
+                const end = this.goalsUrl.indexOf('&', start);
+                if (this.goalsUrl.substring(start - 1, start) === '?') {
+                    start = start - 1;
+                }
+                this.goalsUrl = this.goalsUrl.substring(0, start) + this.goalsUrl.substring(end + 1);
+            }
+        }
+    }
+
+    private parameterPresent(searchParam: string) {
+        return this.goalsUrl.indexOf(searchParam) !== -1;
+    }
+
+    private removeParameter(searchParam: string) {
+        const start = this.goalsUrl.indexOf(searchParam);
+        let end = 0;
+        if (this.goalsUrl.indexOf('&') !== -1) {
+            end = this.goalsUrl.indexOf('&', start) + 1;
+        } else {
+            end = this.goalsUrl.indexOf('&', start);
+        }
+        this.goalsUrl = this.goalsUrl.substring(0, start) + this.goalsUrl.substring(end);
     }
 }
