@@ -1,6 +1,6 @@
 <!-- Don't allow the user to see anything if they aren't logged in. -->
 <div *ngIf="isUserLoggedIN(); else promptLogin">
-    <body>
+
 
         <div layout-gt-sm="row">
             <div flex-gt-sm="80" flex-offset-gt-sm="10">
@@ -29,6 +29,7 @@
                                     <!--Some login needs to do into this to determine if the journal has more, rather
                                      that just splicing anyways and assuming that-->
                                     {{journal.body.slice(0, 70)}}...
+                                    <button mat-raised-button class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
                                     <button mat-raised-button class="viewButton" (click)="showJournalBody(journal.subject, journal.body)">View</button>
                                 </mat-card>
                             </div>
@@ -48,7 +49,7 @@
                 </mat-card>
             </div>
         </div>
-    </body>
+
 </div>
 
 <!-- What to display if the user isn't logged in -->
