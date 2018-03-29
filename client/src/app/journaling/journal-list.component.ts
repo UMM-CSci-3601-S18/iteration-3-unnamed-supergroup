@@ -158,12 +158,11 @@ export class JournalListComponent implements OnInit {
         //this.loadService();
     }
 
-    //New function to return the name of the active user
-    //window.* is not defined, or 'gettable' straight from HTML *ngIf
-    //So this function will return that
-    getLoginEmail(){
+    //This function returns true when the user is signed in and false otherwise
+    isUserLoggedIN(): boolean {
         var email = localStorage.getItem('email');
-        return email;
+        console.log(email);
+        console.log(email != '');
+        return ((email != '') && (typeof email != 'undefined'));
     }
-
 }

@@ -82,6 +82,13 @@ export class HomeComponent implements OnInit {
     ngOnInit(){
         this.emoji.owner = window['name'];
     }
+
+    isUserLoggedIN(): boolean {
+        var email = localStorage.getItem('email');
+        console.log(email);
+        console.log(email != '');
+        return ((email != '') && (typeof email != 'undefined'));
+    }
 }
 
 

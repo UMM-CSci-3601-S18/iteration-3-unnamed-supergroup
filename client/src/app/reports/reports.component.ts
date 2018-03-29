@@ -13,6 +13,7 @@ export class ReportsComponent implements OnInit {
     // These are public so that tests can reference them (.spec.ts)
     public emojis: Emoji[];
     public filteredEmojis: Emoji[];
+    public userEmail: string = localStorage.getItem('email');
 
     // These are the target values used in searching.
     // We should rename them to make that clearer.
@@ -77,12 +78,10 @@ export class ReportsComponent implements OnInit {
         this.refreshEmojis();
     }
 
-    //New function to return the name of the active user
-    //window.* is not defined, or 'gettable' straight from HTML *ngIf
-    //So this function will return that
-    getLoginName(){
-        var name = window['name'];
-        return name;
+    isUserLoggedIN(): boolean {
+        var email = localStorage.getItem('email');
+        console.log(email);
+        console.log(email != '');
+        return ((email != '') && (typeof email != 'undefined'));
     }
-
 }
