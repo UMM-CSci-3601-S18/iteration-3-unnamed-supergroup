@@ -22,9 +22,9 @@ export class GoalPage {
      }
 
      getFirstGoalTitle() {
-         const elementToGet = element.all(by.css(".mat-expansion-panel")).first();
+         const elementToGet = element(by.className(".mat-expansion-panel-header-title")).first();
          elementToGet.click();
-         elementToGet.getAttribute('mat-panel-title');
+         //elementToGet.getAttribute('mat-panel-title');
          return elementToGet.getText();
      }
 
