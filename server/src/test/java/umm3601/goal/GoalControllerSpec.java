@@ -93,7 +93,8 @@ public class GoalControllerSpec extends ControllerSuperSpec{
             "8/19/2015 14:00",
             "8/20/2015 14:00",
             "Weekly",
-            false);
+            false,
+            "");
 
         assertNotNull("Add new goal should return true when a goal is added,", newId);
         Map<String, String[]> argMap = new HashMap<>();
