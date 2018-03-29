@@ -19,7 +19,21 @@ export class JournalingPage {
         const buttonWasThere = button.isDisplayed();
         button.click();
         return buttonWasThere;
+    }
 
+    editJournal(subject: string, body: string) {
+        const input = element(by.id('editJournal'));
+        input.click();
+        const subjectInput = element(by.id('subjectField'));
+        subjectInput.click();
+        subjectInput.sendKeys(subject);
+        const bodyInput = element(by.id('bodyField'));
+        bodyInput.click();
+        bodyInput.sendKeys(body);
+        const button = element(by.css('#confirmEditJournalButton'));
+        const buttonWasThere = button.isDisplayed();
+        button.click();
+        return buttonWasThere;
     }
 
     static getPageTitle(): promise.Promise<string> {

@@ -25,6 +25,8 @@ describe('', () => {
         page = new GoalPage();
     });
 
+    // Does not work
+
     it('Should add a goal and then be able to view that goal.', () => {
         GoalPage.navigateTo();
         expect(page.addNewGoal("Go to bed early", "Every day")).toBeTruthy();
