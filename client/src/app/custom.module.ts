@@ -11,7 +11,7 @@ import {
     // MatTooltipMoudule
 } from '@angular/material';
 
-import {GoogleSignInComponent} from 'angular-google-signin';
+//import {GoogleSignInComponent} from 'angular-google-signin';
 
 import { FlexLayoutModule, } from '@angular/flex-layout';
 
@@ -63,7 +63,7 @@ const COVALENT_MODULES: any[] = [
         FLEX_LAYOUT_MODULES,
     ],
     declarations: [
-        GoogleSignInComponent
+        //GoogleSignInComponent
 
     ],
     exports: [
@@ -71,7 +71,7 @@ const COVALENT_MODULES: any[] = [
         MATERIAL_MODULES,
         COVALENT_MODULES,
         FLEX_LAYOUT_MODULES,
-        GoogleSignInComponent,
+        //GoogleSignInComponent,
     ]
 })
 
