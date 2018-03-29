@@ -71,6 +71,7 @@ public class Server {
         redirect.get("/resources", "/");
         redirect.get("/journaling", "/");
         redirect.get("/goals", "/");
+        get("/google83434285ffe11fe1.html", (req, res) -> "/google83434285ffe11fe1.html");
 
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
