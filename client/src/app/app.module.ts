@@ -28,6 +28,25 @@ import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
 import {ViewJournalComponent} from "./journaling/view-journal.component";
 
+//import {GoogleSignInComponent} from "angular-google-signin";
+
+import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
+
+let config = new AuthServiceConfig([
+    {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider("Google-OAuth-Client-Id")
+    },
+    {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider("Facebook-App-Id")
+    }
+]);
+
+export function provideConfig() {
+    return config;
+}
 
 @NgModule({
     imports: [
@@ -35,6 +54,7 @@ import {ViewJournalComponent} from "./journaling/view-journal.component";
         HttpClientModule,
         Routing,
         CustomModule,
+        SocialLoginModule,
     ],
     declarations: [
         AppComponent,
@@ -50,6 +70,8 @@ import {ViewJournalComponent} from "./journaling/view-journal.component";
         AddGoalComponent,
         EditJournalComponent,
         ViewJournalComponent,
+        // GoogleSignInComponent,
+
     ],
     providers: [
         UserListService,
