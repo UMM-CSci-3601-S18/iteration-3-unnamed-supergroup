@@ -27,7 +27,9 @@ describe('', () => {
 
     it('should add an entry', () => {
         HomePage.navigateTo();
-        expect(element(by.id('3emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        HomePage.selectTheSlider();
+
+        expect(element(by.id('4emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
         page.clickSubmitButton();
     });
 

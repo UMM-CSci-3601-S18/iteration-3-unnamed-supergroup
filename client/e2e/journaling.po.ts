@@ -10,10 +10,12 @@ export class JournalingPage {
         const input = element(by.id('addNewJournal'));
         input.click();
         const subjectInput = element(by.id('subjectField'));
+        subjectInput.click();
         subjectInput.sendKeys(subject);
-        const bodyInput = element(by.id('subjectField'));
+        const bodyInput = element(by.id('bodyField'));
+        bodyInput.click();
         bodyInput.sendKeys(body);
-        const button = element(by.id('confirmJournalAddButton'));
+        const button = element(by.css('#confirmAddJournalButton'));
         const buttonWasThere = button.isDisplayed();
         button.click();
         return buttonWasThere;

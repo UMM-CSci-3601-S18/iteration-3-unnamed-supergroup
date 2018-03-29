@@ -21,6 +21,19 @@ export class GoalPage {
          return goal;
      }
 
+     getFirstGoalTitle() {
+         const elementToGet = element.all(by.css(".mat-expansion-panel")).first();
+         elementToGet.click();
+         elementToGet.getAttribute('mat-panel-title');
+         return elementToGet.getText();
+     }
+
+     clickElementByCss(css: string) {
+         const elementToClick = element(by.css(css));
+         elementToClick.click();
+         return elementToClick.isPresent();
+     }
+
     static clickElement(elementId: string){
         const input = element(by.id(elementId));
         input.click();
@@ -40,5 +53,18 @@ export class GoalPage {
         return browser.executeScript(setStyle, element(byObject).getWebElement(), 'color: red; background-color: yellow;');
     }
 
+    addNewGoal(name: string, frequency: string) {
+        const input = element(by.id('addNewGoal'));
+        input.click();
+        const nameInput = element(by.id('name'));
+        nameInput.sendKeys(name);
+        const frequencyInput = element(by.id('frequency'));
+        frequencyInput.click();
+        frequencyInput.sendKeys(frequency);
+        const button = element(by.id('confirmAddGoalButton'));
+        const buttonWasThere = button.isDisplayed();
+        button.click();
+        return buttonWasThere;
+    }
 
 }
