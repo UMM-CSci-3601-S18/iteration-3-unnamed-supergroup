@@ -22,7 +22,7 @@ export class GoalPage {
      }
 
      getFirstGoalTitle() {
-         const elementToGet = element(by.className(".mat-expansion-panel-header-title")).first();
+         const elementToGet = element(by.className(".mat-expansion-panel-title")).first();
          elementToGet.click();
          //elementToGet.getAttribute('mat-panel-title');
          return elementToGet.getText();
@@ -53,7 +53,7 @@ export class GoalPage {
         return browser.executeScript(setStyle, element(byObject).getWebElement(), 'color: red; background-color: yellow;');
     }
 
-    addNewGoal(name: string, frequency: string) {
+    testAddNewGoal(name: string, frequency: string) {
         const input = element(by.id('addNewGoal'));
         input.click();
         const nameInput = element(by.id('name'));
