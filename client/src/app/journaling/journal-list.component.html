@@ -1,5 +1,6 @@
 <!-- Don't allow the user to see anything if they aren't logged in. -->
-<div *ngIf="getLoginName() != ''; else promptLogin">
+<div *ngIf="isUserLoggedIN(); else promptLogin">
+    <body>
 
         <div layout-gt-sm="row">
             <div flex-gt-sm="80" flex-offset-gt-sm="10">
@@ -47,6 +48,7 @@
                 </mat-card>
             </div>
         </div>
+    </body>
 </div>
 
 <!-- What to display if the user isn't logged in -->
@@ -54,4 +56,3 @@
     <img class="loginEmoji" src="https://image.flaticon.com/icons/svg/260/260205.svg" alt="Sunshine Journal">
     <p class="loginEmojiText">Please sign in with your google account to access Sunshine Journal</p>
 </ng-template>
-
