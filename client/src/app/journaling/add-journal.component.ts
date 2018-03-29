@@ -8,10 +8,13 @@ import {Journal} from './journal';
 })
 
 export class AddJournalComponent {
+
     constructor(
         public dialogRef: MatDialogRef<AddJournalComponent>,
         @Inject(MAT_DIALOG_DATA) public data: {journal: Journal}) {
     }
+
+    public userEmail = localStorage.getItem('email');
 
     onNoClick(): void {
         this.dialogRef.close();

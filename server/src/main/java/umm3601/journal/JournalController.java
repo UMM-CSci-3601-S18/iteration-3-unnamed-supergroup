@@ -74,7 +74,7 @@ public class JournalController extends SuperController {
         Document newJournal = new Document();
         newJournal.append("subject",subject);
         newJournal.append("body",body);
-        newJournal.append("email", email);
+        newJournal.append("email",email);
 
         Date now = new Date();
         newJournal.append("date", now.toString());

@@ -123,4 +123,9 @@ export class GoalsComponent implements OnInit{
         if(thing == true) return "Complete"
         else return "Incomplete"
     }
+
+    isUserLoggedIN(): boolean {
+        var email = localStorage.getItem('email');
+        return ((email != '') && (typeof email != 'undefined'));
+    }
 }

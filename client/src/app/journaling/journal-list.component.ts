@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 import {AddJournalComponent} from './add-journal.component';
 import {EditJournalComponent} from "./edit-journal.component";
+import {environment} from "../../environments/environment";
 import {ViewJournalComponent} from "./view-journal.component";
 
 @Component({
@@ -29,7 +30,9 @@ export class JournalListComponent implements OnInit {
 
     // Inject the JournalListService into this component.
     constructor(public journalListService: JournalListService, public dialog: MatDialog) {
+        if(environment.production === false) {
 
+        }
     }
 
     isHighlighted(journal: Journal): boolean {
@@ -37,7 +40,7 @@ export class JournalListComponent implements OnInit {
     }
 
     openDialog(): void {
-        const newJournal: Journal = {_id: '', subject: '', body: '', date: '', email: ''};
+        const newJournal: Journal = {_id: '', subject: '', body: '', date: '', email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(AddJournalComponent, {
             width: '500px',
             data: { journal: newJournal }
@@ -57,9 +60,9 @@ export class JournalListComponent implements OnInit {
         });
     }
 
-    openDialogReview(_id: string, subject: string, body: string, date: string, email: string): void {
+    openDialogReview(_id: string, subject: string, body: string, date: string): void {
         console.log(_id + ' ' + subject);
-        const newJournal: Journal = {_id: _id, subject: subject, body: body, date: date, email: email};
+        const newJournal: Journal = {_id: _id, subject: subject, body: body, date: date, email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(EditJournalComponent, {
             width: '500px',
             data: { journal: newJournal }
@@ -143,7 +146,7 @@ export class JournalListComponent implements OnInit {
      **/
 
     showJournalBody(header: string, text: string): void {
-        const newJournal: Journal = {_id: '', subject: header, body: text, date: '', email: ''};
+        const newJournal: Journal = {_id: '', subject: header, body: text, date: '', email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(ViewJournalComponent, {
             width: '80%',
             data: { journal: newJournal },
@@ -155,12 +158,9 @@ export class JournalListComponent implements OnInit {
         //this.loadService();
     }
 
-    //New function to return the name of the active user
-    //window.* is not defined, or 'gettable' straight from HTML *ngIf
-    //So this function will return that
-    getLoginName(){
-        var name = window['name'];
-        return name;
+    //This function returns true when the user is signed in and false otherwise
+    isUserLoggedIN(): boolean {
+        var email = localStorage.getItem('email');
+        return ((email != '') && (typeof email != 'undefined'));
     }
-
 }
