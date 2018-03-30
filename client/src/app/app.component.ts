@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {gapi} from 'gapi-client';
-import {environment} from "../environments/environment.prod";
+import {environment} from "../environments/environment";
 
 @Component({
     selector: 'app-root',
