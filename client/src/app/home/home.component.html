@@ -11,7 +11,7 @@
                     <p>Use the slider to select how you feel.</p>
 
                     <!-- Show correct emoji image depending on the value of the mat-slider -->
-                    <img  id="{{matslider.value}}emoji" src="assets/Emojis/{{matslider.value}}.png" style="width:33%;height:33%">
+                    <img  id="{{emoji.mood}}emoji" src="assets/Emojis/{{emoji.mood}}.png" style="width:33%;height:33%">
                     <br/>
 
                     <!-- This is the slider that the user will choose to determine their mo od value/ emoji
@@ -21,8 +21,6 @@
 
                     <h2>I'm feeling {{parseEmotion(emoji.mood)}}.</h2>
 
-
-                    <mat-slider class="slider" thumbLabel tick-interval="1" min="1" max="6" step="1" value="6" #matslider [(ngModel)]="emoji.mood"></mat-slider>
                     <button mat-raised-button (click)="emoji.mood = updateEmoji(-1, emoji.mood)">Previous</button>
                     <button mat-raised-button (click)="emoji.mood = updateEmoji(1, emoji.mood)">Next</button>
 
