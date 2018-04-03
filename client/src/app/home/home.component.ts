@@ -87,6 +87,14 @@ export class HomeComponent implements OnInit {
         var email = localStorage.getItem('email');
         return ((email != '') && (typeof email != 'undefined'));
     }
+
+    updateEmoji(num: number, mood: number){
+        var currentNumber = mood;
+        currentNumber = currentNumber + num;
+        if(currentNumber < 1) currentNumber = 6;
+        if(currentNumber > 6) currentNumber = 1;
+        return currentNumber;
+    }
 }
 
 

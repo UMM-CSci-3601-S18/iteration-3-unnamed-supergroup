@@ -19,9 +19,13 @@
                     mat-slider is a component in angular we used.
                     -->
 
-                    <h2>I'm feeling {{parseEmotion(matslider.value)}}.</h2>
+                    <h2>I'm feeling {{parseEmotion(emoji.mood)}}.</h2>
+
 
                     <mat-slider class="slider" thumbLabel tick-interval="1" min="1" max="6" step="1" value="6" #matslider [(ngModel)]="emoji.mood"></mat-slider>
+                    <button mat-raised-button (click)="emoji.mood = updateEmoji(-1, emoji.mood)">Previous</button>
+                    <button mat-raised-button (click)="emoji.mood = updateEmoji(1, emoji.mood)">Next</button>
+
                     <br/>
                     <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
                 </mat-card-content>
