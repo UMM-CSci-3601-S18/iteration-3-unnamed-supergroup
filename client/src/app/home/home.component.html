@@ -12,11 +12,12 @@
 
                     <!-- Control Gestures -->
                     <div class="swipe-box"
-                         (swipeleft)="emoji.mood = updateEmoji(-1, emoji.mood)"
-                         (swiperight)="emoji.mood = updateEmoji(1, emoji.mood)"
+                         (swipeleft)="emoji.mood = updateEmoji(1, emoji.mood)"
+                         (swiperight)="emoji.mood = updateEmoji(-1, emoji.mood)"
                     >
+
                         <!--Show correct emoji based on the corresponding mood-->
-                        <img  id="{{emoji.mood}}emoji" src="assets/Emojis/{{emoji.mood}}.png" style="width:33%;height:33%">
+                        <img draggable="false" id="{{emoji.mood}}emoji" src="assets/Emojis/{{emoji.mood}}.png" style="width:33%;height:33%">
                     </div>
 
                     <br/>
