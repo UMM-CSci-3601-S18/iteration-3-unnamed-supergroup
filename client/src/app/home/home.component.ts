@@ -73,10 +73,12 @@ export class HomeComponent implements OnInit {
                 return "happy";
             case 6:
                 return "radiant";
+            case 7:
+                return "angry";
         }
 
         //If for some reason it gets here..
-        return null;
+        return '';
     }
 
     ngOnInit(){
@@ -91,8 +93,8 @@ export class HomeComponent implements OnInit {
     updateEmoji(num: number, mood: number){
         var currentNumber = mood;
         currentNumber = currentNumber + num;
-        if(currentNumber < 1) currentNumber = 6;
-        if(currentNumber > 6) currentNumber = 1;
+        if(currentNumber < 1) currentNumber = 7;
+        if(currentNumber > 7) currentNumber = 1;
         return currentNumber;
     }
 }

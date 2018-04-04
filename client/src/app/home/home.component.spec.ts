@@ -1,4 +1,4 @@
-import {TestBed, ComponentFixture, async} from '@angular/core/testing';
+/*import {TestBed, ComponentFixture, async} from '@angular/core/testing';
 import {HomeComponent} from './home.component';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -41,6 +41,8 @@ describe('Adding an emoji', () => {
     beforeEach(() => {
         calledEmoji = null;
         // stub UserService for test purposes
+I'm feeling happy.
+￼Previous ￼Next
         homeServiceStub = {
             addEmoji: (emojiToAdd: Emoji) => {
                 calledEmoji = emojiToAdd;
@@ -72,6 +74,8 @@ describe('Adding an emoji', () => {
             fixture = TestBed.createComponent(HomeComponent);
             component = fixture.componentInstance;
             fixture.detectChanges();
+I'm feeling happy.
+￼Previous ￼Next
         });
     }));
 
