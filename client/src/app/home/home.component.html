@@ -8,16 +8,18 @@
                 <mat-card-content id="headerInfo">
                     <!-- Only display first name -->
                     <h1><strong>Hello {{emoji.owner.split(" ")[0]}}! How are you feeling today?</strong></h1>
-                    <p>Use the slider to select how you feel.</p>
+                    <p>Swipe left or right to find your feeling.</p>
 
-                    <!-- Show correct emoji image depending on the value of the mat-slider -->
-                    <img  id="{{emoji.mood}}emoji" src="assets/Emojis/{{emoji.mood}}.png" style="width:33%;height:33%">
+                    <!-- Control Gestures -->
+                    <div class="swipe-box"
+                         (swipeleft)="emoji.mood = updateEmoji(-1, emoji.mood)"
+                         (swiperight)="emoji.mood = updateEmoji(1, emoji.mood)"
+                    >
+                        <!--Show correct emoji based on the corresponding mood-->
+                        <img  id="{{emoji.mood}}emoji" src="assets/Emojis/{{emoji.mood}}.png" style="width:33%;height:33%">
+                    </div>
+
                     <br/>
-
-                    <!-- This is the slider that the user will choose to determine their mo od value/ emoji
-                    1 = Very Sad, 2= sad, 3= Normal, 4= Happy, 5= Very Happy
-                    mat-slider is a component in angular we used.
-                    -->
 
                     <h2>I'm feeling {{parseEmotion(emoji.mood)}}.</h2>
 
