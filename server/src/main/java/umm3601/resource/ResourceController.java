@@ -14,9 +14,6 @@ import java.util.Iterator;
 import java.util.Map;
 import static com.mongodb.client.model.Filters.eq;
 
-
-
-
 public class ResourceController extends SuperController {
 
     private final Gson gson;
@@ -59,73 +56,6 @@ public class ResourceController extends SuperController {
     }
     */
 
-
-
-    // get a resources by its ObjectId, not used by client, for potential future use
-    public String getResource(String id) {
-        FindIterable<Document> jsonItems
-            = resourceCollection
-            .find(eq("_id", new ObjectId(id)));
-
-        Iterator<Document> iterator = jsonItems.iterator();
-        if (iterator.hasNext()) {
-            Document resource = iterator.next();
-            return resource.toJson();
-        } else {
-            // We didn't find the desired item
-            return null;
-        }
-    }
-
-
-    // Helper method which iterates through the collection, receiving all
-    // documents if no query parameter is specified. If the resources parameter is
-    // specified, then the collection is filtered so only documents of that
-    // specified resources are found.
-    public String getResources(Map<String, String[]> queryParams) {
-
-        Document filterDoc = new Document();
-
-        // "resource" will be a key to a string object, where the object is
-        // what we get when people enter their resources as a text body.
-        // "resource" is the name of the resource
-        if (queryParams.containsKey("resourceName")) {
-            String targetContent = (queryParams.get("resourceName")[0]);
-            Document contentRegQuery = new Document();
-            contentRegQuery.append("$regex", targetContent);
-            contentRegQuery.append("$options", "i");
-            filterDoc = filterDoc.append("resourceName", contentRegQuery);
-        }
-
-        // Phone is the phone number, also a String
-        if (queryParams.containsKey("resourcePhone")) {
-            String targetContent = (queryParams.get("resourcePhone")[0]);
-            Document contentRegQuery = new Document();
-            contentRegQuery.append("$regex", targetContent);
-            contentRegQuery.append("$options", "i");
-            filterDoc = filterDoc.append("resourcePhone", contentRegQuery);
-        }
-
-        // url is the title of the resource
-        if (queryParams.containsKey("resourceUrl")) {
-            String targetContent = (queryParams.get("resourceUrl")[0]);
-            Document contentRegQuery = new Document();
-            contentRegQuery.append("$regex", targetContent);
-            contentRegQuery.append("$options", "i");
-            filterDoc = filterDoc.append("resourceUrl", contentRegQuery);
-        }
-
-        // the body of the resource
-        if (queryParams.containsKey("resourceBody")) {
-            boolean targetStatus = Boolean.parseBoolean(queryParams.get("resourceBody")[0]);
-            filterDoc = filterDoc.append("resourceBody", targetStatus);
-        }
-
-        // FindIterable comes from mongo, Document comes from Gson
-        FindIterable<Document> matchingResources = resourceCollection.find(filterDoc);
-
-        return JSON.serialize(matchingResources);
-    }
 
 
     /**
