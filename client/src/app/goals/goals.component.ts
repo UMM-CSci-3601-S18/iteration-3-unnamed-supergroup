@@ -122,7 +122,7 @@ export class GoalsComponent implements OnInit{
     }
 
     parseStatus(thing: Boolean){
-        if(thing == true) return "Complete"
+        if(thing == true) return "Complete";
         else return "Incomplete"
     }
 
@@ -132,7 +132,7 @@ export class GoalsComponent implements OnInit{
     }
 
     editGoal(_id: string, name: string, owner: string, body: string, category: string, startDate: string, endDate: string, frequency: string, email: string, status: boolean) {
-        const updatedGoal: Goal = {_id: _id, name: name, owner: owner, body: body, category: category, startDate: startDate, endDate: endDate, frequency: frequency, email: email, status: true};
+        const updatedGoal: Goal = {_id: _id, name: name, owner: owner, body: body, category: category, startDate: startDate, endDate: endDate, frequency: frequency, email: email, status: status};
         this.goalsService.editGoal(updatedGoal).subscribe(
             editGoalResult => {
                 this.highlightedID = editGoalResult;
