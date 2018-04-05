@@ -20,6 +20,8 @@ export class GoalsComponent implements OnInit{
     public goalOwner: string;
     //public email: string =
 
+    private highlightedID: {'$oid': string} = { '$oid': '' };
+
 
     // Inject the GoalListService into this component.
     constructor(public goalsService: GoalsService, public dialog: MatDialog) {
@@ -128,4 +130,18 @@ export class GoalsComponent implements OnInit{
         var email = localStorage.getItem('email');
         return ((email != '') && (typeof email != 'undefined'));
     }
+
+    editGoal(_id: string, name: string, owner: string, body: string, category: string, startDate: string, endDate: string, frequency: string, email: string, status: boolean) {
+        const updatedGoal: Goal = {_id: _id, name: name, owner: owner, body: body, category: category, startDate: startDate, endDate: endDate, frequency: frequency, email: email, status: true};
+        this.goalsService.editGoal(updatedGoal).subscribe(
+            editGoalResult => {
+                this.highlightedID = editGoalResult;
+                this.refreshGoals();
+            },
+            err => {
+                console.log('There was an error editing the goal.');
+                console.log('The error was ' + JSON.stringify(err));
+            });
+    }
+
 }
