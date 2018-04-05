@@ -12,7 +12,10 @@ import {UserListService} from './users/user-list.service';
 import {Routing} from './app.routes';
 import {APP_BASE_HREF} from '@angular/common';
 import {ResourcesComponent} from "./resources/resources.component";
+import {AddResourcesComponent} from "./resources/add-resources.component";
 import {CustomModule} from './custom.module';
+
+
 import {AddUserComponent} from './users/add-user.component';
 import {ResponseComponent} from "./home/response.component";
 import {ReportsComponent} from "./reports/reports.component";
@@ -72,6 +75,7 @@ export function provideConfig() {
         AddGoalComponent,
         EditJournalComponent,
         ViewJournalComponent,
+        AddResourcesComponent,
         // GoogleSignInComponent,
 
     ],
@@ -90,8 +94,9 @@ export function provideConfig() {
         AddGoalComponent,
         AddJournalComponent,
         EditJournalComponent,
-        ViewJournalComponent
-        //add resource component would go here//
+        ViewJournalComponent,
+        AddResourcesComponent,
+
     ],
     bootstrap: [AppComponent]
 })
