@@ -1,4 +1,4 @@
-package umm3601.response;
+package umm3601.resource;
 
 import com.google.gson.Gson;
 import com.mongodb.MongoException;
@@ -10,18 +10,20 @@ import umm3601.SuperController;
 
 import java.util.Date;
 
-public class ResponseController extends SuperController {
+public class ResourceController extends SuperController {
 
-    public ResponseController(MongoDatabase database) {
+    public ResourceController(MongoDatabase database) {
         gson = new Gson();
         this.database = database;
         collection = database.getCollection("responses");
     }
 
-    public String addNewResponse(String nameOfResponse, String link, String email) {
+    public String addNewResponse(String nameOfResponse, String link, String email, String phone, String body) {
         Document newResponse = new Document();
         newResponse.append("name", nameOfResponse);
-        newResponse.append("link", link);
+        newResponse.append("url", link);
+        newResponse.append("body", body);
+        newResponse.append("phone", phone);
         newResponse.append("email", email);
 
         Date now = new Date();
