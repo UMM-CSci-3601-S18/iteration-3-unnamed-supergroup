@@ -33,3 +33,96 @@ What to do next:
 - 3 = happy
 - 4 = meh
 - 5 = sad
+
+##Emoji Animation Html
+                        <!--Emoji Mood 1 -->
+                        <div *ngIf="emoji.mood == 1">
+                            <!-- If swiped from Left -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-left" id="emoji1FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+
+                            <!-- If swiped from Right -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-right" id="emoji1FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Emoji Mood 2 -->
+                        <div *ngIf="emoji.mood == 2">
+                            <!-- If swiped from Left -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-left" id="emoji2FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+
+                            <!-- If swiped from Right -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-right" id="emoji2FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Emoji Mood 3 -->
+                        <div *ngIf="emoji.mood == 3">
+                            <!-- If swiped from Left -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-left" id="emoji3FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+
+                            <!-- If swiped from Right -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-right" id="emoji3FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+
+                            <!-- Special case: When the object is first created -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'none'">
+                                <img draggable="false" id="currentEmoji" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                            </div>
+                        </div>
+
+                        <!--Emoji Mood 4 -->
+                        <div *ngIf="emoji.mood == 4">
+                            <!-- If swiped from Left -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-left" id="emoji4FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+
+                            <!-- If swiped from Right -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-right" id="emoji4FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Emoji Mood 5 -->
+                        <div *ngIf="emoji.mood == 5">
+                            <!-- If swiped from Left -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-left" id="emoji5FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+
+                            <!-- If swiped from Right -->
+                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
+                                <div class="w3-container w3-center" style="overflow-x:hidden">
+                                    <img draggable="false" class="w3-animate-right" id="emoji5FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
+                                </div>
+                            </div>
+                        </div>
