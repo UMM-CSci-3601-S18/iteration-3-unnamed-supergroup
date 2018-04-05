@@ -23,8 +23,8 @@ export class GoalsService {
         };
 
         if(this.parameterPresent('email')){
-            this.removeParameter('email')
-            let locationOfQuestionMark = this.goalsUrl.indexOf('?')
+            this.removeParameter('email');
+            let locationOfQuestionMark = this.goalsUrl.indexOf('?');
             this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
         }
 
@@ -90,6 +90,12 @@ export class GoalsService {
                 'Content-Type': 'application/json'
             }),
         };
+
+        if(this.parameterPresent('email')){
+            this.removeParameter('email');
+            let locationOfQuestionMark = this.goalsUrl.indexOf('?');
+            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
+        }
 
         console.log(id);
         // Send post request to add a new journal with the journal data as the body with specified headers.
