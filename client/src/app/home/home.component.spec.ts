@@ -1,4 +1,4 @@
-/*import {TestBed, ComponentFixture, async} from '@angular/core/testing';
+import {TestBed, ComponentFixture, async} from '@angular/core/testing';
 import {HomeComponent} from './home.component';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -20,6 +20,7 @@ describe('Adding an emoji', () => {
         _id: '',
         owner: '',
         mood: 3,
+        intensity: 1,
         date: "", //date will be created during the test so that it matches what is made in component.addEmoji
         email: null,
     };
@@ -41,8 +42,6 @@ describe('Adding an emoji', () => {
     beforeEach(() => {
         calledEmoji = null;
         // stub UserService for test purposes
-I'm feeling happy.
-￼Previous ￼Next
         homeServiceStub = {
             addEmoji: (emojiToAdd: Emoji) => {
                 calledEmoji = emojiToAdd;
@@ -74,8 +73,6 @@ I'm feeling happy.
             fixture = TestBed.createComponent(HomeComponent);
             component = fixture.componentInstance;
             fixture.detectChanges();
-I'm feeling happy.
-￼Previous ￼Next
         });
     }));
 
@@ -84,6 +81,7 @@ I'm feeling happy.
 
         component.emoji._id = newEmoji._id;
         component.emoji.mood = newEmoji.mood;
+        component.emoji.intensity = newEmoji.intensity;
         component.emoji.owner = newEmoji.owner;
         const date = new Date();
         newEmoji.date = date.toString(); //set date for new emoji right before calling the method
