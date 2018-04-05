@@ -125,7 +125,7 @@ public class GoalRequestHandler {
                     String name = dbO.getString("name");
                     String category = dbO.getString("category");
                     String frequency = dbO.getString("frequency");
-                    String status = dbO.getString("status");
+                    Boolean status = dbO.getBoolean("status");
                     String body = dbO.getString("body");
 
 
