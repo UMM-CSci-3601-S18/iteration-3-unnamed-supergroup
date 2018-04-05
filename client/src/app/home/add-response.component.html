@@ -1,0 +1,19 @@
+<div class="add-response" layout-gt-sm="row">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+        <mat-card>
+            <mat-card-title>New Response</mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput #input id="nameField" placeholder="Name of response" [(ngModel)]="data.response.name">
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput #input id="linkField" matTextareaAutosize placeholder="Add your link here" [(ngModel)]="data.response.link"></textarea>
+                </mat-form-field>
+
+                <button mat-button id="confirmAddResponseButton" [mat-dialog-close]="data.response" type="button">Add response</button>
+            </mat-card-content>
+        </mat-card>
+        <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
+    </div>
+</div>

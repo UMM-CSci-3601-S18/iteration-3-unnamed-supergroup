@@ -24,6 +24,7 @@
                     <mat-slider class="slider" thumbLabel tick-interval="1" min="1" max="6" step="1" value="6" #matslider [(ngModel)]="emoji.mood"></mat-slider>
                     <br/>
                     <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
+                    <button mat-raised-button id="responseAdd" color="primary" (click)="makeResponseDialog()" type="button">Add a new response link</button>
                 </mat-card-content>
             </mat-card>
         </div>

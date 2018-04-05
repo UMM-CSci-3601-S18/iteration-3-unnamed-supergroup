@@ -3,6 +3,8 @@ import {Emoji} from '../emoji';
 import {HomeService} from "./home.service";
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ResponseComponent} from "./response.component";
+import {Response} from "../response";
+import {AddResponseComponent} from "./add-response.component";
 
 // Selector will change when we know more
 
@@ -15,6 +17,7 @@ export class HomeComponent implements OnInit {
 
     public emoji: Emoji = {_id: '', owner: '', date: '', mood: 5, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
+    public response: Response = {_id: '', link: '', email: '', name: ''};
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
 
@@ -54,6 +57,10 @@ export class HomeComponent implements OnInit {
             });
 
             this.openDialog();
+    }
+
+    makeResponseDialog(): void {
+
     }
 
     //This function is used to turn the number of the matslider into a word to be
