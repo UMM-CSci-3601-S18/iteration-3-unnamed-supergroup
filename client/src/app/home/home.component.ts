@@ -13,8 +13,9 @@ import {ResponseComponent} from "./response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 5, email: localStorage.getItem('email')};
+    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
+    //
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
 
@@ -56,25 +57,30 @@ export class HomeComponent implements OnInit {
             this.openDialog();
     }
 
-    //This function is used to turn the number of the matslider into a word to be
-    //displayed in the html.
-    parseEmotion(num: number){
-        switch(num)
-        {
-            case 1:
-                return "anxious";
-            case 2:
-                return "sad";
-            case 3:
-                return "down";
-            case 4:
-                return "meh";
-            case 5:
-                return "happy";
-            case 6:
-                return "radiant";
-            case 7:
-                return "angry";
+    //This function takes in the mood and intensity, and returns the english interpretation
+    //of mood and intensity, which is then displayed in html.
+    parseEmotionIntensity(mood: number, intensity: number){
+        if(mood == 1){
+            if(intensity == 1) {return "Frustrated"}
+            else return "Angry"
+        }
+        else if(mood == 2){
+            if(intensity == 1) {return "Anxious"}
+            else return "Worried"
+        }
+        else if(mood == 3){
+            if(intensity == 1) {return "Happy"}
+            else if(intensity == 2) {return "Content"}
+            else return "Ecstatic"
+        }
+        else if(mood == 4){
+            if(intensity == 1) {return "Meh"}
+            else return "Bleh"
+        }
+        else if(mood == 5){
+            if(intensity == 1) {return "Unhappy"}
+            else if (intensity == 2) {return "Sad"}
+            else return "Miserable"
         }
 
         //If for some reason it gets here..
@@ -90,12 +96,38 @@ export class HomeComponent implements OnInit {
         return ((email != '') && (typeof email != 'undefined'));
     }
 
-    updateEmoji(num: number, mood: number){
+    //This function pertains to mood carousel. It allows for the value of emoji.mood to
+    //'wrap around' back to the start, so that it is in an infinite loop.
+    updateEmojiMood(num: number, mood: number){
         var currentNumber = mood;
         currentNumber = currentNumber + num;
-        if(currentNumber < 1) currentNumber = 7;
-        if(currentNumber > 7) currentNumber = 1;
+        if(currentNumber < 1) currentNumber = 5;
+        if(currentNumber > 5) currentNumber = 1;
         return currentNumber;
+    }
+
+    //This function pertains to intensity carousel. It allows the value of emoji.intensity to
+    //'wrap around', but due to variable amounts of intensities across emotions, keeps track of
+    //which only have 2 total intensities, and 3 total intensities.
+    updateEmojiIntensity(num: number, intensity: number, mood: number){
+        var currentNumber= intensity;
+        currentNumber = currentNumber + num;
+
+        //Find which moods have 2 intensities verses 3 intensities.
+        switch(mood){
+            case 1:
+            case 2:
+            case 4:
+                if(currentNumber < 1) currentNumber = 2;
+                if(currentNumber > 2) currentNumber = 1;
+                return currentNumber;
+
+            case 3:
+            case 5:
+                if(currentNumber < 1) currentNumber = 3;
+                if(currentNumber > 3) currentNumber = 1;
+                return currentNumber;
+        }
     }
 }
 
