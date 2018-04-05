@@ -19,6 +19,7 @@
                 <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
                 <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
                 <mat-panel-description >Status: {{parseStatus(goal.status)}}</mat-panel-description>
+                <!-- This button will only be displayed if the goal is not completed -->
                 <mat-panel-description><button mat-raised-button id="completeGoal" *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button></mat-panel-description>
             </mat-expansion-panel>
         </mat-accordion>
