@@ -22,3 +22,10 @@ mat-card-content img {
     font-size: 24px;
 }
 
+.headerText{
+    font-size: 100%;
+}
+
+.moodText{
+    font-size: 100%;
+}

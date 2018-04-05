@@ -98,12 +98,10 @@ export class HomeComponent implements OnInit {
                 return "left";
             }
             else{
-                console.log("left");
                 return "left";
             }
         }
         else if(mood == this.lastMood) {
-            console.log("none");
             return "none";
         }
         else {

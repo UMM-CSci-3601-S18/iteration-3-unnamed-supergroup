@@ -8,8 +8,9 @@
             <mat-card>
                 <mat-card-content id="headerInfo">
                     <!-- Only display first name -->
-                    <h1><strong>Hello {{emoji.owner.split(" ")[0]}}! How are you feeling today?</strong></h1>
-                    <p>Swipe left or right to find your feeling.</p>
+                    <h1 class="headerText"><strong>Hello {{emoji.owner.split(" ")[0]}}!
+                        <br> How are you feeling today?</strong></h1>
+                    <p class="headerText" style="font-size: 100%"><i>Swipe left or right to find your feeling.</i></p>
 
                     <!-- Control Gestures -->
                     <div class="swipe-box"
@@ -19,105 +20,13 @@
                          (swipedown)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)"
                     >
 
-                        <!-- Blank Emoji
-                        <img draggable="false" id="emojiBlank" src="assets/Emojis/1/1.png" style="display:none;width:33%;height:33%">-->
+                        <img draggable="false" id="currentEmoji" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
 
-                        <!--Emoji Mood 1 -->
-                        <div *ngIf="emoji.mood == 1">
-                            <!-- If swiped from Left -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-left" id="emoji1FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-
-                            <!-- If swiped from Right -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-right" id="emoji1FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Emoji Mood 2 -->
-                        <div *ngIf="emoji.mood == 2">
-                            <!-- If swiped from Left -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-left" id="emoji2FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-
-                            <!-- If swiped from Right -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-right" id="emoji2FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!--Emoji Mood 3 -->
-                        <div *ngIf="emoji.mood == 3">
-                            <!-- If swiped from Left -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-left" id="emoji3FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-
-                            <!-- If swiped from Right -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-right" id="emoji3FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-
-                            <!-- Special case: When the object is first created -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'none'">
-                                <img draggable="false" id="currentEmoji" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                            </div>
-                        </div>
-
-                        <!--Emoji Mood 4 -->
-                        <div *ngIf="emoji.mood == 4">
-                            <!-- If swiped from Left -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-left" id="emoji4FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-
-                            <!-- If swiped from Right -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-right" id="emoji4FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!--Emoji Mood 5 -->
-                        <div *ngIf="emoji.mood == 5">
-                            <!-- If swiped from Left -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'left'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-left" id="emoji5FromLeft" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-
-                            <!-- If swiped from Right -->
-                            <div *ngIf="parseSwipeDirection(emoji.mood) == 'right'">
-                                <div class="w3-container w3-center" style="overflow-x:hidden">
-                                    <img draggable="false" class="w3-animate-right" id="emoji5FromRight" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width:33%;height:33%">
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <br/>
 
-                    <h2>I'm feeling {{parseEmotionIntensity(emoji.mood, emoji.intensity)}}.</h2>
+                    <h2 class="moodText">I'm feeling {{parseEmotionIntensity(emoji.mood, emoji.intensity)}}.</h2>
 
                     <button mat-raised-button (click)="emoji.mood = updateEmojiMood(-1, emoji.mood)">Previous</button>
                     <button mat-raised-button (click)="emoji.mood = updateEmojiMood(1, emoji.mood)">Next</button>
