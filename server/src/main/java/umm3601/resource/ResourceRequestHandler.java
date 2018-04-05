@@ -27,7 +27,7 @@ public class ResourceRequestHandler {
         String id = req.params("id");
         String item;
         try {
-            item = resourceController.getResource(id);
+            item = resourceController.getItem(id);
         } catch (IllegalArgumentException e) {
             // This is thrown if the ID doesn't have the appropriate
             // form for a Mongo Object ID.
@@ -59,7 +59,7 @@ public class ResourceRequestHandler {
     public String getResources(Request req, Response res)
     {
         res.type("application/json");
-        return resourceController.getResources(req.queryMap().toMap());
+        return resourceController.getItems(req.queryMap().toMap());
     }
 
     /**Method called from Server when the 'api/users/new'endpoint is received.
@@ -88,7 +88,7 @@ public class ResourceRequestHandler {
                     String resourceBody = dbO.getString("resourceBody");
 
                     System.err.println("Adding new resource [resourceName=" + resourceName + ", resourcePhone=" + resourcePhone + " resourceUrl=" + resourceUrl + " resourceBody=" + resourceBody + ']');
-                    return resourceController.addNewResource(resourceName, resourcePhone, resourceUrl, resourceBody).toString();
+                    return resourceController.addNewResource(resourceName, resourcePhone, resourceUrl, resourceBody);
                 } catch (NullPointerException e) {
                     System.err.println("A value was malformed or omitted, new item request failed.");
                     return null;
