@@ -82,10 +82,21 @@ public class ResponseControllerSpec extends ControllerSuperSpec {
             .map(ResponseControllerSpec::getEmail)
             .sorted()
             .collect(Collectors.toList());
-        List<String> expectedEmails = Arrays.asList("all@of.us" +
-            "aurora@boreal.is",
+        List<String> expectedEmails = Arrays.asList("all@of.us",
             "aurora@austral.is",
+            "aurora@boreal.is",
             "shialabeouf@shiasurprise.net");
         assertEquals("Emails should match", expectedEmails, emails);
+    }
+
+    @Test
+    public void getResponsesByEmail() {
+        Map<String, String[]> map = new HashMap<>();
+        map.put("email", new String[]{"aurora@boreal.is"});
+        String jsonResult = responseController.getItems(map);
+        BsonArray docs = parseJsonArray(jsonResult);
+
+        assertEquals("Should be 1 entry", 1, docs.size());
+        assertEquals("Should be called 'Fluffy bunnies'", "Fluffy bunnies", getName(docs.get(0)));
     }
 }
