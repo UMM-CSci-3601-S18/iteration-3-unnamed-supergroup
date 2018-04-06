@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CrisisButtonComponent} from './crisis-button.component';
 import {CustomModule} from './custom.module';
-import {MatDialogRef} from '@angular/material';
+import {MatDialogRef, MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 
 describe('Crisis Button', () => {
 
@@ -13,20 +13,23 @@ describe('Crisis Button', () => {
 
     let fixture: ComponentFixture<CrisisButtonComponent>;
 
-    beforeEach(() => {
-
+    beforeEach(async( () => {
         TestBed.configureTestingModule({
             imports: [CustomModule],
-            declarations: [CrisisButtonComponent]
-        });
-    });
-
-    beforeEach(async(() => {
-        TestBed.compileComponents().then(() => {
-            fixture = TestBed.createComponent(CrisisButtonComponent);
-            fixture.detectChanges();
+            declarations: [CrisisButtonComponent],
+            providers: [
+                { provide: MatDialogRef, useValue: mockMatDialogRef },
+                { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }]
+        }).compileComponents().catch(error => {
+            expect(error).toBeNull();
         });
     }));
+
+    beforeEach(() => {
+        calledClose = false;
+        fixture = TestBed.createComponent(CrisisButtonComponent);
+        crisisButtonComponent = fixture.componentInstance;
+    });
 
     it('should close properly', () => {
         crisisButtonComponent.onNoClick();
