@@ -1,6 +1,5 @@
 import {GoalPage} from './goals.po';
-import {browser, protractor, element, by} from 'protractor';
-import {Key} from 'selenium-webdriver';
+import {browser, element, by} from 'protractor';
 
 const origFn = browser.driver.controlFlow().execute;
 
@@ -27,14 +26,14 @@ describe('', () => {
 
     it('Should add a goal.', () => {
         GoalPage.navigateTo();
-        expect(page.testAddNewGoal("Go to bed early", "Every day")).toBeTruthy();
+        expect(page.testAddNewGoal('Go to bed early', 'Every day')).toBeTruthy();
     });
 
     // Doesn't work
 
     it('Should view a goal.', () => {
         GoalPage.navigateTo();
-        expect(page.clickElementByCss(".mat-expansion-panel")).toBeTruthy();
+        expect(page.clickElementByCss('.mat-expansion-panel')).toBeTruthy();
         expect(page.getFirstGoalTitle()).toBe('Go to bed early');
     });
 /*
@@ -50,4 +49,9 @@ describe('', () => {
          browser.actions().sendKeys(Key.ENTER).perform();
     })
     */
+
+    it('should contain the crisis button', () => {
+        GoalPage.navigateTo();
+        expect(element(by.id('crisis-button'))).toBeDefined();
+    });
 });
