@@ -75,6 +75,7 @@ export class GoalsComponent implements OnInit{
             });
         }
 
+        // Filter by goal status
         if (searchStatus != null){
             searchStatus = searchStatus.toLocaleLowerCase();
 
