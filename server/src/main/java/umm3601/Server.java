@@ -8,6 +8,8 @@ import umm3601.emoji.EmojiController;
 import umm3601.emoji.EmojiRequestHandler;
 import umm3601.goal.GoalRequestHandler;
 import umm3601.goal.GoalController;
+import umm3601.response.ResponseController;
+import umm3601.response.ResponseRequestHandler;
 import umm3601.user.UserController;
 import umm3601.user.UserRequestHandler;
 import umm3601.journal.JournalController;
@@ -37,6 +39,9 @@ public class Server {
 
         UserController userController = new UserController(emojiDatabase);
         UserRequestHandler userRequestHandler = new UserRequestHandler(userController);
+
+        ResponseController responseController = new ResponseController(emojiDatabase);
+        ResponseRequestHandler responseRequestHandler = new ResponseRequestHandler(responseController);
         //Configure Spark
         port(serverPort);
         enableDebugScreen();
@@ -75,6 +80,8 @@ public class Server {
 
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
+
+        get("api/response/new", responseRequestHandler::addNewResponse);
 
         get("api/users", userRequestHandler::getUsers);
 
