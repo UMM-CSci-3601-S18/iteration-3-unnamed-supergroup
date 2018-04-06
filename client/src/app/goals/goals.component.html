@@ -5,10 +5,10 @@
         </div>
         <mat-card>
             <mat-card-content>
+                <mat-card-title>Overview Of Goals</mat-card-title>
                 <mat-tab-group class="tab-group">
                     <mat-tab label="All Goals">
                             <mat-card-content>
-                                <mat-card-title>Overview Of Goals</mat-card-title>
                                 <mat-divider></mat-divider>
 
                                 <mat-accordion *ngIf="goals; else goalError" >
@@ -41,7 +41,6 @@
                     <mat-tab label="Completed Goals">
                         <mat-card>
                             <mat-card-content>
-                                <mat-card-title>Goals</mat-card-title>
                                 <mat-divider></mat-divider>
 
                                 <mat-accordion *ngIf="goals; else goalError" >
@@ -75,7 +74,6 @@
                     <mat-tab label="Incomplete Goals">
                         <mat-card>
                             <mat-card-content>
-                                <mat-card-title>Goals</mat-card-title>
                                 <mat-divider></mat-divider>
 
                                 <mat-accordion *ngIf="goals; else goalError" >
