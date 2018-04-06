@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 
 import {HttpClientModule} from '@angular/common/http';
+import {MatTabsModule} from '@angular/material/tabs';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {HomeService} from "./home/home.service";
@@ -56,6 +57,7 @@ export function provideConfig() {
         Routing,
         CustomModule,
         SocialLoginModule,
+        MatTabsModule
     ],
     declarations: [
         AppComponent,
