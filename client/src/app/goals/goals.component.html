@@ -38,7 +38,7 @@
                                 </ng-template>
                             </mat-card-content>
                     </mat-tab>
-                    <mat-tab label="Tab 2">
+                    <mat-tab label="Completed Goals">
                         <mat-card>
                             <mat-card-content>
                                 <mat-card-title>Goals</mat-card-title>
@@ -46,6 +46,40 @@
 
                                 <mat-accordion *ngIf="goals; else goalError" >
                                     <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
+                                        <mat-expansion-panel-header>
+                                            <!-- This gets an goal image based on the mood that the user input when creating the goal object -->
+                                            <mat-panel-title >{{goal.name}}</mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <mat-panel-description >Name: {{goal.name}}</mat-panel-description>
+                                        <mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>
+                                        <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
+                                        <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
+                                        <mat-panel-description >Status: {{parseStatus(goal.status)}}</mat-panel-description>
+                                        <!-- This button will only be displayed if the goal is not completed -->
+                                        <mat-panel-description><button mat-raised-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button></mat-panel-description>
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                                <ng-template #goalError>
+                                    <mat-error>
+                                        There was a problem loading the data. Possibly the server is down or perhaps there are network
+                                        issues.
+                                    </mat-error>
+                                    <mat-error>
+                                        Please wait a bit and try again or start the server.
+                                    </mat-error>
+                                </ng-template>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-tab>
+                    <mat-tab label="Incomplete Goals">
+                        <mat-card>
+                            <mat-card-content>
+                                <mat-card-title>Goals</mat-card-title>
+                                <mat-divider></mat-divider>
+
+                                <mat-accordion *ngIf="goals; else goalError" >
+                                    <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
                                         <mat-expansion-panel-header>
                                             <!-- This gets an goal image based on the mood that the user input when creating the goal object -->
                                             <mat-panel-title >{{goal.name}}</mat-panel-title>
