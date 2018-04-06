@@ -18,6 +18,7 @@ export class GoalsComponent implements OnInit{
     // These are the target values used in searching.
     // We should rename them to make that clearer.
     public goalOwner: string;
+    public goalStatus: string;
     //public email: string =
 
     private highlightedID: {'$oid': string} = { '$oid': '' };
@@ -61,7 +62,7 @@ export class GoalsComponent implements OnInit{
     }
 
 
-    public filterGoals(searchName): Goal[] {
+    public filterGoals(searchName, searchStatus): Goal[] {
 
         this.filteredGoals = this.goals;
 
@@ -71,6 +72,14 @@ export class GoalsComponent implements OnInit{
 
             this.filteredGoals = this.filteredGoals.filter(goal => {
                 return !searchName || goal.name.toLowerCase().indexOf(searchName) !== -1;
+            });
+        }
+
+        if (searchStatus != null){
+            searchStatus = searchStatus.toLocaleLowerCase();
+
+            this.filteredGoals = this.filteredGoals.filter(goal => {
+                return !searchStatus || goal.status.toString().toLowerCase().indexOf(searchStatus) !== -1;
             });
         }
 
@@ -100,7 +109,7 @@ export class GoalsComponent implements OnInit{
         goalListObservable.subscribe(
             goals => {
                 this.goals = goals;
-                this.filterGoals(this.goalOwner);
+                this.filterGoals(this.goalOwner, this.goalStatus);
             },
             err => {
                 console.log(err);
