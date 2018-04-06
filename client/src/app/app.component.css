@@ -8,6 +8,7 @@
     padding: 10px;
 }
 
-.crisis-button{
-    padding-left: 50px;
+#crisis-button{
+    position: fixed;
+    right: 0;
 }

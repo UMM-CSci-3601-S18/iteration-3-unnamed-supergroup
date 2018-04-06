@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 
 @Component({
@@ -8,7 +8,7 @@ import {MatDialogRef} from '@angular/material';
 
 export class CrisisButtonComponent {
 
-    constructor(public dialogRef: MatDialogRef<CrisisButtonComponent>){
+    constructor(public dialogRef: MatDialogRef<CrisisButtonComponent>) {
     }
 
     onNoClick(): void {

@@ -20,9 +20,12 @@
             <mat-icon>menu</mat-icon>
         </button>
 
-        <button id="crisis-button" mat-raised-button td-toolbar-content (click)="openDialog()">
-            Crisis
-        </button>
+        <div  id="crisis-button">
+            <button mat-raised-button color="warn" td-toolbar-content (click)="openDialog()">
+              Crisis
+            </button>
+        </div>
+
 
         <!-- Google Login Buttons. Due to complications involving google handling
          a lot of the work 'behind the scenes' with g-signin2, for anything involving
