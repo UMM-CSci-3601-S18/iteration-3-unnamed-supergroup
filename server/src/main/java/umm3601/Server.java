@@ -82,6 +82,7 @@ public class Server {
         /////////////////////////////////////////////
 
         get("api/response/new", responseRequestHandler::addNewResponse);
+        get("api/response", responseRequestHandler::getResponses);
 
         get("api/users", userRequestHandler::getUsers);
 
