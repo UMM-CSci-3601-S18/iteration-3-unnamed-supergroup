@@ -9,113 +9,79 @@
                 <mat-tab label="All Goals">
                     <mat-divider></mat-divider>
                     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
-                            <!--<mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner, goalStatus)">-->
-                            <!--<mat-expansion-panel-header>-->
-                            <!--&lt;!&ndash; This gets an goal image based on the mood that the user input when creating the goal object &ndash;&gt;-->
-                            <!--<mat-panel-title id="test">{{goal.name}}</mat-panel-title>-->
-                            <!--</mat-expansion-panel-header>-->
-                            <!--<mat-panel-description >Name: {{goal.name}}</mat-panel-description>-->
-                            <!--<mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>-->
-                            <!--<mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>-->
-                            <!--<mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>-->
-                            <!--<mat-panel-description >Status: {{parseStatus(goal.status)}}</mat-panel-description>-->
-                            <!--&lt;!&ndash; This button will only be displayed if the goal is not completed &ndash;&gt;-->
-                            <!--<mat-panel-description><button mat-raised-button id="completeGoal" *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button></mat-panel-description>-->
-                            <!--</mat-expansion-panel>-->
-
                             <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, goalStatus)">
                                 <mat-card-header>
                                     <div mat-card-avatar class="goal-avatar"></div>
                                     <mat-card-title>{{goal.name}}</mat-card-title>
                                 </mat-card-header>
                                 <mat-card-content class="goal-content">
-                                    <p>Frequency: {{goal.frequency}}</p>
                                     <p>Start Date: {{goal.startDate}}</p>
+                                    <p>End Date: {{goal.endDate}}</p>
+                                    <p>Frequency: {{goal.frequency}}</p>
+                                    <p>Status: {{parseStatus(goal.status)}}</p>
+                                    <p>Category: {{goal.category}}</p>
                                 </mat-card-content>
                                 <mat-card-actions>
                                     <button mat-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button>
                                 </mat-card-actions>
                             </mat-card>
                         </div>
-
-
-
-                    <ng-template #goalError>
-                        <mat-error>
-                            There was a problem loading the data. Possibly the server is down or perhaps there are network
-                            issues.
-                        </mat-error>
-                        <mat-error>
-                            Please wait a bit and try again or start the server.
-                        </mat-error>
-                    </ng-template>
-
                 </mat-tab>
                 <mat-tab label="Completed Goals">
-                    <mat-card-content>
-                        <mat-divider></mat-divider>
-
-                        <mat-accordion *ngIf="goals; else goalError" >
-                            <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
-                                <mat-expansion-panel-header>
-                                    <!-- This gets an goal image based on the mood that the user input when creating the goal object -->
-                                    <mat-panel-title >{{goal.name}}</mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <mat-panel-description >Name: {{goal.name}}</mat-panel-description>
-                                <mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>
-                                <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
-                                <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
-                                <mat-panel-description >Status: {{parseStatus(goal.status)}}</mat-panel-description>
-                                <!-- This button will only be displayed if the goal is not completed -->
-                                <mat-panel-description><button mat-raised-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button></mat-panel-description>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-
-                        <ng-template #goalError>
-                            <mat-error>
-                                There was a problem loading the data. Possibly the server is down or perhaps there are network
-                                issues.
-                            </mat-error>
-                            <mat-error>
-                                Please wait a bit and try again or start the server.
-                            </mat-error>
-                        </ng-template>
-                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
+                        <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
+                            <mat-card-header>
+                                <div mat-card-avatar class="goal-avatar"></div>
+                                <mat-card-title>{{goal.name}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="goal-content">
+                                <p>Start Date: {{goal.startDate}}</p>
+                                <p>End Date: {{goal.endDate}}</p>
+                                <p>Frequency: {{goal.frequency}}</p>
+                                <p>Status: {{parseStatus(goal.status)}}</p>
+                                <p>Category: {{goal.category}}</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
                 </mat-tab>
                 <mat-tab label="Incomplete Goals">
-                    <mat-card-content>
-                        <mat-divider></mat-divider>
-
-                        <mat-accordion *ngIf="goals; else goalError" >
-                            <mat-expansion-panel #elem class="goal" [id]="goal._id['$oid']"  *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
-                                <mat-expansion-panel-header>
-                                    <!-- This gets an goal image based on the mood that the user input when creating the goal object -->
-                                    <mat-panel-title >{{goal.name}}</mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <mat-panel-description >Name: {{goal.name}}</mat-panel-description>
-                                <mat-panel-description >Frequency: {{goal.frequency}}</mat-panel-description>
-                                <mat-panel-description >Start Date: {{goal.startDate}}</mat-panel-description>
-                                <mat-panel-description >End Date: {{goal.endDate}}</mat-panel-description>
-                                <mat-panel-description >Status: {{parseStatus(goal.status)}}</mat-panel-description>
-                                <!-- This button will only be displayed if the goal is not completed -->
-                                <mat-panel-description><button mat-raised-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button></mat-panel-description>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-
-                        <ng-template #goalError>
-                            <mat-error>
-                                There was a problem loading the data. Possibly the server is down or perhaps there are network
-                                issues.
-                            </mat-error>
-                            <mat-error>
-                                Please wait a bit and try again or start the server.
-                            </mat-error>
-                        </ng-template>
-                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
+                        <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
+                            <mat-card-header>
+                                <div mat-card-avatar class="goal-avatar"></div>
+                                <mat-card-title>{{goal.name}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="goal-content">
+                                <p>Start Date: {{goal.startDate}}</p>
+                                <p>End Date: {{goal.endDate}}</p>
+                                <p>Frequency: {{goal.frequency}}</p>
+                                <p>Status: {{parseStatus(goal.status)}}</p>
+                                <p>Category: {{goal.category}}</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
                 </mat-tab>
             </mat-tab-group>
         </mat-card-content>
     </mat-card>
+
+    <ng-template #goalError>
+        <mat-error>
+            There was a problem loading the data. Possibly the server is down or perhaps there are network
+            issues.
+        </mat-error>
+        <mat-error>
+            Please wait a bit and try again or start the server.
+        </mat-error>
+    </ng-template>
 </div>
 
 <!-- What to display if the user isn't logged in -->
