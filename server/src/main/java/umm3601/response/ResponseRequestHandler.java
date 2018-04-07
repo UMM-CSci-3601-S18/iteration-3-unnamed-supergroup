@@ -30,7 +30,7 @@ public class ResponseRequestHandler {
                 }
                 catch(NullPointerException e)
                 {
-                    System.err.println("A value was malformed or omitted, new journal request failed.");
+                    System.err.println("A value was malformed or omitted, new response request failed.");
                     return null;
                 }
 
@@ -46,5 +46,11 @@ public class ResponseRequestHandler {
             ree.printStackTrace();
             return null;
         }
+    }
+
+    public String getResponses(Request req, Response res)
+    {
+        res.type("application/json");
+        return responseController.getItems(req.queryMap().toMap());
     }
 }
