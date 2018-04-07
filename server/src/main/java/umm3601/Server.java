@@ -81,8 +81,8 @@ public class Server {
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
 
-        get("api/response/new", responseRequestHandler::addNewResponse);
-        get("api/response", responseRequestHandler::getResponses);
+        get("api/responses/new", responseRequestHandler::addNewResponse);
+        get("api/responses", responseRequestHandler::getResponses);
 
         get("api/users", userRequestHandler::getUsers);
 

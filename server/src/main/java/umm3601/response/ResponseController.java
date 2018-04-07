@@ -2,12 +2,15 @@ package umm3601.response;
 
 import com.google.gson.Gson;
 import com.mongodb.MongoException;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import umm3601.SuperController;
+
+import java.util.Map;
 
 public class ResponseController extends SuperController{
 
@@ -38,5 +41,20 @@ public class ResponseController extends SuperController{
             me.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public String getItems(Map<String, String[]> queryParams) {
+        Document filterDoc = new Document();
+
+        if (queryParams.containsKey("email")) {
+            String targetEmail = (queryParams.get("email")[0]);
+            filterDoc = filterDoc.append("email", "default");
+            filterDoc = filterDoc.append("email", targetEmail);
+        }
+
+        FindIterable<Document> matchingItems = collection.find(filterDoc);
+
+        return JSON.serialize(matchingItems);
     }
 }
