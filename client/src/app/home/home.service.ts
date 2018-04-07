@@ -35,6 +35,10 @@ export class HomeService {
         return this.http.post<{ '$oid': string }>(this.responseUrl + '/new', newResponse, httpOptions);
     }
 
+    getResponses(responseEmail?: string): Observable<Response[]> {
+        return this.http.get < Response[]>(this.responseUrl);
+    }
+
 
     getEmojiById(id: string): Observable<Emoji> {
         return this.http.get<Emoji>(this.emojiUrl + '/' + id);
