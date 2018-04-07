@@ -18,3 +18,16 @@
 .addNewGoalDiv{
     padding: 10px;
 }
+
+.goal-avatar{
+    background-image: url('http://www.clker.com/cliparts/K/R/l/7/g/s/joyful-sun-md.png');
+    background-size: cover;
+}
+
+.box {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
