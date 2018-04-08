@@ -12,7 +12,7 @@ export class ResponseComponent {
     public email: string = localStorage.getItem('email');
 
     getLinksFromDatabase(email: string): string[] {
-        let service = new HomeService(this.http);
+        /*let service = new HomeService(this.http);
         let responses = service.getResponses(email);
 
         var linkResponses: string[];
@@ -20,7 +20,8 @@ export class ResponseComponent {
         for(i = 0; i < responses; i++) {
             linkResponses.concat(responses[i].link);
         }
-        return linkResponses;
+        return linkResponses;*/
+        return null;
     }
 
 

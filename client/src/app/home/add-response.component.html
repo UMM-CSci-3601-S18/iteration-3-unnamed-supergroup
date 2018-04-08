@@ -3,12 +3,13 @@
         <mat-card>
             <mat-card-title>New Response</mat-card-title>
             <mat-divider></mat-divider>
+
             <mat-card-content>
                 <mat-form-field>
                     <input matInput #input id="nameField" placeholder="Name of response" [(ngModel)]="data.response.name">
                 </mat-form-field>
                 <mat-form-field>
-                    <textarea matInput #input id="linkField" matTextareaAutosize placeholder="Add your link here" [(ngModel)]="data.response.link"></textarea>
+                    <input matInput #inputLink id="linkField" placeholder="Add your link here" [(ngModel)]="data.response.link">
                 </mat-form-field>
 
                 <button mat-button id="confirmAddResponseButton" [mat-dialog-close]="data.response" type="button">Add response</button>

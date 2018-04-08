@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
     public emoji: Emoji = {_id: '', owner: '', date: '', mood: 5, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
-    public response: Response = {_id: '', link: '', email: '', name: ''};
+    public response: Response = {_id: '', link: '', email: this.email, name: ''};
 
     constructor(public homeService: HomeService, public dialog: MatDialog, public snackBar: MatSnackBar) {
 
@@ -60,7 +60,29 @@ export class HomeComponent implements OnInit {
     }
 
     makeResponseDialog(): void {
+        const newResponse: Response =
+            {
+                _id: '',
+                name: '',
+                link: '',
+                email: localStorage.getItem('email'),
+            };
+        const dialogRef = this.dialog.open(AddResponseComponent, {
+            width: '500px',
+            data: { response: newResponse }
+        });
 
+        dialogRef.afterClosed().subscribe(result => {
+            this.homeService.addResponse(result).subscribe(
+                addGoalResult => {
+
+                },
+                err => {
+                    // This should probably be turned into some sort of meaningful response.
+                    console.log('There was an error adding the response.');
+                    console.log('The error was ' + JSON.stringify(err));
+                });
+        });
     }
 
     //This function is used to turn the number of the matslider into a word to be

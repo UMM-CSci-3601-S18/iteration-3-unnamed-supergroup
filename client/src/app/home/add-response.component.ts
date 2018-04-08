@@ -14,8 +14,6 @@ export class AddResponseComponent {
         @Inject(MAT_DIALOG_DATA) public data: {response: Response}) {
     }
 
-    public userEmail = localStorage.getItem('email');
-
     onNoClick(): void {
         this.dialogRef.close();
     }
