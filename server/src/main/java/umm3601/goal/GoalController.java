@@ -10,6 +10,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import umm3601.SuperController;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -64,7 +65,7 @@ public class GoalController extends SuperController{
 
 
     public String addNewGoal(String ownerId, String name, String body, String category,
-                             String startDate, String endDate, String frequency, Boolean status, String email) {
+                             Date startDate, Date endDate, String frequency, Boolean status, String email) {
 
         Document newGoal = new Document();
         newGoal.append("owner", ownerId);
