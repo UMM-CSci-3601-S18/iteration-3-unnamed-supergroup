@@ -5,6 +5,8 @@ import com.mongodb.util.JSON;
 import spark.Request;
 import spark.Response;
 
+import java.util.Date;
+
 
 public class GoalRequestHandler {
     private final GoalController goalController;
@@ -80,8 +82,8 @@ public class GoalRequestHandler {
                     String owner = dbO.getString("owner");
                     String body = dbO.getString("body");
                     String category = dbO.getString("category");
-                    String startDate = dbO.getString("startDate");
-                    String endDate = dbO.getString("endDate");
+                    Date startDate = dbO.getDate("startDate");
+                    Date endDate = dbO.getDate("endDate");
                     String frequency = dbO.getString("frequency");
                     Boolean status = dbO.getBoolean("status");
                     String email = dbO.getString("email");
