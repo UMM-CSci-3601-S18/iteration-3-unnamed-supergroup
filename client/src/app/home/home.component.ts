@@ -131,6 +131,9 @@ export class HomeComponent implements OnInit {
     //'wrap around' back to the start, so that it is in an infinite loop.
     updateEmojiMood(num: number, mood: number){
 
+        //Reset Intensity on each press of "previous" or "next" buttons.
+        this.emoji.intensity = 1;
+
         //Keep Track of last mood.
         this.lastMood = mood;
 
