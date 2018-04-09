@@ -50,6 +50,12 @@
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                     <mat-datepicker #startPicker></mat-datepicker>
                 </mat-form-field>
+                <mat-select id="category-goals" matInput #input [(ngModel)]="data.goal.category" placeholder="Category">
+                    <mat-option value="Chores">Chores</mat-option>
+                    <mat-option value="Health">Health</mat-option>
+                    <mat-option value="Social">Social</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                </mat-select>
                 <mat-form-field>
                     <input matInput id="endDate" [matDatepicker]="endPicker" placeholder="End Date" [(ngModel)]="data.goal.endDate">
                     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
