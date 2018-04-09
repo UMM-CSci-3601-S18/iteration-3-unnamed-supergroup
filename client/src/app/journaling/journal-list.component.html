@@ -29,6 +29,8 @@
                                     <!--Some login needs to do into this to determine if the journal has more, rather
                                      that just splicing anyways and assuming that-->
                                     {{journal.body.slice(0, 70)}}...
+                                    <br>
+                                    Written on: {{journal.date}}
                                     <button mat-raised-button id="editButton" class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
                                     <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal.subject, journal.body)">View</button>
                                 </mat-card>
