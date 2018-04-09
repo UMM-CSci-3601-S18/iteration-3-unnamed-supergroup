@@ -153,6 +153,10 @@ export class JournalListComponent implements OnInit {
         });
     }
 
+    getDateString(journal: Journal): string {
+        return new Date(journal.date).toDateString();
+    }
+
     ngOnInit(): void {
         this.refreshJournals();
         //this.loadService();
