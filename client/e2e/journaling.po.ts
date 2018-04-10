@@ -44,7 +44,7 @@ export class JournalingPage {
     }
 
     getJournalText() {
-        const card = element(by.css('.matCardJournals'));
+        const card = element.all(by.css('.matCardJournals')).last();
         return card.getText();
     }
 }
