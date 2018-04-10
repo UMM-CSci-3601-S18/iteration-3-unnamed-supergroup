@@ -9,16 +9,6 @@ mat-card-content img {
     padding-top: 5%;
 }
 
-mat-slider {
-    width: 90%;
-    opacity: .75;
-
-}
-
-mat-slider:hover {
-    opacity: 1;
-}
-
 .loginEmoji{
     display: flex;
     margin-left: auto;
@@ -30,4 +20,12 @@ mat-slider:hover {
 .loginEmojiText {
     text-align: center;
     font-size: 24px;
+}
+
+.headerText{
+    font-size: 100%;
+}
+
+.moodText{
+    font-size: 100%;
 }

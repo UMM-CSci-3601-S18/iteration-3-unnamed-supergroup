@@ -17,3 +17,7 @@ angular-google-signin@^0.1.5:
   resolved "https://registry.yarnpkg.com/angular-google-signin/-/angular-google-signin-0.1.5.tgz#5506cc59e4c245620eb090e83869c7f4ca17513c"
   dependencies:
     "@types/gapi.auth2" "^0.0.31"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"

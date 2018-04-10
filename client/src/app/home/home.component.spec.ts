@@ -20,6 +20,7 @@ describe('Adding an emoji', () => {
         _id: '',
         owner: '',
         mood: 3,
+        intensity: 1,
         date: "", //date will be created during the test so that it matches what is made in component.addEmoji
         email: null,
     };
@@ -80,6 +81,7 @@ describe('Adding an emoji', () => {
 
         component.emoji._id = newEmoji._id;
         component.emoji.mood = newEmoji.mood;
+        component.emoji.intensity = newEmoji.intensity;
         component.emoji.owner = newEmoji.owner;
         const date = new Date();
         newEmoji.date = date.toString(); //set date for new emoji right before calling the method

@@ -16,7 +16,7 @@
     <meta name="google-signin-client_id" content="818357107706-iu056mnomk0i6lbljhmdq954d4n9gh9b.apps.googleusercontent.com">
 
 </head>
-<body>
+<body onload="writeDataLocal()">
 
 
 <!--
@@ -25,6 +25,15 @@ which allows for functions like signOut to work properly.
 -->
 
 <script type=application/javascript>
+
+    function writeDataLocal(){
+        //This makes sure that if the email field doesn't exist
+        //in local storage, it is created so that nothing breaks
+        //on the website.
+        if (localStorage.getItem('email') === null) {
+            localStorage.setItem('email', '');
+        }
+    }
 
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
