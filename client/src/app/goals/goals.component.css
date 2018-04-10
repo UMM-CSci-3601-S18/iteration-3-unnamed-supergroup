@@ -32,3 +32,11 @@
     padding: 16px;
 }
 
+.mat-card-header {
+    color: white;
+    background-color: #0074D9;
+}
+
+.goal {
+    background-color: lightyellow;
+}
