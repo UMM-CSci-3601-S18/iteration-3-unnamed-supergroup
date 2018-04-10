@@ -6,6 +6,27 @@
         <mat-card-content>
             <mat-card-title>Overview Of Goals</mat-card-title>
             <mat-tab-group class="tab-group">
+                <mat-tab label="Incomplete Goals">
+                    <mat-divider></mat-divider>
+                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
+                        <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
+                            <mat-card-header>
+                                <div mat-card-avatar class="goal-avatar"></div>
+                                <mat-card-title>{{goal.name}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="goal-content">
+                                <p>Start Date: {{goal.startDate}}</p>
+                                <p>End Date: {{goal.endDate}}</p>
+                                <p>Frequency: {{goal.frequency}}</p>
+                                <p>Status: {{parseStatus(goal.status)}}</p>
+                                <p>Category: {{goal.category}}</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </mat-tab>
                 <mat-tab label="All Goals">
                     <mat-divider></mat-divider>
                     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
@@ -31,27 +52,6 @@
                     <mat-divider></mat-divider>
                     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
-                            <mat-card-header>
-                                <div mat-card-avatar class="goal-avatar"></div>
-                                <mat-card-title>{{goal.name}}</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="goal-content">
-                                <p>Start Date: {{goal.startDate}}</p>
-                                <p>End Date: {{goal.endDate}}</p>
-                                <p>Frequency: {{goal.frequency}}</p>
-                                <p>Status: {{parseStatus(goal.status)}}</p>
-                                <p>Category: {{goal.category}}</p>
-                            </mat-card-content>
-                            <mat-card-actions>
-                                <button mat-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button>
-                            </mat-card-actions>
-                        </mat-card>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Incomplete Goals">
-                    <mat-divider></mat-divider>
-                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
-                        <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
                             <mat-card-header>
                                 <div mat-card-avatar class="goal-avatar"></div>
                                 <mat-card-title>{{goal.name}}</mat-card-title>
