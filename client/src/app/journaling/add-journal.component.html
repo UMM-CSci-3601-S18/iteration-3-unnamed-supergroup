@@ -7,13 +7,14 @@
                 <mat-form-field>
                     <input matInput #input id="subjectField" placeholder="Subject" [(ngModel)]="data.journal.subject">
                 </mat-form-field>
-                <mat-form-field>
-                    <textarea matInput #input id="bodyField" matTextareaAutosize placeholder="Body" [(ngModel)]="data.journal.body"></textarea>
+                <mat-form-field id="bodyFormField">
+                    <textarea rows="4" class="mat-scroll-y" matInput #input id="bodyField" placeholder="Body" [(ngModel)]="data.journal.body"></textarea>
                 </mat-form-field>
 
-                <button mat-button id="confirmAddJournalButton" [mat-dialog-close]="data.journal" type="button">Add journal</button>
             </mat-card-content>
         </mat-card>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
+        <button mat-button id="confirmAddJournalButton" [mat-dialog-close]="data.journal" type="button">Add journal</button>
+
     </div>
 </div>

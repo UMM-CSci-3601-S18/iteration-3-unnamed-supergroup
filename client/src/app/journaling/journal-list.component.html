@@ -22,15 +22,18 @@
                         <div *ngIf="journals; else journalsError">
                             <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
                                 <mat-card class="matCardJournals">
-                                    Title: {{journal.subject}}
-                                    <br>
-                                    <br>
+                                    <div id="journalTitleDiv">
+                                        Title: {{journal.subject}}
+                                    </div>
+                                    <hr>
 
                                     <!--Some login needs to do into this to determine if the journal has more, rather
                                      that just splicing anyways and assuming that-->
-                                    {{journal.body.slice(0, 70)}}...
+                                    <div id="journalBodyDiv">
+                                        {{journal.body}}
+                                    </div>
                                     <br>
-                                    Written on: {{getDateString(journal)}}
+                                    {{getDateString(journal)}}
                                     <button mat-raised-button id="editButton" class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
                                     <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal)">View</button>
                                 </mat-card>

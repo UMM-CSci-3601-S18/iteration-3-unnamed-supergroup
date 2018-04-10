@@ -53,3 +53,15 @@
 #addNewJournal{
     background-color: lightcyan;
 }
+
+#journalBodyDiv{
+    overflow-y: hidden;
+    word-wrap: break-word;
+    height: 46px;
+}
+
+#journalTitleDiv{
+    overflow-y: hidden;
+    word-break: break-all;
+    height: 21px;
+}
