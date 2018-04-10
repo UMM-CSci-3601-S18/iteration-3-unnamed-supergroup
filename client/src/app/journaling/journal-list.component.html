@@ -32,7 +32,7 @@
                                     <br>
                                     Written on: {{getDateString(journal)}}
                                     <button mat-raised-button id="editButton" class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
-                                    <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal.subject, journal.body)">View</button>
+                                    <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal)">View</button>
                                 </mat-card>
                             </div>
                         </div>

@@ -4,9 +4,9 @@ import {Journal} from './journal';
 import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 import {AddJournalComponent} from './add-journal.component';
-import {EditJournalComponent} from "./edit-journal.component";
-import {environment} from "../../environments/environment";
-import {ViewJournalComponent} from "./view-journal.component";
+import {EditJournalComponent} from './edit-journal.component';
+import {environment} from '../../environments/environment';
+import {ViewJournalComponent} from './view-journal.component';
 
 @Component({
     selector: 'app-journal-list-component',
@@ -23,14 +23,13 @@ export class JournalListComponent implements OnInit {
     // We should rename them to make that clearer.
     public journalSubject: string;
     public journalBody: string;
-    public journalDate: any;
 
     // The ID of the
     private highlightedID: {'$oid': string} = { '$oid': '' };
 
     // Inject the JournalListService into this component.
     constructor(public journalListService: JournalListService, public dialog: MatDialog) {
-        if(environment.production === false) {
+        if (environment.production === false) {
 
         }
     }
@@ -40,7 +39,7 @@ export class JournalListComponent implements OnInit {
     }
 
     openDialog(): void {
-        const newJournal: Journal = {_id: '', subject: '', body: '', date: '', email: localStorage.getItem('email')};
+        const newJournal: Journal = {_id: '', subject: '', body: '', date: null, email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(AddJournalComponent, {
             width: '500px',
             data: { journal: newJournal }
@@ -60,9 +59,9 @@ export class JournalListComponent implements OnInit {
         });
     }
 
-    openDialogReview(_id: string, subject: string, body: string, date: string): void {
+    openDialogReview(_id: string, subject: string, body: string): void {
         console.log(_id + ' ' + subject);
-        const newJournal: Journal = {_id: _id, subject: subject, body: body, date: date, email: localStorage.getItem('email')};
+        const newJournal: Journal = {_id: _id, subject: subject, body: body, date: null, email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(EditJournalComponent, {
             width: '500px',
             data: { journal: newJournal }
@@ -71,7 +70,7 @@ export class JournalListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             this.journalListService.editJournal(result).subscribe(
                 editJournalResult => {
-                    //this.highlightedID = editJournalResult;
+                    // this.highlightedID = editJournalResult;
                     this.refreshJournals();
                 },
                 err => {
@@ -113,7 +112,7 @@ export class JournalListComponent implements OnInit {
      *
      */
     refreshJournals(): Observable<Journal[]> {
-        // Get Journals returns an Observable, basically a "promise" that
+        // Get Journals returns an Observable, basically a 'promise' that
         // we will get the data from the server.
         //
         // Subscribe waits until the data is fully downloaded, then
@@ -145,8 +144,9 @@ export class JournalListComponent implements OnInit {
     }
      **/
 
-    showJournalBody(header: string, text: string): void {
-        const newJournal: Journal = {_id: '', subject: header, body: text, date: '', email: localStorage.getItem('email')};
+    showJournalBody(journal: Journal): void {
+        const newJournal: Journal = {_id: '', subject: journal.subject, body: journal.body,
+            date: journal.date, email: localStorage.getItem('email')};
         const dialogRef = this.dialog.open(ViewJournalComponent, {
             width: '80%',
             data: { journal: newJournal },
@@ -159,12 +159,12 @@ export class JournalListComponent implements OnInit {
 
     ngOnInit(): void {
         this.refreshJournals();
-        //this.loadService();
+        // this.loadService();
     }
 
-    //This function returns true when the user is signed in and false otherwise
+    // This function returns true when the user is signed in and false otherwise
     isUserLoggedIN(): boolean {
-        var email = localStorage.getItem('email');
-        return ((email != '') && (typeof email != 'undefined'));
+        const email = localStorage.getItem('email');
+        return ((email !== '') && (typeof email !== 'undefined'));
     }
 }
