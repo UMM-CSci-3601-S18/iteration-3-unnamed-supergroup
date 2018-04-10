@@ -5,7 +5,8 @@ import {Goal} from './goals';
 
 @Component({
     selector: 'app-add-goals.component',
-    templateUrl: 'add-goals.component.html',
+    templateUrl: './add-goals.component.html',
+    styleUrls: ['./add-goals.component.css'],
 })
 export class AddGoalComponent {
 //    isLinear = true;
