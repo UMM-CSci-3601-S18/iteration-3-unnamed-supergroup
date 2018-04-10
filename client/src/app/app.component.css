@@ -7,3 +7,9 @@
     float: left;
     padding: 10px;
 }
+
+#crisis-button{
+    position: fixed;
+    right: 0;
+    z-index: 100;
+}
