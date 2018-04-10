@@ -4,6 +4,7 @@ import {Goal} from "./goals";
 import {GoalsService} from "./goals.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddGoalComponent} from "./add-goals.component";
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-goals-component',
@@ -25,7 +26,7 @@ export class GoalsComponent implements OnInit{
 
 
     // Inject the GoalListService into this component.
-    constructor(public goalsService: GoalsService, public dialog: MatDialog) {
+    constructor(public goalsService: GoalsService, public dialog: MatDialog, public snackBar: MatSnackBar) {
 
     }
 
@@ -93,6 +94,12 @@ export class GoalsComponent implements OnInit{
 
 
         return this.filteredGoals;
+    }
+
+    openSnackBar(message: string, action: string) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
     }
 
     /**
