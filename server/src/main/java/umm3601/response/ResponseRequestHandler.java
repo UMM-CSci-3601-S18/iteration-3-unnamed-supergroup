@@ -53,4 +53,9 @@ public class ResponseRequestHandler {
         res.type("application/json");
         return responseController.getItems(req.queryMap().toMap());
     }
+
+    public String getRandomResponse(Request req, Response res) {
+        res.type("application/json");
+        return responseController.getRandomResponse(req.queryMap().toMap());
+    }
 }
