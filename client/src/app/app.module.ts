@@ -6,6 +6,7 @@ import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {HomeService} from "./home/home.service";
@@ -59,7 +60,8 @@ export function provideConfig() {
         CustomModule,
         SocialLoginModule,
         MatTabsModule,
-        MatCardModule
+        MatCardModule,
+        MatSelectModule
     ],
     declarations: [
         AppComponent,
