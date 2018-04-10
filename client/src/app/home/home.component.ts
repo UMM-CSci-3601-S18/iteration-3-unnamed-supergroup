@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.homeService.addResponse(result).subscribe(
-                addGoalResult => {
+                addResponseResult => {
 
                 },
                 err => {

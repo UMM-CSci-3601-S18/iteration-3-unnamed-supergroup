@@ -2,6 +2,8 @@ import {Component, Inject} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {HomeService} from "./home.service";
 import {HttpClient} from "@angular/common/http";
+
+
 @Component({
     selector: 'app-response.component',
     templateUrl: 'response.component.html',
@@ -10,20 +12,6 @@ import {HttpClient} from "@angular/common/http";
 export class ResponseComponent {
 
     public email: string = localStorage.getItem('email');
-
-    getLinksFromDatabase(email: string): string[] {
-        /*let service = new HomeService(this.http);
-        let responses = service.getResponses(email);
-
-        var linkResponses: string[];
-        var i: number;
-        for(i = 0; i < responses; i++) {
-            linkResponses.concat(responses[i].link);
-        }
-        return linkResponses;*/
-        return null;
-    }
-
 
     constructor(
         private http: HttpClient,
@@ -36,20 +24,19 @@ export class ResponseComponent {
     // repetitive and random everytime
 
     getLink() : void {
-        let links = this.getLinksFromDatabase(this.email);
-        if(links != null) {
-            var index = Math.floor(Math.random() * links.length);
-            window.open(links[index]);
-            console.log("Links is not null");
-        }
-        else {
-            window.alert("There are no response links! Please add some.");
-            console.log("Links is null");
-        }
-
+        let service = new HomeService(this.http);
+        let response = service.getRandomResponse(this.email);
+        response.subscribe(
+                (ls) => {
+                    window.open(ls[0].link);
+                },
+                (err) => {
+                    console.log("Error in getting link");
+                }
+        );
 
         //Make sure dialog box closes after opening link
-        this.onNoClick()
+        this.onNoClick();
     }
 
     onNoClick(): void {
