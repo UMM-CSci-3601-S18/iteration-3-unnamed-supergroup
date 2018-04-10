@@ -1,6 +1,5 @@
 import {HomePage} from './home.po';
-import {browser, protractor, element, by} from 'protractor';
-import {Key} from 'selenium-webdriver';
+import {browser, element, by} from 'protractor';
 
  const origFn = browser.driver.controlFlow().execute;
 
@@ -29,16 +28,16 @@ describe('', () => {
         HomePage.navigateTo();
         HomePage.selectTheSlider();
 
-        expect(element(by.id('3emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        expect(element(by.id('3emoji')).isPresent()).toBeTruthy(); // check that the correct emoji is displayed
         page.clickSubmitButton();
     });
 
-    it("should move the slider positively and click submit. It then navigates to to the report page",() => {
+    it('should move the slider positively and click submit. It then navigates to to the report page', () => {
         HomePage.navigateTo();
          HomePage.selectTheSlider();
          HomePage.SlideTheSliderUp();
          HomePage.SlideTheSliderUp();
-        expect(element(by.id('5emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        expect(element(by.id('5emoji')).isPresent()).toBeTruthy(); // check that the correct emoji is displayed
         page.clickSubmitButton();
         HomePage.navigateToReports();
 
@@ -47,7 +46,7 @@ describe('', () => {
         // expect( page.getUniqueOwner()).toContain('NG_DEFER_BOOTSTRAP');
     });
 
-    it("should move the slider positively and negatively and click submit",() => {
+    it('should move the slider positively and negatively and click submit', () => {
         HomePage.navigateTo();
         HomePage.selectTheSlider();
         HomePage.SlideTheSliderUp();
@@ -56,12 +55,17 @@ describe('', () => {
         HomePage.SlideTheSliderDown();
         HomePage.SlideTheSliderDown();
         HomePage.SlideTheSliderDown();
-        expect(element(by.id('1emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
+        expect(element(by.id('1emoji')).isPresent()).toBeTruthy(); // check that the correct emoji is displayed
         page.clickSubmitButton();
         HomePage.navigateToReports();
 
         // Need to find out default name
         // HomePage.filterOwner('Roch');
         // expect( page.getUniqueOwner()).toContain('Roch');
+    });
+
+    it('should contain the crisis button', () => {
+        HomePage.navigateTo();
+        expect(element(by.id('crisis-button'))).toBeDefined();
     });
 });

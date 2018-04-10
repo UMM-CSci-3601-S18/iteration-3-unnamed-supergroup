@@ -1,6 +1,6 @@
 
 <td-layout #layout>
-    <td-navigation-drawer id="navBar"flex sidenavTitle="Menu" >
+    <td-navigation-drawer id="navBar" flex sidenavTitle="Menu" >
         <mat-nav-list>
             <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>mood</mat-icon>Home</a>
             <!--
@@ -14,11 +14,18 @@
             <a mat-list-item id="about" [routerLink]="['/about']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">sort</i></mat-icon>About</a>
         </mat-nav-list>
     </td-navigation-drawer>
-    <td-layout-nav  toolbarTitle="{{title}}" navigationRoute="/">
+    <td-layout-nav id="title" toolbarTitle="{{title}}" navigationRoute="/">
 
         <button mat-icon-button td-menu-button tdLayoutToggle>
             <mat-icon>menu</mat-icon>
         </button>
+
+        <div  id="crisis-button">
+            <button mat-raised-button color="warn" td-toolbar-content (click)="openDialog()">
+              Crisis
+            </button>
+        </div>
+
 
         <!-- Google Login Buttons. Due to complications involving google handling
          a lot of the work 'behind the scenes' with g-signin2, for anything involving
