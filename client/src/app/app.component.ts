@@ -10,15 +10,15 @@ import {environment} from "../environments/environment";
 export class AppComponent implements OnInit {
     title = "Sunshine Journal";
 
-    //New function to return the name of the active user
-    //window.* is not defined, or 'gettable' straight from HTML *ngIf
-    //So this function will return that
-    getLoginName(){
-        var name = window['name'];
-        return name;
-    }
+    windowWidth: number;
+    windowHeight: number;
 
     ngOnInit() {
+        //Function to set variables to be used in resizing the screen.
+        this.windowHeight = window.screen.height;
+        this.windowWidth = window.screen.width;
+
+
         //This first if statement makes it so that the e2e tests will still run without getting locked out of the site
         //This should probably be removed at some point and instead have the e2e tests use a fake user somehow
         if(environment.production) {
@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
                 localStorage.setItem('email', '');
             }
         }
+    }
+
+    onResize(event){
+        this.windowWidth = event.target.innerWidth;
     }
 
 }
