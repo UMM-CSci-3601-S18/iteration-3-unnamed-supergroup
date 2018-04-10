@@ -12,10 +12,9 @@
                     <h1 class="headerText"><strong>Hello {{emoji.owner.split(" ")[0]}}!<br> How are you feeling today?</strong></h1>
                     <p class="headerText" style="font-size: 100%"><i>Swipe left or right to find your feeling.</i></p>
                     <p class="headerText" style="font-size: 100%"><i>Up or down to choose intensity.</i></p>
-<!--
-                    <button mat-fab class="emojiNavigationButtonsVert" id="emojiDownNavButton" (click)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)">▼</button>
-                    <button mat-fab class="emojiNavigationButtonsVert" id="emojiUpNavButton" (click)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)">▲</button>
--->
+
+
+
                     <!-- Control Gestures -->
                     <div class="swipe-box"
                          (swipeleft)="emoji.mood = updateEmojiMood(1, emoji.mood); emoji.intensity = 1"
@@ -31,10 +30,12 @@
                     <br/>
 
                     <h2 class="moodText">I'm feeling {{parseEmotionIntensity(emoji.mood, emoji.intensity)}}.</h2>
-<!--
+
                     <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(-1, emoji.mood)">◀</button>
+                    <button mat-fab class="emojiNavigationButtonsVert" id="emojiDownNavButton" (click)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)">▼</button>
+                    <button mat-fab class="emojiNavigationButtonsVert" id="emojiUpNavButton" (click)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)">▲</button>
                     <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(1, emoji.mood)">▶</button>
--->
+
                     <br/>
 
                     <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
