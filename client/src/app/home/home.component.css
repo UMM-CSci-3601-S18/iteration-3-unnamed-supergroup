@@ -21,12 +21,12 @@ mat-card-content img {
 }
 
 .headerText{
-    font-size: 100%;
+    font-size: 200%;
 }
 
 .moodText{
     margin-top: 0px;
-    font-size: 100%;
+    font-size: 130%;
 }
 
 #currentEmoji {
@@ -36,6 +36,7 @@ mat-card-content img {
     height: 25%;
 }
 
+/*
 @media only screen and (max-width: 600px){
         .emojiNavigationButtonsHorz {
         visibility: hidden;
@@ -47,6 +48,8 @@ mat-card-content img {
         visibility: hidden;
     }
 }
+*/
+
 #submitEmoji {
     margin-top: 10px;
 }
