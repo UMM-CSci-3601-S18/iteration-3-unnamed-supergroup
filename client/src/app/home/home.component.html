@@ -5,7 +5,8 @@
     <div flex-gt-sm="80" flex-offset-gt-sm="10">-->
             <!-- Main Page -->
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-            <mat-card>
+
+            <mat-card id="card-main">
                 <mat-card-content id="headerInfo">
 
                     <!-- Only display first name -->
@@ -23,8 +24,14 @@
                          (swipedown)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)"
 
                     >
+                        <!-- Emoji to the left -->
+                        <img draggable="false" id="leftEmoji" src="assets/Emojis/{{updateEmojiMood(-1, emoji.mood)}}/{{emoji.intensity}}.png">
+
                         <!-- Current Emoji being displayed on screen. Is NOT draggable. -->
                         <img draggable="false" id="currentEmoji" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png">
+
+                        <!-- Emoji to the right -->
+                        <img draggable="false" id="rightEmoji" src="assets/Emojis/{{updateEmojiMood(1, emoji.mood)}}/{{emoji.intensity}}.png">
                     </div>
 
                     <br/>

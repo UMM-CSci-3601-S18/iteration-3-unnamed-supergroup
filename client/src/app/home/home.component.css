@@ -31,12 +31,28 @@ mat-card-content img {
 }
 
 #currentEmoji {
-    padding-bottom: 0px;
     padding-top: 10px;
     width: 25%;
     height: 25%;
 }
 
+#leftEmoji {
+    padding-top: 10px;
+    padding-right: 10px;
+    width: 15%;
+    height: 15%;
+    opacity: 0.5;
+}
+
+#rightEmoji {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 15%;
+    height: 15%;
+    opacity: 0.5;
+}
+
 #submitEmoji {
     margin-top: 10px;
 }
+
