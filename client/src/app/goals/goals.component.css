@@ -39,6 +39,7 @@
 
 .goal {
     background-color: lightyellow;
+    max-width: 300px;
 }
 
 .check-buttons{
