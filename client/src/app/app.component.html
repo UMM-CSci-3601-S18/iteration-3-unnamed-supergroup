@@ -30,6 +30,49 @@
                 </mat-nav-list>
             </td-navigation-drawer>
 
+        <button mat-icon-button td-menu-button tdLayoutToggle>
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <div  id="crisis-button">
+            <button mat-raised-button color="warn" td-toolbar-content (click)="openDialog()">
+              Crisis
+            </button>
+        </div>
+
+
+        <!-- Google Login Buttons. Due to complications involving google handling
+         a lot of the work 'behind the scenes' with g-signin2, for anything involving
+         google login to work, it needs to always be loaded, hence the invisible
+         inaccessible buttons.-->
+
+        <!-- Check to see if user logged in, and if they aren't.. -->
+        <div *ngIf="getLoginName() == ''; else signOutButton">
+
+            <!-- Create sign in button -->
+            <div id="signInButton" class="g-signin2" data-onsuccess="onSignIn"></div>
+
+            <!-- Create INVISIBLE sign out button, that cannot be accessed -->
+            <div>
+                <button style="display:none" mat-raised-button onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+
+        <!--If user IS signed in.-->
+        <ng-template #signOutButton>
+            <!-- Create an INVISIBLE sign in button. -->
+            <div style="display:none" id="signInButtonInvisible" class="g-signin2" data-onsuccess="onSignIn"></div>
+
+            <!-- Create a sign out button. -->
+            <div class="signOutButton">
+                <button mat-raised-button onclick="signOut()">Sign Out</button>
+            </div>
+        </ng-template>
+
+        <router-outlet></router-outlet>
+    </td-layout-nav>
+</td-layout>
+
             <td-layout-nav>
                 <button mat-icon-button td-menu-button tdLayoutToggle >
                     <mat-icon>menu</mat-icon>

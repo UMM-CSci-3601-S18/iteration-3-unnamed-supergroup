@@ -21,15 +21,15 @@ export class GoalPage {
          return goal;
      }
 
-     getFirstGoalTitle() {
-         const elementToGet = element(by.className(".mat-expansion-panel-title")).first();
+     getGoalTitle() {
+         const elementToGet = element.all(by.css("mat-panel-title")).last();
          elementToGet.click();
-         //elementToGet.getAttribute('mat-panel-title');
+         // elementToGet.getAttribute('mat-panel-title');
          return elementToGet.getText();
      }
 
      clickElementByCss(css: string) {
-         const elementToClick = element(by.css(css));
+         const elementToClick = element.all(by.css(css)).last();
          elementToClick.click();
          return elementToClick.isPresent();
      }
