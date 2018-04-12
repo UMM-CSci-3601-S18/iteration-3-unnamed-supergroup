@@ -18,30 +18,31 @@
 
                     <!-- Control Gestures -->
                     <div class="swipe-box"
-                         (swipeleft)="emoji.mood = updateEmojiMood(1, emoji.mood); emoji.intensity = 1"
-                         (swiperight)="emoji.mood = updateEmojiMood(-1, emoji.mood); emoji.intensity = 1"
+                         (swipeleft)="emoji.mood = updateEmojiMood(1, emoji.mood, true); emoji.intensity = 1"
+                         (swiperight)="emoji.mood = updateEmojiMood(-1, emoji.mood, true); emoji.intensity = 1"
                          (swipeup)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)"
                          (swipedown)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)"
 
                     >
                         <!-- Emoji to the left -->
-                        <img draggable="false" id="leftEmoji" src="assets/Emojis/{{updateEmojiMood(-1, emoji.mood)}}/{{emoji.intensity}}.png">
+                        <img draggable="false" id="leftEmoji" src="assets/Emojis/{{updateEmojiMood(-1, emoji.mood, false)}}/1.png">
 
                         <!-- Current Emoji being displayed on screen. Is NOT draggable. -->
                         <img draggable="false" id="currentEmoji" src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png">
 
                         <!-- Emoji to the right -->
-                        <img draggable="false" id="rightEmoji" src="assets/Emojis/{{updateEmojiMood(1, emoji.mood)}}/{{emoji.intensity}}.png">
+                        <img draggable="false" id="rightEmoji" src="assets/Emojis/{{updateEmojiMood(1, emoji.mood, false)}}/1.png">
+
                     </div>
 
                     <br/>
 
                     <h2 class="moodText">I'm feeling {{parseEmotionIntensity(emoji.mood, emoji.intensity)}}.</h2>
 
-                    <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(-1, emoji.mood)">◀</button>
-                    <button mat-fab class="emojiNavigationButtonsVert" id="emojiDownNavButton" (click)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)">▼</button>
-                    <button mat-fab class="emojiNavigationButtonsVert" id="emojiUpNavButton" (click)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)">▲</button>
-                    <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(1, emoji.mood)">▶</button>
+                    <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(-1, emoji.mood, true)">◀</button>
+                    <button mat-fab class="emojiNavigationButtonsVert" (click)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)">▼</button>
+                    <button mat-fab class="emojiNavigationButtonsVert" (click)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)">▲</button>
+                    <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(1, emoji.mood, true)">▶</button>
 
                     <br/>
 

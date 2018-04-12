@@ -129,13 +129,16 @@ export class HomeComponent implements OnInit {
 
     //This function pertains to mood carousel. It allows for the value of emoji.mood to
     //'wrap around' back to the start, so that it is in an infinite loop.
-    updateEmojiMood(num: number, mood: number){
+    updateEmojiMood(num: number, mood: number, update: boolean){
 
-        //Reset Intensity on each press of "previous" or "next" buttons.
-        this.emoji.intensity = 1;
+        if(update)
+        {
+            //Reset Intensity on each press of "previous" or "next" buttons.
+            this.emoji.intensity = 1;
 
-        //Keep Track of last mood.
-        this.lastMood = mood;
+            //Keep Track of last mood.
+            this.lastMood = mood;
+        }
 
         var currentNumber = mood;
         currentNumber = currentNumber + num;
@@ -161,13 +164,13 @@ export class HomeComponent implements OnInit {
             case 2:
             case 4:
                 if(currentNumber < 1) currentNumber = 2;
-                if(currentNumber > 2) currentNumber = 1;
+                else if(currentNumber > 2) currentNumber = 1;
                 return currentNumber;
 
             case 3:
             case 5:
                 if(currentNumber < 1) currentNumber = 3;
-                if(currentNumber > 3) currentNumber = 1;
+                else if(currentNumber > 3) currentNumber = 1;
                 return currentNumber;
         }
     }
