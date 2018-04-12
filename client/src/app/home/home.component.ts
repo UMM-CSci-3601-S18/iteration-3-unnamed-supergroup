@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
     public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
-
+    public emojis: Emoji[];
     public lastMood = 3;
     public lastIntensity = 1;
 
@@ -127,8 +127,8 @@ export class HomeComponent implements OnInit {
         return ((email != '') && (typeof email != 'undefined'));
     }
 
-    //This function pertains to mood carousel. It allows for the value of emoji.mood to
-    //'wrap around' back to the start, so that it is in an infinite loop.
+    // This function pertains to mood carousel. It allows for the value of emoji.mood to
+    // 'wrap around' back to the start, so that it is in an infinite loop.
     updateEmojiMood(num: number, mood: number, update: boolean){
 
         if(update)
@@ -147,9 +147,9 @@ export class HomeComponent implements OnInit {
         return currentNumber;
     }
 
-    //This function pertains to intensity carousel. It allows the value of emoji.intensity to
-    //'wrap around', but due to variable amounts of intensities across emotions, keeps track of
-    //which only have 2 total intensities, and 3 total intensities.
+    // This function pertains to intensity carousel. It allows the value of emoji.intensity to
+    // 'wrap around', but due to variable amounts of intensities across emotions, keeps track of
+    // which only have 2 total intensities, and 3 total intensities.
     updateEmojiIntensity(num: number, intensity: number, mood: number){
 
         //Keep Track of last intensity.
@@ -158,7 +158,7 @@ export class HomeComponent implements OnInit {
         var currentNumber = intensity;
         currentNumber = currentNumber + num;
 
-        //Find which moods have 2 intensities verses 3 intensities.
+        // Find which moods have 2 intensities verses 3 intensities.
         switch(mood){
             case 1:
             case 2:
