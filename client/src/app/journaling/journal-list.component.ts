@@ -167,4 +167,52 @@ export class JournalListComponent implements OnInit {
         const email = localStorage.getItem('email');
         return ((email !== '') && (typeof email !== 'undefined'));
     }
+
+
+    /*
+    functions for getting next/previous page
+     */
+    public index = 0;
+    public length: number;
+    public progress: number;
+
+
+    prevIndex(): void{
+        if(this.index == this.length - 10){
+            this.index = this.index - 10;
+        }
+        else if(this.index % 10 != 0){
+            while(this.index % 10 != 0){
+                this.index = this.index - 1;
+            }
+        }
+        else{
+            this.index = this.index - 10;
+        }
+        this.loadProgressBar();
+    }
+
+    nextIndex(): void{
+        this.index = this.index + 10;
+        if(this.index + 10 >= this.length){
+            this.index = this.length;
+        }
+        this.loadProgressBar();
+    }
+
+    firstIndex(): void{
+        this.index = 0;
+        this.loadProgressBar();
+    }
+
+    lastIndex(): void{
+        this.index = this.length;
+        this.loadProgressBar();
+    }
+
+    loadProgressBar(): void {
+
+        this.progress = (this.index / this.length) * 100;
+    }
+
 }
