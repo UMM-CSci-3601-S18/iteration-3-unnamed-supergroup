@@ -96,6 +96,16 @@ export class GoalsComponent implements OnInit{
         return this.filteredGoals;
     }
 
+    getDateString(goal: Goal, time: string): string {
+        if(time == 'start'){
+            return new Date(goal.startDate).toDateString();
+        }
+        else{
+            return new Date(goal.endDate).toDateString();
+        }
+
+    }
+
     openSnackBar(message: string, action: string) {
         this.snackBar.open(message, action, {
             duration: 2000,
