@@ -5,6 +5,10 @@ import com.mongodb.util.JSON;
 import spark.Request;
 import spark.Response;
 
+import java.text.DateFormat;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 
@@ -82,8 +86,11 @@ public class GoalRequestHandler {
                     String owner = dbO.getString("owner");
                     String body = dbO.getString("body");
                     String category = dbO.getString("category");
-                    Date startDate = dbO.getDate("startDate");
-                    Date endDate = dbO.getDate("endDate");
+                    DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_DATE_TIME;
+                    TemporalAccessor accessorStart = timeFormatter.parse(dbO.getString("startDate"));
+                    Date startDate = Date.from(Instant.from(accessorStart));
+                    TemporalAccessor accessorEnd = timeFormatter.parse(dbO.getString("endDate"));
+                    Date endDate = Date.from(Instant.from(accessorEnd));
                     String frequency = dbO.getString("frequency");
                     Boolean status = dbO.getBoolean("status");
                     String email = dbO.getString("email");

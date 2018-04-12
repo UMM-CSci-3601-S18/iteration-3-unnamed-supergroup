@@ -72,8 +72,8 @@ public class GoalController extends SuperController{
         newGoal.append("name", name);
         newGoal.append("body", body);
         newGoal.append("category", category);
-        newGoal.append("startDate", startDate);
-        newGoal.append("endDate", endDate);
+        newGoal.append("startDate", startDate.toString());
+        newGoal.append("endDate", endDate.toString());
         newGoal.append("frequency", frequency);
         newGoal.append("status", status);
         newGoal.append("email", email);

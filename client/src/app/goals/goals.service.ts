@@ -22,10 +22,11 @@ export class GoalsService {
             }),
         };
 
-        if(this.parameterPresent('email')){
+        if (this.parameterPresent('email')){
             this.removeParameter('email')
             const locationOfQuestionMark = this.goalsUrl.indexOf('?');
-            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
+            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark)
+                + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length);
         }
 
         // Send post request to add a new user with the user data as the body with specified headers.

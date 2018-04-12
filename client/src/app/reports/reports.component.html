@@ -16,7 +16,7 @@
                                 <!--This gets an emoji image based on the mood that the user input when creating the emoji object-->
                                 <mat-panel-title id="test">{{emoji.owner}} &nbsp; <img src="assets/Emojis/{{emoji.mood}}.png" style="width: 24px; height: 24px"></mat-panel-title>
                             </mat-expansion-panel-header>
-                            <mat-panel-description >Date: {{emoji.date}}</mat-panel-description>
+                            <mat-panel-description >Date: {{parseEmojiDate(emoji)}}</mat-panel-description>
                         </mat-expansion-panel>
                     </mat-accordion>
 

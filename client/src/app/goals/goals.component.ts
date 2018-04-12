@@ -59,7 +59,7 @@ export class GoalsComponent implements OnInit{
     }
 
     public getStartDateString(goal: Goal): string {
-        return new Date(goal.startDate).toDateString();
+        return  new Date(goal.startDate).toDateString();
     }
 
     public getEndDateString(goal: Goal): string {
