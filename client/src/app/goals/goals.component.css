@@ -45,3 +45,8 @@
 .check-buttons{
     color: #0074D9;
 }
+
+.mat-card-title{
+    font-size: large;
+    font-weight: bold;
+}
