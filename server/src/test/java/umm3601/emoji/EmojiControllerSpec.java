@@ -33,17 +33,17 @@ public class EmojiControllerSpec {
         testEmojis.add(Document.parse("{\n" +
             "                    owner: \"Ahnaf\",\n" +
             "                    mood: 5,\n" +
-            "                    date: " + new Date() + ",\n" +
+            "                    date: \"" + new Date() + "\",\n" +
             "                }"));
         testEmojis.add(Document.parse("{\n" +
             "                    owner: \"Chuck\",\n" +
             "                    mood: 3,\n" +
-            "                    date: " + new Date() + ",\n" +
+            "                    date: \"" + new Date() + "\",\n" +
             "                }"));
         testEmojis.add(Document.parse("{\n" +
             "                    owner: \"Kyle\",\n" +
             "                    mood: 2,\n" +
-            "                    date: " + new Date() + ",\n" +
+            "                    date: \"" + new Date() + "\",\n" +
             "                }"));
 
         mattsId = new ObjectId();

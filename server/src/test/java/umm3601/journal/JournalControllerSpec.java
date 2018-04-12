@@ -32,13 +32,13 @@ public class JournalControllerSpec extends ControllerSuperSpec {
         testJournals.add(Document.parse("{\n" +
             "                           subject: \"3601 is hard\", \n" +
             "                           body: \"I'm having a hard time with writing all these tests\"" +
-            "                           date: " + new Date() + ",\n" +
+            "                           date: \"" + new Date() + "\",\n" +
             "                           email: \"aurora@boreal.is\",\n" +
             "                        }"));
         testJournals.add(Document.parse("{\n" +
             "                           subject: \"3601 is easy\", \n" +
             "                           body: \"All this programming and communication is super easy\"" +
-            "                           date: " + new Date() + ",\n" +
+            "                           date: \"" + new Date() + "\",\n" +
             "                           email: \"no@one.ever\",\n" +
             "                        }"));
         nicId = new ObjectId();

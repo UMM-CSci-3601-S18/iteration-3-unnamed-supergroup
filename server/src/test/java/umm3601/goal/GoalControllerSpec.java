@@ -33,19 +33,19 @@ public class GoalControllerSpec extends ControllerSuperSpec{
             "                    owner: \"Ahnaf\",\n" +
             "                    name: \"Do the Dishes\",\n" +
             "                    startDate" +
-            ": " + new Date() + ",\n" +
+            ": \"" + new Date() + "\",\n" +
             "                }"));
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Aurora\",\n" +
             "                    name: \"Call Mom\",\n" +
             "                    startDate" +
-            ": " + new Date() + ",\n" +
+            ": \"" + new Date() + "\",\n" +
             "                }"));
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Ethan\",\n" +
             "                    name: \"Fold Laundry\",\n" +
             "                    startDate" +
-            ": " + new Date() + ",\n" +
+            ": \"" + new Date() + "\",\n" +
             "                }"));
 
         mattsId = new ObjectId();
