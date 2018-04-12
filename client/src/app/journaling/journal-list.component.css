@@ -30,6 +30,12 @@
     float: left;
 }
 
+.pageButtons{
+    padding-bottom: 100%;
+}
+
+
+
 .matFormFieldSubject{
     padding: 10px;
 }
@@ -65,3 +71,4 @@
     word-break: break-all;
     height: 21px;
 }
+
