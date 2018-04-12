@@ -26,46 +26,114 @@ describe('', () => {
 
     it('should add an entry', () => {
         HomePage.navigateTo();
-        HomePage.selectTheSlider();
 
-        expect(element(by.id('3emoji')).isPresent()).toBeTruthy(); // check that the correct emoji is displayed
+        //Click the submit button
         page.clickSubmitButton();
     });
 
-    it('should move the slider positively and click submit. It then navigates to to the report page', () => {
+    it('should add an entry by clicking left twice then submitting', () => {
         HomePage.navigateTo();
-         HomePage.selectTheSlider();
-         HomePage.SlideTheSliderUp();
-         HomePage.SlideTheSliderUp();
-        expect(element(by.id('5emoji')).isPresent()).toBeTruthy(); // check that the correct emoji is displayed
+
+        //Click Twice on the 'Left' button.
+        page.clickNavLeftEmojiButton();
+        page.clickNavLeftEmojiButton();
+
+        //Get the src value of the currently selected emoji, should be 'frustrated'
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/1/1.png');
+
+        //Click submit
         page.clickSubmitButton();
-        HomePage.navigateToReports();
 
-        // Need to find out default name
-        // HomePage.filterOwner('NG_DEFER_BOOTSTRAP');
-        // expect( page.getUniqueOwner()).toContain('NG_DEFER_BOOTSTRAP');
     });
 
-    it('should move the slider positively and negatively and click submit', () => {
+    it('should add an entry by clicking right three times, then up once', () => {
         HomePage.navigateTo();
-        HomePage.selectTheSlider();
-        HomePage.SlideTheSliderUp();
-        HomePage.SlideTheSliderUp();
-        HomePage.SlideTheSliderDown();
-        HomePage.SlideTheSliderDown();
-        HomePage.SlideTheSliderDown();
-        HomePage.SlideTheSliderDown();
-        expect(element(by.id('1emoji')).isPresent()).toBeTruthy(); // check that the correct emoji is displayed
+
+        //Click Right three times.
+        page.clickNavRightEmojiButton();
+        page.clickNavRightEmojiButton();
+        page.clickNavRightEmojiButton();
+
+        //Click Up once.
+        page.clickNavUpEmojiButton();
+
+        //Get the src value of the currently selected emoji, should be 'Angry'
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/1/2.png');
+
+        //Click submit
         page.clickSubmitButton();
-        HomePage.navigateToReports();
-
-        // Need to find out default name
-        // HomePage.filterOwner('Roch');
-        // expect( page.getUniqueOwner()).toContain('Roch');
     });
 
-    it('should contain the crisis button', () => {
+    it('should add an entry by clicking down once', () => {
         HomePage.navigateTo();
-        expect(element(by.id('crisis-button'))).toBeDefined();
+
+        //Click down once
+        page.clickNavDownEmojiButton();
+
+        //Get the src value of the currently selected emoji, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/2.png');
+
+        //Click submit
+        page.clickSubmitButton();
     });
+
+    it('should display two emojis next to the main one that are correct', () => {
+        HomePage.navigateTo();
+
+        //Get the src value of the currently selected emoji, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/1.png');
+
+        //Get the src value of the emoji to the right, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/4/1.png');
+
+        //Get the src value of the emoji to the left, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/2/1.png');
+
+    });
+
+
+    it('should click right then display two emojis next to the main one correctly', () => {
+        HomePage.navigateTo();
+
+        //Click right
+        page.clickNavRightEmojiButton()
+
+        //Get the src value of the currently selected emoji, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/4/1.png');
+
+        //Get the src value of the emoji to the right, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/5/1.png');
+
+        //Get the src value of the emoji to the left, should be 'Content'.
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/1.png');
+
+    });
+
+    it('should click right 10 times', () => {
+        HomePage.navigateTo();
+
+        //Click right 10 times.
+        for(var i = 0; i < 10; i++)
+        {
+            page.clickNavRightEmojiButton();
+        }
+
+        //Get the src value of the currently selected emoji, should be 'Content', having looped all the way around
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/1.png');
+
+    });
+
+    it('should click up 10 times', () => {
+       HomePage.navigateTo();
+
+        //Click up 10 times.
+        for(var i = 0; i < 10; i++)
+        {
+            page.clickNavUpEmojiButton();
+        }
+
+        //Get the src value of the currently selected emoji, should be 'Ecstatic', having looped all the way around
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/3.png');
+    });
+
 });
