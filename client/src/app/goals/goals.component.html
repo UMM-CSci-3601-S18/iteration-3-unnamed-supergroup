@@ -22,8 +22,10 @@
                                 <p *ngIf="goal.startDate != ''">Start Date: {{goal.startDate}}</p>
                                 <p *ngIf="goal.endDate != ''">End Date: {{goal.endDate}}</p>
                                 <p *ngIf="goal.frequency != ''">Frequency: {{goal.frequency}}</p>
+                                <!--
                                 <p>Status: {{parseStatus(goal.status)}}</p>
                                 <p *ngIf="goal.category != ''">Category: {{goal.category}}</p>
+                                -->
                             </mat-card-content>
                             <mat-card-actions>
                                 <button mat-button *ngIf="!goal.status" class="check-buttons" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true); openSnackBar(goal.name + ' Completed', '✔️')">
@@ -50,7 +52,9 @@
                                     <p *ngIf="goal.endDate != ''">End Date: {{goal.endDate}}</p>
                                     <p *ngIf="goal.frequency != ''">Frequency: {{goal.frequency}}</p>
                                     <p>Status: {{parseStatus(goal.status)}}</p>
+                                    <!--
                                     <p *ngIf="goal.category != ''">Category: {{goal.category}}</p>
+                                    -->
                                 </mat-card-content>
                                 <mat-card-actions>
                                     <button mat-button *ngIf="!goal.status" class="check-buttons" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">
@@ -76,8 +80,10 @@
                                 <p *ngIf="goal.startDate != ''">Start Date: {{goal.startDate}}</p>
                                 <p *ngIf="goal.endDate != ''">End Date: {{goal.endDate}}</p>
                                 <p *ngIf="goal.frequency != ''">Frequency: {{goal.frequency}}</p>
+                                <!--
                                 <p>Status: {{parseStatus(goal.status)}}</p>
                                 <p >Category: {{goal.category}}</p>
+                                -->
                             </mat-card-content>
                             <mat-card-actions>
                                 <button mat-button *ngIf="!goal.status" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true)">Complete Goal</button>
