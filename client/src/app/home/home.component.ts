@@ -13,7 +13,7 @@ import {ResponseComponent} from "./response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
+    public emoji: Emoji = {_id: '', owner: localStorage.getItem('name'), date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
 
     public lastMood = 3;
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
         const date = new Date();
         this.emoji.date = date.toString();
-        this.emoji.owner = window['name'];
+        this.emoji.owner = localStorage.getItem('name');
         this.emoji.email = localStorage.getItem('email');
 
         this.homeService.addEmoji(this.emoji).subscribe(
@@ -119,12 +119,16 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(){
-        this.emoji.owner = window['name'];
+        this.emoji.owner = localStorage.getItem('name');
+        this.emoji.email = localStorage.getItem('email');
     }
+
 
     isUserLoggedIN(): boolean {
         var email = localStorage.getItem('email');
-        return ((email != '') && (typeof email != 'undefined'));
+
+        if(email === null || email == '') return false;
+        else return true;
     }
 
     //This function pertains to mood carousel. It allows for the value of emoji.mood to

@@ -39,7 +39,7 @@ describe('', () => {
         page.clickNavLeftEmojiButton();
 
         //Get the src value of the currently selected emoji, should be 'frustrated'
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/1/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/1/1.png');
 
         //Click submit
         page.clickSubmitButton();
@@ -58,7 +58,7 @@ describe('', () => {
         page.clickNavUpEmojiButton();
 
         //Get the src value of the currently selected emoji, should be 'Angry'
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/1/2.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/1/2.png');
 
         //Click submit
         page.clickSubmitButton();
@@ -71,7 +71,7 @@ describe('', () => {
         page.clickNavDownEmojiButton();
 
         //Get the src value of the currently selected emoji, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/2.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/2.png');
 
         //Click submit
         page.clickSubmitButton();
@@ -81,13 +81,13 @@ describe('', () => {
         HomePage.navigateTo();
 
         //Get the src value of the currently selected emoji, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/1.png');
 
         //Get the src value of the emoji to the right, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/4/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/4/1.png');
 
         //Get the src value of the emoji to the left, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/2/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/2/1.png');
 
     });
 
@@ -99,13 +99,13 @@ describe('', () => {
         page.clickNavRightEmojiButton()
 
         //Get the src value of the currently selected emoji, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/4/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/4/1.png');
 
         //Get the src value of the emoji to the right, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/5/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/5/1.png');
 
         //Get the src value of the emoji to the left, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/1.png');
 
     });
 
@@ -119,7 +119,7 @@ describe('', () => {
         }
 
         //Get the src value of the currently selected emoji, should be 'Content', having looped all the way around
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/1.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/1.png');
 
     });
 
@@ -133,7 +133,7 @@ describe('', () => {
         }
 
         //Get the src value of the currently selected emoji, should be 'Ecstatic', having looped all the way around
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('assets/Emojis/3/3.png');
+        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/3.png');
     });
 
 });
