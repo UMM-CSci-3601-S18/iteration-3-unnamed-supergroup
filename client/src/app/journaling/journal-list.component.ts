@@ -122,6 +122,7 @@ export class JournalListComponent implements OnInit {
             journals => {
                 this.journals = journals;
                 this.filterJournals(this.journalSubject, this.journalBody);
+                this.length = this.filteredJournals.length;
             },
             err => {
                 console.log(err);
@@ -178,7 +179,15 @@ export class JournalListComponent implements OnInit {
 
 
     prevIndex(): void{
-        if(this.index == this.length - 10){
+
+        console.log(this.index + ' index');
+        console.log(this.length + ' length');
+
+
+        if(this.index == 0){
+            this.index == 0;
+        }
+        else if(this.index == this.length - 10){
             this.index = this.index - 10;
         }
         else if(this.index % 10 != 0){
@@ -193,9 +202,11 @@ export class JournalListComponent implements OnInit {
     }
 
     nextIndex(): void{
-        this.index = this.index + 10;
         if(this.index + 10 >= this.length){
-            this.index = this.length;
+            this.index = this.length - 1;
+        }
+        else{
+            this.index = this.index + 10;
         }
         this.loadProgressBar();
     }
@@ -206,7 +217,7 @@ export class JournalListComponent implements OnInit {
     }
 
     lastIndex(): void{
-        this.index = this.length;
+        this.index = (this.length- this.length%10) ;
         this.loadProgressBar();
     }
 
