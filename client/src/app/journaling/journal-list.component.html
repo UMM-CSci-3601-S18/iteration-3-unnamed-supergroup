@@ -20,7 +20,7 @@
                         <button id="addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
 
                         <div *ngIf="journals; else journalsError">
-                            <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
+                            <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)| slice:index:index+10; let i=index">
                                 <mat-card class="matCardJournals">
                                     <div id="journalTitleDiv">
                                         Title: {{journal.subject}}
@@ -39,6 +39,26 @@
                                 </mat-card>
                             </div>
                         </div>
+
+
+                        <div class="pageButtons">
+                            <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="firstIndexJournal" (click)="firstIndex()">
+                                <mat-icon>first_page</mat-icon>
+                            </button>
+                            <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="prevIndexJournal" (click)="prevIndex()">
+                                <mat-icon>arrow_back</mat-icon>
+                            </button>
+                            <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="nextIndexJournal" (click)="nextIndex()">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                            <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="lastIndexJournal" (click)="lastIndex()">
+                                <mat-icon>last_page</mat-icon>
+                            </button>
+                        </div>
+
+
+
+
 
                         <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
                         <ng-template #journalsError>
