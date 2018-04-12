@@ -103,6 +103,13 @@ export class JournalListComponent implements OnInit {
             });
         }
 
+        // Sort by date from newest to oldest
+        this.filteredJournals = this.filteredJournals.sort((journal1, journal2) => {
+            const date1 = new Date(journal1.date);
+            const date2 = new Date(journal2.date);
+            return date2.valueOf() - date1.valueOf();
+        });
+
         return this.filteredJournals;
     }
 
