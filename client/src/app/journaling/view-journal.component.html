@@ -5,6 +5,9 @@
             <mat-divider></mat-divider>
             <mat-card-content>
                 {{data.journal.body}}
+                <br>
+                <br>
+                Date: {{getDateString(data.journal)}}
             </mat-card-content>
         </mat-card>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>

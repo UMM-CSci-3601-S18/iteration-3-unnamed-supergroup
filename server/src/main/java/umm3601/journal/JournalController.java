@@ -77,7 +77,7 @@ public class JournalController extends SuperController {
         newJournal.append("email",email);
 
         Date now = new Date();
-        newJournal.append("date", now.toString());
+        newJournal.append("date", now);
 
         try {
             collection.insertOne(newJournal);

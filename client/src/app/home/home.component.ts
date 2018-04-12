@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Emoji} from '../emoji';
-import {HomeService} from "./home.service";
+import {HomeService} from './home.service';
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {ResponseComponent} from "./response.component";
+import {ResponseComponent} from './response.component';
 
 // Selector will change when we know more
 
@@ -13,7 +13,7 @@ import {ResponseComponent} from "./response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
+    public emoji: Emoji = {_id: '', owner: '', date: null, mood: 3, intensity: 1, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
     public emojis: Emoji[];
     public lastMood = 3;
@@ -40,13 +40,13 @@ export class HomeComponent implements OnInit {
     addEmoji(): void {
 
         const date = new Date();
-        this.emoji.date = date.toString();
+        this.emoji.date = null;
         this.emoji.owner = window['name'];
         this.emoji.email = localStorage.getItem('email');
 
         this.homeService.addEmoji(this.emoji).subscribe(
             addEmojiResult => {
-                console.log('emoji '+ addEmojiResult + ' successfully added');
+                console.log('emoji ' + addEmojiResult + ' successfully added');
                 this.openSnackBar('Emoji Saved', 'OK');
             },
             err => {
@@ -85,6 +85,8 @@ export class HomeComponent implements OnInit {
             else return "Miserable"
         }
 
+        // If for some reason it gets here..
+        return null;
         //If for some reason it gets here..
         return '';
     }
@@ -118,13 +120,13 @@ export class HomeComponent implements OnInit {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.emoji.owner = window['name'];
     }
 
     isUserLoggedIN(): boolean {
-        var email = localStorage.getItem('email');
-        return ((email != '') && (typeof email != 'undefined'));
+        const email = localStorage.getItem('email');
+        return ((email !== '') && (typeof email !== 'undefined'));
     }
 
     // This function pertains to mood carousel. It allows for the value of emoji.mood to
