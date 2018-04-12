@@ -4,6 +4,5 @@ export interface Emoji {
     mood: number;
     date: Date;
     intensity: number;
-    date: string;
     email: string;
 }

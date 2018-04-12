@@ -87,8 +87,6 @@ export class HomeComponent implements OnInit {
 
         // If for some reason it gets here..
         return null;
-        //If for some reason it gets here..
-        return '';
     }
 
     parseSwipeDirection(mood: number){

@@ -37,7 +37,6 @@ describe('Reports list', () => {
                     mood: 4,
                     date: null, //date will be created during the test so that it matches what is made in component.addEmoji
                     intensity: 2,
-                    date: '', //date will be created during the test so that it matches what is made in component.addEmoji
                     email: "roch@gmail.com",
                 },
                 {
@@ -46,7 +45,6 @@ describe('Reports list', () => {
                     mood: 5,
                     date: null, //date will be created during the test so that it matches what is made in component.addEmoji
                     intensity: 2,
-                    date: 'e', //date will be created during the test so that it matches what is made in component.addEmoji
                     email: "leo@gmail.com",
                 }
             ])
