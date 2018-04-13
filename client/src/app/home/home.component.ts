@@ -75,9 +75,13 @@ export class HomeComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             this.homeService.addResponse(result).subscribe(
                 addResponseResult => {
-
                 },
                 err => {
+                    if(JSON.stringify(err).includes('Invalid Link')) {
+                        console.log('Didn\'t add the link because it was invalid.');
+                        console.log(JSON.stringify(err));
+                        this.openSnackBar('Oops! Your link didn\'t work! We couldn\'t add it.', 'OK');
+                    }
                     // This should probably be turned into some sort of meaningful response.
                     console.log('There was an error adding the response.');
                     console.log('The error was ' + JSON.stringify(err));
