@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.util.JSON;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import umm3601.SuperController;
@@ -29,6 +30,16 @@ public class ResponseController extends SuperController{
 
         // makes the search Document key-pairs
         Document newResponse = new Document();
+        UrlValidator validator = new UrlValidator();
+        if(!(responseLink.contains("https://") || responseLink.contains("http://"))) {
+            responseLink = "http://" + responseLink;
+        }
+
+        if (!(validator.isValid(responseLink))) {
+            System.err.println("Invalid link, not adding to database.");
+            return "Invalid Link";
+        }
+
         // Append new resources here
         newResponse.append("name", responseName);
         newResponse.append("email", responseEmail);
