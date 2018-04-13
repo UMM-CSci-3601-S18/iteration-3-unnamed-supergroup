@@ -11,6 +11,7 @@ describe('Report service: ', () => {
         {
             _id: "a98ab3747faebe4490d5154",
             mood: 5,
+            intensity: 3,
             date: new Date("8/20/2015 20:00"),
             owner: "Ahnaf",
             email: "ahnaf@gmail.com",
@@ -19,6 +20,7 @@ describe('Report service: ', () => {
 
             _id: "a98ab3747faebe4490d5153",
             mood: 3,
+            intensity: 1,
             date: new Date("8/20/2018 20:00"),
             owner: "Chuck",
             email: "chuck@gmail.com",
@@ -26,6 +28,7 @@ describe('Report service: ', () => {
         {
             _id: "a98ab3747faebe4490d5151",
             mood: 3,
+            intensity: 1,
             date: new Date("8/23/2018 20:00"),
             owner: "Matt",
             email: "matt@gmail.com",
@@ -84,8 +87,4 @@ describe('Report service: ', () => {
         // actually being performed.
         req.flush(testEmojis);
     });
-
-
-
-
 });

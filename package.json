@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "angular-google-signin": "^0.1.5"
+    "angular-google-signin": "^0.1.5",
+    "hammerjs": "^2.0.8"
   }
 }

@@ -1,15 +1,27 @@
 .g-signin2{
-    float: left;
-    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .signOutButton{
-    float: left;
-    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-#crisis-button{
-    position: fixed;
-    right: 0;
-    z-index: 100;
+.navBarWithText{
+    margin: 0;
+    text-align: left;
+    background-color: darkorange;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+li {
+    display: inline-block;
+}
+
+li a {
+    color: white;
 }
