@@ -28,7 +28,7 @@ describe('', () => {
         GoalPage.navigateTo();
         expect(page.testAddNewGoal('Go to bed early', 'Every day')).toBeTruthy();
     });
-    
+
     it('should check if all of the three tabs are there', () => {
         GoalPage.navigateTo();
         expect(element(by.id('all-goals-tab'))).toBeDefined();
