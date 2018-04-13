@@ -1,9 +1,9 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
 
-import {GoalsService} from "./goals.service";
-import {GoalsComponent} from "./goals.component";
-import {Goal} from "./goals";
+import {GoalsService} from './goals.service';
+import {GoalsComponent} from './goals.component';
+import {Goal} from './goals';
 import {Observable} from 'rxjs/Observable';
 import {FormsModule} from '@angular/forms';
 import {CustomModule} from '../custom.module';
@@ -27,40 +27,40 @@ describe('Goal list', () => {
         goalsServiceStub = {
             getGoals: () => Observable.of([
                 {
-                    _id: "5aa0b36ecf40cfd384c299fd",
-                    owner: "Brittany",
-                    name: "Go to bed earlier",
-                    body: "Get it done",
-                    category: "Todo",
-                    startDate: "Wed Dec 24 2014 05:08:39 GMT-0600 (CST)",
-                    endDate: "Thu Dec 03 1992 09:18:58 GMT-0600 (CST)",
-                    frequency: "Everyday",
+                    _id: '5aa0b36ecf40cfd384c299fd',
+                    owner: 'Brittany',
+                    name: 'Go to bed earlier',
+                    body: 'Get it done',
+                    category: 'Todo',
+                    startDate: new Date('Wed Dec 24 2014 05:08:39 GMT-0600 (CST)'),
+                    endDate: new Date('Thu Dec 03 1992 09:18:58 GMT-0600 (CST)'),
+                    frequency: 'Everyday',
                     status: true,
-                    email: "brittany@gmail.com",
+                    email: 'brittany@gmail.com',
                 },
                 {
-                    _id: "5aa0b36e50d6094af8e91aba",
-                    owner: "Cathleen",
-                    name: "Go to bed earlier",
-                    body: "You can do it",
-                    category: "Health",
-                    startDate: "Fri Nov 28 1975 16:13:36 GMT-0600 (CST)",
-                    endDate: "Tue May 14 1974 08:51:10 GMT-0500 (CDT)",
-                    frequency: "Everyday",
+                    _id: '5aa0b36e50d6094af8e91aba',
+                    owner: 'Cathleen',
+                    name: 'Go to bed earlier',
+                    body: 'You can do it',
+                    category: 'Health',
+                    startDate: new Date('Fri Nov 28 1975 16:13:36 GMT-0600 (CST)'),
+                    endDate: new Date('Tue May 14 1974 08:51:10 GMT-0500 (CDT)'),
+                    frequency: 'Everyday',
                     status: false,
-                    email: "cathleen@gmail.com",
+                    email: 'cathleen@gmail.com',
                 },
                 {
-                    _id: "5aa0b36e3f417437ce3c502a",
-                    owner: "Martinez",
-                    name: "Get groceries",
-                    body: "Get it done",
-                    category: "Health",
-                    startDate: "Thu Jan 30 1986 09:39:30 GMT-0600 (CST)",
-                    endDate: "Tue Jul 30 2013 18:14:50 GMT-0500 (CDT)",
-                    frequency: "Everyday",
+                    _id: '5aa0b36e3f417437ce3c502a',
+                    owner: 'Martinez',
+                    name: 'Get groceries',
+                    body: 'Get it done',
+                    category: 'Health',
+                    startDate: new Date('Thu Jan 30 1986 09:39:30 GMT-0600 (CST)'),
+                    endDate: new Date('Tue Jul 30 2013 18:14:50 GMT-0500 (CDT)'),
+                    frequency: 'Everyday',
                     status: true,
-                    email: "martinez@gmail.com",
+                    email: 'martinez@gmail.com',
                 }
             ])
         };
@@ -153,16 +153,16 @@ describe('Adding a goal', () => {
     let goals: GoalsComponent;
     let fixture: ComponentFixture<GoalsComponent>;
     const newGoal: Goal = {
-        _id: "5aa0b36e9c7d66070b9231e4",
-        owner: "Enid",
-        name: "Drink more water",
-        body: "There you go",
-        category: "Activity",
-        startDate: "Sun Feb 14 1999 14:50:05 GMT-0600 (CST)",
-        endDate: "Tue Jun 01 2010 05:50:57 GMT-0500 (CDT)",
-        frequency: "Once a year",
+        _id: '5aa0b36e9c7d66070b9231e4',
+        owner: 'Enid',
+        name: 'Drink more water',
+        body: 'There you go',
+        category: 'Activity',
+        startDate: new Date('Sun Feb 14 1999 14:50:05 GMT-0600 (CST)'),
+        endDate: new Date('Tue Jun 01 2010 05:50:57 GMT-0500 (CDT)'),
+        frequency: 'Once a year',
         status: false,
-        email: "enid@gmail.com",
+        email: 'enid@gmail.com',
     };
     const newId = 'enid_id';
 

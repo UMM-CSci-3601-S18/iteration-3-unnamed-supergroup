@@ -4,8 +4,8 @@ export interface Goal {
     owner: string;
     body: string;
     category: string;
-    startDate: string;
-    endDate: string;
+    startDate: Date;
+    endDate: Date;
     frequency: string;
     status: boolean;
     email: string;

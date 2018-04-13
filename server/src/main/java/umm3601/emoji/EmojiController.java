@@ -10,6 +10,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import umm3601.SuperController;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -63,20 +64,22 @@ public class EmojiController extends SuperController {
     }*/
 
 
-    public String addNewEmoji(String ownerId, int mood, String date, String email) {
+    public String addNewEmoji(String ownerId, int mood, String email) {
 
         Document newEmoji = new Document();
         newEmoji.append("owner", ownerId);
         newEmoji.append("mood", mood);
-        newEmoji.append("date", date);
         newEmoji.append("email", email);
+
+        Date now = new Date();
+        newEmoji.append("date", now.toString());
 
         try {
             collection.insertOne(newEmoji);
 
             ObjectId id = newEmoji.getObjectId("_id");
             System.err.println("Successfully added new emoji [_id=" + id + ", owner=" + ownerId + ", mood="
-                + mood + " date=" + date + ", email=" + email + ']');
+                + mood + " date=" + now + ", email=" + email + ']');
 
             return JSON.serialize(id);
         } catch(MongoException me) {

@@ -1,6 +1,5 @@
 import {ResourcesPage} from './resources.po';
 import {browser, protractor, element, by} from 'protractor';
-import {Key} from 'selenium-webdriver';
 
 const origFn = browser.driver.controlFlow().execute;
 
@@ -37,5 +36,10 @@ describe('Resources Page', () => {
         ResourcesPage.clickElement('crisis-hotline');
         expect(element(by.binding('775-784-8090'))).toBeDefined();
 
+    });
+
+    it('should contain the crisis button', () => {
+        ResourcesPage.navigateTo();
+        expect(element(by.id('crisis-button'))).toBeDefined();
     });
 });

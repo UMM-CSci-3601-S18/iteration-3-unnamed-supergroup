@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Emoji} from '../emoji';
-import {HomeService} from "./home.service";
+import {HomeService} from './home.service';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ResponseComponent} from "./response.component";
 import {Response} from "./response";
 import {AddResponseComponent} from "./add-response.component";
+import {ResponseComponent} from './response.component';
 
 // Selector will change when we know more
 
@@ -15,7 +16,7 @@ import {AddResponseComponent} from "./add-response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: '', mood: 5, email: localStorage.getItem('email')};
+    public emoji: Emoji = {_id: '', owner: '', date: null, mood: 5, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
     public response: Response = {_id: '', link: '', email: this.email, name: ''};
 
@@ -40,13 +41,13 @@ export class HomeComponent implements OnInit {
     addEmoji(): void {
 
         const date = new Date();
-        this.emoji.date = date.toString();
+        this.emoji.date = null;
         this.emoji.owner = window['name'];
         this.emoji.email = localStorage.getItem('email');
 
         this.homeService.addEmoji(this.emoji).subscribe(
             addEmojiResult => {
-                console.log('emoji '+ addEmojiResult + ' successfully added');
+                console.log('emoji ' + addEmojiResult + ' successfully added');
                 this.openSnackBar('Emoji Saved', 'OK');
             },
             err => {
@@ -85,36 +86,35 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    //This function is used to turn the number of the matslider into a word to be
-    //displayed in the html.
-    parseEmotion(num: number){
-        switch(num)
-        {
+    // This function is used to turn the number of the matslider into a word to be
+    // displayed in the html.
+    parseEmotion(num: number) {
+        switch (num) {
             case 1:
-                return "anxious";
+                return 'anxious';
             case 2:
-                return "sad";
+                return 'sad';
             case 3:
-                return "down";
+                return 'down';
             case 4:
-                return "meh";
+                return 'meh';
             case 5:
-                return "happy";
+                return 'happy';
             case 6:
-                return "radiant";
+                return 'radiant';
         }
 
-        //If for some reason it gets here..
+        // If for some reason it gets here..
         return null;
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.emoji.owner = window['name'];
     }
 
     isUserLoggedIN(): boolean {
-        var email = localStorage.getItem('email');
-        return ((email != '') && (typeof email != 'undefined'));
+        const email = localStorage.getItem('email');
+        return ((email !== '') && (typeof email !== 'undefined'));
     }
 }
 

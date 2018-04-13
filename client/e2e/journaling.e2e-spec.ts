@@ -1,6 +1,5 @@
 import {JournalingPage} from './journaling.po';
-import {browser, protractor, element, by} from 'protractor';
-import {Key} from 'selenium-webdriver';
+import {browser, element, by} from 'protractor';
 
 const origFn = browser.driver.controlFlow().execute;
 
@@ -16,9 +15,9 @@ describe('Journaling Page', () => {
         expect(JournalingPage.getPageTitle()).toBe('Journals');
     });
 
-    it('Should be able to add a journal entry', ()=> {
+    it('Should be able to add a journal entry', () => {
         JournalingPage.navigateTo();
-        var buttonExisted = page.addNewJournal('I love CSci', 'I do, in fact, really love CSci.');
+        let buttonExisted = page.addNewJournal('I love CSci', 'I do, in fact, really love CSci.');
         expect(buttonExisted).toBe(true);
     });
 
@@ -30,14 +29,19 @@ describe('Journaling Page', () => {
         expect(page.getJournalText()).toContain('I love CSci');
     });
 
-    it('Should be able to edit a journal entry', ()=> {
+    it('Should be able to edit a journal entry', () => {
         JournalingPage.navigateTo();
-        var buttonExisted = page.editJournal('Wow', 'Big wow');
+        let buttonExisted = page.editJournal('Wow', 'Big wow');
         expect(buttonExisted).toBe(true);
     });
 
     it('Should be able to view a journal entry', () => {
         JournalingPage.navigateTo();
         expect(page.getJournalText()).toContain('Wow');
+    });
+
+    it('should contain the crisis button', () => {
+        JournalingPage.navigateTo();
+        expect(element(by.id('crisis-button'))).toBeDefined();
     });
 });
