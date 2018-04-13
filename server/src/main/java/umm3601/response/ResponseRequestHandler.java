@@ -26,7 +26,7 @@ public class ResponseRequestHandler {
                     String email = dbO.getString("email");
 
                     System.err.println("Adding new response [name=" + name + ", link=" + link + ']');
-                    return responseController.addNewResource(name, link, email);
+                    return responseController.addNewResponse(name, email, link);
                 }
                 catch(NullPointerException e)
                 {

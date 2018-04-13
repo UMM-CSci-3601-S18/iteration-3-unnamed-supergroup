@@ -81,8 +81,8 @@ public class Server {
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
 
-        get("api/responses/new", responseRequestHandler::addNewResponse);
         get("api/response", responseRequestHandler::getRandomResponse);
+        get("api/responses", responseRequestHandler::getResponses);
 
         get("api/users", userRequestHandler::getUsers);
 
@@ -96,6 +96,8 @@ public class Server {
         post("api/goals/new", goalRequestHandler::addNewGoal);
         post("api/journaling/new", journalRequestHandler::addNewJournal);
         post("api/journaling/edit", journalRequestHandler::editJournal);
+        post("api/response/new", responseRequestHandler::addNewResponse);
+
         // An example of throwing an unhandled exception so you can see how the
         // Java Spark debugger displays errors like this.
         get("api/error", (req, res) -> {

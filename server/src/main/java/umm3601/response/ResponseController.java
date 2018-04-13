@@ -25,7 +25,7 @@ public class ResponseController extends SuperController{
         collection = database.getCollection("responses");
     }
 
-    public String addNewResource(String responseName, String responseEmail, String responseLink) {
+    public String addNewResponse(String responseName, String responseEmail, String responseLink) {
 
         // makes the search Document key-pairs
         Document newResponse = new Document();
@@ -66,14 +66,19 @@ public class ResponseController extends SuperController{
     // This is replacing a method on the client-side that picks a random link from a group
     public String getRandomResponse(Map<String, String[]> queryParams) {
         Document filterdoc = new Document();
+        Document defaultDoc = new Document();
 
+        // this uses aggregation to choose inclusive or of having default as email or the
+        // user's email
         if (queryParams.containsKey("email")) {
             String targetEmail = (queryParams.get("email")[0]);
-            filterdoc = filterdoc.append("email", "default");
-            // filterdoc = filterdoc.append("email", targetEmail);
+            filterdoc = filterdoc.append("email", targetEmail);
+            defaultDoc = defaultDoc.append("email", "default");
+            filterdoc = new Document("$or", Arrays.asList(filterdoc, defaultDoc));
         }
 
-        AggregateIterable<Document> matchingItems = collection.aggregate(Arrays.asList(
+        AggregateIterable<Document> matchingItems = collection.aggregate(
+            Arrays.asList(
             Aggregates.match(filterdoc),
             Aggregates.sample(1)
         ));
