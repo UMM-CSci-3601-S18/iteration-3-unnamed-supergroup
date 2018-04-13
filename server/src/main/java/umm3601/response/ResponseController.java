@@ -29,6 +29,11 @@ public class ResponseController extends SuperController{
 
         // makes the search Document key-pairs
         Document newResponse = new Document();
+
+        if(!(responseLink.contains("https://") || responseLink.contains("http://"))) {
+            responseLink = "http://" + responseLink;
+        }
+
         // Append new resources here
         newResponse.append("name", responseName);
         newResponse.append("email", responseEmail);
