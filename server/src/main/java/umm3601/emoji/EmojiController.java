@@ -10,6 +10,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import umm3601.SuperController;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -63,12 +64,13 @@ public class EmojiController extends SuperController {
     }*/
 
 
-    public String addNewEmoji(String ownerId, int mood, int intensity, String date, String email) {
+    public String addNewEmoji(String ownerId, int mood, int intensity, String email) {
 
         Document newEmoji = new Document();
         newEmoji.append("owner", ownerId);
         newEmoji.append("mood", mood);
         newEmoji.append("intensity", intensity);
+        String date = new Date().toString();
         newEmoji.append("date", date);
         newEmoji.append("email", email);
 

@@ -21,7 +21,7 @@ describe('Adding an emoji', () => {
         owner: '',
         mood: 3,
         intensity: 1,
-        date: "", //date will be created during the test so that it matches what is made in component.addEmoji
+        date: null, // date will be created during the test so that it matches what is made in component.addEmoji
         email: null,
     };
 
