@@ -32,28 +32,24 @@ public class GoalControllerSpec extends ControllerSuperSpec{
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Ahnaf\",\n" +
             "                    name: \"Do the Dishes\",\n" +
-            "                    startDate" +
-            ": \"" + new Date() + "\",\n" +
+            "                    creation_date: \"8/20/2015 20:00\",\n" +
             "                }"));
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Aurora\",\n" +
             "                    name: \"Call Mom\",\n" +
-            "                    startDate" +
-            ": \"" + new Date() + "\",\n" +
+            "                    creation_date: \"7/13/2016 08:00\",\n" +
             "                }"));
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Ethan\",\n" +
             "                    name: \"Fold Laundry\",\n" +
-            "                    startDate" +
-            ": \"" + new Date() + "\",\n" +
+            "                    creation_date: \"2/10/2017 12:00\",\n" +
             "                }"));
 
         mattsId = new ObjectId();
         BasicDBObject matt = new BasicDBObject("_id", mattsId);
         matt = matt.append("owner", "Matt")
             .append("name", "Eat Breakfast")
-            .append("startDate" +
-                "", new Date());
+            .append("creation_date", "11/11/2011 09:00");
 
 
 
@@ -94,8 +90,8 @@ public class GoalControllerSpec extends ControllerSuperSpec{
             "Matt2",
             "Make good code",
             "Programming",
-            new Date(),
-            new Date(),
+            "8/19/2015 14:00",
+            "8/20/2015 14:00",
             "Weekly",
             false,
             "");

@@ -5,4 +5,9 @@ export class AppPage {
         return browser.get('/');
     }
 
+    fakeLogin(){
+        browser.executeScript("window.localStorage.setItem('name', 'Bootstrap')");
+        browser.executeScript("window.localStorage.setItem('email', 'e2etesting')");
+    }
+
 }

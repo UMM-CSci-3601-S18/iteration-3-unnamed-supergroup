@@ -2,73 +2,53 @@
 <div *ngIf="isUserLoggedIN(); else promptLogin">
 
 
-    <div layout-gt-sm="row">
-        <div flex-gt-sm="80" flex-offset-gt-sm="10">
-            <mat-card class="matCardMain">
-                <mat-card-title id="journal-list-title">Journals</mat-card-title>
+        <div layout-gt-sm="row">
+            <div flex-gt-sm="80" flex-offset-gt-sm="10">
+                <mat-card class="matCardMain">
+                    <mat-card-title id="journal-list-title">Journals</mat-card-title>
 
-                <mat-divider></mat-divider>
-                <mat-card-content>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
 
-                    <mat-form-field class="matFormFieldSubject">
-                        <input matInput id="journalSubject" #input type="text" placeholder="Filter by subject" (input)="journalSubject = $event.target.value">
-                    </mat-form-field>
-                    <mat-form-field class="matFormFieldBody">
-                        <input matInput id="journalBody" #input type="text" placeholder="Filter by body" (input)="journalBody = $event.target.value">
-                    </mat-form-field>
+                        <mat-form-field class="matFormFieldSubject">
+                            <input matInput id="journalSubject" #input type="text" placeholder="Filter by subject" (input)="journalSubject = $event.target.value">
+                        </mat-form-field>
+                        <mat-form-field class="matFormFieldBody">
+                            <input matInput id="journalBody" #input type="text" placeholder="Filter by body" (input)="journalBody = $event.target.value">
+                        </mat-form-field>
 
-                    <button id="addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
+                        <button id="addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
 
-                    <div *ngIf="journals; else journalsError">
-                        <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)| slice:index:index+10; let i=index">
-                            <mat-card class="matCardJournals">
-                                <div id="journalTitleDiv">
+                        <div *ngIf="journals; else journalsError">
+                            <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
+                                <mat-card class="matCardJournals">
                                     Title: {{journal.subject}}
-                                </div>
-                                <hr>
+                                    <br>
+                                    <br>
 
-                                <!--Some login needs to do into this to determine if the journal has more, rather
-                                 that just splicing anyways and assuming that-->
-                                <div id="journalBodyDiv">
-                                    {{journal.body}}
-                                </div>
-                                <br>
-                                {{getDateString(journal)}}
-                                <button mat-raised-button id="editButton" class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
-                                <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal)">View</button>
-                            </mat-card>
+                                    <!--Some login needs to do into this to determine if the journal has more, rather
+                                     that just splicing anyways and assuming that-->
+                                    {{journal.body.slice(0, 70)}}...
+                                    <button mat-raised-button id="editButton" class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
+                                    <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal.subject, journal.body)">View</button>
+                                </mat-card>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="pageButtons">
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="firstIndexJournal" (click)="firstIndex()">
-                            <mat-icon>first_page</mat-icon>
-                        </button>
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="prevIndexJournal" (click)="prevIndex()">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="nextIndexJournal" (click)="nextIndex()">
-                            <mat-icon>arrow_forward</mat-icon>
-                        </button>
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="lastIndexJournal" (click)="lastIndex()">
-                            <mat-icon>last_page</mat-icon>
-                        </button>
-                    </div>
-
-                    <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
-                    <ng-template #journalsError>
-                        <mat-error>
-                            There was a problem loading the journals. Possibly the server is down or perhaps there are network
-                            issues.
-                        </mat-error>
-                        <mat-error>
-                            Please wait a bit and try again or start the server.
-                        </mat-error>
-                    </ng-template>
-                </mat-card-content>
-            </mat-card>
+                        <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+                        <ng-template #journalsError>
+                            <mat-error>
+                                There was a problem loading the journals. Possibly the server is down or perhaps there are network
+                                issues.
+                            </mat-error>
+                            <mat-error>
+                                Please wait a bit and try again or start the server.
+                            </mat-error>
+                        </ng-template>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
-    </div>
 
 </div>
 

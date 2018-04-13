@@ -32,20 +32,20 @@ public class JournalControllerSpec extends ControllerSuperSpec {
         testJournals.add(Document.parse("{\n" +
             "                           subject: \"3601 is hard\", \n" +
             "                           body: \"I'm having a hard time with writing all these tests\"" +
-            "                           date: \"" + new Date() + "\",\n" +
+            "                           date: \"8/20/2015 20:00\",\n" +
             "                           email: \"aurora@boreal.is\",\n" +
             "                        }"));
         testJournals.add(Document.parse("{\n" +
             "                           subject: \"3601 is easy\", \n" +
             "                           body: \"All this programming and communication is super easy\"" +
-            "                           date: \"" + new Date() + "\",\n" +
+            "                           date: \"1/1/1970 1:00\",\n" +
             "                           email: \"no@one.ever\",\n" +
             "                        }"));
         nicId = new ObjectId();
         BasicDBObject nic = new BasicDBObject("_id", nicId);
         nic = nic.append("subject", "I love teaching Software Development")
             .append("body", "All these college students are so good at everything and we'll give them all A's")
-            .append("date", new Date())
+            .append("date", "12/22/2012 19:00")
             .append("email", "nic@college.com");
         journalDocs.insertMany(testJournals);
         journalDocs.insertOne(Document.parse(nic.toJson()));

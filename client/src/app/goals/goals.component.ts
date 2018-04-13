@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Goal} from './goals';
-import {GoalsService} from './goals.service';
-import {MatDialog} from '@angular/material/dialog';
-import {AddGoalComponent} from './add-goals.component';
+import {Observable} from "rxjs/Observable";
+import {Goal} from "./goals";
+import {GoalsService} from "./goals.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AddGoalComponent} from "./add-goals.component";
 
 @Component({
     selector: 'app-goals-component',
@@ -34,8 +34,8 @@ export class GoalsComponent implements OnInit{
             owner: '',
             body: '',
             category: '',
-            startDate: null,
-            endDate: null,
+            startDate: '',
+            endDate: '',
             frequency: '',
             status: false,
             email: localStorage.getItem('email'),
@@ -58,13 +58,6 @@ export class GoalsComponent implements OnInit{
         });
     }
 
-    public getStartDateString(goal: Goal): string {
-        return  new Date(goal.startDate).toDateString();
-    }
-
-    public getEndDateString(goal: Goal): string {
-        return new Date(goal.endDate).toDateString();
-    }
 
     public filterGoals(searchName): Goal[] {
 
@@ -95,7 +88,7 @@ export class GoalsComponent implements OnInit{
      *
      */
     refreshGoals(): Observable<Goal[]> {
-        // Get Goals returns an Observable, basically a 'promise' that
+        // Get Goals returns an Observable, basically a "promise" that
         // we will get the data from the server.
         //
         // Subscribe waits until the data is fully downloaded, then
@@ -127,8 +120,8 @@ export class GoalsComponent implements OnInit{
     }
 
     parseStatus(thing: Boolean){
-        if(thing == true) return 'Complete'
-        else return 'Incomplete'
+        if(thing == true) return "Complete"
+        else return "Incomplete"
     }
 
     isUserLoggedIN(): boolean {

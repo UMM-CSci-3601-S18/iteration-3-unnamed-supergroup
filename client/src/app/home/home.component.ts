@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Emoji} from '../emoji';
-import {HomeService} from './home.service';
+import {HomeService} from "./home.service";
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {ResponseComponent} from './response.component';
+import {ResponseComponent} from "./response.component";
 
 // Selector will change when we know more
 
@@ -13,9 +13,9 @@ import {ResponseComponent} from './response.component';
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: '', date: null, mood: 3, intensity: 1, email: localStorage.getItem('email')};
+    public emoji: Emoji = {_id: '', owner: localStorage.getItem('name'), date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
-    public emojis: Emoji[];
+
     public lastMood = 3;
     public lastIntensity = 1;
 
@@ -40,13 +40,13 @@ export class HomeComponent implements OnInit {
     addEmoji(): void {
 
         const date = new Date();
-        this.emoji.date = null;
-        this.emoji.owner = window['name'];
+        this.emoji.date = date.toString();
+        this.emoji.owner = localStorage.getItem('name');
         this.emoji.email = localStorage.getItem('email');
 
         this.homeService.addEmoji(this.emoji).subscribe(
             addEmojiResult => {
-                console.log('emoji ' + addEmojiResult + ' successfully added');
+                console.log('emoji '+ addEmojiResult + ' successfully added');
                 this.openSnackBar('Emoji Saved', 'OK');
             },
             err => {
@@ -85,8 +85,8 @@ export class HomeComponent implements OnInit {
             else return "Miserable"
         }
 
-        // If for some reason it gets here..
-        return null;
+        //If for some reason it gets here..
+        return '';
     }
 
     parseSwipeDirection(mood: number){
@@ -118,17 +118,21 @@ export class HomeComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-        this.emoji.owner = window['name'];
+    ngOnInit(){
+        this.emoji.owner = localStorage.getItem('name');
+        this.emoji.email = localStorage.getItem('email');
     }
+
 
     isUserLoggedIN(): boolean {
-        const email = localStorage.getItem('email');
-        return ((email !== '') && (typeof email !== 'undefined'));
+        var email = localStorage.getItem('email');
+
+        if(email === null || email == '') return false;
+        else return true;
     }
 
-    // This function pertains to mood carousel. It allows for the value of emoji.mood to
-    // 'wrap around' back to the start, so that it is in an infinite loop.
+    //This function pertains to mood carousel. It allows for the value of emoji.mood to
+    //'wrap around' back to the start, so that it is in an infinite loop.
     updateEmojiMood(num: number, mood: number, update: boolean){
 
         if(update)
@@ -147,9 +151,9 @@ export class HomeComponent implements OnInit {
         return currentNumber;
     }
 
-    // This function pertains to intensity carousel. It allows the value of emoji.intensity to
-    // 'wrap around', but due to variable amounts of intensities across emotions, keeps track of
-    // which only have 2 total intensities, and 3 total intensities.
+    //This function pertains to intensity carousel. It allows the value of emoji.intensity to
+    //'wrap around', but due to variable amounts of intensities across emotions, keeps track of
+    //which only have 2 total intensities, and 3 total intensities.
     updateEmojiIntensity(num: number, intensity: number, mood: number){
 
         //Keep Track of last intensity.
@@ -158,7 +162,7 @@ export class HomeComponent implements OnInit {
         var currentNumber = intensity;
         currentNumber = currentNumber + num;
 
-        // Find which moods have 2 intensities verses 3 intensities.
+        //Find which moods have 2 intensities verses 3 intensities.
         switch(mood){
             case 1:
             case 2:

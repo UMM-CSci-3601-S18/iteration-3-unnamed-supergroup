@@ -37,10 +37,10 @@
 
                     <h2 class="moodText">I'm feeling {{parseEmotionIntensity(emoji.mood, emoji.intensity)}}.</h2>
 
-                    <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(-1, emoji.mood, true)">◀</button>
-                    <button mat-fab class="emojiNavigationButtonsVert" (click)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)">▼</button>
-                    <button mat-fab class="emojiNavigationButtonsVert" (click)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)">▲</button>
-                    <button mat-fab class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(1, emoji.mood, true)">▶</button>
+                    <button mat-fab id="emojiNavLeft" class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(-1, emoji.mood, true)">◀</button>
+                    <button mat-fab id="emojiNavDown" class="emojiNavigationButtonsVert" (click)="emoji.intensity = updateEmojiIntensity(1, emoji.intensity, emoji.mood)">▼</button>
+                    <button mat-fab id="emojiNavUp" class="emojiNavigationButtonsVert" (click)="emoji.intensity = updateEmojiIntensity(-1, emoji.intensity, emoji.mood)">▲</button>
+                    <button mat-fab id="emojiNavRight" class="emojiNavigationButtonsHorz" (click)="emoji.mood = updateEmojiMood(1, emoji.mood, true)">▶</button>
 
                     <br/>
 

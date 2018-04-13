@@ -9,8 +9,6 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -46,11 +44,6 @@ public abstract class SuperController {
 
     public String getItems(Map<String, String[]> queryParams) {
         Document filterDoc = new Document();
-
-        if (queryParams.containsKey("date")) {
-            String targetDate = (queryParams.get("date")[0]);
-            filterDoc = filterDoc.append("date", targetDate);
-        }
 
         if (queryParams.containsKey("email")) {
             String targetEmail = (queryParams.get("email")[0]);
