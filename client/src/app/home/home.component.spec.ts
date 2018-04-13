@@ -90,6 +90,48 @@ describe('Adding an emoji', () => {
     });
 });
 
+describe('parseSwipeDirection', () => {
+    let component: HomeComponent;
+    let fixture: ComponentFixture<HomeComponent>;
+
+
+    let homeServiceStub: {
+        addEmoji: (newEmoji: Emoji) => Observable<{'$oid': string}>
+    };
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule, CustomModule],
+            declarations: [HomeComponent], // declare the test component
+            providers: [
+                {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true},
+                {provide: HomeService, useValue: homeServiceStub}
+        ]});
+
+    });
+
+    beforeEach(async(() => {
+        TestBed.compileComponents().then(() => {
+            fixture = TestBed.createComponent(HomeComponent);
+            component = fixture.componentInstance;
+            fixture.detectChanges();
+        });
+    }));
+
+    it('tests parseSwipeDirection\'s logic', () => {
+        expect(component.parseSwipeDirection(1)).toEqual('left');
+        component.lastMood = 1;
+        expect(component.parseSwipeDirection(5)).toEqual('left');
+        expect(component.parseSwipeDirection(1)).toEqual('none');
+        component.lastMood = 5;
+        expect(component.parseSwipeDirection(1)).toEqual('right');
+        component.lastMood = 4;
+        expect(component.parseSwipeDirection(1)).toEqual('left');
+    });
+
+
+});
+
 /*
 describe('updateEmojiIntensity', () => {
 
