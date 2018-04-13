@@ -5,8 +5,6 @@ import com.mongodb.util.JSON;
 import spark.Request;
 import spark.Response;
 
-import java.util.Date;
-
 public class EmojiRequestHandler {
     private final EmojiController emojiController;
     public EmojiRequestHandler(EmojiController emojiController){
@@ -79,14 +77,14 @@ public class EmojiRequestHandler {
                     BasicDBObject dbO = (BasicDBObject) o;
 
                     String owner = dbO.getString("owner");
-                    //For some reason age is a string right now, caused by angular.
-                    //This is a problem and should not be this way but here ya go
                     int mood = dbO.getInt("mood");
+                    int intensity = dbO.getInt("intensity");
+                    String date = dbO.getString("date");
                     String email = dbO.getString("email");
 
                     System.err.println("Adding new emoji [owner=" + owner + ", mood=" + mood +
-                        " date=" + " email=" + email +']');
-                    return emojiController.addNewEmoji(owner, mood, email);
+                        "intensity= " + intensity + " date=" + date  + " email=" + email +']');
+                    return emojiController.addNewEmoji(owner, mood, intensity, date, email);
                 }
                 catch(NullPointerException e)
                 {

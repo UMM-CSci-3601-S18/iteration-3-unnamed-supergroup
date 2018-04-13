@@ -5,18 +5,6 @@ mat-card {
 mat-card-content img {
     width: 45%;
     max-width: 500px;
-    padding-bottom: 5%;
-    padding-top: 5%;
-}
-
-mat-slider {
-    width: 90%;
-    opacity: .75;
-
-}
-
-mat-slider:hover {
-    opacity: 1;
 }
 
 .loginEmoji{
@@ -25,9 +13,46 @@ mat-slider:hover {
     margin-right: auto;
     width: 256px;
     height: 256px;
+    padding: 32px;
 }
 
 .loginEmojiText {
     text-align: center;
     font-size: 24px;
 }
+
+.headerText{
+    font-size: 200%;
+}
+
+.moodText{
+    margin-top: 0px;
+    font-size: 130%;
+}
+
+#currentEmoji {
+    padding-top: 10px;
+    width: 25%;
+    height: 25%;
+}
+
+#leftEmoji {
+    padding-top: 10px;
+    padding-right: 10px;
+    width: 15%;
+    height: 15%;
+    opacity: 0.5;
+}
+
+#rightEmoji {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 15%;
+    height: 15%;
+    opacity: 0.5;
+}
+
+#submitEmoji {
+    margin-top: 10px;
+}
+
