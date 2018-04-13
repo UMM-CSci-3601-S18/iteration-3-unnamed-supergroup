@@ -22,11 +22,11 @@
     <td-layout #layout>
         <td-navigation-drawer id="navBar" flex sidenavTitle="Menu">
             <mat-nav-list class="navBarContents">
-                <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>import_contacts</mat-icon>Journaling</a>
-                <a mat-list-item [routerLink]="['/reports']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon>import_contacts</mat-icon>Journaling</a>
-                <a mat-list-item [routerLink]="['/goals']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</a>
-                <a mat-list-item [routerLink]="['/journaling']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</a>
-                <a mat-list-item [routerLink]="['/resources']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</a>
+                <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>import_contacts</mat-icon>Home</a>
+                <a mat-list-item [routerLink]="['/reports']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon>import_contacts</mat-icon>Reports</a>
+                <a mat-list-item [routerLink]="['/goals']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Goals</a>
+                <a mat-list-item [routerLink]="['/journaling']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">assessment</i></mat-icon>Journaling</a>
+                <a mat-list-item [routerLink]="['/resources']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Resources</a>
                 <a mat-list-item [routerLink]="['/about']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">sort</i></mat-icon>About</a>
             </mat-nav-list>
         </td-navigation-drawer>
