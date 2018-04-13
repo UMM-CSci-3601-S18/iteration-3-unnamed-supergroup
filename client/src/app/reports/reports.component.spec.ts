@@ -27,6 +27,7 @@ describe('Reports list', () => {
                     _id: 'f',
                     owner: 'Nick',
                     mood: 3,
+                    intensity: 1,
                     date: null, //date will be created during the test so that it matches what is made in component.addEmoji
                     email: "nick@gmail.com",
                 },
@@ -35,6 +36,7 @@ describe('Reports list', () => {
                     owner: 'Roch',
                     mood: 4,
                     date: null, //date will be created during the test so that it matches what is made in component.addEmoji
+                    intensity: 2,
                     email: "roch@gmail.com",
                 },
                 {
@@ -42,6 +44,7 @@ describe('Reports list', () => {
                     owner: 'Leo',
                     mood: 5,
                     date: null, //date will be created during the test so that it matches what is made in component.addEmoji
+                    intensity: 2,
                     email: "leo@gmail.com",
                 }
             ])
@@ -83,6 +86,14 @@ describe('Reports list', () => {
 
     it('has one emoji with the owner leo', () => {
         expect(emojiList.emojis.filter((emoji: Emoji) => emoji.owner === 'Leo').length).toBe(1);
+    });
+
+    it('has two emoji with intensity two', () => {
+        expect(emojiList.emojis.filter((emoji: Emoji) => emoji.intensity === 2).length).toBe(2);
+    });
+
+    it('has one emoji with mood four', () => {
+        expect(emojiList.emojis.filter((emoji: Emoji) => emoji.mood === 4).length).toBe(1);
     });
 
     it('emoji list filters by name', () => {

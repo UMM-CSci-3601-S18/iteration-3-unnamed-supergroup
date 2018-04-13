@@ -15,7 +15,7 @@
     <script defer src="https://apis.google.com/js/platform.js"></script>
     <meta name="google-signin-client_id" content="605590953368-p8q4g5f2evfgtqqub6bcglvs3sraejo5.apps.googleusercontent.com">
 </head>
-<body>
+<body onload="writeDataLocal()">
 
 
 <!--
@@ -24,6 +24,15 @@ which allows for functions like signOut to work properly.
 -->
 
 <script type=application/javascript>
+
+    function writeDataLocal(){
+        //This makes sure that if the email field doesn't exist
+        //in local storage, it is created so that nothing breaks
+        //on the website.
+        if (localStorage.getItem('email') === null) {
+            localStorage.setItem('email', '');
+        }
+    }
 
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();

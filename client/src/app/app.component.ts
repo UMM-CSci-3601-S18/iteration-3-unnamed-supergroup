@@ -13,6 +13,8 @@ import {CrisisButtonComponent} from "./crisis-button.component";
 export class AppComponent implements OnInit {
     title = "Sunshine Journal";
 
+    windowWidth: number;
+    windowHeight: number;
     constructor(public dialog: MatDialog){
     }
 
@@ -25,6 +27,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        //Function to set variables to be used in resizing the screen.
+        this.windowHeight = window.screen.height;
+        this.windowWidth = window.screen.width;
+
+
         //This first if statement makes it so that the e2e tests will still run without getting locked out of the site
         //This should probably be removed at some point and instead have the e2e tests use a fake user somehow
         if(environment.production) {
@@ -34,6 +41,10 @@ export class AppComponent implements OnInit {
                 localStorage.setItem('email', '');
             }
         }
+    }
+
+    onResize(event){
+        this.windowWidth = event.target.innerWidth;
     }
 
     openDialog(): void {

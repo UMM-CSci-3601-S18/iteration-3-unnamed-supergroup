@@ -64,11 +64,12 @@ public class EmojiController extends SuperController {
     }*/
 
 
-    public String addNewEmoji(String ownerId, int mood, String email) {
+    public String addNewEmoji(String ownerId, int mood, int intensity, String email) {
 
         Document newEmoji = new Document();
         newEmoji.append("owner", ownerId);
         newEmoji.append("mood", mood);
+        newEmoji.append("intensity", intensity);
         newEmoji.append("email", email);
 
         Date now = new Date();
