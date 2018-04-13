@@ -37,6 +37,7 @@ import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
 import {AboutComponent} from "./about/about.component";
 import {CrisisButtonComponent} from "./crisis-button.component";
+import {AddResponseComponent} from "./home/add-response.component";
 
 let config = new AuthServiceConfig([
     {
@@ -71,6 +72,7 @@ export function provideConfig() {
         ReportsComponent,
         JournalListComponent,
         AddJournalComponent,
+        AddResponseComponent,
         GoalsComponent,
         AboutComponent,
         AddGoalComponent,
@@ -102,6 +104,7 @@ export function provideConfig() {
         ViewJournalComponent,
         CrisisButtonComponent,
         //add resource component would go here//
+        AddResponseComponent,
     ],
     bootstrap: [AppComponent]
 })
