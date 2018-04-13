@@ -33,24 +33,24 @@ public class EmojiControllerSpec {
         testEmojis.add(Document.parse("{\n" +
             "                    owner: \"Ahnaf\",\n" +
             "                    mood: 5,\n" +
-            "                    date: \"8/20/2015 20:00\",\n" +
+            "                    date: \"" + new Date() + "\",\n" +
             "                }"));
         testEmojis.add(Document.parse("{\n" +
             "                    owner: \"Chuck\",\n" +
             "                    mood: 3,\n" +
-            "                    date: \"5/13/2000 14:00\",\n" +
+            "                    date: \"" + new Date() + "\",\n" +
             "                }"));
         testEmojis.add(Document.parse("{\n" +
             "                    owner: \"Kyle\",\n" +
             "                    mood: 2,\n" +
-            "                    date: \"2/14/2010 09:00\",\n" +
+            "                    date: \"" + new Date() + "\",\n" +
             "                }"));
 
         mattsId = new ObjectId();
         BasicDBObject matt = new BasicDBObject("_id", mattsId);
         matt = matt.append("owner", "Matt")
             .append("mood", 1)
-            .append("date", "11/11/2011 09:00");
+            .append("date", new Date());
 
 
 
@@ -113,7 +113,7 @@ public class EmojiControllerSpec {
 
     @Test
     public void addEmojiTest(){
-        String newId = emojiController.addNewEmoji("Matt2",5,"8/20/2015 14:00", "");
+        String newId = emojiController.addNewEmoji("Matt2",5, 2, "matt@yahoo.com");
 
         assertNotNull("Add new emoji should return true when an emoji is added,", newId);
         Map<String, String[]> argMap = new HashMap<>();
