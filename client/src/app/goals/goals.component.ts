@@ -37,7 +37,7 @@ export class GoalsComponent implements OnInit{
             name: '',
             owner: '',
             body: '',
-            category: 'Other',
+            category: '',
             startDate: '',
             endDate: '',
             frequency: '',

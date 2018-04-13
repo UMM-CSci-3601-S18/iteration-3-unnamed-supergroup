@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {Goal} from './goals';
-//import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
     selector: 'app-add-goals.component',
@@ -12,6 +12,8 @@ export class AddGoalComponent {
 //    isLinear = true;
 //    firstFormGroup: FormGroup;
 //    secondFormGroup: FormGroup;
+    name = new FormControl('', [Validators.required]);
+    category = new FormControl('', [Validators.required]);
     constructor(
         public dialogRef: MatDialogRef<AddGoalComponent>,
 //        private _formBuilder: FormBuilder,
@@ -31,4 +33,12 @@ export class AddGoalComponent {
         });
     }
     */
+
+    getNameErrorMessage(){
+        return this.name.hasError('required') ? 'You must enter a name' : '';
+    }
+
+    getCategoryErrorMessage(){
+        return this.category.hasError('required') ? 'You must enter a category' : '';
+    }
 }
