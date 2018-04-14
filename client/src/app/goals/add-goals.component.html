@@ -32,9 +32,9 @@
                     <input matInput #input id="frequency" placeholder="Frequency" [(ngModel)]="data.goal.frequency" name="frequency">
                 </mat-form-field>
                 <!-- [mat-dialog-close]="data.user" causes the data.user object to be returned when the dialog is closed. -->
-                <button [disabled]="name.invalid || category.invalid" mat-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
             </form>
         </mat-card-content>
+        <button [disabled]="name.invalid || category.invalid" mat-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
     </div>
 </div>
