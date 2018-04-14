@@ -69,6 +69,26 @@ export class HomePage {
         return element(by.buttonText('Submit')).click();
     }
 
+    clickNavLeftEmojiButton() {
+        const input = element(by.id('emojiNavLeft'));
+        input.click();
+    }
+
+    clickNavRightEmojiButton() {
+        const input = element(by.id('emojiNavRight'));
+        input.click();
+    }
+
+    clickNavDownEmojiButton() {
+        const input = element(by.id('emojiNavDown'));
+        input.click();
+    }
+
+    clickNavUpEmojiButton() {
+        const input = element(by.id('emojiNavUp'));
+        input.click();
+    }
+
 
 
 

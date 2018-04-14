@@ -5,8 +5,6 @@ import com.mongodb.util.JSON;
 import spark.Request;
 import spark.Response;
 
-import java.util.Date;
-
 public class EmojiRequestHandler {
     private final EmojiController emojiController;
     public EmojiRequestHandler(EmojiController emojiController){

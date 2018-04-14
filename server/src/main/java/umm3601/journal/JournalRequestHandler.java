@@ -69,7 +69,7 @@ public class JournalRequestHandler {
                     //Date date = dbO.getDate("date");
 
                     System.err.println("Adding new journal [subject=" + subject + ", body=" + body + ']');
-                    return journalController.addNewJournal(subject, body, email);
+                    return journalController.addNewJournal(subject, body, email).toString();
                 }
                 catch(NullPointerException e)
                 {

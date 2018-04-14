@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Emoji} from '../emoji';
-import {ReportsService} from './reports.service';
+import {Emoji} from "../emoji";
+import {ReportsService} from "./reports.service";
 
 @Component({
     selector: 'app-reports-component',
@@ -82,7 +82,7 @@ export class ReportsComponent implements OnInit {
     }
 
     isUserLoggedIN(): boolean {
-        const email = localStorage.getItem('email');
-        return ((email !== '') && (typeof email !== 'undefined'));
+        var email = localStorage.getItem('email');
+        return ((email != '') && (typeof email != 'undefined'));
     }
 }

@@ -7,25 +7,30 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
 import static com.mongodb.client.model.Filters.eq;
 
+/**
+ * This is an abstract class that provides the general methods
+ * getItem and getItems for all controllers, which is subclassed
+ * by all controllers. That allows them to use the methods
+ * defined in here. More specific methods are defined in
+ * individual controllers, like addNewJournal.
+ */
 public abstract class SuperController {
-    protected Gson gson;
-    protected MongoDatabase database;
-    protected MongoCollection<Document> collection;
+    protected Gson gson = null;
+    protected MongoDatabase database = null;
+    protected MongoCollection<Document> collection = null;
 
-    public SuperController(){
-        gson = null;
-        database = null;
-        collection = null;
-    }
-
-
+    /**
+     *
+     * @param id: a string representation of an ObjectId that is
+     *          linked to the object desired.
+     * @return: the JSON that represents the desired item, or null
+     * if not found.
+     */
     public String getItem(String id) {
 
         FindIterable<Document>  jsonObjects
@@ -42,13 +47,18 @@ public abstract class SuperController {
         }
     }
 
+    /**
+     *
+     * @param queryParams: a Map that contains the keys and
+     *                   values of the items we're looking for.
+     *                   The values are the array, but we only
+     *                   care about the first value that is related
+     *                   to the key for now.
+     * @return: a JSON representation of all items found
+     * given the search criteria.
+     */
     public String getItems(Map<String, String[]> queryParams) {
         Document filterDoc = new Document();
-
-        if (queryParams.containsKey("date")) {
-            String targetDate = (queryParams.get("date")[0]);
-            filterDoc = filterDoc.append("date", targetDate);
-        }
 
         if (queryParams.containsKey("email")) {
             String targetEmail = (queryParams.get("email")[0]);

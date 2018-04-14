@@ -19,3 +19,35 @@
 .addNewGoalDiv{
     padding: 10px;
 }
+
+.goal-avatar{
+    background-image: url('http://www.clker.com/cliparts/K/R/l/7/g/s/joyful-sun-md.png');
+    background-size: cover;
+}
+
+.box {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.mat-card-header {
+    color: white;
+    background-color: #0074D9;
+}
+
+.goal {
+    background-color: lightyellow;
+    max-width: 300px;
+}
+
+.check-buttons{
+    color: #0074D9;
+}
+
+.mat-card-title{
+    font-size: large;
+    font-weight: bold;
+}

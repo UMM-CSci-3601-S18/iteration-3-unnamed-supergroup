@@ -10,7 +10,6 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import umm3601.SuperController;
 
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -65,15 +64,15 @@ public class GoalController extends SuperController{
 
 
     public String addNewGoal(String ownerId, String name, String body, String category,
-                             Date startDate, Date endDate, String frequency, Boolean status, String email) {
+                             String startDate, String endDate, String frequency, Boolean status, String email) {
 
         Document newGoal = new Document();
         newGoal.append("owner", ownerId);
         newGoal.append("name", name);
         newGoal.append("body", body);
         newGoal.append("category", category);
-        newGoal.append("startDate", startDate.toString());
-        newGoal.append("endDate", endDate.toString());
+        newGoal.append("startDate", startDate);
+        newGoal.append("endDate", endDate);
         newGoal.append("frequency", frequency);
         newGoal.append("status", status);
         newGoal.append("email", email);
@@ -94,6 +93,28 @@ public class GoalController extends SuperController{
             return null;
         }
     }
+
+    public String editGoal(String id, Boolean status){
+        System.out.println("Right here again");
+        Document newJournal = new Document();
+        newJournal.append("status", status);
+        Document setQuery = new Document();
+        setQuery.append("$set", newJournal);
+
+        Document searchQuery = new Document().append("_id", new ObjectId(id));
+
+        System.out.println(id);
+
+
+
+        try {
+            collection.updateOne(searchQuery, setQuery);
+            ObjectId id1 = searchQuery.getObjectId("_id");
+            System.err.println("Successfully updated goal [_id=" + id1 + ", status=" + status + ']');
+            return JSON.serialize(id1);
+        } catch(MongoException me) {
+            me.printStackTrace();
+            return null;
+        }
+    }
 }
-
-

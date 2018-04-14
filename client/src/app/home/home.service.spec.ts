@@ -8,7 +8,7 @@ describe('Home service: ', () => {
     // A small collection of test emojis
     const testEmojis: Emoji[] = [
         {
-           _id: "a98ab3747faebe4490d5154",
+            _id: "a98ab3747faebe4490d5154",
             mood: 5,
             intensity: 1,
             date: new Date("8/20/2015 20:00"),

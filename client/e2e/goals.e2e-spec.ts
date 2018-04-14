@@ -29,11 +29,13 @@ describe('', () => {
         expect(page.testAddNewGoal('Go to bed early', 'Every day')).toBeTruthy();
     });
 
-    it('Should view a goal.', () => {
+    it('should check if all of the three tabs are there', () => {
         GoalPage.navigateTo();
-        expect(page.clickElementByCss('mat-expansion-panel')).toBeTruthy();
-        expect(page.getGoalTitle()).toBe('Go to bed early');
+        expect(element(by.id('all-goals-tab'))).toBeDefined();
+        expect(element(by.id('completed-goals-tab'))).toBeDefined();
+        expect(element(by.id('incomplete-goals-tab'))).toBeDefined();
     });
+
 
 /*
      it('Should open the expansion panel and get the Name', () => {

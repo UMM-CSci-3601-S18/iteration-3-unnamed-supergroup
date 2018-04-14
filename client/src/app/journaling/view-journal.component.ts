@@ -17,7 +17,4 @@ export class ViewJournalComponent {
         this.dialogRef.close();
     }
 
-    getDateString(journal: Journal): string {
-        return new Date(journal.date).toDateString();
-    }
 }

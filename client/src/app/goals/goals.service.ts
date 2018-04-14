@@ -22,11 +22,10 @@ export class GoalsService {
             }),
         };
 
-        if (this.parameterPresent('email')){
-            this.removeParameter('email')
-            const locationOfQuestionMark = this.goalsUrl.indexOf('?');
-            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark)
-                + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length);
+        if(this.parameterPresent('email')){
+            this.removeParameter('email');
+            let locationOfQuestionMark = this.goalsUrl.indexOf('?');
+            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
         }
 
         // Send post request to add a new user with the user data as the body with specified headers.
@@ -83,5 +82,23 @@ export class GoalsService {
             end = this.goalsUrl.indexOf('&', start);
         }
         this.goalsUrl = this.goalsUrl.substring(0, start) + this.goalsUrl.substring(end);
+    }
+
+    editGoal(id : Goal): Observable<{'$oid': string}> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            }),
+        };
+
+        if(this.parameterPresent('email')){
+            this.removeParameter('email');
+            let locationOfQuestionMark = this.goalsUrl.indexOf('?');
+            this.goalsUrl = this.goalsUrl.substring(0, locationOfQuestionMark) + this.goalsUrl.substring(locationOfQuestionMark + 1, this.goalsUrl.length)
+        }
+
+        console.log(id);
+        // Send post request to add a new journal with the journal data as the body with specified headers.
+        return this.http.post<{'$oid': string}>(this.goalsUrl + '/edit', id, httpOptions);
     }
 }

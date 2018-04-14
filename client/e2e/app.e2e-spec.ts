@@ -8,6 +8,12 @@ describe('angular-spark-lab', () => {
         page = new AppPage();
     });
 
+    it('should inject a fake login', () => {
+       AppPage.navigateTo();
+
+       page.fakeLogin();
+    });
+
     it('should load', () => {
         AppPage.navigateTo();
     });
