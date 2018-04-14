@@ -39,21 +39,6 @@
                         </div>
                     </div>
 
-                    <div class="pageButtons">
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="firstIndexJournal" (click)="firstIndex()">
-                            <mat-icon>first_page</mat-icon>
-                        </button>
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="prevIndexJournal" (click)="prevIndex()">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="nextIndexJournal" (click)="nextIndex()">
-                            <mat-icon>arrow_forward</mat-icon>
-                        </button>
-                        <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="lastIndexJournal" (click)="lastIndex()">
-                            <mat-icon>last_page</mat-icon>
-                        </button>
-                    </div>
-
                     <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
                     <ng-template #journalsError>
                         <mat-error>
@@ -65,6 +50,20 @@
                         </mat-error>
                     </ng-template>
                 </mat-card-content>
+                <div class="pageButtons">
+                    <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="firstIndexJournal" (click)="firstIndex()">
+                        <mat-icon>first_page</mat-icon>
+                    </button>
+                    <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="prevIndexJournal" (click)="prevIndex()">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="nextIndexJournal" (click)="nextIndex()">
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                    <button mat-button type="button" matSuffix mat-icon-button aria-label="clear" id="lastIndexJournal" (click)="lastIndex()">
+                        <mat-icon>last_page</mat-icon>
+                    </button>
+                </div>
             </mat-card>
         </div>
     </div>
