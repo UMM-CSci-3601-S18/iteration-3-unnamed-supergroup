@@ -1,23 +1,23 @@
 <div class="add-user" layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
 
-        <mat-card-title>New Goal</mat-card-title>
-        <mat-divider></mat-divider>
+            <mat-card-title>New Goal</mat-card-title>
+            <mat-divider></mat-divider>
 
-        <mat-card-content>
-            <form name="name" >
+            <mat-card-content>
+                <form name="name" >
                 <mat-form-field>
-                    <input matInput #input id="name" placeholder="Name" [(ngModel)]="data.goal.name" [formControl]="name" required>
+                    <input matInput #input id="name" placeholder="Name" [(ngModel)]="data.goal.name" [formControl]="name" required name="title">
                     <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput id="startDate" [matDatepicker]="startPicker" placeholder="Start Date" [(ngModel)]="data.goal.startDate">
+                    <input matInput id="startDate" [matDatepicker]="startPicker" placeholder="Start Date" [(ngModel)]="data.goal.startDate" name="start">
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi="true" #startPicker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput id="endDate" [matDatepicker]="endPicker" placeholder="End Date" [(ngModel)]="data.goal.endDate">
+                    <input matInput id="endDate" [matDatepicker]="endPicker" placeholder="End Date" [(ngModel)]="data.goal.endDate" name="end">
                     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi="true" #endPicker></mat-datepicker>
                 </mat-form-field>
@@ -28,12 +28,12 @@
                     <mat-option value="Other">Other</mat-option>
                 </mat-select>
                 <mat-form-field>
-                    <input matInput #input id="frequency" placeholder="Frequency" [(ngModel)]="data.goal.frequency">
+                    <input matInput #input id="frequency" placeholder="Frequency" [(ngModel)]="data.goal.frequency" name="frequency">
                 </mat-form-field>
                 <!-- [mat-dialog-close]="data.user" causes the data.user object to be returned when the dialog is closed. -->
                 <button [disabled]="name.invalid || category.invalid" mat-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
-            </form>
-        </mat-card-content>
+                </form>
+            </mat-card-content>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
     </div>
 </div>

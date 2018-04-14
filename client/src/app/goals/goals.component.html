@@ -6,7 +6,7 @@
         <mat-card-content>
             <mat-card-title>Overview Of Goals</mat-card-title>
             <mat-tab-group class="tab-group">
-                <mat-tab label="Incomplete Goals">
+                <mat-tab label="Incomplete Goals" id="incomplete-goals-tab">
                     <mat-divider></mat-divider>
                     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
@@ -35,7 +35,7 @@
                         </mat-card>
                     </div>
                 </mat-tab>
-                <mat-tab label="All Goals">
+                <mat-tab label="All Goals" id="all-goals-tab">
                     <mat-divider></mat-divider>
                     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, goalStatus)">
@@ -64,7 +64,7 @@
                         </mat-card>
                     </div>
                 </mat-tab>
-                <mat-tab label="Completed Goals">
+                <mat-tab label="Completed Goals" id="completed-goals-tab">
                     <mat-divider></mat-divider>
                     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="box" >
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
