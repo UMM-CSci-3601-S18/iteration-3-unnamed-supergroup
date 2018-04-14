@@ -19,23 +19,17 @@
 <!-- If the user is on mobile -->
 <ng-template id="onMobile" #onMobile>
     <div (window:resize)="onResize($event)"></div>
-    <td-layout #layout>
-        <td-navigation-drawer id="navBar" flex sidenavTitle="Menu">
-            <mat-nav-list class="navBarContents">
-                <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>import_contacts</mat-icon>Journaling</a>
-                <a mat-list-item [routerLink]="['/reports']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon>import_contacts</mat-icon>Journaling</a>
-                <a mat-list-item [routerLink]="['/goals']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</a>
-                <a mat-list-item [routerLink]="['/journaling']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</a>
-                <a mat-list-item [routerLink]="['/resources']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</a>
-                <a mat-list-item [routerLink]="['/about']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">sort</i></mat-icon>About</a>
-            </mat-nav-list>
-        </td-navigation-drawer>
+    <ul class="navBarWithText">
+        <li><a id="homeMobile" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>home</mat-icon></button></a></li>
+        <li><a id="reportsMobile" [routerLink]="['/reports']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>assignment</mat-icon></button></a></li>
+        <li><a id="goalsMobile" [routerLink]="['/goals']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>check_box</mat-icon></button></a></li>
+        <li><a id="journalingMobile" [routerLink]="['/journaling']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>create</mat-icon></button></a></li>
+        <li><a id="resourcesMobile" [routerLink]="['/resources']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>import_contacts</mat-icon></button></a></li>
+        <li><a id="aboutMobile" [routerLink]="['/about']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>insert_emoticon</mat-icon></button></a></li>
+        <li><a id="crisisMobile"><button mat-mini-fab class="nav-button" color="warn" (click)="openDialog()"><mat-icon>call</mat-icon></button></a></li>
 
-        <button mat-icon-button td-menu-button tdLayoutToggle>
-            <mat-icon>menu</mat-icon>
-        </button>
-        <router-outlet></router-outlet>
-    </td-layout>
+    </ul>
+    <router-outlet></router-outlet>
 </ng-template>
 
 <!-- Google Login Buttons. Due to complications involving google handling
