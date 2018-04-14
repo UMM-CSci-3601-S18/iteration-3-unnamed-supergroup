@@ -1,3 +1,6 @@
 .add-response {
     align-content: center;
 }
+#confirmAddResponseButton {
+    background-color: lightgreen;
+}
