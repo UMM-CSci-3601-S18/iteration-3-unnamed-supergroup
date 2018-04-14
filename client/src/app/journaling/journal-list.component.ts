@@ -173,7 +173,8 @@ export class JournalListComponent implements OnInit {
     // This function returns true when the user is signed in and false otherwise
     isUserLoggedIN(): boolean {
         const email = localStorage.getItem('email');
-        return ((email !== '') && (typeof email !== 'undefined'));
+        if(email == '' || email === null) return false;
+        else return true;
     }
 
 

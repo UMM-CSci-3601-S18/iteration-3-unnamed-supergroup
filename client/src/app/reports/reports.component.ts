@@ -82,7 +82,8 @@ export class ReportsComponent implements OnInit {
     }
 
     isUserLoggedIN(): boolean {
-        var email = localStorage.getItem('email');
-        return ((email != '') && (typeof email != 'undefined'));
+        const email = localStorage.getItem('email');
+        if(email == '' || email === null) return false;
+        else return true;
     }
 }
