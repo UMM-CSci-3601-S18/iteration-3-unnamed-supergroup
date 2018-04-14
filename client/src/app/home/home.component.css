@@ -1,10 +1,5 @@
-mat-card {
+#main-body {
     text-align: center;
-}
-
-mat-card-content img {
-    width: 45%;
-    max-width: 500px;
 }
 
 .loginEmoji{

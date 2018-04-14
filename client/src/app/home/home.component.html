@@ -4,8 +4,7 @@
             <!-- Main Page -->
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-            <mat-card id="card-main">
-                <mat-card-content id="headerInfo">
+            <div id="main-body">
 
                     <!-- Only display first name -->
                     <h1 class="headerText"><strong>Hello {{emoji.owner.split(" ")[0]}}!<br> How are you feeling today?</strong></h1>
@@ -46,8 +45,7 @@
 
                     <button mat-raised-button id="submitEmoji" color="primary" (click)="addEmoji()" type="button">Submit</button>
                     <button mat-raised-button id="responseAdd" color="primary" (click)="makeResponseDialog()" type="button">Add a new response link</button>
-                </mat-card-content>
-            </mat-card>
+                </div>
         </div>
 
 <!-- What to display if the user isn't logged in -->
