@@ -109,4 +109,47 @@ public class GoalRequestHandler {
             return null;
         }
     }
+
+    public String editGoal(Request req, Response res)
+    {
+        System.out.println("Right here");
+        res.type("application/json");
+        Object o = JSON.parse(req.body());
+        try {
+            if(o.getClass().equals(BasicDBObject.class))
+            {
+                try {
+                    BasicDBObject dbO = (BasicDBObject) o;
+
+                    String id = dbO.getString("_id");
+                    String name = dbO.getString("name");
+                    String category = dbO.getString("category");
+                    String frequency = dbO.getString("frequency");
+                    Boolean status = dbO.getBoolean("status");
+                    String body = dbO.getString("body");
+
+
+
+                    System.err.println("Editing goal [ id=" + id + ", status=" + status +  ']');
+                    return goalController.editGoal(id, status);
+                }
+                catch(NullPointerException e)
+                {
+                    System.err.println("A value was malformed or omitted, new journal request failed.");
+                    return null;
+                }
+
+            }
+            else
+            {
+                System.err.println("Expected BasicDBObject, received " + o.getClass());
+                return null;
+            }
+        }
+        catch(RuntimeException ree)
+        {
+            ree.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -4,6 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 
 import {HttpClientModule} from '@angular/common/http';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {HomeService} from "./home/home.service";
@@ -57,6 +61,11 @@ export function provideConfig() {
         Routing,
         CustomModule,
         SocialLoginModule,
+        MatTabsModule,
+        MatCardModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,

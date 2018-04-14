@@ -93,6 +93,30 @@ public class GoalController extends SuperController{
             return null;
         }
     }
+
+    public String editGoal(String id, Boolean status){
+        System.out.println("Right here again");
+        Document newJournal = new Document();
+        newJournal.append("status", status);
+        Document setQuery = new Document();
+        setQuery.append("$set", newJournal);
+
+        Document searchQuery = new Document().append("_id", new ObjectId(id));
+
+        System.out.println(id);
+
+
+
+        try {
+            collection.updateOne(searchQuery, setQuery);
+            ObjectId id1 = searchQuery.getObjectId("_id");
+            System.err.println("Successfully updated goal [_id=" + id1 + ", status=" + status + ']');
+            return JSON.serialize(id1);
+        } catch(MongoException me) {
+            me.printStackTrace();
+            return null;
+        }
+    }
 }
 
 

@@ -86,6 +86,7 @@ public class Server {
         get("api/journaling/:id", journalRequestHandler::getJournalJSON);
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
         post("api/goals/new", goalRequestHandler::addNewGoal);
+        post("api/goals/edit", goalRequestHandler::editGoal);
         post("api/journaling/new", journalRequestHandler::addNewJournal);
         post("api/journaling/edit", journalRequestHandler::editJournal);
         // An example of throwing an unhandled exception so you can see how the
