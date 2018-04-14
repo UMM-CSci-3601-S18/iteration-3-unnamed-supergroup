@@ -63,7 +63,7 @@ export class JournalListService {
     }
 
     filterByEmail(userEmail?: string): void {
-        if(!(userEmail == null || userEmail === '')) {
+        if (!(userEmail == null || userEmail === '')) {
             if (this.parameterPresent('email=') ) {
                 // there was a previous search by company that we need to clear
                 this.removeParameter('email=');
@@ -75,8 +75,7 @@ export class JournalListService {
                 // this was the first bit of information to pass in the url
                 this.journalUrl += '?email=' + userEmail + '&';
             }
-        }
-        else {
+        } else {
             if (this.parameterPresent('email=')) {
                 let start = this.journalUrl.indexOf('email=');
                 const end = this.journalUrl.indexOf('&', start);
@@ -104,16 +103,17 @@ export class JournalListService {
         this.journalUrl = this.journalUrl.substring(0, start) + this.journalUrl.substring(end);
     }
 
-    addNewJournal(newJournal : Journal): Observable<{'$oid': string}> {
+    addNewJournal(newJournal: Journal): Observable<{'$oid': string}> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             }),
         };
-        if(this.parameterPresent('email')){
-            this.removeParameter('email')
-            let locationOfQuestionMark = this.journalUrl.indexOf('?')
-            this.journalUrl = this.journalUrl.substring(0, locationOfQuestionMark) + this.journalUrl.substring(locationOfQuestionMark + 1, this.journalUrl.length)
+        if (this.parameterPresent('email')) {
+            this.removeParameter('email');
+            const locationOfQuestionMark = this.journalUrl.indexOf('?');
+            this.journalUrl = this.journalUrl.substring(0, locationOfQuestionMark) +
+                this.journalUrl.substring(locationOfQuestionMark + 1, this.journalUrl.length);
         }
         // Send post request to add a new journal with the journal data as the body with specified headers.
         return this.http.post<{'$oid': string}>(this.journalUrl + '/new', newJournal, httpOptions);
@@ -125,10 +125,11 @@ export class JournalListService {
                 'Content-Type': 'application/json'
             }),
         };
-        if(this.parameterPresent('email')){
-            this.removeParameter('email')
-            let locationOfQuestionMark = this.journalUrl.indexOf('?')
-            this.journalUrl = this.journalUrl.substring(0, locationOfQuestionMark) + this.journalUrl.substring(locationOfQuestionMark + 1, this.journalUrl.length)
+        if (this.parameterPresent('email')) {
+            this.removeParameter('email');
+            const locationOfQuestionMark = this.journalUrl.indexOf('?');
+            this.journalUrl = this.journalUrl.substring(0, locationOfQuestionMark) +
+                this.journalUrl.substring(locationOfQuestionMark + 1, this.journalUrl.length);
         }
         console.log(id);
         // Send post request to add a new journal with the journal data as the body with specified headers.

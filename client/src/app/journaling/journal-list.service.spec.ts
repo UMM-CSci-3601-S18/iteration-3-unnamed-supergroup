@@ -12,21 +12,21 @@ describe('Journal list service: ', () => {
             _id: "5aa0b36e401cfced5f36b1a7",
             subject: "York",
             body: "You can do it",
-            date: "Sun Feb 04 1979 13:35:46 GMT-0600 (CST)",
+            date: new Date("Sun Feb 04 1979 13:35:46 GMT-0600 (CST)"),
             email: "york@fake.com"
         },
         {
             _id: "5aa0b36ef2d33e651859bd70",
             subject: "Sutton",
             body: "Get it done",
-            date: "Sun Oct 28 2012 03:04:31 GMT-0500 (CDT)",
+            date: new Date("Sun Oct 28 2012 03:04:31 GMT-0500 (CDT)"),
             email: "sutton@suttonsemail.com"
         },
         {
             _id: "5aa0b36e5c1d05d2cb0460a4",
             subject: "Madelyn",
             body: "There you go",
-            date: "Thu Sep 25 2003 14:45:37 GMT-0500 (CDT)",
+            date: new Date("Thu Sep 25 2003 14:45:37 GMT-0500 (CDT)"),
             email: "madelynrules@myspace.com"
         }
     ];
@@ -42,7 +42,6 @@ describe('Journal list service: ', () => {
     // These are used to mock the HTTP requests so that we (a) don't have to
     // have the server running and (b) we can check exactly which HTTP
     // requests were made to ensure that we're making the correct requests.
-
     let httpClient: HttpClient;
     let httpTestingController: HttpTestingController;
 
@@ -134,7 +133,7 @@ describe('Journal list service: ', () => {
             _id: "5aa0b36e1f57545f27a26b69",
             subject: "Pennington",
             body: "Get it done",
-            date: "Sun Feb 07 1982 22:41:23 GMT-0600 (CST)",
+            date: new Date("Sun Feb 07 1982 22:41:23 GMT-0600 (CST)"),
             email: "pennington@penn.com"
         };
 
