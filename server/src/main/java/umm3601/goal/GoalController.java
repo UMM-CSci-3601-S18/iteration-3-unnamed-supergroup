@@ -118,5 +118,3 @@ public class GoalController extends SuperController{
         }
     }
 }
-
-
