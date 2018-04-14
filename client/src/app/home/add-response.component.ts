@@ -5,6 +5,7 @@ import {Response} from './response';
 @Component({
     selector: 'app-add-response.component',
     templateUrl: 'add-response.component.html',
+    styleUrls: ['./add-response.component.css'],
 })
 
 export class AddResponseComponent {
