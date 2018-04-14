@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
     openSnackBar(message: string, action: string) {
         this.snackBar.open(message, action, {
-            duration: 5000,
+            duration: 10000,
         });
     }
 
@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
                     if(JSON.stringify(err).includes('Invalid Link')) {
                         console.log('Didn\'t add the link because it was invalid.');
                         console.log(JSON.stringify(err));
-                        this.openSnackBar('Oops! Your link didn\'t work! We couldn\'t add it.', 'OK');
+                        this.openSnackBar('Oops! Your link didn\'t work! We couldn\'t add it. Remember \'.com\'', 'OK');
                     }
                     // This should probably be turned into some sort of meaningful response.
                     console.log('There was an error adding the response.');

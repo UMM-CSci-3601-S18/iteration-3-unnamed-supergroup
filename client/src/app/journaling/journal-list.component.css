@@ -23,7 +23,7 @@
 }
 
 .matCardMain{
-    height: 100%;
+    height: 110%;
 }
 
 .addNewJournalButton{
@@ -69,4 +69,10 @@
     overflow-x: hidden;
     overflow-y: hidden;
     padding-bottom: 4px;
+}
+
+.pageButtons {
+    position: absolute;
+    left: 25px;
+    bottom: 10px;
 }
