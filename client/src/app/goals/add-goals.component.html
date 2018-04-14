@@ -1,13 +1,13 @@
 <div class="add-user" layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
 
-            <mat-card-title>New Goal</mat-card-title>
-            <mat-divider></mat-divider>
+        <mat-card-title>New Goal</mat-card-title>
+        <mat-divider></mat-divider>
 
-            <mat-card-content>
-                <form name="name" >
+        <mat-card-content>
+            <form name="name" >
                 <mat-form-field>
-                <input matInput #input id="name" placeholder="Name" [(ngModel)]="data.goal.name" [formControl]="name" required>
+                    <input matInput #input id="name" placeholder="Name" [(ngModel)]="data.goal.name" [formControl]="name" required>
                     <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
                 </mat-form-field>
 
@@ -32,8 +32,8 @@
                 </mat-form-field>
                 <!-- [mat-dialog-close]="data.user" causes the data.user object to be returned when the dialog is closed. -->
                 <button [disabled]="name.invalid || category.invalid" mat-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
-                </form>
-            </mat-card-content>
+            </form>
+        </mat-card-content>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
     </div>
 </div>
