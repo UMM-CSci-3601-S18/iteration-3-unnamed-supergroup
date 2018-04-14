@@ -35,7 +35,7 @@
 
 .mat-card-header {
     color: white;
-    background-color: #0074D9;
+    background-color: darkorange;
 }
 
 .goal {
@@ -44,7 +44,12 @@
 }
 
 .check-buttons{
-    color: #0074D9;
+    color: darkorange;
+    background-color: lightyellow;
+}
+
+.check-buttons:hover{
+    background-color: #FFC433;
 }
 
 .mat-card-title{
