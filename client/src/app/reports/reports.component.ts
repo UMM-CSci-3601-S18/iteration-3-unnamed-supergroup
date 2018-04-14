@@ -73,6 +73,9 @@ export class ReportsComponent implements OnInit {
         return emojiListObservable;
     }
 
+    parseEmojiDate(emoji: Emoji): string {
+        return new Date(emoji.date).toDateString();
+    }
 
     ngOnInit(): void {
         this.refreshEmojis();

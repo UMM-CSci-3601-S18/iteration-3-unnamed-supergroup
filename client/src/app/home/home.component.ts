@@ -13,7 +13,7 @@ import {ResponseComponent} from "./response.component";
 })
 export class HomeComponent implements OnInit {
 
-    public emoji: Emoji = {_id: '', owner: localStorage.getItem('name'), date: '', mood: 3, intensity: 1, email: localStorage.getItem('email')};
+    public emoji: Emoji = {_id: '', owner: localStorage.getItem('name'), date: null, mood: 3, intensity: 1, email: localStorage.getItem('email')};
     public email: string = localStorage.getItem('email');
 
     public lastMood = 3;
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     addEmoji(): void {
 
         const date = new Date();
-        this.emoji.date = date.toString();
+        this.emoji.date = null;
         this.emoji.owner = localStorage.getItem('name');
         this.emoji.email = localStorage.getItem('email');
 
