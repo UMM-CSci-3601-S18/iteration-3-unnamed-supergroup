@@ -8,6 +8,8 @@ import umm3601.emoji.EmojiController;
 import umm3601.emoji.EmojiRequestHandler;
 import umm3601.goal.GoalRequestHandler;
 import umm3601.goal.GoalController;
+import umm3601.response.ResponseController;
+import umm3601.response.ResponseRequestHandler;
 import umm3601.user.UserController;
 import umm3601.user.UserRequestHandler;
 import umm3601.journal.JournalController;
@@ -37,6 +39,9 @@ public class Server {
 
         UserController userController = new UserController(emojiDatabase);
         UserRequestHandler userRequestHandler = new UserRequestHandler(userController);
+
+        ResponseController responseController = new ResponseController(emojiDatabase);
+        ResponseRequestHandler responseRequestHandler = new ResponseRequestHandler(responseController);
         //Configure Spark
         port(serverPort);
         enableDebugScreen();
@@ -76,6 +81,9 @@ public class Server {
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
 
+        get("api/response", responseRequestHandler::getRandomResponse);
+        get("api/responses", responseRequestHandler::getResponses);
+
         get("api/users", userRequestHandler::getUsers);
 
         get("api/emojis", emojiRequestHandler::getEmojis);
@@ -89,6 +97,8 @@ public class Server {
         post("api/goals/edit", goalRequestHandler::editGoal);
         post("api/journaling/new", journalRequestHandler::addNewJournal);
         post("api/journaling/edit", journalRequestHandler::editJournal);
+        post("api/response/new", responseRequestHandler::addNewResponse);
+
         // An example of throwing an unhandled exception so you can see how the
         // Java Spark debugger displays errors like this.
         get("api/error", (req, res) -> {

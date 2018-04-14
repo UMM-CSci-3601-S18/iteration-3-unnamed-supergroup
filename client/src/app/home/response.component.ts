@@ -1,5 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {HomeService} from "./home.service";
+import {HttpClient} from "@angular/common/http";
+
+
 @Component({
     selector: 'app-response.component',
     templateUrl: 'response.component.html',
@@ -7,28 +11,10 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class ResponseComponent {
 
-    // links is an array of different responses we are using when you select an emoji in our home page
-
-    public links: string[] = [
-        'https://www.youtube.com/watch?v=Jyy0ra2WcQQ',
-        'https://www.youtube.com/watch?v=6kVlonPVAjI',
-        'https://www.youtube.com/watch?v=z39iodZOf00',
-        'https://www.youtube.com/watch?v=Yt1JtbhSIMc',
-        'https://www.youtube.com/watch?v=csjhIkKnz4Q',
-        'https://www.youtube.com/watch?v=Orrr7PyaZs4',
-        'https://www.youtube.com/watch?v=uLu6iq0NaqU',
-        'https://www.youtube.com/watch?v=eMHg8sSmKWs',
-        'https://www.youtube.com/watch?v=hJbRpHZr_d0',
-        'https://www.youtube.com/watch?v=Nw2oBIrQGLo',
-        'https://www.youtube.com/watch?v=XyNlqQId-nk',
-        'https://www.youtube.com/watch?v=EtH9Yllzjcc',
-        'https://www.youtube.com/watch?v=BfFi4wba30g',
-        'https://www.youtube.com/watch?v=WxUulGkLu4I',
-        'https://www.youtube.com/watch?v=1JArN6rag8s'
-    ];
-
+    public email: string = localStorage.getItem('email');
 
     constructor(
+        private http: HttpClient,
         public dialogRef: MatDialogRef<ResponseComponent>,
         @Inject(MAT_DIALOG_DATA) public data: { response: number }) {
     }
@@ -38,11 +24,19 @@ export class ResponseComponent {
     // repetitive and random everytime
 
     getLink() : void {
-        var index = Math.floor(Math.random() * this.links.length);
-        window.open(this.links[index]);
+        let service = new HomeService(this.http);
+        let response = service.getRandomResponse(this.email);
+        response.subscribe(
+                (ls) => {
+                    window.open(ls[0].link);
+                },
+                (err) => {
+                    console.log("Error in getting link");
+                }
+        );
 
         //Make sure dialog box closes after opening link
-        this.onNoClick()
+        this.onNoClick();
     }
 
     onNoClick(): void {

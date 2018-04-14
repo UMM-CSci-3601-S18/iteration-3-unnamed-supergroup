@@ -32,10 +32,6 @@ which allows for functions like signOut to work properly.
         if (localStorage.getItem('email') === null) {
             localStorage.setItem('email', '');
         }
-
-        if (localStorage.getItem('name') === null) {
-            localStorage.setItem('name', '');
-        }
     }
 
     function signOut() {
@@ -43,7 +39,7 @@ which allows for functions like signOut to work properly.
         auth2.signOut().then(function () {
 
             //Clear Global Vars
-            localStorage.setItem('name', '');
+            window.name = "";
             localStorage.setItem('email', '');
 
             //Reload Page
@@ -63,7 +59,7 @@ which allows for functions like signOut to work properly.
     function onSignIn(googleUser) {
 
         //This line prevents an infinite loop of loading in
-        if(localStorage.getItem('name') === "")
+        if(window.name === "")
         {
             location.reload();
         }
@@ -72,7 +68,14 @@ which allows for functions like signOut to work properly.
         }
 
         localStorage.setItem('email', googleUser.getBasicProfile().getEmail());
-        localStorage.setItem('name', googleUser.getBasicProfile().getName());
+        window.name = googleUser.getBasicProfile().getName();
+
+        /*
+        //Set global variables to be used across the webpage
+        window.email = googleUser.getBasicProfile().getEmail();
+*/
+        //Debug
+        console.log(window.name + ' signed in.');
     }
 
 

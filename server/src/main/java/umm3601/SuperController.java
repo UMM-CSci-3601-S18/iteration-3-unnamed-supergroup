@@ -1,8 +1,6 @@
 package umm3601;
 
 import com.google.gson.Gson;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;

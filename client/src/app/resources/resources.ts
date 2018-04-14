@@ -3,4 +3,5 @@ export interface resources {
     resourceBody: string;
     resourcePhone: string;
     resourcesUrl: string;
+    resourcesEmail: string;
 }
