@@ -52,5 +52,7 @@
 <ng-template #promptLogin>
     <img class="loginEmoji" src="https://image.flaticon.com/icons/svg/260/260205.svg" alt="Sunshine Journal">
     <p class="loginEmojiText">Please sign in with your google account to access Sunshine Journal</p>
+    <!-- Create Sign in Button -->
+    <div *ngIf="getLoginName() == ''" id="signInButton" class="g-signin2" data-onsuccess="onSignIn"></div>
 </ng-template>
 

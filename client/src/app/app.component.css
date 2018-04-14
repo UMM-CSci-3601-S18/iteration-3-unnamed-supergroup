@@ -1,13 +1,7 @@
 .g-signin2{
     position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.signOutButton{
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 40%;
+    right: calc(50% - 60px);
 }
 
 .navBarWithText{
@@ -24,4 +18,8 @@ li {
 
 li a {
     color: white;
+}
+
+ul{
+    padding: 10px;
 }

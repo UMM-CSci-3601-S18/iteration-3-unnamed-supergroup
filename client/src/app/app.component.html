@@ -1,18 +1,23 @@
 <body>
+<!-- Always create invisible login button -->
+<div style="display:none" class="g-signin2" data-onsuccess="onSignIn"></div>
+
 <div *ngIf="windowWidth > 850; then onComputer else onMobile"></div>
 
 <!-- If the user is on desktop -->
 <ng-template #onComputer>
     <div (window:resize)="onResize($event)"></div>
-    <ul class="navBarWithText">
-        <li><a id="home" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button">Home</button></a></li>
-        <li><a id="reports" [routerLink]="['/reports']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button">Reports</button></a></li>
-        <li><a id="goals" [routerLink]="['/goals']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button">Goals</button></a></li>
-        <li><a id="journaling" [routerLink]="['/journaling']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button">Journaling</button></a></li>
-        <li><a id="resources" [routerLink]="['/resources']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button">Resources</button></a></li>
-        <li><a id="about" [routerLink]="['/about']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button">About</button></a></li>
-        <li><a id="crisis"><button mat-raised-button class="nav-button" color="warn" (click)="openDialog()">Crisis</button></a></li>
-    </ul>
+        <ul class="navBarWithText">
+            <li><a id="home" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>home</mat-icon>Home</button></a></li>
+            <li><a id="reports" [routerLink]="['/reports']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>assignment</mat-icon>Reports</button></a></li>
+            <li><a id="goals" [routerLink]="['/goals']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>check_box</mat-icon>Goals</button></a></li>
+            <li><a id="journaling" [routerLink]="['/journaling']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>create</mat-icon>Journaling</button></a></li>
+            <li><a id="resources" [routerLink]="['/resources']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>call</mat-icon>Resources</button></a></li>
+            <li><a id="about" [routerLink]="['/about']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>insert_emoticon</mat-icon>About</button></a></li>
+            <li><a id="crisis"><button mat-raised-button class="nav-button" color="warn" (click)="openDialog()"><mat-icon>call</mat-icon>Crisis</button></a></li>
+            <li *ngIf="getLoginName() != ''"><a id="sign-out"><button mat-button class="nav-button" onclick="signOut()">Sign Out</button></a></li>
+
+        </ul>
     <router-outlet></router-outlet>
 </ng-template>
 
@@ -24,7 +29,7 @@
         <li><a id="reportsMobile" [routerLink]="['/reports']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>assignment</mat-icon></button></a></li>
         <li><a id="goalsMobile" [routerLink]="['/goals']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>check_box</mat-icon></button></a></li>
         <li><a id="journalingMobile" [routerLink]="['/journaling']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>create</mat-icon></button></a></li>
-        <li><a id="resourcesMobile" [routerLink]="['/resources']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>import_contacts</mat-icon></button></a></li>
+        <li><a id="resourcesMobile" [routerLink]="['/resources']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>call</mat-icon></button></a></li>
         <li><a id="aboutMobile" [routerLink]="['/about']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>insert_emoticon</mat-icon></button></a></li>
         <li><a id="crisisMobile"><button mat-mini-fab class="nav-button" color="warn" (click)="openDialog()"><mat-icon>call</mat-icon></button></a></li>
 
@@ -32,31 +37,4 @@
     <router-outlet></router-outlet>
 </ng-template>
 
-<!-- Google Login Buttons. Due to complications involving google handling
-a lot of the work 'behind the scenes' with g-signin2, for anything involving
-google login to work, it needs to always be loaded, hence the invisible
-inaccessible buttons.-->
-
-<!-- Check to see if user logged in, and if they aren't.. -->
-<div *ngIf="getLoginName() == ''; else signOutButton">
-
-    <!-- Create sign in button -->
-    <div id="signInButton" class="g-signin2" data-onsuccess="onSignIn"></div>
-
-    <!-- Create INVISIBLE sign out button, that cannot be accessed -->
-    <div>
-        <button style="display:none" mat-raised-button onclick="signOut()">Sign Out</button>
-    </div>
-</div>
-
-<!--If user IS signed in.-->
-<ng-template #signOutButton>
-    <!-- Create an INVISIBLE sign in button. -->
-    <div style="display:none" id="signInButtonInvisible" class="g-signin2" data-onsuccess="onSignIn"></div>
-
-    <!-- Create a sign out button. -->
-    <div class="signOutButton">
-        <button mat-raised-button onclick="signOut()">Sign Out</button>
-    </div>
-</ng-template>
 </body>
