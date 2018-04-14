@@ -1,3 +1,6 @@
 #confirmAddGoalButton {
     background-color: lightgreen;
 }
+#exitWithoutAddingButton {
+    background-color: #f44336;
+}
