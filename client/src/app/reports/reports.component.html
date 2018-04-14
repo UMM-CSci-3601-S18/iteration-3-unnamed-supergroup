@@ -6,17 +6,15 @@
                 <mat-card-title id="reports-title">Reports</mat-card-title>
                 <mat-divider></mat-divider>
                 <mat-card-content>
-                    <mat-form-field>
-                        <input matInput id="emojiOwner" #input type="text" placeholder="Filter by owner" (input)="emojiOwner = $event.target.value">
-                    </mat-form-field>
 
                     <mat-accordion *ngIf="emojis; else emojiError" >
                         <mat-expansion-panel #elem class="emoji" [id]="emoji._id['$oid']"  *ngFor="let emoji of this.filterEmojis(emojiOwner)">
                             <mat-expansion-panel-header>
                                 <!--This gets an emoji image based on the mood that the user input when creating the emoji object-->
-                                <mat-panel-title id="test">{{emoji.owner}} &nbsp; <img src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width: 24px; height: 24px"></mat-panel-title>
+                                <mat-panel-title id="test">{{parseEmojiDate(emoji)}} &nbsp; <img src="assets/Emojis/{{emoji.mood}}/{{emoji.intensity}}.png" style="width: 24px; height: 24px"></mat-panel-title>
                             </mat-expansion-panel-header>
-                            <mat-panel-description >Date: {{parseEmojiDate(emoji)}}</mat-panel-description>
+                            <!-- Need to parse intensity: low, med, high-->
+                            <mat-panel-description >Intensity: {{emoji.intensity}}</mat-panel-description>
                         </mat-expansion-panel>
                     </mat-accordion>
 
