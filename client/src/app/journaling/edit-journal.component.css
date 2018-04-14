@@ -1,0 +1,9 @@
+#confirmAddJournalButton {
+    background-color: lightgreen;
+    left: 8px;
+    margin-right: 10px;
+}
+
+#exitWithoutAddingButton {
+    background-color: #f44336;
+}
