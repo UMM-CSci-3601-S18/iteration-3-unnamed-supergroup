@@ -5,6 +5,7 @@ import {Journal} from './journal';
 @Component({
     selector: 'app-view-journal.component',
     templateUrl: 'view-journal.component.html',
+    styleUrls: ['./view-journal.component.css'],
 })
 
 export class ViewJournalComponent {

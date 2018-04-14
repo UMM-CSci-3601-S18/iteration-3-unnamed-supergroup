@@ -23,7 +23,7 @@
                         <div #elem class="journals" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)| slice:index:index+10; let i=index">
                             <mat-card class="matCardJournals">
                                 <div id="journalTitleDiv">
-                                    Title: {{journal.subject}}
+                                    {{journal.subject}}
                                 </div>
                                 <hr>
 
@@ -32,7 +32,6 @@
                                 <div id="journalBodyDiv">
                                     {{journal.body}}
                                 </div>
-                                <br>
                                 {{getDateString(journal)}}
                                 <button mat-raised-button id="editButton" class="editButton" (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit</button>
                                 <button mat-raised-button id="viewButton" class="viewButton" (click)="showJournalBody(journal)">View</button>
