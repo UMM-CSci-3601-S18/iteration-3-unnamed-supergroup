@@ -36,23 +36,28 @@ export class ResponseComponent {
                 (ls) => {
                     window.open(ls[0].link);
                 },
-                /*
-                This error does not work
 
-                (err) => {
-                    this.openSnackBar('Oops! Your link didn\'t work! We couldn\'t add it.', 'OK');
+            err => {
+                this.openSnackBar('Oops! There are no response links! Please add some.', 'OK');
+                console.log("Error in getting link");
+            }
+            /*
+            This error does not work
+
+            (err) => {
+                this.openSnackBar('Oops! Your link didn\'t work! We couldn\'t add it.', 'OK');
+                console.log("Error in getting link");
+            }
+
+            Would like to replace with something like this:
+
+            err => {
+                if(JSON.stringify(err).includes('link')){
+                    this.openSnackBar('Oops! There are no response links! Please add some.', 'OK');
                     console.log("Error in getting link");
-                }
+            }}
 
-                Would like to replace with something like this:
-
-                err => {
-                    if(JSON.stringify(err).includes('link')){
-                        this.openSnackBar('Oops! There are no response links! Please add some.', 'OK');
-                        console.log("Error in getting link");
-                }}
-
-                */
+            */
         );
 
         //Make sure dialog box closes after opening link

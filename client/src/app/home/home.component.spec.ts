@@ -130,6 +130,14 @@ describe('parseSwipeDirection', () => {
     });
 
 
+    it('tests parseEmotionIntensity\'s logic', () => {
+        expect(component.parseEmotionIntensity(1, 1)).toEqual('Frustrated');
+        expect(component.parseEmotionIntensity(1, 2)).toEqual('Angry');
+        expect(component.parseEmotionIntensity(2, 1)).toEqual('Anxious');
+        expect(component.parseEmotionIntensity(3, 3)).toEqual('Ecstatic');
+        expect(component.parseEmotionIntensity(4, 2)).toEqual('Bleh');
+        expect(component.parseEmotionIntensity(5, 1)).toEqual('Unhappy');
+    });
 });
 
 /*
