@@ -14,10 +14,10 @@
                                 <div mat-card-avatar class="goal-avatar"></div>
                                 <mat-card-title>{{goal.name}}</mat-card-title>
                             </mat-card-header>
-                            <img *ngIf="goal.category == 'Chores' "mat-card-image src="../assets/Categories/clean.jpg">
-                            <img *ngIf="goal.category == 'Health' "mat-card-image src="../assets/Categories/health.jpg">
-                            <img *ngIf="goal.category == 'Social' "mat-card-image src="../assets/Categories/social.jpg">
-                            <img *ngIf="goal.category == 'Other' "mat-card-image src="../assets/Categories/other.png">
+                            <img *ngIf="goal.category == 'Chores' " mat-card-image src="../assets/Categories/clean.jpg">
+                            <img *ngIf="goal.category == 'Health' " mat-card-image src="../assets/Categories/health.jpg">
+                            <img *ngIf="goal.category == 'Social' " mat-card-image src="../assets/Categories/social.jpg">
+                            <img *ngIf="goal.category == 'Other' " mat-card-image src="../assets/Categories/other.png">
                             <mat-card-content class="goal-content">
                                 <p *ngIf="goal.startDate != ''">Start Date: {{getDateString(goal, 'start')}}</p>
                                 <p *ngIf="goal.endDate != ''">End Date: {{getDateString(goal, 'end')}}</p>
@@ -28,7 +28,7 @@
                                 -->
                             </mat-card-content>
                             <mat-card-actions>
-                                <button mat-raised-button *ngIf="!goal.status" class="check-buttons" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true); openSnackBar(goal.name + ' Completed', '✔️')">
+                                <button id="completeGoalButton" mat-raised-button *ngIf="!goal.status" class="check-buttons" (click)="editGoal(goal._id['$oid'], goal.name, goal.owner, goal.body, goal.category, goal.startDate, goal.endDate, goal.frequency, goal.email, true); openSnackBar(goal.name + ' Completed', '✔️')">
                                     <mat-icon>check</mat-icon>
                                 </button>
                             </mat-card-actions>
@@ -43,10 +43,10 @@
                                 <div mat-card-avatar class="goal-avatar"></div>
                                 <mat-card-title>{{goal.name}}</mat-card-title>
                             </mat-card-header>
-                            <img *ngIf="goal.category == 'Chores' "mat-card-image src="../assets/Categories/clean.jpg">
-                            <img *ngIf="goal.category == 'Health' "mat-card-image src="../assets/Categories/health.jpg">
-                            <img *ngIf="goal.category == 'Social' "mat-card-image src="../assets/Categories/social.jpg">
-                            <img *ngIf="goal.category == 'Other' "mat-card-image src="../assets/Categories/other.png">
+                            <img *ngIf="goal.category == 'Chores' " mat-card-image src="../assets/Categories/clean.jpg">
+                            <img *ngIf="goal.category == 'Health' " mat-card-image src="../assets/Categories/health.jpg">
+                            <img *ngIf="goal.category == 'Social' " mat-card-image src="../assets/Categories/social.jpg">
+                            <img *ngIf="goal.category == 'Other' " mat-card-image src="../assets/Categories/other.png">
                             <mat-card-content class="goal-content">
                                 <p *ngIf="goal.startDate != ''">Start Date: {{getDateString(goal, 'start')}}</p>
                                 <p *ngIf="goal.endDate != ''">End Date: {{getDateString(goal, 'end')}}</p>
@@ -70,12 +70,12 @@
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
                             <mat-card-header>
                                 <div mat-card-avatar class="goal-avatar"></div>
-                                <mat-card-title>{{goal.name}}</mat-card-title>
+                                <mat-card-title id="goalName">{{goal.name}}</mat-card-title>
                             </mat-card-header>
-                            <img *ngIf="goal.category == 'Chores' "mat-card-image src="../assets/Categories/clean.jpg">
-                            <img *ngIf="goal.category == 'Health' "mat-card-image src="../assets/Categories/health.jpg">
-                            <img *ngIf="goal.category == 'Social' "mat-card-image src="../assets/Categories/social.jpg">
-                            <img *ngIf="goal.category == 'Other' "mat-card-image src="../assets/Categories/other.png">
+                            <img *ngIf="goal.category == 'Chores' " mat-card-image src="../assets/Categories/clean.jpg">
+                            <img *ngIf="goal.category == 'Health' " mat-card-image src="../assets/Categories/health.jpg">
+                            <img *ngIf="goal.category == 'Social' " mat-card-image src="../assets/Categories/social.jpg">
+                            <img *ngIf="goal.category == 'Other' " mat-card-image src="../assets/Categories/other.png">
                             <mat-card-content class="goal-content">
                                 <p *ngIf="goal.startDate != ''">Start Date: {{getDateString(goal, 'start')}}</p>
                                 <p *ngIf="goal.endDate != ''">End Date: {{getDateString(goal, 'end')}}</p>

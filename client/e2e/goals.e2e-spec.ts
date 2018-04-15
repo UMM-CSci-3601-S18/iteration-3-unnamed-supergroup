@@ -38,8 +38,44 @@ describe('', () => {
 
     it('Check if there is a check-buttons on the incomplete goals tab', () => {
         GoalPage.navigateTo();
-        expect(element(by.id('incomplete-goals-tab'))).toBeDefined();;
+        expect(element(by.id('incomplete-goals-tab'))).toBeDefined();
         expect(element(by.id('check-buttons'))).toBeDefined();
+    });
+
+    it('should be able to complete a goal and move it into the completed tab', () => {
+        GoalPage.navigateTo();
+        element(by.id('addNewGoal')).click();
+
+        // Set goal name
+        element(by.id('name')).sendKeys('Test Goals');
+
+        // Set the start date of the goal
+        element(by.id('startDate')).click();
+        element(by.id('startDate')).sendKeys('4/1/2018');
+
+        // Set the end date of the goal
+        element(by.id('endDate')).click();
+        element(by.id('endDate')).sendKeys('4/7/2018');
+
+        // Set the category of the goal
+        element(by.id('category-goals')).click();
+        element(by.id('md-option-0')).click();
+
+        // Set the frequency of the goal
+        element(by.id('frequency')).click();
+        element(by.id('frequency')).sendKeys('7');
+
+        // Submit the goal
+        element(by.id('confirmAddGoalButton')).click();
+
+        // Complete the goal
+        element(by.id('completeGoalButton')).click();
+
+        // Check that the goal is in the right tab
+        element(by.id('md-tab-label-0-2')).click();
+        expect(element(by.id('goalName')).getText()).toContain('Test Goals');
+
+
     });
 
 
