@@ -1,8 +1,7 @@
-<body>
 <!-- Always create invisible login button -->
 <div style="display:none" class="g-signin2" data-onsuccess="onSignIn"></div>
 
-<div *ngIf="windowWidth > 850; then onComputer else onMobile"></div>
+<div *ngIf="windowWidth > 885; then onComputer else onMobile"></div>
 
 <!-- If the user is on desktop -->
 <ng-template #onComputer>
@@ -16,9 +15,7 @@
             <li><a id="about" [routerLink]="['/about']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-button class="nav-button"><mat-icon>insert_emoticon</mat-icon>About</button></a></li>
             <li><a id="crisis"><button mat-raised-button class="nav-button" color="warn" (click)="openDialog()"><mat-icon>call</mat-icon>Crisis</button></a></li>
             <li *ngIf="getLoginName() != ''"><a id="sign-out"><button mat-button class="nav-button" onclick="signOut()"><mat-icon>exit_to_app</mat-icon>Sign Out</button></a></li>
-
         </ul>
-    <router-outlet></router-outlet>
 </ng-template>
 
 <!-- If the user is on mobile -->
@@ -33,9 +30,19 @@
         <li><a id="aboutMobile" [routerLink]="['/about']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><button mat-mini-fab class="nav-button"><mat-icon>insert_emoticon</mat-icon></button></a></li>
         <li><a id="crisisMobile"><button mat-mini-fab class="nav-button" color="warn" (click)="openDialog()"><mat-icon>call</mat-icon></button></a></li>
         <li *ngIf="getLoginName() != ''"><a id="sign-outMobile"><button mat-mini-fab class="nav-button" onclick="signOut()"><mat-icon>exit_to_app</mat-icon></button></a></li>
-
     </ul>
-    <router-outlet></router-outlet>
 </ng-template>
 
-</body>
+<!-- Check to see if user logged in, and if they aren't.. -->
+<div *ngIf="getLoginName() == ''">
+
+    <!-- Create sign in button -->
+    <div id="signInButton" class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- Create INVISIBLE sign out button, that cannot be accessed -->
+    <div>
+        <button style="display:none" mat-raised-button onclick="signOut()">Sign Out</button>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
