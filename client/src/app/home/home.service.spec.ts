@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClient} from '@angular/common/http';
 import {Emoji} from '../emoji';
 import {HomeService} from './home.service'
+import {Response} from "./response";
 
 describe('Home service: ', () => {
     // A small collection of test emojis
@@ -141,5 +142,17 @@ describe('Home service: ', () => {
     it('calls removeParameter in home.service.ts', () => {
         emojiListService.filterByEmail("aurora@boreal.is");
         emojiListService.filterByEmail("aurora@austral.is");
+    });
+
+    it('gets a random response', () => {
+        let response: Response  = {
+            _id: '',
+            link: 'https://fluff.fy',
+            email: 'aurora@boreal.is',
+            name: 'fluff'
+        };
+
+        expect(emojiListService.addResponse(response)).toBeDefined();
+        emojiListService.getRandomResponse("aurora@boreal.is");
     });
 });
