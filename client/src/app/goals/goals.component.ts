@@ -140,22 +140,15 @@ export class GoalsComponent implements OnInit{
         this.refreshGoals();
     }
 
-    //New function to return the name of the active user
-    //window.* is not defined, or 'gettable' straight from HTML *ngIf
-    //So this function will return that
-    getLoginName(){
-        var name = window['name'];
-        return name;
-    }
-
     parseStatus(thing: Boolean){
         if(thing == true) return "Complete";
         else return "Incomplete"
     }
 
     isUserLoggedIN(): boolean {
-        var email = localStorage.getItem('email');
-        return ((email != '') && (typeof email != 'undefined'));
+        const email = localStorage.getItem('email');
+        if(email == '' || email === null) return false;
+        else return true;
     }
 
     editGoal(_id: string, name: string, owner: string, body: string, category: string, startDate: string, endDate: string, frequency: string, email: string, status: boolean) {

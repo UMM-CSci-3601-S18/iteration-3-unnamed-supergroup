@@ -26,6 +26,12 @@
     height: 110%;
 }
 
+@media only screen and (max-width: 960px) {
+    .matCardMain {
+        padding-bottom: 100%;
+    }
+}
+
 .addNewJournalButton{
     padding-left: 10px;
     float: left;
@@ -52,6 +58,7 @@
 }
 
 #addNewJournal{
+    left: 7px;
     background-color: lightgreen;
 }
 
@@ -75,4 +82,12 @@
     position: absolute;
     left: 25px;
     bottom: 10px;
+}
+
+.filters {
+    padding-top: 0px;
+}
+
+#journal-list-title {
+    margin-bottom: 0px;
 }

@@ -152,12 +152,13 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.emoji.owner = window['name'];
+        this.emoji.owner = localStorage.getItem('name');
     }
 
     isUserLoggedIN(): boolean {
         const email = localStorage.getItem('email');
-        return ((email !== '') && (typeof email !== 'undefined'));
+        if(email == '' || email === null) return false;
+        else return true;
     }
 
     // This function pertains to mood carousel. It allows for the value of emoji.mood to
