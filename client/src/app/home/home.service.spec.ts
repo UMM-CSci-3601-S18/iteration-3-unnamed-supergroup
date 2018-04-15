@@ -124,4 +124,22 @@ describe('Home service: ', () => {
         expect(req.request.method).toEqual('POST');
         req.flush(chuck_id);
     });
+
+    it('calls addEmoji in home.service.ts', () => {
+        let emotion: Emoji = {
+            _id: '',
+            mood: 4,
+            intensity: 2,
+            date: new Date("4/21/2014 17:30"),
+            owner: "aurora",
+            email: "aurora@boreal.is",
+        };
+
+        expect(emojiListService.addEmoji(emotion)).toBeDefined();
+    });
+
+    it('calls removeParameter in home.service.ts', () => {
+        emojiListService.filterByEmail("aurora@boreal.is");
+        emojiListService.filterByEmail("aurora@austral.is");
+    });
 });
