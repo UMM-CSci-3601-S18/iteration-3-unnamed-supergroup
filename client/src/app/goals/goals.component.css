@@ -55,4 +55,6 @@
 .mat-card-title{
     font-size: large;
     font-weight: bold;
+    word-wrap: break-word;
+    width: 200px;
 }

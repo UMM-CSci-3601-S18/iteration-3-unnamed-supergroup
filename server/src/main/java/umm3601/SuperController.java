@@ -90,6 +90,13 @@ public abstract class SuperController {
             filterDoc = filterDoc.append("body", contentRegQuery);
         }
 
+        if (queryParams.containsKey("status")) {
+            Boolean targetStatus = Boolean.parseBoolean(queryParams.get("status")[0]);
+            filterDoc = filterDoc.append("status", targetStatus);
+        }
+
+
+
         FindIterable<Document> matchingItems = collection.find(filterDoc);
 
         return JSON.serialize(matchingItems);
