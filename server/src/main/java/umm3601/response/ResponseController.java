@@ -94,6 +94,10 @@ public class ResponseController extends SuperController{
             Aggregates.sample(1)
         ));
 
+        System.out.println(JSON.serialize(matchingItems));
+        if(JSON.serialize(matchingItems).equals("[ ]")) {
+            return null;
+        }
         return JSON.serialize(matchingItems);
     }
 }
