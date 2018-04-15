@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClient} from '@angular/common/http';
 import {Emoji} from '../emoji';
 import {HomeService} from './home.service'
+import {Response} from "./response";
 
 describe('Home service: ', () => {
     // A small collection of test emojis
@@ -123,5 +124,35 @@ describe('Home service: ', () => {
         const req = httpTestingController.expectOne(expectedUrl);
         expect(req.request.method).toEqual('POST');
         req.flush(chuck_id);
+    });
+
+    it('calls addEmoji in home.service.ts', () => {
+        let emotion: Emoji = {
+            _id: '',
+            mood: 4,
+            intensity: 2,
+            date: new Date("4/21/2014 17:30"),
+            owner: "aurora",
+            email: "aurora@boreal.is",
+        };
+
+        expect(emojiListService.addEmoji(emotion)).toBeDefined();
+    });
+
+    it('calls removeParameter in home.service.ts', () => {
+        emojiListService.filterByEmail("aurora@boreal.is");
+        emojiListService.filterByEmail("aurora@austral.is");
+    });
+
+    it('gets a random response', () => {
+        let response: Response  = {
+            _id: '',
+            link: 'https://fluff.fy',
+            email: 'aurora@boreal.is',
+            name: 'fluff'
+        };
+
+        expect(emojiListService.addResponse(response)).toBeDefined();
+        emojiListService.getRandomResponse("aurora@boreal.is");
     });
 });
