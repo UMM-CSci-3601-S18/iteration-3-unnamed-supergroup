@@ -80,14 +80,14 @@ describe('', () => {
     it('should display two emojis next to the main one that are correct', () => {
         HomePage.navigateTo();
 
-        //Get the src value of the currently selected emoji, should be 'Content'.
+        //Get the src value of the currently selected emoji, should be 'Happy'.
         expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/1.png');
 
-        //Get the src value of the emoji to the right, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/4/1.png');
+        //Get the src value of the emoji to the right, should be 'Meh'.
+        expect(element(by.id('rightEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/4/1.png');
 
-        //Get the src value of the emoji to the left, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/2/1.png');
+        //Get the src value of the emoji to the left, should be 'Anxious'.
+        expect(element(by.id('leftEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/2/1.png');
 
     });
 
@@ -98,14 +98,14 @@ describe('', () => {
         //Click right
         page.clickNavRightEmojiButton()
 
-        //Get the src value of the currently selected emoji, should be 'Content'.
+        //Get the src value of the currently selected emoji, should be 'Meh'.
         expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/4/1.png');
 
-        //Get the src value of the emoji to the right, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/5/1.png');
+        //Get the src value of the emoji to the right, should be 'Unhappy'.
+        expect(element(by.id('rightEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/5/1.png');
 
-        //Get the src value of the emoji to the left, should be 'Content'.
-        expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/1.png');
+        //Get the src value of the emoji to the left, should be 'Happy'.
+        expect(element(by.id('leftEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/1.png');
 
     });
 
@@ -136,4 +136,9 @@ describe('', () => {
         expect(element(by.id('currentEmoji')).getAttribute('src')).toEqual('http://localhost:49152/assets/Emojis/3/3.png');
     });
 
+    it('be able to add a new response link', () => {
+        HomePage.navigateTo();
+        let buttonExisted = page.addNewResponseLink('Link to google', 'google.com');
+        expect(buttonExisted).toBe(true);
+    });
 });

@@ -36,6 +36,10 @@ export class ResponseComponent {
                 (ls) => {
                     window.open(ls[0].link);
                 },
+                err => {
+                    this.openSnackBar('Oops! There are no response links! Please add some.', 'OK');
+                    console.log("Error in getting link");
+                }
                 /*
                 This error does not work
 
