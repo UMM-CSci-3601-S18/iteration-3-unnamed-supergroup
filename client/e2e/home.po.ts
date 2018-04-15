@@ -89,9 +89,20 @@ export class HomePage {
         input.click();
     }
 
-
-
-
+    addNewResponseLink(name: string, link: string) {
+        const input = element(by.id('responseAdd'));
+        input.click();
+        const subjectInput = element(by.id('nameField'));
+        subjectInput.click();
+        subjectInput.sendKeys(name);
+        const bodyInput = element(by.id('linkField'));
+        bodyInput.click();
+        bodyInput.sendKeys(link);
+        const button = element(by.css('#confirmAddResponseButton'));
+        const buttonWasThere = button.isDisplayed();
+        button.click();
+        return buttonWasThere;
+    }
 
     // http://www.assertselenium.com/protractor/highlight-elements-during-your-protractor-test-run/
     highlightElement(byObject) {

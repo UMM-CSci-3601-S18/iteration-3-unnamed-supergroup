@@ -14,6 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class ResponseControllerSpec extends ControllerSuperSpec {
@@ -96,5 +97,34 @@ public class ResponseControllerSpec extends ControllerSuperSpec {
 
         assertEquals("Should be 1 entry", 1, docs.size());
         assertEquals("Should be called 'Fluffy bunnies'", "Fluffy bunnies", getName(docs.get(0)));
+    }
+
+    @Test
+    public void getRandomResponse() {
+        Map<String, String[]> map = new HashMap<>();
+        map.put("email", new String[]{"aurora@boreal.is"});
+        String jsonResult = responseController.getRandomResponse(map);
+        BsonArray docs = parseJsonArray(jsonResult);
+
+        assertEquals("Should only be one entry in the array", 1, docs.size());
+        assertTrue("Should contain http in the link", docs.get(0)
+            .asDocument()
+            .get("link")
+            .asString()
+            .toString()
+            .contains("http"));
+
+    }
+
+    @Test
+    public void addLink() {
+        responseController.addNewResponse("End of the world",
+            "aurora@boreal.is",
+            "https://ragnar.uk");
+        Map<String, String[]> map = new HashMap<>();
+        map.put("email", new String[]{"aurora@boreal.is"});
+        assertTrue("the new link is present for the user",
+            responseController.getItems(map).contains("https://ragnar.uk"));
+
     }
 }
