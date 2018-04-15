@@ -89,11 +89,6 @@ export class HomePage {
         input.click();
     }
 
-    clickGetAResponse() {
-        const input = element(by.id('responseGetButton'));
-        input.click();
-    }
-
     addNewResponseLink(name: string, link: string) {
         const input = element(by.id('responseAdd'));
         input.click();
@@ -103,7 +98,7 @@ export class HomePage {
         const bodyInput = element(by.id('linkField'));
         bodyInput.click();
         bodyInput.sendKeys(link);
-        const button = element(by.css('#confirmAddResponseLink'));
+        const button = element(by.css('#confirmAddResponseButton'));
         const buttonWasThere = button.isDisplayed();
         button.click();
         return buttonWasThere;
