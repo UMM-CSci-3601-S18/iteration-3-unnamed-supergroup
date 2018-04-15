@@ -141,4 +141,16 @@ describe('', () => {
         let buttonExisted = page.addNewResponseLink('Link to google', 'google.com');
         expect(buttonExisted).toBe(true);
     });
+
+    it('show error message for invalid link', () => {
+        HomePage.navigateTo();
+        let buttonExisted = page.addNewResponseLink('Link to google', 'google');
+        expect(buttonExisted).toBe(true);
+        // Check for snackbar message?
+    });
+
+    it('should contain the crisis button', () => {
+        HomePage.navigateTo();
+        expect(element(by.id('crisis-button'))).toBeDefined();
+    });
 });
