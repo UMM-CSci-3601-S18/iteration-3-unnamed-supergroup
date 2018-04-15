@@ -154,4 +154,31 @@ describe('Goal  service: ', () => {
         expect(req.request.method).toEqual('POST');
         req.flush(enid_id);
     });
+
+    it('completing a goal calls api/goals/edit', () => {
+        const enid_id = { '$oid': 'enid_id' };
+        const completeGoal: Goal = {
+            _id: "5aa0b36e9c7d66070b9231e4",
+            owner: "Enid",
+            name: "Drink more water",
+            body: "There you go",
+            category: "Activity",
+            startDate: "Sun Feb 14 1999 14:50:05 GMT-0600 (CST)",
+            endDate: "Tue Jun 01 2010 05:50:57 GMT-0500 (CDT)",
+            frequency: "Once a year",
+            status: false,
+            email: "enid@gmail.com",
+        };
+
+        goalService.editGoal(completeGoal).subscribe(
+            id => {
+                expect(id).toBe(enid_id);
+            }
+        );
+
+        const expectedUrl: string = goalService.baseUrl + '/edit';
+        const req = httpTestingController.expectOne(expectedUrl);
+        expect(req.request.method).toEqual('POST');
+        req.flush(enid_id);
+    });
 });
