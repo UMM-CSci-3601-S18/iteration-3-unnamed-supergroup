@@ -36,6 +36,12 @@ describe('', () => {
         expect(element(by.id('incomplete-goals-tab'))).toBeDefined();
     });
 
+    it('Check if there is a check-buttons on the incomplete goals tab', () => {
+        GoalPage.navigateTo();
+        expect(element(by.id('incomplete-goals-tab'))).toBeDefined();;
+        expect(element(by.id('check-buttons'))).toBeDefined();
+    });
+
 
 /*
      it('Should open the expansion panel and get the Name', () => {
