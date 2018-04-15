@@ -7,3 +7,7 @@
 #exitWithoutAddingButton {
     background-color: #f44336;
 }
+
+#bodyField{
+    overflow: scroll;
+}

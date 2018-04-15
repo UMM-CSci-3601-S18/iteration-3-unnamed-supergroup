@@ -32,16 +32,19 @@ public class GoalControllerSpec extends ControllerSuperSpec{
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Ahnaf\",\n" +
             "                    name: \"Do the Dishes\",\n" +
+            "                    status: false,\n" +
             "                    creation_date: \"8/20/2015 20:00\",\n" +
             "                }"));
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Aurora\",\n" +
             "                    name: \"Call Mom\",\n" +
+            "                    status: false,\n" +
             "                    creation_date: \"7/13/2016 08:00\",\n" +
             "                }"));
         testGoals.add(Document.parse("{\n" +
             "                    owner: \"Ethan\",\n" +
             "                    name: \"Fold Laundry\",\n" +
+            "                    status: false,\n" +
             "                    creation_date: \"2/10/2017 12:00\",\n" +
             "                }"));
 
@@ -49,6 +52,7 @@ public class GoalControllerSpec extends ControllerSuperSpec{
         BasicDBObject matt = new BasicDBObject("_id", mattsId);
         matt = matt.append("owner", "Matt")
             .append("name", "Eat Breakfast")
+            .append("status", false)
             .append("creation_date", "11/11/2011 09:00");
 
 
@@ -108,5 +112,41 @@ public class GoalControllerSpec extends ControllerSuperSpec{
             .sorted()
             .collect(Collectors.toList());
         assertEquals("Should return the owner of the new goal", "Matt2", name.get(4));
+    }
+
+    @Test
+    public void editGoalTest() {
+        String newGoal = goalController.addNewGoal("Roch",
+            "Roch",
+            "Tak to people",
+            "Social",
+            "6/19/2015 14:00",
+            "6/20/2015 14:00",
+            "Daily",
+            false,
+            "");
+
+        assertNotNull("Add new goal should return true when a goal is added,", newGoal);
+
+        String editGoal = goalController.editGoal(parseObjectId(newGoal).toString(), true);
+
+        assertNotNull("Edited goal should not return null,", editGoal);
+
+        Map<String, String[]> argMap = new HashMap<>();
+        argMap.put("status", new String[] { "true" });
+        String jsonResult = goalController.getItems(argMap);
+        BsonArray docs = parseJsonArray(jsonResult);
+        System.out.println(docs);
+
+        assertEquals("Should be only 1 goal", 1, docs.size());
+
+
+        List<String> owners = docs
+            .stream()
+            .map(GoalControllerSpec::getOwner)
+            .sorted()
+            .collect(Collectors.toList());
+        List<String> expectedOwners = Arrays.asList("Roch");
+        assertEquals("Owners should match", expectedOwners, owners);
     }
 }
