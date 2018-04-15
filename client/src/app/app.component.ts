@@ -18,12 +18,11 @@ export class AppComponent implements OnInit {
     constructor(public dialog: MatDialog){
     }
 
-    //New function to return the name of the active user
-    //window.* is not defined, or 'gettable' straight from HTML *ngIf
-    //So this function will return that
-    getLoginName(){
-        var name = localStorage.getItem('name');
-        return name;
+
+    isUserLoggedIN(): boolean {
+        const email = localStorage.getItem('email');
+        if(email == '' || email === null) return false;
+        else return true;
     }
 
     ngOnInit() {
