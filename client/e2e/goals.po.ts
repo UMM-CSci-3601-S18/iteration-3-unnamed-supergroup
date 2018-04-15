@@ -53,7 +53,10 @@ export class GoalPage {
         return browser.executeScript(setStyle, element(byObject).getWebElement(), 'color: red; background-color: yellow;');
     }
 
-    testAddNewGoal(name: string, frequency: string) {
+
+    // Should be able to input a category since it is a required field
+    // Or change category from being required and have the default be 'other'
+    testAddNewGoal(name: string, frequency: string /*, category: string*/) {
         const input = element(by.id('addNewGoal'));
         input.click();
         const nameInput = element(by.id('name'));
@@ -61,6 +64,11 @@ export class GoalPage {
         const frequencyInput = element(by.id('frequency'));
         frequencyInput.click();
         frequencyInput.sendKeys(frequency);
+        /*
+        const categoryInput = element(by.id('category'));
+        categoryInput.click();
+        categoryInput.sendKeys(category);
+        */
         const button = element(by.id('confirmAddGoalButton'));
         const buttonWasThere = button.isDisplayed();
         button.click();
