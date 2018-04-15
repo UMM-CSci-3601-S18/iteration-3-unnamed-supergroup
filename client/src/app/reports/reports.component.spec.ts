@@ -10,6 +10,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import {Emoji} from "../emoji";
 
+
+
 describe('Reports list', () => {
 
     let emojiList: ReportsComponent;
@@ -24,28 +26,28 @@ describe('Reports list', () => {
         ReportsListServiceStub = {
             getEmojis: () => Observable.of([
                 {
-                    _id: 'f',
-                    owner: 'Nick',
+                    _id: '13',
+                    owner: 'Song',
                     mood: 3,
                     intensity: 1,
-                    date: 'd', //date will be created during the test so that it matches what is made in component.addEmoji
-                    email: "nick@gmail.com",
+                    date: 'Sat Mar 24 2018 15:44:27 GMT-0500 (CDT)', //date will be created during the test so that it matches what is made in component.addEmoji
+                    email: "song@gmail.com",
                 },
                 {
-                    _id: 'd',
-                    owner: 'Roch',
+                    _id: '42',
+                    owner: 'Yujing',
                     mood: 4,
                     intensity: 2,
-                    date: '', //date will be created during the test so that it matches what is made in component.addEmoji
-                    email: "roch@gmail.com",
+                    date: 'Fri Mar 23 2018 15:40:00 GMT-0500 (CDT)', //date will be created during the test so that it matches what is made in component.addEmoji
+                    email: "yujing@gmail.com",
                 },
                 {
-                    _id: 'd',
-                    owner: 'Leo',
+                    _id: '52',
+                    owner: 'Whoever',
                     mood: 5,
                     intensity: 2,
-                    date: 'e', //date will be created during the test so that it matches what is made in component.addEmoji
-                    email: "leo@gmail.com",
+                    date: 'Wed Mar 21 2018 15:00:00 GMT-0500 (CDT)', //date will be created during the test so that it matches what is made in component.addEmoji
+                    email: "whoever@gmail.com",
                 }
             ])
         };
@@ -72,21 +74,18 @@ describe('Reports list', () => {
         expect(emojiList.emojis.length).toBe(3);
     });
 
-    it('contains a owner named \'Roch\'', () => {
-        expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Nick')).toBe(true);
+    it('contains a owner named \'Song\'', () => {
+        expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Song')).toBe(true);
     });
 
-    it('contain a user named \'Jamie\'', () => {
-        expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Roch')).toBe(true);
+    it('contain a user named \'Yujing\'', () => {
+        expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Yujing')).toBe(true);
     });
 
-    it('doesn\'t contain a user named \'Santa\'', () => {
-        expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Santa')).toBe(false);
+    it('doesn\'t contain a user named \'Nobody\'', () => {
+        expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Nobody')).toBe(false);
     });
 
-    it('has one emoji with the owner leo', () => {
-        expect(emojiList.emojis.filter((emoji: Emoji) => emoji.owner === 'Leo').length).toBe(1);
-    });
 
     it('has two emoji with intensity two', () => {
         expect(emojiList.emojis.filter((emoji: Emoji) => emoji.intensity === 2).length).toBe(2);
@@ -96,55 +95,38 @@ describe('Reports list', () => {
         expect(emojiList.emojis.filter((emoji: Emoji) => emoji.mood === 4).length).toBe(1);
     });
 
-    it('emoji list filters by name', () => {
-        console.log(emojiList.emojis)
+    it('chart filters by start date', () => {
+        console.log(emojiList.emojis);
         expect(emojiList.filteredEmojis.length).toBe(3);
-        emojiList.emojiOwner = 'L';
+        emojiList.startDate = new Date('Thu Mar 22 2018 15:45:00 GMT-0500 (CDT)');
+        emojiList.refreshEmojis().subscribe(() => {
+            expect(emojiList.filteredEmojis.length).toBe(2);
+        });
+    });
+
+    it('chart filters by end date', () => {
+        console.log(emojiList.emojis);
+        expect(emojiList.filteredEmojis.length).toBe(3);
+        emojiList.endDate = new Date('Thu Mar 22 2018 15:45:00 GMT-0500 (CDT)');
         emojiList.refreshEmojis().subscribe(() => {
             expect(emojiList.filteredEmojis.length).toBe(1);
         });
     });
 
-
-});
-
-describe('Misbehaving Emoji List', () => {
-    let emojiList: ReportsComponent;
-    let fixture: ComponentFixture<ReportsComponent>;
-
-    let emojiListServiceStub: {
-        getEmojis: () => Observable<Emoji[]>
-    };
-
-    beforeEach(() => {
-        // stub UserService for test purposes
-        emojiListServiceStub = {
-            getEmojis: () => Observable.create(observer => {
-                observer.error('Error-prone observable');
-            })
-        };
-
-        TestBed.configureTestingModule({
-            imports: [FormsModule, CustomModule],
-            declarations: [ReportsComponent],
-            providers: [{provide: ReportsService, useValue: emojiListServiceStub},
-                {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}]
+    it('chart filters by emotion', () => {
+        console.log(emojiList.emojis);
+        emojiList.chartEmojis = emojiList.emojis;
+        expect(emojiList.chartEmojis.length).toBe(3);
+        emojiList.refreshEmojis().subscribe(() => {
+            expect(emojiList.filterChart('', '4','2')).toBe(1);
         });
     });
 
-    beforeEach(async(() => {
-        TestBed.compileComponents().then(() => {
-            fixture = TestBed.createComponent(ReportsComponent);
-            emojiList = fixture.componentInstance;
-            fixture.detectChanges();
-        });
-    }));
 
-    it('generates an error if we don\'t set up a UserListService', () => {
-        // Since the observer throws an error, we don't expect users to be defined.
-        expect(emojiList.emojis).toBeUndefined();
-    });
+
 });
+
+
 
 
 

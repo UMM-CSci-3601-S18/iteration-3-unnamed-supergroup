@@ -32,7 +32,7 @@ export class ReportsComponent implements AfterViewInit, OnInit {
     getDate: any;
     canvas: any;
     ctx: any;
-    
+
 
     // Inject the EmojiListService into this component.
     constructor(public reportsService: ReportsService) {
@@ -41,7 +41,7 @@ export class ReportsComponent implements AfterViewInit, OnInit {
 
 
 
-
+//Filters are not include in the shopping, but Song thinks we may need that in the future.
     public filterEmojis(start, end): Emoji[] {
 
         this.filteredEmojis = this.emojis;
@@ -74,16 +74,22 @@ export class ReportsComponent implements AfterViewInit, OnInit {
         return Date();
     }
 
-    filterChart(weekday, mood): number {
+    filterChart(weekday, mood, intensity): number {
         this.chartEmojis = this.prefilteredEmojis;
         if(this.chartEmojis == null){
             this.chartEmojis = [];
         }
 
-        // Filter by value
+        // Filter by mood
         this.chartEmojis = this.chartEmojis.filter(emoji => {
             return !mood.toString() || emoji.mood.toString().indexOf(mood.toString()) !== -1;
         });
+
+        //Filter by intensity
+        this.chartEmojis = this.chartEmojis.filter(emoji => {
+            return !intensity.toString() || emoji.intensity.toString().indexOf(intensity.toString()) !== -1;
+        });
+
 
         // Filter by day of the week
         this.chartEmojis = this.chartEmojis.filter(emoji => {
@@ -107,120 +113,206 @@ export class ReportsComponent implements AfterViewInit, OnInit {
 
         let days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
-        let very_sad_daily_totals = {"label":"Very Sad",
+        let frustrated_daily_totals = {"label":"Frustrated",
             "data":[
-                this.filterChart('Sun', '1'),
-                this.filterChart('Mon', '1'),
-                this.filterChart('Tue', '1'),
-                this.filterChart('Wed', '1'),
-                this.filterChart('Thu', '1'),
-                this.filterChart('Fri', '1'),
-                this.filterChart('Sat', '1')
+                this.filterChart('Sun', '1','1'),
+                this.filterChart('Mon', '1','1'),
+                this.filterChart('Tue', '1','1'),
+                this.filterChart('Wed', '1','1'),
+                this.filterChart('Thu', '1','1'),
+                this.filterChart('Fri', '1','1'),
+                this.filterChart('Sat', '1','1')
             ],
             hidden: true,
             "fill":false,
-            "borderColor":"rgb(150, 0, 100)",
+            "borderColor":"rgb(0, 0, 100)",
             "lineTension":0.1};
 
-        let sad_daily_totals = {"label":"Sad",
+        let angry_daily_totals = {"label":"Angry",
             "data":[
-                this.filterChart('Sun', '2'),
-                this.filterChart('Mon', '2'),
-                this.filterChart('Tue', '2'),
-                this.filterChart('Wed', '2'),
-                this.filterChart('Thu', '2'),
-                this.filterChart('Fri', '2'),
-                this.filterChart('Sat', '2')
+                this.filterChart('Sun', '1','2'),
+                this.filterChart('Mon', '1','2'),
+                this.filterChart('Tue', '1','2'),
+                this.filterChart('Wed', '1','2'),
+                this.filterChart('Thu', '1','2'),
+                this.filterChart('Fri', '1','2'),
+                this.filterChart('Sat', '1','2')
             ],
             hidden: true,
             "fill":false,
-            "borderColor":"rgb(200, 80, 20)",
+            "borderColor":"rgb(0, 0, 200)",
             "lineTension":0.1};
 
-        let neutral_daily_totals = {"label":"Neutral",
+        let anxious_daily_totals = {"label":"Anxious",
             "data":[
-                this.filterChart('Sun', '3'),
-                this.filterChart('Mon', '3'),
-                this.filterChart('Tue', '3'),
-                this.filterChart('Wed', '3'),
-                this.filterChart('Thu', '3'),
-                this.filterChart('Fri', '3'),
-                this.filterChart('Sat', '3')
+                this.filterChart('Sun', '2','1'),
+                this.filterChart('Mon', '2','1'),
+                this.filterChart('Tue', '2','1'),
+                this.filterChart('Wed', '2','1'),
+                this.filterChart('Thu', '2','1'),
+                this.filterChart('Fri', '2','1'),
+                this.filterChart('Sat', '2','1')
             ],
             "fill":false,
-            "borderColor":"rgb(175, 175, 175)",
+            "borderColor":"rgb(0, 100, 100)",
+            "lineTension":0.1};
+
+        let worried_daily_totals = {"label":"Worried",
+            "data":[
+                this.filterChart('Sun', '2','2'),
+                this.filterChart('Mon', '2','2'),
+                this.filterChart('Tue', '2','2'),
+                this.filterChart('Wed', '2','2'),
+                this.filterChart('Thu', '2','2'),
+                this.filterChart('Fri', '2','2'),
+                this.filterChart('Sat', '2','2')
+            ],
+            hidden: true,
+            "fill":false,
+            "borderColor":"rgb(0, 100, 200)",
             "lineTension":0.1};
 
         let happy_daily_totals = {"label":"Happy",
             "data":[
-                this.filterChart('Sun', '4'),
-                this.filterChart('Mon', '4'),
-                this.filterChart('Tue', '4'),
-                this.filterChart('Wed', '4'),
-                this.filterChart('Thu', '4'),
-                this.filterChart('Fri', '4'),
-                this.filterChart('Sat', '4')
+                this.filterChart('Sun', '3','1'),
+                this.filterChart('Mon', '3','1'),
+                this.filterChart('Tue', '3','1'),
+                this.filterChart('Wed', '3','1'),
+                this.filterChart('Thu', '3','1'),
+                this.filterChart('Fri', '3','1'),
+                this.filterChart('Sat', '3','1')
             ],
             hidden: true,
             "fill":false,
-            "borderColor":"rgb(75, 192, 192)",
+            "borderColor":"rgb(0, 100, 0)",
             "lineTension":0.1};
 
-        let very_happy_daily_totals = {"label":"Very Happy",
+        let content_daily_totals = {"label":"Content",
             "data":[
-                this.filterChart('Sun', '5'),
-                this.filterChart('Mon', '5'),
-                this.filterChart('Tue', '5'),
-                this.filterChart('Wed', '5'),
-                this.filterChart('Thu', '5'),
-                this.filterChart('Fri', '5'),
-                this.filterChart('Sat', '5')
+                this.filterChart('Sun', '3','2'),
+                this.filterChart('Mon', '3','2'),
+                this.filterChart('Tue', '3','2'),
+                this.filterChart('Wed', '3','2'),
+                this.filterChart('Thu', '3','2'),
+                this.filterChart('Fri', '3','2'),
+                this.filterChart('Sat', '3','2')
+            ],
+            hidden: true,
+            "fill":false,
+            "borderColor":"rgb(0, 200, 0)",
+            "lineTension":0.1};
+
+        let ecstatic_daily_totals = {"label":"Ecstatic",
+            "data":[
+                this.filterChart('Sun', '3','3'),
+                this.filterChart('Mon', '3','3'),
+                this.filterChart('Tue', '3','3'),
+                this.filterChart('Wed', '3','3'),
+                this.filterChart('Thu', '3','3'),
+                this.filterChart('Fri', '3','3'),
+                this.filterChart('Sat', '3','3')
+            ],
+            hidden: true,
+            "fill":false,
+            "borderColor":"rgb(0, 200, 100)",
+            "lineTension":0.1};
+
+        let meh_daily_totals = {"label":"Meh",
+            "data":[
+                this.filterChart('Sun', '4','1'),
+                this.filterChart('Mon', '4','1'),
+                this.filterChart('Tue', '4','1'),
+                this.filterChart('Wed', '4','1'),
+                this.filterChart('Thu', '4','1'),
+                this.filterChart('Fri', '4','1'),
+                this.filterChart('Sat', '4','1')
+            ],
+            hidden: true,
+            "fill":false,
+            "borderColor":"rgb(0, 200, 200)",
+            "lineTension":0.1};
+
+        let bleh_daily_totals = {"label":"Bleh",
+            "data":[
+                this.filterChart('Sun', '4','2'),
+                this.filterChart('Mon', '4','2'),
+                this.filterChart('Tue', '4','2'),
+                this.filterChart('Wed', '4','2'),
+                this.filterChart('Thu', '4','2'),
+                this.filterChart('Fri', '4','2'),
+                this.filterChart('Sat', '4','2')
+            ],
+            hidden: true,
+            "fill":false,
+            "borderColor":"rgb(100, 0, 0)",
+            "lineTension":0.1};
+
+        let unhappy_daily_totals = {"label":"Unhappy",
+            "data":[
+                this.filterChart('Sun', '5','1'),
+                this.filterChart('Mon', '5','1'),
+                this.filterChart('Tue', '5','1'),
+                this.filterChart('Wed', '5','1'),
+                this.filterChart('Thu', '5','1'),
+                this.filterChart('Fri', '5','1'),
+                this.filterChart('Sat', '5','1')
+            ],
+            hidden: true,
+            "fill":false,
+            "borderColor":"rgb(200, 100, 0)",
+            "lineTension":0.1};
+
+        let sad_daily_totals = {"label":"Sad",
+            "data":[
+                this.filterChart('Sun', '5','2'),
+                this.filterChart('Mon', '5','2'),
+                this.filterChart('Tue', '5','2'),
+                this.filterChart('Wed', '5','2'),
+                this.filterChart('Thu', '5','2'),
+                this.filterChart('Fri', '5','2'),
+                this.filterChart('Sat', '5','2')
             ],
             hidden: true,
             "fill":false,
             "borderColor":"rgb(200, 200, 0)",
             "lineTension":0.1};
 
-        let negative_daily_totals = {"label":"Negative",
+        let miserable_daily_totals = {"label":"Miserable",
             "data":[
-                this.filterChart('Sun', '1') + this.filterChart('Sun', '2'),
-                this.filterChart('Mon', '1') + this.filterChart('Mon', '2'),
-                this.filterChart('Tue', '1') + this.filterChart('Tue', '2'),
-                this.filterChart('Wed', '1') + this.filterChart('Wed', '2'),
-                this.filterChart('Thu', '1') + this.filterChart('Thu', '2'),
-                this.filterChart('Fri', '1') + this.filterChart('Fri', '2'),
-                this.filterChart('Sat', '1') + this.filterChart('Sat', '2')
+                this.filterChart('Sun', '5','3'),
+                this.filterChart('Mon', '5','3'),
+                this.filterChart('Tue', '5','3'),
+                this.filterChart('Wed', '5','3'),
+                this.filterChart('Thu', '5','3'),
+                this.filterChart('Fri', '5','3'),
+                this.filterChart('Sat', '5','3')
             ],
+            hidden: true,
             "fill":false,
-            "borderColor":"rgb(250, 0, 0)",
+            "borderColor":"rgb(200, 200, 200)",
             "lineTension":0.1};
 
-        let positive_daily_totals = {"label":"Postive",
-            "data":[
-                this.filterChart('Sun', '4') + this.filterChart('Sun', '5'),
-                this.filterChart('Mon', '4') + this.filterChart('Mon', '5'),
-                this.filterChart('Tue', '4') + this.filterChart('Tue', '5'),
-                this.filterChart('Wed', '4') + this.filterChart('Wed', '5'),
-                this.filterChart('Thu', '4') + this.filterChart('Thu', '5'),
-                this.filterChart('Fri', '4') + this.filterChart('Fri', '5'),
-                this.filterChart('Sat', '4') + this.filterChart('Sat', '5')
-            ],
-            "fill":false,
-            "borderColor":"rgb(0, 250, 0)",
-            "lineTension":0.1};
+
 
         let myChart = new Chart(this.ctx, {
             type: 'line',
             data: {
                 labels: days,
                 datasets: [
-                    negative_daily_totals,
-                    very_sad_daily_totals,
-                    sad_daily_totals,
-                    neutral_daily_totals,
+
+                    frustrated_daily_totals,
+                    angry_daily_totals,
+                    anxious_daily_totals,
+                    worried_daily_totals,
                     happy_daily_totals,
-                    very_happy_daily_totals,
-                    positive_daily_totals]
+                    content_daily_totals,
+                    ecstatic_daily_totals,
+                    meh_daily_totals,
+                    bleh_daily_totals,
+                    unhappy_daily_totals,
+                    sad_daily_totals,
+                    miserable_daily_totals,
+                    ]
             },
             options: {
                 scales: {
