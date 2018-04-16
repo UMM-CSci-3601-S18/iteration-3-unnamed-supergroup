@@ -82,7 +82,7 @@ describe('', () => {
     This is a test for all the goals being shown in the all goals tab
     It's not working right now because I'm not sure of how to check through multiple goals being listed
     Otherwise the test should work fine once that's fixed
-    
+
     it('should have all the goals in the all goals tab', () => {
         GoalPage.navigateTo();
 
@@ -102,20 +102,6 @@ describe('', () => {
     });
     */
 
-
-/*
-     it('Should open the expansion panel and get the Name', () => {
-         GoalPage.navigateTo();
-         GoalPage.getOwner('DATA');
-         browser.actions().sendKeys(Key.ENTER).perform();
-
-         expect(page.getUniqueGoal('Drink more water')).toEqual('Drink more water');
-
-         // This is just to show that the panels can be opened
-         browser.actions().sendKeys(Key.TAB).perform();
-         browser.actions().sendKeys(Key.ENTER).perform();
-    })
-    */
 
     it('should contain the crisis button', () => {
         GoalPage.navigateTo();
