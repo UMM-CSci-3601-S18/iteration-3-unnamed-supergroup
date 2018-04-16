@@ -28,6 +28,11 @@ task seedResponseData(type: Exec) {
     args = ["-d", "dev", "-c", "responses", "--file", "responses.seed.json", "--jsonArray"]
 }
 
+task seedResponseDataProd(type: Exec) {
+    executable = "mongoimport"
+    args = ["-d", "prod", "-c", "responses", "--file", "responses.seed.json", "--jsonArray"]
+}
+
 task seedMongoDB {
     group = "application"
 }
@@ -37,5 +42,7 @@ seedMongoDB.dependsOn(seedEmojiData)
 seedMongoDB.dependsOn(seedGoalData)
 seedMongoDB.dependsOn(seedJournalData)
 seedMongoDB.dependsOn(seedResponseData)
+compileJava.dependsOn(seedResponseData)
+compileJava.dependsOn(seedResponseDataProd)
 
 
