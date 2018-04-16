@@ -27,6 +27,7 @@ import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
 import {ViewJournalComponent} from "./journaling/view-journal.component";
+import {Chart} from 'chart.js';
 
 //import {GoogleSignInComponent} from "angular-google-signin";
 
