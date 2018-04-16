@@ -22,7 +22,7 @@
                     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi="true" #endPicker></mat-datepicker>
                 </mat-form-field>
-                <mat-select id="category-goals" matInput #input [(ngModel)]="data.goal.category" placeholder="Category" [style.width]="'55%'" [formControl]="category" required>
+                <mat-select id="category-goals" matInput #input [(ngModel)]="data.goal.category" placeholder="Category" [style.width]="'55%'" name="cat">
                     <mat-option value="Chores">Chores</mat-option>
                     <mat-option value="Health">Health</mat-option>
                     <mat-option value="Social">Social</mat-option>
@@ -34,7 +34,7 @@
                 <!-- [mat-dialog-close]="data.user" causes the data.user object to be returned when the dialog is closed. -->
             </form>
         </mat-card-content>
-        <button [disabled]="name.invalid || category.invalid" mat-raised-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
+        <button [disabled]="name.invalid" mat-raised-button id="confirmAddGoalButton" [mat-dialog-close]="data.goal" type="button">Add goal</button>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
     </div>
 </div>
