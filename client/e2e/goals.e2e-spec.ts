@@ -73,10 +73,34 @@ describe('', () => {
 
         // Check that the goal is in the right tab
         element(by.id('md-tab-label-0-2')).click();
-        expect(element(by.id('goalName')).getText()).toContain('Test Goals');
+        expect(element(by.className('goalName')).getText()).toContain('Test Goals');
 
 
     });
+
+    /*
+    This is a test for all the goals being shown in the all goals tab
+    It's not working right now because I'm not sure of how to check through multiple goals being listed
+    Otherwise the test should work fine once that's fixed
+    
+    it('should have all the goals in the all goals tab', () => {
+        GoalPage.navigateTo();
+
+        // Adding goals
+        page.addAGoal('Test complete goal', '4/1/18', '4/8/18', 'health', '5', 1);
+        page.addAGoal('Test incomplete goal', '1/1/00', '1/31/00', 'health', '2', 2);
+
+        // Completing one of the goals
+        element(by.id('completeGoalButton')).click();
+
+        // Navigating to All Goals tab
+        element(by.id('md-tab-label-0-1')).click();
+
+        // Check that both the goals are there
+        expect(element(by.className('goalName')[0]).getText()).toContain('Test complete goal');
+        expect(element(by.className('goalName')[1]).getText()).toContain('Test incomplete goal');
+    });
+    */
 
 
 /*

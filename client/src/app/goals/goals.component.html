@@ -12,7 +12,7 @@
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'false')">
                             <mat-card-header>
                                 <div mat-card-avatar class="goal-avatar"></div>
-                                <mat-card-title>{{goal.name}}</mat-card-title>
+                                <mat-card-title class="goalName">{{goal.name}}</mat-card-title>
                             </mat-card-header>
                             <img *ngIf="goal.category == 'Chores' " mat-card-image src="../assets/Categories/clean.jpg">
                             <img *ngIf="goal.category == 'Health' " mat-card-image src="../assets/Categories/health.jpg">
@@ -41,7 +41,7 @@
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, goalStatus)">
                             <mat-card-header>
                                 <div mat-card-avatar class="goal-avatar"></div>
-                                <mat-card-title>{{goal.name}}</mat-card-title>
+                                <mat-card-title class="goalName">{{goal.name}}</mat-card-title>
                             </mat-card-header>
                             <img *ngIf="goal.category == 'Chores' " mat-card-image src="../assets/Categories/clean.jpg">
                             <img *ngIf="goal.category == 'Health' " mat-card-image src="../assets/Categories/health.jpg">
@@ -70,7 +70,7 @@
                         <mat-card class="goal" #elem [id]="goal._id['$oid']" *ngFor="let goal of this.filterGoals(goalOwner, 'true')">
                             <mat-card-header>
                                 <div mat-card-avatar class="goal-avatar"></div>
-                                <mat-card-title id="goalName">{{goal.name}}</mat-card-title>
+                                <mat-card-title class="goalName">{{goal.name}}</mat-card-title>
                             </mat-card-header>
                             <img *ngIf="goal.category == 'Chores' " mat-card-image src="../assets/Categories/clean.jpg">
                             <img *ngIf="goal.category == 'Health' " mat-card-image src="../assets/Categories/health.jpg">

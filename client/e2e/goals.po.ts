@@ -75,4 +75,53 @@ export class GoalPage {
         return buttonWasThere;
     }
 
+    addAGoal(goalName: string, startDate: string, endDate: string, category: string, frequency: string, numberGoal: number) {
+        const addGoalButton = element(by.id('addNewGoal'));
+        const nameInput = element(by.id('name'));
+        const startDateInput = element(by.id('startDate'));
+        const endDateInput = element(by.id('endDate'));
+        const categoryInput = element(by.id('category-goals'));
+        const frequencyInput = element(by.id('frequency'));
+        const submitGoalButton = element(by.id('confirmAddGoalButton'));
+
+        addGoalButton.click();
+
+        nameInput.click();
+        nameInput.sendKeys(goalName);
+
+        startDateInput.click();
+        startDateInput.sendKeys(startDate);
+
+        endDateInput.click();
+        endDateInput.sendKeys(endDate);
+
+        categoryInput.click();
+        if (numberGoal === 1) {
+            if (category.toLocaleLowerCase() === 'chores') {
+                element(by.id('md-option-0')).click();
+            } else if (category.toLocaleLowerCase() === 'health') {
+                element(by.id('md-option-1')).click();
+            } else if (category.toLocaleLowerCase() === 'social') {
+                element(by.id('md-option-2')).click();
+            } else if (category.toLocaleLowerCase() === 'other') {
+                element(by.id('md-option-3')).click();
+            }
+        } else if(numberGoal === 2) {
+            if (category.toLocaleLowerCase() === 'chores') {
+                element(by.id('md-option-4')).click();
+            } else if (category.toLocaleLowerCase() === 'health') {
+                element(by.id('md-option-5')).click();
+            } else if (category.toLocaleLowerCase() === 'social') {
+                element(by.id('md-option-6')).click();
+            } else if (category.toLocaleLowerCase() === 'other') {
+                element(by.id('md-option-7')).click();
+            }
+        }
+
+        frequencyInput.click();
+        frequencyInput.sendKeys(frequency);
+
+        submitGoalButton.click();
+    }
+
 }
