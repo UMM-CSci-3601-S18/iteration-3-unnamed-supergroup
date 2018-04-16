@@ -42,7 +42,6 @@ seedMongoDB.dependsOn(seedEmojiData)
 seedMongoDB.dependsOn(seedGoalData)
 seedMongoDB.dependsOn(seedJournalData)
 seedMongoDB.dependsOn(seedResponseData)
-compileJava.dependsOn(seedResponseData)
-compileJava.dependsOn(seedResponseDataProd)
+
 
 
