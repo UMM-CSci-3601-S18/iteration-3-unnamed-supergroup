@@ -24,6 +24,7 @@ describe('', () => {
         page = new HomePage();
     });
 
+    //Adds 'Happy'
     it('should add an entry', () => {
         HomePage.navigateTo();
 
@@ -31,6 +32,7 @@ describe('', () => {
         page.clickSubmitButton();
     });
 
+    // Adds 'Frustrated'
     it('should add an entry by clicking left twice then submitting', () => {
         HomePage.navigateTo();
 
@@ -46,6 +48,7 @@ describe('', () => {
 
     });
 
+    //Adds 'Angry'
     it('should add an entry by clicking right three times, then up once', () => {
         HomePage.navigateTo();
 
@@ -64,6 +67,7 @@ describe('', () => {
         page.clickSubmitButton();
     });
 
+    //Adds 'Content'
     it('should add an entry by clicking down once', () => {
         HomePage.navigateTo();
 
